@@ -44,7 +44,7 @@
                 <input class="form-check-input custom-control-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                 <label class="custom-control-label" for="remember">จดจำรหัสผ่าน</label>
               </div>
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">ล๊อคอิน</button>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Login</button>
               <hr class="my-4">
             </form>
           </div>
