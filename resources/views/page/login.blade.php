@@ -6,7 +6,7 @@
     @csrf
   <div class="services_section">
     <div class="container">
-      <h1 class="services_text">SERVICES</h1>
+      <h1 class="services_text">แผนพัฒนาการศึกษาเทศบาลเมืองสิงหนคร</h1>
     </div>
   </div>
   <div class="login_section">

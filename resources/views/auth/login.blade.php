@@ -6,7 +6,7 @@
     @csrf
   <div class="services_section">
     <div class="container">
-      <h1 class="services_text">SERVICES</h1>
+      <h1 class="services_text">แผนพัฒนาการศึกษาเทศบาลเมืองสิงหนคร</h1>
     </div>
   </div>
   <div class="login_section">
@@ -15,7 +15,7 @@
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card card-signin my-5">
           <div class="card-body">
-            <h5 class="card-title text-center">Log In</h5>
+            <h5 class="card-title text-center">เข้าสู่ระบบ</h5>
             <form class="form-signin">
               <div class="form-label-group">
 
@@ -26,7 +26,7 @@
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
-                <label for="inputEmail">Email address</label>
+                <label for="inputEmail">อีเมล์</label>
               </div>
               <div class="form-label-group">
 
@@ -37,14 +37,14 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                <label for="inputPassword">Password</label>
+                <label for="inputPassword">รหัสผ่าน</label>
               </div>
 
               <div class="custom-control custom-checkbox mb-3">
                 <input class="form-check-input custom-control-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                <label class="custom-control-label" for="remember">Remember password</label>
+                <label class="custom-control-label" for="remember">จดจำรหัสผ่าน</label>
               </div>
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Log In</button>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">ล๊อคอิน</button>
               <hr class="my-4">
             </form>
           </div>
@@ -59,12 +59,12 @@
   <!-- footer section start-->
   <div class="footer_section layout_padding">
     <div class="container">
-      <h1 class="subscribr_text">Subscribe Now</h1>
-      <p class="lorem_text">There are many variations of passages of Lorem Ipsum available, but the majority have </p>
+      <h1 class="subscribr_text">ลืมรหัสผ่าน</h1>
+      <p class="lorem_text">สามารถกรอกอีเมล์เพื่อขอรีเซ็ตรหัสผ่าน </p>
       <div class="box_main_2">
-          <textarea type="" class="email_bt_2" placeholder="Enter Your Email" name=""></textarea>
+          <textarea type="" class="email_bt_2" placeholder="กรุณากรอกอีเมล์" name=""></textarea>
         </div>
-        <button class="subscribe_bt_2"><a href="#">Subscribe</a></button>
+        <button class="subscribe_bt_2"><a href="#">ยืนยัน</a></button>
     </div>
   </div>
 </form>

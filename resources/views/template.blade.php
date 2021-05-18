@@ -95,10 +95,10 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
-					<p class="copyright_text">Copyright 2020 All Right Reserved By.<a href="https://html.design"> Free  html Templates</a></p>
+					<p class="copyright_text">.<a href="https://html.design"> </a></p>
 				</div>
 				<div class="col-md-6">
-					<p class="cookies_text">Cookies, Privacy and Terms</p>
+					<p class="cookies_text"></p>
 				</div>
 			</div>
 		</div>
