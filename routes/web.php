@@ -25,6 +25,8 @@ Route::get('/services',[HomeController::class,'pageservices'])->name("results");
 
 Route::get('/',[HomeController::class,'pageservices'])->name("Tactics");
 
+Route::get('/',view("page.reset"))->name("reset");
+
 
 
 

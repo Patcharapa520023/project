@@ -57,16 +57,6 @@
   <!-- login section end-->
 
   <!-- footer section start-->
-  <div class="footer_section layout_padding">
-    <div class="container">
-      <h1 class="subscribr_text">ลืมรหัสผ่าน</h1>
-      <p class="lorem_text">สามารถกรอกอีเมล์เพื่อขอรีเซ็ตรหัสผ่าน </p>
-      <div class="box_main_2">
-          <textarea type="" class="email_bt_2" placeholder="กรุณากรอกอีเมล์" name=""></textarea>
-        </div>
-        <button class="subscribe_bt_2"><a href="#">ยืนยัน</a></button>
-    </div>
-  </div>
-</form>
+
   <!-- footer section end-->
   @endsection
