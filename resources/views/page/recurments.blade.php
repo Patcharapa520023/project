@@ -4,7 +4,7 @@
 	<!-- Recurments  section start-->
     <div class="services_section">
         <div class="container">
-            <h1 class="services_text">Recurments</h1>
+            <h1 class="services_text">โครงการ</h1>
         </div>
     </div>
     <div class="Recurments_section">

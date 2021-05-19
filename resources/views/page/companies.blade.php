@@ -3,12 +3,12 @@
 	<!-- companies  section start-->
   <div class="services_section">
     <div class="container">
-      <h1 class="services_text">COMPANIES</h1>
+      <h1 class="services_text">ข้อมูลยุทธศาสตร์</h1>
     </div>
   </div>
   <div class="companies_section layout_padding">
     <div class="container">
-      <h1 class="companies_text">Find Your Company</h1>
+      <h1 class="companies_text">กรอกข้อมูลยุทธศาสตร์</h1>
       <div class="images_main ">
           <h2 id="demo03"></h2>
           <div class="hover03 column">

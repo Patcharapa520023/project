@@ -4,10 +4,10 @@
   <!-- search jobs section start-->
   <div class="search_section layout_padding">
       <div class="container">
-        <div class="logo_1"><img src="images/logo-2.png"></div>
+        <div class="logo_1"><img src=""></div>
           <div class="row box">
               <div class="col-md-6">
-                  <h1 class="what_text">What</h1>
+                  <h1 class="what_text">ยุทธศาสตร์</h1>
                   <p class="city_text">job title, keywords, or company</p>
                   <div class="main">
                     <div class="input-group">
@@ -21,7 +21,7 @@
                   </div>
               </div>
               <div class="col-md-6">
-                  <h1 class="what_text">Where</h1>
+                  <h1 class="what_text">กลยุทธ์</h1>
                   <p class="city_text">city, state, or pin code</p>
                   <div>
                       <div class="main">
@@ -38,7 +38,7 @@
               </div>
           </div>
           <div class="">
-            <button class="find_bt">Find Jobs</button>
+            <button class="find_bt">ค้นหาโครงการ</button>
           </div>
       </div>
   </div>
