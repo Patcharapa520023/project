@@ -219,9 +219,8 @@ button {
      padding: 0px;
 }
 
-.navbar-light .navbar-nav .nav-link {
-    color: #676868;
-}
+
+
 
 .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: 15px;
@@ -234,8 +233,11 @@ button {
 }
 
 .logo {
-    width: 40%;
+    width: 30%;
     float: left;
+}
+.logo>img{
+    width: 50px;
 }
 
 .login_text{
@@ -568,7 +570,7 @@ button {
     height: 50px;
 }
 
-.btn { 
+.btn {
      padding: 10px 20px;
 }
 
@@ -1051,5 +1053,10 @@ input.btn_main_3::placeholder {
     border-radius: 30px;
     margin-top: 20px;
 }
+.activebar{
+    border-bottom: 2px solid rgb(202, 8, 219);
+}
+.activebar>a{
 
-
+    color: rgb(202, 8, 219);
+}

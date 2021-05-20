@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,21 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-Route::get('/companies', function () {
-    return view('companies');
-});
-Route::get('/login', function () {
-    return view('login');
-});
-Route::get('/recurments', function () {
-    return view('recurments');
-});
-Route::get('/searchjob', function () {
-    return view('searchjob');
-});
-Route::get('/services', function () {
-    return view('services');
-});
+Route::get('/หน้าแรก',[HomeController::class,'pageindex'])->name("home");
+
+Route::get('/companies',[HomeController::class,'pagecompanies'])->name("stategic");
+
+Route::get('/recurments',[HomeController::class,'pagerecurments'])->name("project");
+
+Route::get('/searchjob',[HomeController::class,'pagesearchjob'])->name("summarize");
+
+Route::get('/services',[HomeController::class,'pageservices'])->name("results");
+
+Route::get('/',[HomeController::class,'pageservices'])->name("Tactics");
+
+
+
+
+
+ Auth::routes();
