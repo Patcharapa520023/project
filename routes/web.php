@@ -48,7 +48,7 @@ Route::get('add/personnel',function(){
     return view('page2.form.addpersonnel');
 })->name("add_personnel");
 
-Route::post('add/persdonnel',[Personnel::class,'addpersonnel'])->name("add_personnel_post");
+Route::post('add/personnel',[Personnel::class,'addpersonnel'])->name("add_personnel_post");
 
 
  Auth::routes();

@@ -42,6 +42,11 @@
                 <i class="fa fa-ban"></i> รีเฟรช
             </button>
         </div>
+        @if(session('error'))
+        <div class="alert alert-success " role="alert">
+           <p> {{session('error')}} </p>
+        </div>
+        @endif
         <div class="row">
             <div class="col-lg-6">
                 <div class="card-body card-block">
