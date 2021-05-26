@@ -25,6 +25,21 @@ Route::get('/searchjob',[HomeController::class,'pagesearchjob'])->name("summariz
 Route::get('/services',[HomeController::class,'pageservices'])->name("results");
 
 Route::get('/',[HomeController::class,'pageservices'])->name("Tactics");
+Route::get('/web',function(){
+    return view('page2.index');
+})->name("dashboad");
+
+Route::get('/staff',function(){
+    return view('page2.table_Staff');
+})->name("table_Staff");
+
+Route::get('/executive',function(){
+    return view('page2.table_Executive');
+})->name("table_Executive");
+
+Route::get('/personnel',function(){
+    return view('page2.table_Personnel');
+})->name("table_Personnel");
 
 
 
