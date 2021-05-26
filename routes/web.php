@@ -43,6 +43,9 @@ Route::get('/personnel',function(){
     return view('page2.table_Personnel',compact('tables'));
 })->name("table_Personnel");
 
+Route::get('add/personnel',function(){
+    return view('page2.form.addpersonnel');
+})->name("add_personnel");
 
 
 

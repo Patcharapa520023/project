@@ -33,7 +33,9 @@
                         <div class="card">
                             <div class="card-header d-flex p-2 justify-content-between align-items-center pl-4 pr-4">
                                     <strong class="card-title">ตารางข้อมูล</strong>
-                                    <button type="button" class="addcus btn btn-outline-success "><i class="fa fa-plus"></i>&nbsp;เพิ่มข้อมูลเจ้าหน้าที่กองการศึกษา</button>
+                                        <a class="addcus btn btn-outline-success" href="{{ route('add_personnel') }}">
+                                            <i class="fa fa-plus"></i>&nbsp;เพิ่มข้อมูลเจ้าหน้าที่กองการศึกษา
+                                        </a>
                             </div>
                             <div class="card-body">
 
