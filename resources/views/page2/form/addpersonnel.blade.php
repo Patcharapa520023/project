@@ -77,36 +77,39 @@
                                     <option value="นาง">นาง</option>
                                     <option value="นางสาว">นางสาว</option>
                                 </select>
+                                @error('title')
+                                <small class="help-block form-text text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
-                            @error('title')
-                            <small class="help-block form-text text-danger">{{ $message }}</small>
-                            @enderror
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-2"><label for="name-input" class=" form-control-label">ชื่อ</label></div>
                             <div class="col-12 col-md-9"><input type="text" id="name-input" name="name"
-                                    placeholder="กรอกชื่อ" class="form-control"></div>
-                            @error('name')
-                            <small class="help-block form-text text-danger">{{ $message }}</small>
-                            @enderror
+                                    placeholder="กรอกชื่อ" class="form-control">
+                                    @error('name')
+                                    <small class="help-block form-text text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-2"><label for="lastname-input"
                                     class=" form-control-label">นามสกุล</label></div>
                             <div class="col-12 col-md-9"><input type="text" id="lastname-input" name="lastname"
-                                    placeholder="กรอกนามสกุล" class="form-control"></div>
-                            @error('lastname')
-                            <small class="help-block form-text text-danger">{{ $message }}</small>
-                            @enderror
+                                    placeholder="กรอกนามสกุล" class="form-control">
+                                    @error('lastname')
+                                    <small class="help-block form-text text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-2"><label for="phone-input" class=" form-control-label">โทรศัพท์</label>
                             </div>
                             <div class="col-12 col-md-9"><input type="tel" id="phone-input" name="phone"
-                                    placeholder="กรอกเบอร์โทรศัพท์" class="form-control"></div>
+                                    placeholder="กรอกเบอร์โทรศัพท์" class="form-control">
                                     @error('phone')
                                     <small class="help-block form-text text-danger">{{ $message }}</small>
                                 @enderror
+                                </div>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-2"><label for="select" class=" form-control-label">ระดับผู้ใช้งาน</label>
@@ -119,10 +122,10 @@
                                     <option value="เจ้าหน้าที่กองการศึกษา">เจ้าหน้าที่กองการศึกษา</option>
                                     <option value="บุคลากรสถานศึกษา">บุคลากรสถานศึกษา</option>
                                 </select>
+                                @error('rolse')
+                                <small class="help-block form-text text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
-                            @error('rolse')
-                            <small class="help-block form-text text-danger">{{ $message }}</small>
-                            @enderror
                         </div>
                         <div class="row form-group">
                         </div>
@@ -137,20 +140,21 @@
                                     <option value="เจ้าพนักงานธุรการปฎิบัติงาน">เจ้าพนักงานธุรการปฎิบัติงาน</option>
                                     <option value="เจ้าพนักงานการเงินและบัญชีชำนาญงาน">เจ้าพนักงานการเงินและบัญชีชำนาญงาน</option>
                                 </select>
+                                @error('position')
+                                <small class="help-block form-text text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
-                            @error('position')
-                            <small class="help-block form-text text-danger">{{ $message }}</small>
-                            @enderror
                         </div>
 
                         <div class="row form-group">
                             <div class="col col-md-2"><label for="file-input" class=" form-control-label">รูปภาพ</label>
                             </div>
                             <div class="col-12 col-md-9"><input type="file" id="file-input" name="file"
-                                    class="form-control-file"></div>
+                                    class="form-control-file">
                                     @error('file')
                                     <small class="help-block form-text text-danger">{{ $message }}</small>
                                     @enderror
+                                </div>
                         </div>
                 </div>
             </div>
@@ -185,11 +189,10 @@
                         <div class="row form-group">
                             <div class="col col-md-2"><label for="country" class=" form-control-label">ประเทศ</label></div>
                             <div class="col-12 col-md-9"> <input name="country" type="text" id="country" placeholder="กรอกที่อยู่ประเทศ" class="form-control">
-
                                 @error('country')
                                 <small class="help-block form-text text-danger">{{ $message }}</small>
                             @enderror
-                        </div>
+                            </div>
                         </div>
                 </div>
             </div>
