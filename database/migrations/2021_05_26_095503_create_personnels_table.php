@@ -23,7 +23,6 @@ class CreatePersonnelsTable extends Migration
             $table->string("telnum");
             $table->string("position");
 
-
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
         });
