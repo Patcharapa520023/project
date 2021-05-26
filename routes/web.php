@@ -13,6 +13,7 @@ use App\Http\Controllers\HomeController;
 |
 */
 
+
 Route::get('/หน้าแรก',[HomeController::class,'pageindex'])->name("home");
 
 Route::get('/companies',[HomeController::class,'pagecompanies'])->name("stategic");
