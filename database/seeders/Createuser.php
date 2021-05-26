@@ -23,7 +23,7 @@ class Createuser extends Seeder
             'phone'=>'073274707',
             'fax'=>'458788599'
         ]);
-        for ($i=1; $i <80 ; $i++) {
+        for ($i=1; $i <5 ; $i++) {
             $user=[
                 'email'=>"ft@gmaidl$i.com",
                 'password'=>Hash::make('1234'),

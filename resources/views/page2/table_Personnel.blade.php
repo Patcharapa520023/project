@@ -67,9 +67,12 @@
                                                             <button class="item add" data-toggle="tooltip" data-placement="top" title="" data-original-title="Send">
                                                                 <i class="fa fa-plus-square-o"></i>
                                                             </button>
-                                                            <button class="item delete" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                                            <form action="{{ route('delete_personnel_post') }}" method="POST">
+                                                                @csrf <input name="id" type="hidden" value="{{ $table['ไอดี'] }}">
+                                                            <button type="submit" class="item delete" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
                                                                 <i class="fa fa-trash-o"></i>
                                                             </button>
+                                                        </form>
                                                             <button class="item edit" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
                                                                 <i class="fa fa-edit"></i>
                                                             </button>
@@ -144,7 +147,7 @@
         background: rgb(241, 109, 33);
         color: rgb(255, 255, 255);
     }
-   .table-data-feature>.delete{
+   form>.delete{
         background: rgb(245, 60, 60);
         color: rgb(255, 255, 255);
     }

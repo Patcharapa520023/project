@@ -49,6 +49,7 @@ Route::get('add/personnel',function(){
 })->name("add_personnel");
 
 Route::post('add/personnel',[Personnel::class,'addpersonnel'])->name("add_personnel_post");
+Route::post('delete/personnel',[Personnel::class,'deletepersonnel'])->name("delete_personnel_post");
 
 
  Auth::routes();
