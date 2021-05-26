@@ -1,5 +1,6 @@
 @extends('template.template')
 @section('headcontent')
+{{-- {{ dd($tables[0]) }} --}}
 <div class="breadcrumbs">
     <div class="breadcrumbs-inner">
         <div class="row m-0">
@@ -39,39 +40,45 @@
                                 <table id="bootstrap-data-table-export1" class="table ">
                                     <thead>
                                         <tr>
-                                            <th>ชือ</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Salary</th>
+                                            @foreach ($tables[0] as $key=>$table )
+                                            @if ($key!='รหัสผ่าน')
+                                            <th>{{ $key }}</th>
+                                                @endif
+                                            @endforeach
+
                                             <th class="console">dsa</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                            @for ($i = 1;$i<100;$i++)
-                                            <tr class="tr-shadow">
-                                                <td>Tiger Nixon{{ $i }}</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>$320,800</td>
-                                                <td>
-                                                    <div class="table-data-feature">
-                                                        <button class="item add" data-toggle="tooltip" data-placement="top" title="" data-original-title="Send">
-                                                            <i class="fa fa-plus-square-o"></i>
-                                                        </button>
-                                                        <button class="item delete" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
-                                                            <i class="fa fa-trash-o"></i>
-                                                        </button>
-                                                        <button class="item edit" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
-                                                            <i class="fa fa-edit"></i>
-                                                        </button>
-                                                        <button class="item show" data-toggle="tooltip" data-placement="top" title="" data-original-title="More">
-                                                            <i class="fa fa-search-plus"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            @endfor
-                                        </tbody>
+                                        @foreach ($tables as $table )
+
+
+                                                <tr class="tr-shadow">
+                                                    @foreach ( $table as $key =>$db )
+                                                        @if ($key!='รหัสผ่าน')
+                                                        <td>{{ $db }}</td>
+                                                        @endif
+                                                    @endforeach
+
+                                                    <td>
+                                                        <div class="table-data-feature">
+                                                            <button class="item add" data-toggle="tooltip" data-placement="top" title="" data-original-title="Send">
+                                                                <i class="fa fa-plus-square-o"></i>
+                                                            </button>
+                                                            <button class="item delete" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                                                <i class="fa fa-trash-o"></i>
+                                                            </button>
+                                                            <button class="item edit" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                                                <i class="fa fa-edit"></i>
+                                                            </button>
+                                                            <button class="item show" data-toggle="tooltip" data-placement="top" title="" data-original-title="More">
+                                                                <i class="fa fa-search-plus"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
                                 </table>
                             </div>
                         </div>

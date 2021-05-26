@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,7 +39,8 @@ Route::get('/executive',function(){
 })->name("table_Executive");
 
 Route::get('/personnel',function(){
-    return view('page2.table_Personnel');
+    $tables = User::joinpersonnel();
+    return view('page2.table_Personnel',compact('tables'));
 })->name("table_Personnel");
 
 
