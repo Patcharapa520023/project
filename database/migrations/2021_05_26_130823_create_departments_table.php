@@ -19,7 +19,7 @@ class CreateDepartmentsTable extends Migration
             $table->string('address');
             $table->string('phone');
             $table->string('fax');
-
+//erer
         });
     }
 
