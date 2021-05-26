@@ -14,19 +14,23 @@ class Createuser extends Seeder
      */
     public function run()
     {
-        $user=[
-            'email'=>'ft@gmail.com',
-            'password'=>Hash::make('1234'),
-            'rolse'=>'personnel'
-        ];
-        $personnel=[
-            'title'=>'นางสาว',
-            'name'=>'เจริญ'	,
-            'lastname'=>'มาก'	,
-            'address'=>'45ซ.ยินดีเจริญจ.พัทลุง'	,
-            'telnum'=>'0891234881',
-            'position'=>'เจ้าหน้าที่ยาม'
-        ];
-        User::create($user)->personnel()->create($personnel);
+        for ($i=1; $i <80 ; $i++) {
+            $user=[
+                'email'=>"ft@gmaidl$i.com",
+                'password'=>Hash::make('1234'),
+                'rolse'=>'personnel'
+            ];
+            $personnel=[
+                'title'=>'นางสาว',
+                'name'=>'เจริญ'	,
+                'lastname'=>'มาก'	,
+                'address'=>'45ซ.ยินดีเจริญจ.พัทลุง'	,
+                'telnum'=>'0891234881',
+                'position'=>'เจ้าหน้าที่ยาม'
+            ];
+            User::create($user)->personnel()->create($personnel);
+        }
+
+
     }
 }
