@@ -5,21 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Personnel extends Model
+class Department extends Model
 {
     use HasFactory;
     public $timestamps = false;
     protected $fillable = [
-        'title',
-        'name',
-        'lastname',
+        'id',
+        'dep_name',
         'address',
         'telnum',
-        'position',
-        'department_id'
-    ];
-    public function user(){
-        return $this->belongsTo(User::class);
-    }
-}
+        'fax',
 
+    ];
+
+}
