@@ -11,11 +11,13 @@ class Department extends Model
     public $timestamps = false;
     protected $fillable = [
         'id',
-        'dep_name',
+        'name',
         'address',
-        'telnum',
+        'phone',
         'fax',
-
     ];
+    public function personnel(){
+        return $this->HasOne(Personnel::class);
+    }
 
 }

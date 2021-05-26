@@ -15,11 +15,12 @@ class Createuser extends Seeder
      */
     public function run()
     {
+
         Department::create([
-        'dep_name'=>'กองการศึกษา',
-        'address'=>'เทศบาลสิงหนคร',
-        'telnum'=>'073274707',
-        'fax'=>'458788599'
+            'name'=>"กองการศึกษา",
+            'address'=>'เทศบาลสิงหนคร',
+            'phone'=>'073274707',
+            'fax'=>'458788599'
         ]);
         for ($i=1; $i <80 ; $i++) {
             $user=[
