@@ -47,7 +47,6 @@
                 <div class="card-body card-block">
                         <div class="row form-group">
                         </div>
-
                         <div class="row form-group">
                             <div class="col col-md-2"><label for="email-input" class=" form-control-label">อีเมล์</label>
                             </div>
@@ -164,25 +163,29 @@
                             <div class="col col-md-2"><label for="file-input" class=" form-control-label">รูปภาพ</label>
                             </div>
                             <div class="col-12 col-md-9"><input type="file" id="file-input" name="file"
-                                    class="form-control-file"></div>
-                                    @error('file')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                                    class="form-control-file">
+                            </div>
+                            @error('file')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="card-body card-block">
+                    <div class="row form-group">
+                    </div>
                         <div class="row form-group">
                             <div class="col col-md-2"><label for="street" class=" form-control-label">ที่อยู่</label></div>
                             <div class="col-12 col-md-9"> <input name="address"  type="text" id="street" placeholder="กรอกที่อยู่ปัจจุบัน" class="form-control">
-                                @error('address')
+                                @error('file')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+                        </div>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-2"><label for="city" class=" form-control-label">เมือง</label></div>
@@ -193,6 +196,7 @@
                                 </span>
                                 @enderror
                         </div>
+                        </div>
                         <div class="row form-group">
                             <div class="col col-md-2"><label for="postal-code" class=" form-control-label">รหัสไปรษณีย์</label></div>
                             <div class="col-12 col-md-9"> <input name="postal_code" type="text" id="postal-code" placeholder="กรอกรหัสไปรษณีย์"class="form-control">
@@ -202,6 +206,7 @@
                                 </span>
                                 @enderror
                         </div>
+                        </div>
                         <div class="row form-group">
                             <div class="col col-md-2"><label for="country" class=" form-control-label">ประเทศ</label></div>
                             <div class="col-12 col-md-9"> <input name="country" type="text" id="country" placeholder="กรอกที่อยู่ประเทศ" class="form-control">
@@ -210,6 +215,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+                        </div>
                         </div>
                 </div>
             </div>
