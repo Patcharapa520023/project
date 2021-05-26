@@ -53,9 +53,7 @@
                             <div class="col-12 col-md-9">
                                 <input type="email" id="email-input" name="email"placeholder="กรอกอีเมล์" class="form-control">
                                     @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                    <small class="help-block form-text text-danger">{{ $message }}</small>
                                     @enderror
                             </div>
                         </div>
@@ -65,9 +63,7 @@
                             <div class="col-12 col-md-9"><input type="password" id="password-input" name="password"
                                     placeholder="กรอกรหัสผ่าน" class="form-control">
                                     @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                    <small class="help-block form-text text-danger">{{ $message }}</small>
                                 @enderror
                                 </div>
                         </div>
@@ -83,9 +79,7 @@
                                 </select>
                             </div>
                             @error('title')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                            <small class="help-block form-text text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="row form-group">
@@ -93,9 +87,7 @@
                             <div class="col-12 col-md-9"><input type="text" id="name-input" name="name"
                                     placeholder="กรอกชื่อ" class="form-control"></div>
                             @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                            <small class="help-block form-text text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="row form-group">
@@ -104,9 +96,7 @@
                             <div class="col-12 col-md-9"><input type="text" id="lastname-input" name="lastname"
                                     placeholder="กรอกนามสกุล" class="form-control"></div>
                             @error('lastname')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                            <small class="help-block form-text text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="row form-group">
@@ -115,9 +105,7 @@
                             <div class="col-12 col-md-9"><input type="tel" id="phone-input" name="phone"
                                     placeholder="กรอกเบอร์โทรศัพท์" class="form-control"></div>
                                     @error('phone')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                    <small class="help-block form-text text-danger">{{ $message }}</small>
                                 @enderror
                         </div>
                         <div class="row form-group">
@@ -133,9 +121,7 @@
                                 </select>
                             </div>
                             @error('rolse')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                            <small class="help-block form-text text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="row form-group">
@@ -153,9 +139,7 @@
                                 </select>
                             </div>
                             @error('position')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                            <small class="help-block form-text text-danger">{{ $message }}</small>
                             @enderror
                         </div>
 
@@ -163,13 +147,10 @@
                             <div class="col col-md-2"><label for="file-input" class=" form-control-label">รูปภาพ</label>
                             </div>
                             <div class="col-12 col-md-9"><input type="file" id="file-input" name="file"
-                                    class="form-control-file">
-                            </div>
-                            @error('file')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                                    class="form-control-file"></div>
+                                    @error('file')
+                                    <small class="help-block form-text text-danger">{{ $message }}</small>
+                                    @enderror
                         </div>
                 </div>
             </div>
@@ -180,41 +161,34 @@
                         <div class="row form-group">
                             <div class="col col-md-2"><label for="street" class=" form-control-label">ที่อยู่</label></div>
                             <div class="col-12 col-md-9"> <input name="address"  type="text" id="street" placeholder="กรอกที่อยู่ปัจจุบัน" class="form-control">
-                                @error('file')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                                @error('address')
+                                    <small class="help-block form-text text-danger">{{ $message }}</small>
                                 @enderror
                         </div>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-2"><label for="city" class=" form-control-label">เมือง</label></div>
                             <div class="col-12 col-md-9"> <input name="city" type="text" id="city" placeholder="กรอกอำเภอเมือง" class="form-control">
-                                @error('city')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+                                @error('address')
+                                <small class="help-block form-text text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-2"><label for="postal-code" class=" form-control-label">รหัสไปรษณีย์</label></div>
                             <div class="col-12 col-md-9"> <input name="postal_code" type="text" id="postal-code" placeholder="กรอกรหัสไปรษณีย์"class="form-control">
                                 @error('postal_code')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                        </div>
+                                <small class="help-block form-text text-danger">{{ $message }}</small>
+                            @enderror
+                         </div>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-2"><label for="country" class=" form-control-label">ประเทศ</label></div>
                             <div class="col-12 col-md-9"> <input name="country" type="text" id="country" placeholder="กรอกที่อยู่ประเทศ" class="form-control">
+
                                 @error('country')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+                                <small class="help-block form-text text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
                         </div>
                 </div>

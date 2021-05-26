@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Validator;
 class Personnel extends Controller
 {
     public function addpersonnel(Request $request){
-        dd($this->validator($request->all())->errors());
+        dd($this->validator($request->all())->validate());
     }
 
 
