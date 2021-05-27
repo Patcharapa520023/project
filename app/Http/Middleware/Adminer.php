@@ -20,6 +20,6 @@ class Adminer
             return $next($request);
         }
         abort(404);
-        // admin|executive|staff|personnel
+        // admin|executive|staff|personnelsads
     }
 }
