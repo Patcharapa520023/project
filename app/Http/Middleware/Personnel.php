@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class Adminer
+class Personnel
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,9 @@ class Adminer
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->rolse=="admin"){
+        if(auth()->user()->rolse=="personnel"){
             return $next($request);
         }
         abort(404);
-        // admin|executive|staff|personnel
     }
 }

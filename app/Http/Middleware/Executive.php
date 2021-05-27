@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class Userner
+class Executive
 {
     /**
      * Handle an incoming request.
@@ -16,9 +16,9 @@ class Userner
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->roles=="user"){
-
+        if(auth()->user()->rolse=="executive"){
             return $next($request);
         }
+        abort(404);
     }
 }
