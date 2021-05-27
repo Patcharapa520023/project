@@ -16,10 +16,9 @@ class Adminer
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->rolse=="admin"){
+        if(auth()->user()->roles=="admin"){
+
             return $next($request);
         }
-        abort(404);
-        // admin|executive|staff|personnel
     }
 }
