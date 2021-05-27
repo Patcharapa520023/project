@@ -15,6 +15,34 @@ use App\Http\Controllers\Personnel;
 |
 */
 
+Route::group([
+    'namespace' => 'App\Http\Controllers\Admin',
+    'as' => 'admin',
+    'prefix' => 'admin',
+    // 'middleware' => ['auth', 'admin']
+],function(){
+    Route::get('/web','Index@dashbord')->name("dashboad");
+
+    Route::get('/staff',function(){
+        return view('page2.table_Staff');
+    })->name("table_Staff");
+
+    Route::get('/executive',function(){
+        return view('page2.table_Executive');
+    })->name("table_Executive");
+
+    Route::get('/personnel',function(){
+        $tables = User::joinpersonnel();
+        return view('page2.table_Personnel',compact('tables'));
+    })->name("table_Personnel");
+
+    Route::get('add/personnel',function(){
+        return view('page2.form.addpersonnel');
+    })->name("add_personnel");
+
+    Route::post('add/personnel',[Personnel::class,'addpersonnel'])->name("add_personnel_post");
+    Route::post('delete/personnel',[Personnel::class,'deletepersonnel'])->name("delete_personnel_post");
+});
 
 Route::get('/หน้าแรก',[HomeController::class,'pageindex'])->name("home");
 
@@ -27,29 +55,7 @@ Route::get('/searchjob',[HomeController::class,'pagesearchjob'])->name("summariz
 Route::get('/services',[HomeController::class,'pageservices'])->name("results");
 
 Route::get('/',[HomeController::class,'pageservices'])->name("Tactics");
-Route::get('/web',function(){
-    return view('page2.index');
-})->name("dashboad");
 
-Route::get('/staff',function(){
-    return view('page2.table_Staff');
-})->name("table_Staff");
-
-Route::get('/executive',function(){
-    return view('page2.table_Executive');
-})->name("table_Executive");
-
-Route::get('/personnel',function(){
-    $tables = User::joinpersonnel();
-    return view('page2.table_Personnel',compact('tables'));
-})->name("table_Personnel");
-
-Route::get('add/personnel',function(){
-    return view('page2.form.addpersonnel');
-})->name("add_personnel");
-
-Route::post('add/personnel',[Personnel::class,'addpersonnel'])->name("add_personnel_post");
-Route::post('delete/personnel',[Personnel::class,'deletepersonnel'])->name("delete_personnel_post");
 
 
  Auth::routes();
