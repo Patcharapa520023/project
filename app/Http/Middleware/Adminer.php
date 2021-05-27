@@ -20,5 +20,10 @@ class Adminer
 
             return $next($request);
         }
+<<<<<<< HEAD
+=======
+        abort(404);
+        // admin|executive|staff|personnelsads
+>>>>>>> ca701b257ce9d822a8a56ea54534d534840bd71b
     }
 }
