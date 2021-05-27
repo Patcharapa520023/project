@@ -17,11 +17,11 @@ use App\Http\Controllers\Personnel;
 
 Route::group([
     'namespace' => 'App\Http\Controllers\Admin',
-    'as' => 'admin',
+    // 'as' => 'admin',
     'prefix' => 'admin',
     // 'middleware' => ['auth', 'admin']
 ],function(){
-    Route::get('/web','Index@dashbord')->name("dashboad");
+    Route::get('/web','Index@dashbord')->name('dashboad');
 
     Route::get('/staff',function(){
         return view('page2.table_Staff');
