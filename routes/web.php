@@ -23,22 +23,13 @@ Route::group([
 ],function(){
     Route::get('/web','Index@dashbord')->name('dashboad');
 
-    Route::get('/staff',function(){
-        return view('page2.table_Staff');
-    })->name("table_Staff");
+    Route::get('/staff','Index@tablestaff')->name("table_Staff");
 
-    Route::get('/executive',function(){
-        return view('page2.table_Executive');
-    })->name("table_Executive");
+    Route::get('/executive','Index@tableexecutive')->name("table_Executive");
 
-    Route::get('/personnel',function(){
-        $tables = User::joinpersonnel();
-        return view('page2.table_Personnel',compact('tables'));
-    })->name("table_Personnel");
+    Route::get('/personnel','Index@tablepersonnel')->name("table_Personnel");
 
-    Route::get('add/personnel',function(){
-        return view('page2.form.addpersonnel');
-    })->name("add_personnel");
+    Route::get('add/personnel','Index@formaddpersonnel')->name("add_personnel");
 
     Route::post('add/personnel',[Personnel::class,'addpersonnel'])->name("add_personnel_post");
     Route::post('delete/personnel',[Personnel::class,'deletepersonnel'])->name("delete_personnel_post");
