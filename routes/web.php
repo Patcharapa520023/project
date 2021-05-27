@@ -19,7 +19,7 @@ Route::group([
     'namespace' => 'App\Http\Controllers\Admin',
     // 'as' => 'admin',
     'prefix' => 'admin',
-    // 'middleware' => ['auth', 'admin']
+    'middleware' => ['auth', 'admin']
 ],function(){
     Route::get('/web','Index@dashbord')->name('dashboad');
 
