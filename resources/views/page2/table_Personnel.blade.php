@@ -48,7 +48,7 @@
                                                 @endif
                                             @endforeach
 
-                                            <th class="console">dsa</th>
+                                            <th class="console">เพิ่ม ลบ แก้ไขข้อมูล</th>
                                         </tr>
                                     </thead>
                                     <tbody>
