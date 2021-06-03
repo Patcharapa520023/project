@@ -7,7 +7,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>ตารางข้อมูลเจ้าหน้าที่กองการศึกษา</h1>
+                        <h1>ตารางข้อมูลบุคลากรสถานศึกษา</h1>
                     </div>
                 </div>
             </div>
@@ -16,7 +16,7 @@
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
                             <li><a href="#">จัดการข้อมูลผู้ใช้</a></li>
-                            <li><a href="#">เจ้าหน้าที่กองการศึกษา</a></li>
+                            <li><a href="#">บุคลากรสถานศึกษา</a></li>
                             {{-- <li class="active">Data table</li> --}}
                         </ol>
                     </div>
@@ -34,7 +34,7 @@
                             <div class="card-header d-flex p-2 justify-content-between align-items-center pl-4 pr-4">
                                     <strong class="card-title">ตารางข้อมูล</strong>
                                         <a class="addcus btn btn-outline-success" href="{{ route('add_personnel') }}">
-                                            <i class="fa fa-plus"></i>&nbsp;เพิ่มข้อมูลเจ้าหน้าที่กองการศึกษา
+                                            <i class="fa fa-plus"></i>&nbsp;เพิ่มข้อมูลบุคลากรสถานศึกษา
                                         </a>
                             </div>
                             <div class="card-body">
@@ -98,16 +98,16 @@
 
 
 @section('script')
-    <script src="assets/js/lib/data-table/datatables.min.js"></script>
-    <script src="assets/js/lib/data-table/dataTables.bootstrap.min.js"></script>
-    <script src="assets/js/lib/data-table/dataTables.buttons.min.js"></script>
-    <script src="assets/js/lib/data-table/buttons.bootstrap.min.js"></script>
-    <script src="assets/js/lib/data-table/jszip.min.js"></script>
-    <script src="assets/js/lib/data-table/vfs_fonts.js"></script>
-    <script src="assets/js/lib/data-table/buttons.html5.min.js"></script>
-    <script src="assets/js/lib/data-table/buttons.print.min.js"></script>
-    <script src="assets/js/lib/data-table/buttons.colVis.min.js"></script>
-    <script src="assets/js/init/datatables-init.js"></script>
+    <script src={{ asset("assets/js/lib/data-table/datatables.min.js") }}></script>
+    <script src={{ asset("assets/js/lib/data-table/dataTables.bootstrap.min.js") }}></script>
+    <script src={{ asset("assets/js/lib/data-table/dataTables.buttons.min.js") }}></script>
+    <script src={{ asset("assets/js/lib/data-table/buttons.bootstrap.min.js") }}></script>
+    <script src={{ asset("assets/js/lib/data-table/jszip.min.js") }}></script>
+    <script src={{ asset("assets/js/lib/data-table/vfs_fonts.js") }}></script>
+    <script src={{ asset("assets/js/lib/data-table/buttons.html5.min.js") }}></script>
+    <script src={{ asset("assets/js/lib/data-table/buttons.print.min.js") }}></script>
+    <script src={{ asset("assets/js/lib/data-table/buttons.colVis.min.js") }}></script>
+    <script src={{ asset("assets/js/init/datatables-init.js") }}></script>
 
     <script type="text/javascript">
 

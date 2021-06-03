@@ -6,7 +6,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>ตารางข้อมูลบุคลากรสถานศึกษา</h1>
+                        <h1>ตารางข้อมูลเจ้าหน้าที่กองการศึกษา</h1>
                     </div>
                 </div>
             </div>
@@ -15,7 +15,7 @@
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
                             <li><a href="#">จัดการข้อมูลผู้ใช้</a></li>
-                            <li><a href="#">บุคลากรสถานศึกษา</a></li>
+                            <li><a href="#">เจ้าหน้าที่กองการศึกษา</a></li>
                             {{-- <li class="active">Data table</li> --}}
                         </ol>
                     </div>
@@ -32,7 +32,7 @@
                         <div class="card">
                             <div class="card-header d-flex p-2 justify-content-between align-items-center pl-4 pr-4">
                                     <strong class="card-title">ตารางข้อมูล</strong>
-                                    <button type="button" class="addcus btn btn-outline-success "><i class="fa fa-plus"></i>&nbsp;เพิ่มข้อมูลบุคลากรสถานศึกษา</button>
+                                    <button type="button" class="addcus btn btn-outline-success "><i class="fa fa-plus"></i>&nbsp;เพิ่มข้อมูลเจ้าหน้าที่กองการศึกษา</button>
                             </div>
                             <div class="card-body">
 
