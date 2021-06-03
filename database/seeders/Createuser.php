@@ -24,11 +24,19 @@ class Createuser extends Seeder
             'fax'=>'458788599'
         ]);
         for ($i=1; $i <5 ; $i++) {
-            $user=[
-                'email'=>"ft@gmaidl$i.com",
-                'password'=>Hash::make('1234'),
-                'rolse'=>'personnel'
-            ];
+            if($i == 1){
+                $user=[
+                    'email'=>"ft@gmaidl$i.com",
+                    'password'=>Hash::make('1234'),
+                    'rolse'=>'admin'
+                ];
+            }else{
+                $user=[
+                    'email'=>"ft@gmaidl$i.com",
+                    'password'=>Hash::make('1234'),
+                    'rolse'=>'personnel'
+                ];
+            }
             $personnel=[
                 'title'=>'นางสาว',
                 'name'=>'เจริญ'	,
