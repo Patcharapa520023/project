@@ -192,5 +192,5 @@
     margin-right: 5px;
 }
 </style>
-<link rel="stylesheet" href="assets/css/lib/datatable/dataTables.bootstrap.min.css">
+<link rel="stylesheet" href="{{ asset('assets/css/lib/datatable/dataTables.bootstrap.min.css') }}">
 @endsection
