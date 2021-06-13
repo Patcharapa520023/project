@@ -86,11 +86,11 @@
         details: false
     },
                     language: {
-                            "lengthMenu": "แสดง  MENU  รายการ",
+                            "lengthMenu": "แสดง  _MENU_  รายการ",
                             "zeroRecords": "ไม่พบข้อมูล",
-                            "info": "   PAGE จาก   PAGES",
+                            "info": "   _PAGE_ จาก _PAGES_",
                             "infoEmpty": "ไม่พบข้อมูล",
-                            "infoFiltered": "(กรองข้อมูล MAX  รายการ)",
+                            "infoFiltered": "(กรองข้อมูล _MAX_  รายการ)",
                             'sProcessing':"<div class='progress'><div class='color'></div></div>",
                             "search": `
                             `,
@@ -102,8 +102,8 @@
                 processing: true,
                 serverSide: true,
                 ajax: { url: "{{route('datapersonnel')}}",
-                        type: "GET",
-                        // headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                        type: "post",
+                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     },
 
                 // order: [[1, 'asc']],

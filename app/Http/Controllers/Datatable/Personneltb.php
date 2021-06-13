@@ -85,7 +85,7 @@ class Personneltb extends Controller
                 "name" => $name,
                 "rolse" => $rolse,
                 "email" => $email,
-                "password" => $password,
+                "password" => '$password',
                 "title" => $title,
                 "lastname" => $lastname,
                 "address" => $address,

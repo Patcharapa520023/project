@@ -31,7 +31,7 @@ Route::group([
 
     Route::get('/personnel',[Personneltb::class,"show"])->name("table_Personnel");
 
-    Route::get('/dataper',[Personneltb::class,"getdata"])->name("datapersonnel");
+    Route::post('/dataper',[Personneltb::class,"getdata"])->name("datapersonnel");
 
     Route::get('add/personnel','Index@formaddpersonnel')->name("add_personnel");
 

@@ -5,6 +5,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="example-content"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>แผนพัฒนาการศึกษาเทศบาลเมืองสิงหนคร</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
