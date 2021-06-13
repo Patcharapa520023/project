@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Models\User;
 use App\Http\Controllers\Personnel;
+use App\Http\Controllers\Datatable\Personneltb;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,7 +29,9 @@ Route::group([
 
     Route::get('/executive','Index@tableexecutive')->name("table_Executive");
 
-    Route::get('/personnel','Index@tablepersonnel')->name("table_Personnel");
+    Route::get('/personnel',[Personneltb::class,"show"])->name("table_Personnel");
+
+    Route::get('/dataper',[Personneltb::class,"getdata"])->name("datapersonnel");
 
     Route::get('add/personnel','Index@formaddpersonnel')->name("add_personnel");
 

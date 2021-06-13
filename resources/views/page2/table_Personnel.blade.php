@@ -42,48 +42,14 @@
                                 <table id="bootstrap-data-table-export1" class="table ">
                                     <thead>
                                         <tr>
-                                            @foreach ($tables[0] as $key=>$table )
-                                            @if ($key!='รหัสผ่าน')
-                                            <th>{{ $key }}</th>
-                                                @endif
+                                            @foreach ($headtables as $headtable )
+                                            <th>{{ $headtable[0] }}</th>
                                             @endforeach
 
                                             <th class="console">เพิ่ม ลบ แก้ไขข้อมูล</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        @foreach ($tables as $table )
 
-
-                                                <tr class="tr-shadow">
-                                                    @foreach ( $table as $key =>$db )
-                                                        @if ($key!='รหัสผ่าน')
-                                                        <td>{{ $db }}</td>
-                                                        @endif
-                                                    @endforeach
-
-                                                    <td>
-                                                        <div class="table-data-feature">
-                                                            <button class="item add" data-toggle="tooltip" data-placement="top" title="" data-original-title="Send">
-                                                                <i class="fa fa-plus-square-o"></i>
-                                                            </button>
-                                                            <form action="{{ route('delete_personnel_post') }}" method="POST">
-                                                                @csrf <input name="id" type="hidden" value="{{ $table['ไอดี'] }}">
-                                                            <button type="submit" class="item delete" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
-                                                                <i class="fa fa-trash-o"></i>
-                                                            </button>
-                                                        </form>
-                                                            <button class="item edit" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button class="item show" data-toggle="tooltip" data-placement="top" title="" data-original-title="More">
-                                                                <i class="fa fa-search-plus"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                @endforeach
-                                            </tbody>
                                 </table>
                             </div>
                         </div>
@@ -113,27 +79,74 @@
 
 
         $(document).ready(function() {
-        $('#bootstrap-data-table-export1').DataTable({
-"language": {
-    "sProcessing": "Traitement en cours ...",
-    "sLengthMenu": "แสดง  _MENU_ รายการ",
-    "sZeroRecords": "Aucun résultat trouvé",
-    "sEmptyTable": "Aucune donnée disponible",
-    "sInfo": "แสดง _START_ ถึง _END_ จาก _TOTAL_ รายการ",
-    "sInfoEmpty": "Aucune ligne affichée",
-    "sInfoFiltered": "(Filtrer un maximum de_MAX_)",
-    "sInfoPostFix": "",
-    "sSearch": "ค้นหา:",
-    "sUrl": "",
-    "sInfoThousands": ",",
-    "sLoadingRecords": "Chargement...",
-    "oPaginate": {
-        "sFirst": "Premier", "sLast": "Dernier", "sNext": "ถัดไป", "sPrevious": "ก่อนหน้า"
+            var myTable ;
+            $(document).ready(function(){
+                myTable = $('#bootstrap-data-table-export1').DataTable({
+                    responsive: {
+        details: false
     },
-    "oAria": {
-        "sSortAscending": ": Trier par ordre croissant", "sSortDescending": ": Trier par ordre décroissant"
-    }
-}});
+                    language: {
+                            "lengthMenu": "แสดง  MENU  รายการ",
+                            "zeroRecords": "ไม่พบข้อมูล",
+                            "info": "   PAGE จาก   PAGES",
+                            "infoEmpty": "ไม่พบข้อมูล",
+                            "infoFiltered": "(กรองข้อมูล MAX  รายการ)",
+                            'sProcessing':"<div class='progress'><div class='color'></div></div>",
+                            "search": `
+                            `,
+                            paginate: {
+                                next: '>',
+                                previous: '<'
+                            }
+                    },
+                processing: true,
+                serverSide: true,
+                ajax: { url: "{{route('datapersonnel')}}",
+                        type: "GET",
+                        // headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    },
+
+                // order: [[1, 'asc']],
+                columns: [
+
+                        @foreach ($headtables as $headtable)
+                            {
+                                className:"{{$headtable[0]}}_filtter",
+                                data:  "{{$headtable[1]}}",
+                            },
+                        @endforeach
+                        {
+                            data: 'console',
+                            width: "14%",
+                            render: null,
+                            orderable: false,
+                            searchable: false
+                        },
+
+                ]
+                });
+            });
+//         $('#bootstrap-data-table-export1').DataTable({
+// "language": {
+//     "sProcessing": "Traitement en cours ...",
+//     "sLengthMenu": "แสดง  _MENU_ รายการ",
+//     "sZeroRecords": "Aucun résultat trouvé",
+//     "sEmptyTable": "Aucune donnée disponible",
+//     "sInfo": "แสดง _START_ ถึง _END_ จาก _TOTAL_ รายการ",
+//     "sInfoEmpty": "Aucune ligne affichée",
+//     "sInfoFiltered": "(Filtrer un maximum de_MAX_)",
+//     "sInfoPostFix": "",
+//     "sSearch": "ค้นหา:",
+//     "sUrl": "",
+//     "sInfoThousands": ",",
+//     "sLoadingRecords": "Chargement...",
+//     "oPaginate": {
+//         "sFirst": "Premier", "sLast": "Dernier", "sNext": "ถัดไป", "sPrevious": "ก่อนหน้า"
+//     },
+//     "oAria": {
+//         "sSortAscending": ": Trier par ordre croissant", "sSortDescending": ": Trier par ordre décroissant"
+//     }
+// }});
         });
 </script>
 @endsection

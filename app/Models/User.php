@@ -47,7 +47,6 @@ class User extends Authenticatable
     }
     public static function joinpersonnel(){
         return self::leftJoin('personnels','users.id','=','personnels.user_id')
-        ->select('users.id as ไอดี','users.rolse as บทบาท','users.email as อีเมล์','users.password as รหัสผ่าน','personnels.title as คำนำหน้า','personnels.name as ชื่อ','personnels.lastname as นามสกุล','personnels.address as ที่อยู่','personnels.telnum as เบอร์โทรศัพท์')
         ->get()
         ->toArray();
     }
