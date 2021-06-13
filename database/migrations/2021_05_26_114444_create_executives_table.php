@@ -13,6 +13,17 @@ class CreateExecutivesTable extends Migration
      */
     public function up()
     {
+        Schema::create('personnels', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id')->unique();
+            $table->string("title");
+            $table->string("name");
+            $table->string("lastname");
+            $table->string("address");
+            $table->string("telnum");
+            $table->string("position");
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        });
         Schema::create('executives', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
@@ -26,6 +37,7 @@ class CreateExecutivesTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('personnel');
         Schema::dropIfExists('executives');
     }
 }
