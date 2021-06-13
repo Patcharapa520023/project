@@ -50,7 +50,28 @@ class Personneltb extends Controller
           ->get();
         $data_arr = array();
         foreach($records as $record){
+                $formurl = route('delete_personnel_post');
                 $id = $record->id;
+                $csrf = csrf_field();
+                $console = "<div class='table-data-feature'>
+                <button class='item add' data-toggle='tooltip' data-placement='top' title=' data-original-title='Send'>
+                    <i class='fa fa-plus-square-o'></i>
+                </button>
+                <form method='POST' action='$formurl'>
+                    $csrf
+                    <input type='hidden' name='id' value='$id'>
+                    <input type='hidden' name='id2' value='4'>
+                <button class='item delete' data-toggle='tooltip' data-placement='top' title=' data-original-title='Delete'>
+                    <i class='fa fa-trash-o'></i>
+                </button>
+                </form>
+                <button class='item edit' data-toggle='tooltip' data-placement='top' title=' data-original-title='Edit'>
+                    <i class='fa fa-edit'></i>
+                </button>
+                <button class='item show' data-toggle='tooltip' data-placement='top' title=' data-original-title='More'>
+                    <i class='fa fa-search-plus'></i>
+                </button>
+            </div>";
                 $name = $record->name;
                 $rolse = $record->user->rolse;
                 $email = $record->user->email;
@@ -69,7 +90,7 @@ class Personneltb extends Controller
                 "lastname" => $lastname,
                 "address" => $address,
                 "telnum" => $telnum,
-                "console" => "",
+                "console" => $console,
 
             );
         }
