@@ -45,6 +45,12 @@ class User extends Authenticatable
     public function personnel(){
         return $this->HasOne(Personnel::class);
     }
+    public function executive(){
+        return $this->HasOne(Executive::class);
+    }
+    public function staff(){
+        return $this->HasOne(Staff::class);
+    }
     public static function joinpersonnel(){
         return self::leftJoin('personnels','users.id','=','personnels.user_id')
         ->get()

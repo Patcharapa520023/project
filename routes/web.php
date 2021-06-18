@@ -5,6 +5,9 @@ use App\Http\Controllers\HomeController;
 use App\Models\User;
 use App\Http\Controllers\Personnel;
 use App\Http\Controllers\Datatable\Personneltb;
+use App\Http\Controllers\Datatable\Executivetb;
+use App\Http\Controllers\Datatable\Stafftb;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,13 +28,18 @@ Route::group([
 ],function(){
     Route::get('/web','Index@dashbord')->name('dashboad');
 
-    Route::get('/staff','Index@tablestaff')->name("table_Staff");
+    Route::get('/staff',[Stafftb::class,"show"])->name("table_Staff");
+    Route::post('/datastaff',[Stafftb::class,"getdata"])->name("datastaff");
+    Route::post('delete/staff',[Stafftb::class,'deletestaff'])->name("delete_staff_post");
 
-    Route::get('/executive','Index@tableexecutive')->name("table_Executive");
+    Route::get('/executive',[Executivetb::class,"show"])->name("table_Executive");
+    Route::post('/dataexe',[Executivetb::class,"getdata"])->name("dataexecutive");
+    Route::post('delete/executive',[Executivetb::class,'deleteexecutive'])->name("delete_executive_post");
 
     Route::get('/personnel',[Personneltb::class,"show"])->name("table_Personnel");
-
     Route::post('/dataper',[Personneltb::class,"getdata"])->name("datapersonnel");
+
+
 
     Route::get('add/personnel','Index@formaddpersonnel')->name("add_personnel");
 

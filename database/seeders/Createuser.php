@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Department;
+use App\Models\Executive;
 
 class Createuser extends Seeder
 {
@@ -23,20 +24,20 @@ class Createuser extends Seeder
             'phone'=>'073274707',
             'fax'=>'458788599'
         ]);
-        for ($i=1; $i <20 ; $i++) {
+        for ($i=1; $i <50 ; $i++) {
             if($i == 1){
                 $user=[
                     'email'=>"ft@gmaidl$i.com",
                     'password'=>Hash::make('1234'),
                     'rolse'=>'admin'
                 ];
-            }else if($i<=3){
+            }else if($i<=15){
                 $user=[
                     'email'=>"ft@gmaidl$i.com",
                     'password'=>Hash::make('1234'),
                     'rolse'=>'executive'
                 ];
-            }else if($i<=9) {
+            }else if($i<=30) {
                 $user=[
                     'email'=>"ft@gmaidl$i.com",
                     'password'=>Hash::make('1234'),
@@ -51,14 +52,22 @@ class Createuser extends Seeder
             }
             $personnel=[
                 'title'=>'นางสาว',
-                'name'=>'เจริญ'	,
-                'lastname'=>'มาก'	,
-                'address'=>'45ซ.ยินดีเจริญจ.พัทลุง'	,
+                'name'=>'เอมอร'	,
+                'lastname'=>'แจ่ม'	,
+                'address'=>'45ซ.ยินดีเจริญจ.ขอนแก่น'	,
                 'telnum'=>'0891234881',
-                'position'=>'เจ้าหน้าที่ยาม',
+                'position'=>'เจ้าหน้าที่',
                 'department_id'=>'1'
             ];
-            User::create($user)->personnel()->create($personnel);
+            if($user['rolse'] == 'executive'){
+                User::create($user)->executive()->create($personnel);
+            }else if($user['rolse'] == 'staff'){
+                User::create($user)->staff()->create($personnel);
+            }
+            else{
+                User::create($user)->personnel()->create($personnel);
+            }
+
         }
 
 

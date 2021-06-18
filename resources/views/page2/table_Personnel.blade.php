@@ -111,7 +111,6 @@
 
                         @foreach ($headtables as $headtable)
                             {
-                                className:"{{$headtable[0]}}_filtter",
                                 data:  "{{$headtable[1]}}",
                             },
                         @endforeach

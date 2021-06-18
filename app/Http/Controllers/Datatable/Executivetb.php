@@ -4,25 +4,26 @@ namespace App\Http\Controllers\Datatable;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Executive;
 use App\Models\User;
-use App\Models\Personnel;
-class Personneltb extends Controller
+
+class Executivetb extends Controller
 {
     public function show(){
-        $tables = Personnel::with('user')->get()->toArray();
+        $tables = Executive::with('user')->get()->toArray();
         $headtables  = array(
-            array("ลำดับ","id"),
-            // array("บทบาท","rolse"),
+            array("ไอดี","id"),
+            array("บทบาท","rolse"),
             array("อีเมล์","email"),
-            // array("รหัสผ่าน","password"),
-            array("ชื่อ สกุล","name"),
+            array("รหัสผ่าน","password"),
+            array("คำนำหน้า","title"),
+            array("ชื่อ","name"),
+            array("นามสกุล","lastname"),
             array("ที่อยู่","address"),
             array("เบอร์โทรศัพท์","telnum"),
         );
-        // dd($headtables);
 
-
-        return view('page2.table_Personnel',compact('headtables'));
+        return view('page2.table_Executive',compact('headtables'));
     }
     public function getdata(Request $request){
 
@@ -39,28 +40,22 @@ class Personneltb extends Controller
         $searchValue = $search_arr['value']; // Search value
 
 
-        $totalRecords = Personnel::with('user')->select('count(*) as allcount')->count();
-        $totalRecordswithFilter = Personnel::with('user')->select('count(*) as allcount')->where('name', 'like', '%' .$searchValue . '%')->count();
+        $totalRecords = Executive::with('user')->select('count(*) as allcount')->count();
+        $totalRecordswithFilter = Executive::with('user')->select('count(*) as allcount')->where('name', 'like', '%' .$searchValue . '%')->count();
 
-          $records =Personnel::with('user')->orderBy($columnName,$columnSortOrder)
+          $records =Executive::with('user')->orderBy($columnName,$columnSortOrder)
           ->where('name', 'like', '%'.$searchValue .'%')
           ->select('*')
           ->skip($start)
           ->take($rowperpage)
           ->get();
         $data_arr = array();
-        foreach($records as $key=> $record){
-                $formurl = route('delete_personnel_post');
+        foreach($records as $record){
+                $formurl = route('delete_executive_post');
                 $id = $record->user->id;
                 $csrf = csrf_field();
                 $console = "<div class='table-data-feature'>
 
-                <button class='item show' data-toggle='tooltip' data-placement='top' title=' data-original-title='More'>
-                    <i class='fa fa-search-plus'></i>
-                </button>
-                <button class='item edit' data-toggle='tooltip' data-placement='top' title=' data-original-title='Edit'>
-                    <i class='fa fa-edit'></i>
-                </button>
                 <form method='POST' action='$formurl'>
                     $csrf
                     <input type='hidden' name='id' value='$id'>
@@ -69,6 +64,12 @@ class Personneltb extends Controller
                     <i class='fa fa-trash-o'></i>
                 </button>
                 </form>
+                <button class='item edit' data-toggle='tooltip' data-placement='top' title=' data-original-title='Edit'>
+                    <i class='fa fa-edit'></i>
+                </button>
+                <button class='item show' data-toggle='tooltip' data-placement='top' title=' data-original-title='More'>
+                    <i class='fa fa-search-plus'></i>
+                </button>
             </div>";
                 $name = $record->name;
                 $rolse = $record->user->rolse;
@@ -79,13 +80,13 @@ class Personneltb extends Controller
                 $address = $record->address;
                 $telnum = $record->telnum;
             $data_arr[] = array(
-                "id" => $key+1+$start,
-                "name" => $title.$name." ".$lastname,
-                // "rolse" => $rolse,
+                "id" => $id,
+                "name" => $name,
+                "rolse" => $rolse,
                 "email" => $email,
-                // "password" => '$password',
-                // "title" => $title,
-                // "lastname" => $lastname,
+                "password" => '$password',
+                "title" => $title,
+                "lastname" => $lastname,
                 "address" => $address,
                 "telnum" => $telnum,
                 "console" => $console,
@@ -102,6 +103,8 @@ class Personneltb extends Controller
         echo json_encode($response);
         exit;
       }
-
-
+      public function deleteexecutive(Request $request){
+        User::find($request->id)->delete();
+        return redirect()->back();
+    }
 }
