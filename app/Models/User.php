@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -20,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'rolse',
     ];
 
     /**
@@ -40,4 +42,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function personnel(){
+        return $this->HasOne(Personnel::class);
+    }
+    public function executive(){
+        return $this->HasOne(Executive::class);
+    }
+    public function staff(){
+        return $this->HasOne(Staff::class);
+    }
+    public static function joinpersonnel(){
+        return self::leftJoin('personnels','users.id','=','personnels.user_id')
+        ->get()
+        ->toArray();
+    }
 }
