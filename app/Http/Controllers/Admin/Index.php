@@ -24,4 +24,13 @@ class Index extends Controller
     public function formaddpersonnel(){
         return view('page2.form.addpersonnel');
     }
+    public function formshowpersonnel(Request $request){
+       $data=User::with('personnel')->find(base64_decode($request->id));
+        return view('page2.form.showpersonnel',compact('data'));
+    }
+    public function formeditpersonnel(Request $request){
+       $data=User::with('personnel')->find(base64_decode($request->id));
+        return view('page2.form.editpersonnel',compact('data'));
+    }
 }
+

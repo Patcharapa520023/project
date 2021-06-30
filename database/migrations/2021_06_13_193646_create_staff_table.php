@@ -21,9 +21,8 @@ class CreateStaffTable extends Migration
             $table->string("lastname");
             $table->string("address");
             $table->string("telnum");
-            $table->string("position");
-            $table->unsignedBigInteger("department_id");
-            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
+
+
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }

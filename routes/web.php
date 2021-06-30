@@ -42,9 +42,14 @@ Route::group([
 
 
     Route::get('add/personnel','Index@formaddpersonnel')->name("add_personnel");
+Route::get('/show/{id}/personnel','Index@formshowpersonnel')->name("show_personnel");
+Route::get('/edit/{id}/personnel','Index@formeditpersonnel')->name("edit_personnel");
+
 
     Route::post('add/personnel',[Personnel::class,'addpersonnel'])->name("add_personnel_post");
     Route::post('delete/personnel',[Personnel::class,'deletepersonnel'])->name("delete_personnel_post");
+    Route::post('edit/personnel',[Personnel::class,'editpersonnel'])->name("edit_personnel_post");
+
 });
 
 Route::get('/หน้าแรก',[HomeController::class,'pageindex'])->name("home");

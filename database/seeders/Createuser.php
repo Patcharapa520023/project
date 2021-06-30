@@ -56,8 +56,8 @@ class Createuser extends Seeder
                 'lastname'=>'แจ่ม'	,
                 'address'=>'45ซ.ยินดีเจริญจ.ขอนแก่น'	,
                 'telnum'=>'0891234881',
-                'position'=>'เจ้าหน้าที่',
-                'department_id'=>'1'
+
+
             ];
             if($user['rolse'] == 'executive'){
                 User::create($user)->executive()->create($personnel);

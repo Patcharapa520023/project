@@ -23,8 +23,8 @@ class Personnel extends Controller
             'lastname'=>$input['lastname'],
             'address'=>$input['address'],
             'telnum'=>$input['phone'],
-            'position'=>$input['position'],
-            'department_id'=>'1'
+
+
         ];
         User::create($user)->personnel()->create($personnel);
         return redirect()->back()->with('error', 'เพิ่มข้อมูลบุคลากรสถานศึกษา สำเร็จแล้ว');
@@ -45,13 +45,34 @@ class Personnel extends Controller
             "lastname" => ['required', 'string', 'max:255'],
             "phone" =>['required', 'string', 'max:255'],
             "rolse" => ['required', 'string', 'max:255'],
-            "position" => ['required', 'string', 'max:255'],
             "address" => ['required', 'string', 'max:255'],
-            "city" => ['required', 'string', 'max:255'],
-            "postal_code" => ['required', 'string', 'max:255'],
-            "country" => ['required', 'string', 'max:255'],
+
         ]
     );
+    }
+    public function editpersonnel(Request $request){
+        $input =  $request->all();
+        // $this->validator($input)->validate();
+        $user=[
+            'email'=>$input['email'],
+            'password'=>Hash::make($input['password']),
+            'rolse'=>$input['rolse'],
+        ];
+        $personnel=[
+            'title'=>$input['title'],
+            'name'=>$input['name'],
+            'lastname'=>$input['lastname'],
+            'address'=>$input['address'],
+            'telnum'=>$input['phone'],
+
+
+        ];
+        $edit = User::find($input['id']);
+        $edit ->update($user);
+        $edit->personnel()->update($personnel);
+        return redirect()->back()->with('error', 'แก้ไขข้อมูลบุคลากรสถานศึกษา สำเร็จแล้ว');
+
+
     }
 
 }

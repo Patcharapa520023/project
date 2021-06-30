@@ -52,24 +52,8 @@ class Personneltb extends Controller
         foreach($records as $key=> $record){
                 $formurl = route('delete_personnel_post');
                 $id = $record->user->id;
+                $idbase = base64_encode($record->user->id);
                 $csrf = csrf_field();
-                $console = "<div class='table-data-feature'>
-
-                <button class='item show' data-toggle='tooltip' data-placement='top' title=' data-original-title='More'>
-                    <i class='fa fa-search-plus'></i>
-                </button>
-                <button class='item edit' data-toggle='tooltip' data-placement='top' title=' data-original-title='Edit'>
-                    <i class='fa fa-edit'></i>
-                </button>
-                <form method='POST' action='$formurl'>
-                    $csrf
-                    <input type='hidden' name='id' value='$id'>
-                    <input type='hidden' name='id2' value='4'>
-                <button class='item delete' data-toggle='tooltip' data-placement='top' title=' data-original-title='Delete'>
-                    <i class='fa fa-trash-o'></i>
-                </button>
-                </form>
-            </div>";
                 $name = $record->name;
                 $rolse = $record->user->rolse;
                 $email = $record->user->email;
@@ -78,6 +62,27 @@ class Personneltb extends Controller
                 $lastname = $record->lastname;
                 $address = $record->address;
                 $telnum = $record->telnum;
+                $console = "<div class='table-data-feature'>
+                <a  href='show/$idbase/personnel'>
+                <button class='item show' data-toggle='tooltip' data-placement='top' title=' data-original-title='More'>
+                    <i class='fa fa-search-plus'></i>
+                </button>
+                </a>
+                <a  href='edit/$idbase/personnel'>
+                <button class='item edit' data-toggle='tooltip' data-placement='top' title=' data-original-title='Edit'>
+                    <i class='fa fa-edit'></i>
+                </button>
+                </a>
+                <form method='POST' action='$formurl' onSubmit='dbdelete(this,`$title$name $lastname`)'>
+                    $csrf
+                    <input type='hidden' name='id' value='$id'>
+                    <input type='hidden' name='id2' value='4'>
+                <button class='item delete' data-toggle='tooltip' data-placement='top' title=' data-original-title='Delete'>
+                    <i class='fa fa-trash-o'></i>
+                </button>
+                </form>
+                </div>";
+
             $data_arr[] = array(
                 "id" => $key+1+$start,
                 "name" => $title.$name." ".$lastname,
