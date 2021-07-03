@@ -39,7 +39,6 @@ class Personnel extends Controller
     {
         return Validator::make($data, [
             "email" => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            "password" => ['required', 'string', 'min:8'],
             "title" => ['required', 'string', 'max:255'],
             "name" => ['required', 'string', 'max:255'],
             "lastname" => ['required', 'string', 'max:255'],
@@ -52,10 +51,9 @@ class Personnel extends Controller
     }
     public function editpersonnel(Request $request){
         $input =  $request->all();
-        // $this->validator($input)->validate();
+        $this->validator($input)->validate();
         $user=[
             'email'=>$input['email'],
-            'password'=>Hash::make($input['password']),
             'rolse'=>$input['rolse'],
         ];
         $personnel=[
@@ -73,6 +71,22 @@ class Personnel extends Controller
         return redirect()->back()->with('error', 'แก้ไขข้อมูลบุคลากรสถานศึกษา สำเร็จแล้ว');
 
 
+    }
+    public function editpasswordpersonnel(Request $request){
+        $input =  $request->all();
+        // $this->validator($input)->validate();
+        Validator::make($input, [
+
+            'password' => 'required|confirmed|min:6',
+        ])->validate();
+        $user=[
+            'password'=>Hash::make($input['password']),
+        ];
+
+
+        $edit = User::find($input['id']);
+        $edit ->update($user);
+        return redirect()->back()->with('error', 'แก้ไขรหัสผ่าน สำเร็จแล้ว');
     }
 
 }
