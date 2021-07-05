@@ -32,5 +32,11 @@ class Index extends Controller
        $data=User::with('personnel')->find(base64_decode($request->id));
         return view('page2.form.editpersonnel',compact('data'));
     }
+    public function formeditpasswordpersonnel(Request $request){
+       $data=User::with('personnel')->find(base64_decode($request->id));
+        return view('page2.form.editpasswordpersonnel',compact('data'));
+    }
+
 }
+
 

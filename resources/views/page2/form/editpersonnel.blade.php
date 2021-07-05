@@ -35,12 +35,15 @@
             <strong>แก้ไขข้อมูลส่วนตัว</strong>
         </div>
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary btn-sm">
+            <button type="submit" class="btn btn-success btn-sm">
                 <i class="fa fa-dot-circle-o"></i> ยืนยันข้อมูล
             </button>
             <button type="reset" class="btn btn-danger btn-sm">
                 <i class="fa fa-ban"></i> รีเฟรช
             </button>
+            <a href='/admin/editpassword/{{ base64_encode($data->id) }}/personnel'type="button" class="btn btn-primary btn-sm">
+                <i class="fa fa-unlock-alt"></i> แก้ไขรหัสผ่าน
+            </a>
         </div>
         @if(session('error'))
         <div class="alert alert-success " role="alert">
@@ -68,7 +71,7 @@
                                     @enderror
                             </div>
                         </div>
-                        <div class="row form-group">
+                        {{-- <div class="row form-group">
                             <div class="col col-md-2"><label for="password-input"
                                     class=" form-control-label">รหัสผ่าน</label></div>
                             <div class="col-12 col-md-9">
@@ -77,7 +80,7 @@
                                     <small class="help-block form-text text-danger">{{ $message }}</small>
                                 @enderror
                                 </div>
-                        </div>
+                        </div> --}}
                         <div class="row form-group">
                             <div class="col col-md-2"><label for="select" class=" form-control-label">คำนำหน้า</label>
                             </div>
