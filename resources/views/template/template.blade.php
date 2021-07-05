@@ -74,7 +74,7 @@
         <header id="header" class="header">
             <div class="top-left">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="./"><img src="{{asset('images/logo.png')}}" alt="Logo"></a>
+                    <a class="navbar-brand" href="./"><img src="{{asset('images/logo_top.png')}}" alt="Logo"></a>
                     <a class="navbar-brand hidden" href="./"><img src="{{asset('images/logo2.png')}}" alt="Logo"></a>
                     <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
                 </div>
@@ -85,7 +85,7 @@
                         <button class="search-trigger"><i class="fa fa-search"></i></button>
                         <div class="form-inline">
                             <form class="search-form">
-                                <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+                                <input class="form-control mr-sm-2" type="text" placeholder="ค้นหาโครงการ ..." aria-label="Search">
                                 <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
                             </form>
                         </div>
@@ -96,18 +96,18 @@
                                 <span class="count bg-danger">3</span>
                             </button>
                             <div class="dropdown-menu" aria-labelledby="notification">
-                                <p class="red">You have 3 Notification</p>
+                                <p class="red">คุณมีการแจ้งเตือน</p>
                                 <a class="dropdown-item media" href="#">
                                     <i class="fa fa-check"></i>
-                                    <p>Server #1 overloaded.</p>
+                                    <p>โครงการ1</p>
                                 </a>
                                 <a class="dropdown-item media" href="#">
                                     <i class="fa fa-info"></i>
-                                    <p>Server #2 overloaded.</p>
+                                    <p>โครงการ2</p>
                                 </a>
                                 <a class="dropdown-item media" href="#">
                                     <i class="fa fa-warning"></i>
-                                    <p>Server #3 overloaded.</p>
+                                    <p>โครงการ3</p>
                                 </a>
                             </div>
                         </div>
@@ -118,37 +118,37 @@
                                 <span class="count bg-primary">4</span>
                             </button>
                             <div class="dropdown-menu" aria-labelledby="message">
-                                <p class="red">You have 4 Mails</p>
+                                <p class="red">มีข้อความ
                                 <a class="dropdown-item media" href="#">
-                                    <span class="photo media-left"><img alt="avatar" src="images/avatar/1.jpg"></span>
+                                    <span class="photo media-left"><img alt="avatar" src="images/avatar/u1.jpg"></span>
                                     <div class="message media-body">
-                                        <span class="name float-left">Jonathan Smith</span>
-                                        <span class="time float-right">Just now</span>
-                                        <p>Hello, this is an example msg</p>
+                                        <span class="name float-left">ยอดรัก สลักใจ</span>
+                                        <span class="time float-right">ตอนนี้</span>
+                                        <p>สวัสดี,อยากเสนอโครงการใหม่</p>
                                     </div>
                                 </a>
                                 <a class="dropdown-item media" href="#">
                                     <span class="photo media-left"><img alt="avatar" src="images/avatar/2.jpg"></span>
                                     <div class="message media-body">
-                                        <span class="name float-left">Jack Sanders</span>
-                                        <span class="time float-right">5 minutes ago</span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
+                                        <span class="name float-left">ปู่จ๋าน ลองไมค์</span>
+                                        <span class="time float-right">5 นาทีที่แล้ว</span>
+                                        <p>โครงการ1ฉันผ่านได้รับการอนุมัติหรือไม่</p>
                                     </div>
                                 </a>
                                 <a class="dropdown-item media" href="#">
                                     <span class="photo media-left"><img alt="avatar" src="images/avatar/3.jpg"></span>
                                     <div class="message media-body">
-                                        <span class="name float-left">Cheryl Wheeler</span>
-                                        <span class="time float-right">10 minutes ago</span>
-                                        <p>Hello, this is an example msg</p>
+                                        <span class="name float-left">ไมค์ พิลมพร</span>
+                                        <span class="time float-right">10 นาทีที่แล้ว</span>
+                                        <p>สวัสดี, อยากเสนอโครงการใหม่</p>
                                     </div>
                                 </a>
                                 <a class="dropdown-item media" href="#">
                                     <span class="photo media-left"><img alt="avatar" src="images/avatar/4.jpg"></span>
                                     <div class="message media-body">
-                                        <span class="name float-left">Rachel Santos</span>
-                                        <span class="time float-right">15 minutes ago</span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
+                                        <span class="name float-left">ราพันเซล ดอกไม้</span>
+                                        <span class="time float-right">15 นาทีที่แล้ว</span>
+                                        <p>โครงการ1ฉันผ่านได้รับการอนุมัติหรือไม่</p>
                                     </div>
                                 </a>
                             </div>
@@ -161,17 +161,17 @@
                         </a>
 
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
+                            <a class="nav-link" href="#"><i class="fa fa- user"></i>โปรไฟล์</a>
 
-                            <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
+                            <a class="nav-link" href="#"><i class="fa fa- user"></i>การแจ้งเตือน <span class="count">13</span></a>
 
-                            <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
+                            <a class="nav-link" href="#"><i class="fa fa -cog"></i>ตั้งค่า</a>
 
 
                             <a class="nav-link" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                       <i class="fa fa-power -off"></i>Logout
+                                       <i class="fa fa-power -off"></i>ออกจากระบบ
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

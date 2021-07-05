@@ -8,12 +8,12 @@
 		<div class="container">
 			<h1 class="best_taital">"เมืองเก่ารุ่งเรือง บ้านเมืองน่าอยู่"</h1>
 			<div class="box_main">
-			    <input type="" class="email_bt" placeholder="Search Job" name="">
-				<button class="subscribe_bt"><a href="#">Subscribe</a></button>
+			    <input type="" class="email_bt" placeholder="ค้นหาโครงการ" name="">
+				<button class="subscribe_bt"><a href="#">ค้นหา</a></button>
 		    </div>
-		    <p class="there_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alterationThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration</p>
+		    <p class="there_text">ยินดีต้อนรับ เทศบาลเมืองสิงหนคร</p>
 		    <div class="bt_main">
-		    	<div class="discover_bt"><a href="#">Discover More</a></div>
+		    	<div class="discover_bt"><a href="#">เพิ่มเติม</a></div>
 		    </div>
 		</div>
 	</div>
@@ -24,7 +24,7 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="job_section">
-					    <h1 class="jobs_text">Marketing jobs</h1>
+					    <h1 class="jobs_text">โครงการ</h1>
 					    <p class="dummy_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there</p>
 					    <div class="apply_bt"><a href="#">Apply now</a></div>
 					</div>
