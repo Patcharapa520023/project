@@ -28,19 +28,22 @@
 </div>
 @endsection
 @section('content')
-<form action="{{route('edit_personnel_post')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+<form action="{{route('edit_personnel_post')}}" method="post" enctype="multipart/form-data" class="form-horizontal" autocomplete="off">
     @csrf
     <div class="card">
         <div class="card-header">
             <strong>แก้ไขข้อมูลส่วนตัว</strong>
         </div>
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary btn-sm">
+            <button type="submit" class="btn btn-success btn-sm">
                 <i class="fa fa-dot-circle-o"></i> ยืนยันข้อมูล
             </button>
             <button type="reset" class="btn btn-danger btn-sm">
                 <i class="fa fa-ban"></i> รีเฟรช
             </button>
+            <a href='/admin/editpassword/{{ base64_encode($data->id) }}/personnel'type="button" class="btn btn-primary btn-sm">
+                <i class="fa fa-unlock-alt"></i> แก้ไขรหัสผ่าน
+            </a>
         </div>
         @if(session('error'))
         <div class="alert alert-success " role="alert">
@@ -48,9 +51,6 @@
         </div>
         @endif
         <div>
-                <div class="d-flex justify-content-center pt-3">
-                    <img src="{{ asset('images/ad3.png') }}" alt="" style="width: 250px;">
-                </div>
 
 
 
@@ -59,16 +59,16 @@
                 <div class="card-body card-block">
                     <div class="row form-group"></div>
                         <div class="row form-group">
-                            <div class="col col-md-2"><label for="email-input" class=" form-control-label">อีเมล์</label>
+                            <div class="col col-md-2"><label for="username-input" class=" form-control-label">ชื่อผู้ใช้</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input class="form-control" type="text" value="{{ $data->email }}" name="email" >
-                                    @error('email')
+                                <input class="form-control" type="text" value="{{ $data->username }}" name="username" >
+                                    @error('username')
                                     <small class="help-block form-text text-danger">{{ $message }}</small>
                                     @enderror
                             </div>
                         </div>
-                        <div class="row form-group">
+                        {{-- <div class="row form-group">
                             <div class="col col-md-2"><label for="password-input"
                                     class=" form-control-label">รหัสผ่าน</label></div>
                             <div class="col-12 col-md-9">
@@ -77,7 +77,7 @@
                                     <small class="help-block form-text text-danger">{{ $message }}</small>
                                 @enderror
                                 </div>
-                        </div>
+                        </div> --}}
                         <div class="row form-group">
                             <div class="col col-md-2"><label for="select" class=" form-control-label">คำนำหน้า</label>
                             </div>
@@ -139,7 +139,7 @@
                         <div class="col col-md-2"><label for="select" class=" form-control-label">ที่อยู่ปัจจุบัน</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"   style="height: 165px;" name="address">{{ $data->personnel->address }} </textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"   style="height: 95px;" name="address">{{ $data->personnel->address }} </textarea>
                             @error('rolse')
                             <small class="help-block form-text text-danger">{{ $message }}</small>
                             @enderror

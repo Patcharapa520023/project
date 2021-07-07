@@ -13,7 +13,7 @@ class Personnel extends Controller
         $input =  $request->all();
         $this->validator($input)->validate();
         $user=[
-            'email'=>$input['email'],
+            'username'=>$input['username'],
             'password'=>Hash::make($input['password']),
             'rolse'=>$input['rolse'],
         ];
@@ -38,8 +38,7 @@ class Personnel extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            "email" => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            "password" => ['required', 'string', 'min:8'],
+            "username" => ['required', 'string','max:20', 'unique:users'],
             "title" => ['required', 'string', 'max:255'],
             "name" => ['required', 'string', 'max:255'],
             "lastname" => ['required', 'string', 'max:255'],
@@ -52,10 +51,9 @@ class Personnel extends Controller
     }
     public function editpersonnel(Request $request){
         $input =  $request->all();
-        // $this->validator($input)->validate();
+        $this->validator($input)->validate();
         $user=[
-            'email'=>$input['email'],
-            'password'=>Hash::make($input['password']),
+            'username'=>$input['username'],
             'rolse'=>$input['rolse'],
         ];
         $personnel=[
@@ -73,6 +71,22 @@ class Personnel extends Controller
         return redirect()->back()->with('error', 'แก้ไขข้อมูลบุคลากรสถานศึกษา สำเร็จแล้ว');
 
 
+    }
+    public function editpasswordpersonnel(Request $request){
+        $input =  $request->all();
+        // $this->validator($input)->validate();
+        Validator::make($input, [
+
+            'password' => 'required|confirmed|min:6',
+        ])->validate();
+        $user=[
+            'password'=>Hash::make($input['password']),
+        ];
+
+
+        $edit = User::find($input['id']);
+        $edit ->update($user);
+        return redirect()->back()->with('error', 'แก้ไขรหัสผ่าน สำเร็จแล้ว');
     }
 
 }

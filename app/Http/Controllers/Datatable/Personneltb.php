@@ -13,7 +13,7 @@ class Personneltb extends Controller
         $headtables  = array(
             array("ลำดับ","id"),
             // array("บทบาท","rolse"),
-            array("อีเมล์","email"),
+            array("ชื่อผู้ใช้","username"),
             // array("รหัสผ่าน","password"),
             array("ชื่อ สกุล","name"),
             array("ที่อยู่","address"),
@@ -22,7 +22,7 @@ class Personneltb extends Controller
         // dd($headtables);
 
 
-        return view('page2.table_Personnel',compact('headtables'));
+        return view('page2.personnel.table.table_personnel',compact('headtables'));
     }
     public function getdata(Request $request){
 
@@ -56,7 +56,7 @@ class Personneltb extends Controller
                 $csrf = csrf_field();
                 $name = $record->name;
                 $rolse = $record->user->rolse;
-                $email = $record->user->email;
+                $username = $record->user->username;
                 $password = $record->user->password;
                 $title = $record->title;
                 $lastname = $record->lastname;
@@ -87,7 +87,7 @@ class Personneltb extends Controller
                 "id" => $key+1+$start,
                 "name" => $title.$name." ".$lastname,
                 // "rolse" => $rolse,
-                "email" => $email,
+                "username" => $username,
                 // "password" => '$password',
                 // "title" => $title,
                 // "lastname" => $lastname,

@@ -19,18 +19,24 @@ class Index extends Controller
     }
     public function tablepersonnel(){
         $tables = User::joinpersonnel();
-        return view('page2.table_Personnel',compact('tables'));
+        return view('page2.table.table_personnel',compact('tables'));
     }
     public function formaddpersonnel(){
-        return view('page2.form.addpersonnel');
+        return view('page2.personnel.button.addpersonnel');
     }
     public function formshowpersonnel(Request $request){
        $data=User::with('personnel')->find(base64_decode($request->id));
-        return view('page2.form.showpersonnel',compact('data'));
+        return view('page2.personnel.button.showpersonnel',compact('data'));
     }
     public function formeditpersonnel(Request $request){
        $data=User::with('personnel')->find(base64_decode($request->id));
-        return view('page2.form.editpersonnel',compact('data'));
+        return view('page2.personnel.button.editpersonnel',compact('data'));
     }
+    public function formeditpasswordpersonnel(Request $request){
+       $data=User::with('personnel')->find(base64_decode($request->id));
+        return view('page2.personnel.button.editpasswordpersonnel',compact('data'));
+    }
+
 }
+
 
