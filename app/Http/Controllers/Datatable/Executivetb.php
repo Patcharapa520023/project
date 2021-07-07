@@ -14,7 +14,7 @@ class Executivetb extends Controller
         $headtables  = array(
             array("ไอดี","id"),
             array("บทบาท","rolse"),
-            array("อีเมล์","email"),
+            array("ชื่อผู้ใช้","username"),
             array("รหัสผ่าน","password"),
             array("คำนำหน้า","title"),
             array("ชื่อ","name"),
@@ -73,7 +73,7 @@ class Executivetb extends Controller
             </div>";
                 $name = $record->name;
                 $rolse = $record->user->rolse;
-                $email = $record->user->email;
+                $username = $record->user->username;
                 $password = $record->user->password;
                 $title = $record->title;
                 $lastname = $record->lastname;
@@ -83,7 +83,7 @@ class Executivetb extends Controller
                 "id" => $id,
                 "name" => $name,
                 "rolse" => $rolse,
-                "email" => $email,
+                "username" => $username,
                 "password" => '$password',
                 "title" => $title,
                 "lastname" => $lastname,

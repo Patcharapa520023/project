@@ -57,11 +57,11 @@
                 <div class="card-body card-block">
                     <div class="row form-group"></div>
                         <div class="row form-group">
-                            <div class="col col-md-2"><label for="email-input" class=" form-control-label">อีเมล์</label>
+                            <div class="col col-md-2"><label for="username-input" class=" form-control-label">ชื่อผู้ใช้</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input class="form-control" type="text" placeholder="{{ $data->email }}" readonly>
-                                    @error('email')
+                                <input class="form-control" type="text" placeholder="{{ $data->username }}" readonly>
+                                    @error('username')
                                     <small class="help-block form-text text-danger">{{ $message }}</small>
                                     @enderror
                             </div>

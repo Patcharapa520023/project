@@ -27,25 +27,25 @@ class Createuser extends Seeder
         for ($i=1; $i <50 ; $i++) {
             if($i == 1){
                 $user=[
-                    'email'=>"ft@gmaidl$i.com",
+                    'username'=>"name$i",
                     'password'=>Hash::make('1234'),
                     'rolse'=>'admin'
                 ];
             }else if($i<=15){
                 $user=[
-                    'email'=>"ft@gmaidl$i.com",
+                    'username'=>"name$i",
                     'password'=>Hash::make('1234'),
                     'rolse'=>'executive'
                 ];
             }else if($i<=30) {
                 $user=[
-                    'email'=>"ft@gmaidl$i.com",
+                    'username'=>"name$i",
                     'password'=>Hash::make('1234'),
                     'rolse'=>'staff'
                 ];
             }else {
                 $user=[
-                    'email'=>"ft@gmaidl$i.com",
+                    'username'=>"name$i",
                     'password'=>Hash::make('1234'),
                     'rolse'=>'personnel'
                 ];

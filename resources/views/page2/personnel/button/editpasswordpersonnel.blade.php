@@ -28,7 +28,7 @@
 </div>
 @endsection
 @section('content')
-<form action="{{route('editpassword_personnel_post')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+<form action="{{route('editpassword_personnel_post')}}" method="post" enctype="multipart/form-data" class="form-horizontal"  autocomplete="off">
     @csrf
     <div class="card">
         <div class="card-header">
@@ -58,11 +58,11 @@
                 <div class="card-body card-block">
                     <div class="row form-group"></div>
                         <div class="row form-group">
-                            <div class="col col-md-3"><label for="email-input" class=" form-control-label">อีเมล์</label>
+                            <div class="col col-md-3"><label for="username-input" class=" form-control-label">ชื่อผู้ใช้</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input class="form-control" type="text" value="{{ $data->email }}" name="email" readonly >
-                                    @error('email')
+                                <input class="form-control" type="text" value="{{ $data->username }}" name="username" readonly >
+                                    @error('username')
                                     <small class="help-block form-text text-danger">{{ $message }}</small>
                                     @enderror
                             </div>
@@ -71,7 +71,7 @@
                             <div class="col col-md-3"><label for="password-input"
                                     class=" form-control-label">แก้ไขรหัสผ่าน</label></div>
                             <div class="col-12 col-md-9">
-                                <input class="form-control" type="password" value="" name="password" >
+                                <input class="form-control" type="password" value="" name="password" autocomplete="new-password">
                                     @error('password')
                                     <small class="help-block form-text text-danger">{{ $message }}</small>
                                 @enderror
