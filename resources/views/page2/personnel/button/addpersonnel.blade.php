@@ -158,23 +158,13 @@
                         </div>
                     </div> --}}
 
-                    <div class="row form-group">
-                        <div class="col col-md-2"><label for="file-input" class=" form-control-label">รูปภาพ</label>
-                        </div>
-                        <div class="col-12 col-md-9">
-                            <input type="file" id="file-input" name="file" value="{{ old('file') }}"
-                                class="form-control-file">
-                                @error('file')
-                                <small class="help-block form-text text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                    </div>
+
 
                     <div class="row form-group">
                         <div class="col col-md-2"><label for="exampleFormControlTextarea1" class=" form-control-label">ที่อยู่ปัจจุบัน</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="address"></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="address" style="height: 154px;"></textarea>
                                 @error('address')
                                 <small class="help-block form-text text-danger">{{ $message }}</small>
                                 @enderror
