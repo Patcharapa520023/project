@@ -22,7 +22,7 @@ class Personneltb extends Controller
         // dd($headtables);
 
 
-        return view('page2.table_Personnel',compact('headtables'));
+        return view('page2.personnel.table.table_personnel',compact('headtables'));
     }
     public function getdata(Request $request){
 

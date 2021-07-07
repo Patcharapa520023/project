@@ -49,9 +49,7 @@
         </div>
         @endif
         <div>
-                <div class="d-flex justify-content-center pt-3">
-                    <img src="{{ asset('images/ad3.png') }}" alt="" style="width: 250px;">
-                </div>
+
 
 
 
@@ -60,7 +58,7 @@
                 <div class="card-body card-block">
                     <div class="row form-group"></div>
                         <div class="row form-group">
-                            <div class="col col-md-2"><label for="email-input" class=" form-control-label">อีเมล์</label>
+                            <div class="col col-md-3"><label for="email-input" class=" form-control-label">อีเมล์</label>
                             </div>
                             <div class="col-12 col-md-9">
                                 <input class="form-control" type="text" value="{{ $data->email }}" name="email" readonly >
@@ -70,7 +68,7 @@
                             </div>
                         </div>
                         <div class="row form-group">
-                            <div class="col col-md-2"><label for="password-input"
+                            <div class="col col-md-3"><label for="password-input"
                                     class=" form-control-label">แก้ไขรหัสผ่าน</label></div>
                             <div class="col-12 col-md-9">
                                 <input class="form-control" type="password" value="" name="password" >
@@ -87,7 +85,7 @@
                     <div class="row form-group">
                     </div>
                     <div class="row form-group">
-                        <div class="col col-md-2"><label for="lastname-input"
+                        <div class="col col-md-3"><label for="lastname-input"
                                 class=" form-control-label">ชื่อ</label></div>
                         <div class="col-12 col-md-9">
                             <input class="form-control" type="text" value="{{ $data->personnel->title.$data->personnel->name." ".$data->personnel->lastname }}" name="" readonly>
@@ -97,7 +95,7 @@
                             </div>
                     </div>
                     <div class="row form-group">
-                        <div class="col col-md-2"><label for="password-input"
+                        <div class="col col-md-3"><label for="password-input"
                                 class=" form-control-label">ยืนยันรหัสผ่าน</label></div>
                         <div class="col-12 col-md-9">
                             <input class="form-control" type="password" value="" name="password_confirmation" >
