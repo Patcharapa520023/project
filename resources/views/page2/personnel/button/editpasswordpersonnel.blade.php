@@ -32,7 +32,7 @@
     @csrf
     <div class="card">
         <div class="card-header">
-            <strong>แก้ไขข้อมูลส่วนตัว</strong>
+            <strong>แก้ไขรหัสผ่าน</strong>
         </div>
         <div class="card-footer">
             <button type="submit" class="btn btn-success btn-sm">
