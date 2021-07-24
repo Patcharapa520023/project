@@ -37,6 +37,7 @@ class Personnel extends Controller
 
     protected function validator(array $data)
     {
+
         return Validator::make($data, [
             "username" => ['required', 'string','max:20', 'unique:users'],
             "title" => ['required', 'string', 'max:255'],
@@ -51,6 +52,8 @@ class Personnel extends Controller
     }
     public function editpersonnel(Request $request){
         $input =  $request->all();
+        $dbuser =  User::find($input['id']);
+
         $this->validator($input)->validate();
         $user=[
             'username'=>$input['username'],

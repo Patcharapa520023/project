@@ -7,7 +7,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>เพิ่มข้อมูลบุคลากรสถานศึกษา</h1>
+                        <h1>ดูข้อมูลบุคลากรสถานศึกษา</h1>
                     </div>
                 </div>
             </div>
@@ -15,9 +15,8 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li><a href="#">จัดการข้อมูลผู้ใช้</a></li>
-                            <li><a href="#">บุคลากรสถานศึกษา</a></li>
-                            <li><a href="#"><u>เพิ่มข้อมูลบุคลากรสถานศึกษา</u></a></li>
+                            <li><a href="http://127.0.0.1:8000/admin/personnel#">บุคลากรสถานศึกษา</a></li>
+                            <li><a href="http://127.0.0.1:8000/admin/show/MQ==/personnel#"><u>ดูข้อมูลบุคลากรสถานศึกษา</u></a></li>
                             {{-- <li class="active">Data table</li> --}}
                         </ol>
                     </div>
@@ -34,15 +33,7 @@
         <div class="card-header">
             <strong>ข้อมูลส่วนตัว</strong>
         </div>
-        <div class="card-footer">
-            <button type="submit" class="btn btn-success btn-sm">
-                <i class="fa fa-dot-circle-o"></i> ยืนยันข้อมูล
-            </button>
-            <button type="reset" class="btn btn-danger btn-sm">
-                <i class="fa fa-ban"></i> รีเฟรช
-            </button>
 
-        </div>
         @if(session('error'))
         <div class="alert alert-success " role="alert">
            <p> {{session('error')}} </p>
