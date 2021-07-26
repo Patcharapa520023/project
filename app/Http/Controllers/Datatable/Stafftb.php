@@ -4,26 +4,25 @@ namespace App\Http\Controllers\Datatable;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Staff;
 use App\Models\User;
-
+use App\Models\Staff;
 class Stafftb extends Controller
 {
     public function show(){
         $tables = Staff::with('user')->get()->toArray();
         $headtables  = array(
-            array("ไอดี","id"),
-            array("บทบาท","rolse"),
-            array("อีเมล์","email"),
-            array("รหัสผ่าน","password"),
-            array("คำนำหน้า","title"),
-            array("ชื่อ","name"),
-            array("นามสกุล","lastname"),
+            array("ลำดับ","id"),
+            // array("บทบาท","rolse"),
+            array("ชื่อผู้ใช้","username"),
+            // array("รหัสผ่าน","password"),
+            array("ชื่อ สกุล","name"),
             array("ที่อยู่","address"),
             array("เบอร์โทรศัพท์","telnum"),
         );
+        // dd($headtables);
 
-        return view('page2.table_Staff',compact('headtables'));
+
+        return view('page2.staff.table.table_staff',compact('headtables'));
     }
     public function getdata(Request $request){
 
@@ -50,13 +49,31 @@ class Stafftb extends Controller
           ->take($rowperpage)
           ->get();
         $data_arr = array();
-        foreach($records as $record){
+        foreach($records as $key=> $record){
                 $formurl = route('delete_staff_post');
                 $id = $record->user->id;
+                $idbase = base64_encode($record->user->id);
                 $csrf = csrf_field();
+                $name = $record->name;
+                $rolse = $record->user->rolse;
+                $username = $record->user->username;
+                $password = $record->user->password;
+                $title = $record->title;
+                $lastname = $record->lastname;
+                $address = $record->address;
+                $telnum = $record->telnum;
                 $console = "<div class='table-data-feature'>
-
-                <form method='POST' action='$formurl'>
+                <a  href='show/$idbase/personnel'>
+                <button class='item show' data-toggle='tooltip' data-placement='top' title=' data-original-title='More'>
+                    <i class='fa fa-search-plus'></i>
+                </button>
+                </a>
+                <a  href='edit/$idbase/personnel'>
+                <button class='item edit' data-toggle='tooltip' data-placement='top' title=' data-original-title='Edit'>
+                    <i class='fa fa-edit'></i>
+                </button>
+                </a>
+                <form method='POST' action='$formurl' onSubmit='dbdelete(this,`$title$name $lastname`)'>
                     $csrf
                     <input type='hidden' name='id' value='$id'>
                     <input type='hidden' name='id2' value='4'>
@@ -64,29 +81,16 @@ class Stafftb extends Controller
                     <i class='fa fa-trash-o'></i>
                 </button>
                 </form>
-                <button class='item edit' data-toggle='tooltip' data-placement='top' title=' data-original-title='Edit'>
-                    <i class='fa fa-edit'></i>
-                </button>
-                <button class='item show' data-toggle='tooltip' data-placement='top' title=' data-original-title='More'>
-                    <i class='fa fa-search-plus'></i>
-                </button>
-            </div>";
-                $name = $record->name;
-                $rolse = $record->user->rolse;
-                $email = $record->user->email;
-                $password = $record->user->password;
-                $title = $record->title;
-                $lastname = $record->lastname;
-                $address = $record->address;
-                $telnum = $record->telnum;
+                </div>";
+
             $data_arr[] = array(
-                "id" => $id,
-                "name" => $name,
-                "rolse" => $rolse,
-                "email" => $email,
-                "password" => '$password',
-                "title" => $title,
-                "lastname" => $lastname,
+                "id" => $key+1+$start,
+                "name" => $title.$name." ".$lastname,
+                // "rolse" => $rolse,
+                "username" => $username,
+                // "password" => '$password',
+                // "title" => $title,
+                // "lastname" => $lastname,
                 "address" => $address,
                 "telnum" => $telnum,
                 "console" => $console,
@@ -103,8 +107,6 @@ class Stafftb extends Controller
         echo json_encode($response);
         exit;
       }
-      public function deletestaff(Request $request){
-          User::find($request->id)->delete();
-          return redirect()->back();
-      }
+
+
 }

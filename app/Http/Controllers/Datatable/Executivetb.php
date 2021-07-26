@@ -4,26 +4,25 @@ namespace App\Http\Controllers\Datatable;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Executive;
 use App\Models\User;
-
+use App\Models\Executive;
 class Executivetb extends Controller
 {
     public function show(){
         $tables = Executive::with('user')->get()->toArray();
         $headtables  = array(
-            array("ไอดี","id"),
-            array("บทบาท","rolse"),
+            array("ลำดับ","id"),
+            // array("บทบาท","rolse"),
             array("ชื่อผู้ใช้","username"),
-            array("รหัสผ่าน","password"),
-            array("คำนำหน้า","title"),
-            array("ชื่อ","name"),
-            array("นามสกุล","lastname"),
+            // array("รหัสผ่าน","password"),
+            array("ชื่อ สกุล","name"),
             array("ที่อยู่","address"),
             array("เบอร์โทรศัพท์","telnum"),
         );
+        // dd($headtables);
 
-        return view('page2.table_Executive',compact('headtables'));
+
+        return view('page2.executive.table.table_executive',compact('headtables'));
     }
     public function getdata(Request $request){
 
@@ -50,27 +49,11 @@ class Executivetb extends Controller
           ->take($rowperpage)
           ->get();
         $data_arr = array();
-        foreach($records as $record){
+        foreach($records as $key=> $record){
                 $formurl = route('delete_executive_post');
                 $id = $record->user->id;
+                $idbase = base64_encode($record->user->id);
                 $csrf = csrf_field();
-                $console = "<div class='table-data-feature'>
-
-                <form method='POST' action='$formurl'>
-                    $csrf
-                    <input type='hidden' name='id' value='$id'>
-                    <input type='hidden' name='id2' value='4'>
-                <button class='item delete' data-toggle='tooltip' data-placement='top' title=' data-original-title='Delete'>
-                    <i class='fa fa-trash-o'></i>
-                </button>
-                </form>
-                <button class='item edit' data-toggle='tooltip' data-placement='top' title=' data-original-title='Edit'>
-                    <i class='fa fa-edit'></i>
-                </button>
-                <button class='item show' data-toggle='tooltip' data-placement='top' title=' data-original-title='More'>
-                    <i class='fa fa-search-plus'></i>
-                </button>
-            </div>";
                 $name = $record->name;
                 $rolse = $record->user->rolse;
                 $username = $record->user->username;
@@ -79,14 +62,35 @@ class Executivetb extends Controller
                 $lastname = $record->lastname;
                 $address = $record->address;
                 $telnum = $record->telnum;
+                $console = "<div class='table-data-feature'>
+                <a  href='show/$idbase/personnel'>
+                <button class='item show' data-toggle='tooltip' data-placement='top' title=' data-original-title='More'>
+                    <i class='fa fa-search-plus'></i>
+                </button>
+                </a>
+                <a  href='edit/$idbase/personnel'>
+                <button class='item edit' data-toggle='tooltip' data-placement='top' title=' data-original-title='Edit'>
+                    <i class='fa fa-edit'></i>
+                </button>
+                </a>
+                <form method='POST' action='$formurl' onSubmit='dbdelete(this,`$title$name $lastname`)'>
+                    $csrf
+                    <input type='hidden' name='id' value='$id'>
+                    <input type='hidden' name='id2' value='4'>
+                <button class='item delete' data-toggle='tooltip' data-placement='top' title=' data-original-title='Delete'>
+                    <i class='fa fa-trash-o'></i>
+                </button>
+                </form>
+                </div>";
+
             $data_arr[] = array(
-                "id" => $id,
-                "name" => $name,
-                "rolse" => $rolse,
+                "id" => $key+1+$start,
+                "name" => $title.$name." ".$lastname,
+                // "rolse" => $rolse,
                 "username" => $username,
-                "password" => '$password',
-                "title" => $title,
-                "lastname" => $lastname,
+                // "password" => '$password',
+                // "title" => $title,
+                // "lastname" => $lastname,
                 "address" => $address,
                 "telnum" => $telnum,
                 "console" => $console,
@@ -103,8 +107,6 @@ class Executivetb extends Controller
         echo json_encode($response);
         exit;
       }
-      public function deleteexecutive(Request $request){
-        User::find($request->id)->delete();
-        return redirect()->back();
-    }
+
+
 }

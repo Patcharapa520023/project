@@ -16,7 +16,7 @@
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
                             <li><a href="#">จัดการข้อมูลผู้ใช้</a></li>
-                            <li><a href="#">ผู้บริหาร</a></li>
+                            <li><a href="http://127.0.0.1:8000/admin/executive"><u>ผู้บริหาร</u></a></li>
                             {{-- <li class="active">Data table</li> --}}
                         </ol>
                     </div>
@@ -78,20 +78,18 @@
     <script type="text/javascript">
 
 
+    var myTable ;
         $(document).ready(function() {
-            var myTable ;
             $(document).ready(function(){
                 myTable = $('#bootstrap-data-table-export1').DataTable({
-                    responsive: {
-        details: false
-    },
+                    autoWidth: false,
                     language: {
                             "lengthMenu": "แสดง  _MENU_  รายการ",
                             "zeroRecords": "ไม่พบข้อมูล",
                             "info": "   _PAGE_ จาก _PAGES_",
                             "infoEmpty": "ไม่พบข้อมูล",
                             "infoFiltered": "(กรองข้อมูล _MAX_  รายการ)",
-                            'sProcessing':"<div class='progress'><div class='color'></div></div>",
+                            'sProcessing':`<div class="continuous-4"></div>`,
                             "search": `
                             `,
                             paginate: {
@@ -101,7 +99,7 @@
                     },
                 processing: true,
                 serverSide: true,
-                ajax: { url: "{{route('dataexecutive')}}",
+                ajax: { url: "{{route('datapersonnel')}}",
                         type: "post",
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     },
@@ -111,7 +109,6 @@
 
                         @foreach ($headtables as $headtable)
                             {
-                                className:"{{$headtable[0]}}_filtter",
                                 data:  "{{$headtable[1]}}",
                             },
                         @endforeach
@@ -148,15 +145,44 @@
 //     }
 // }});
         });
+        function dbdelete(f,name){
+            console.log(f)
+            let formData = new FormData(f);
+            var r = confirm(`ต้องการที่จะลบ ${name}  หรือไม่`);
+                if (r == true) {
+                    $.ajax({
+                                method: 'post',
+                                processData: false,
+                                contentType: false,
+                                cache: false,
+                                data: formData,
+                                enctype: 'multipart/form-data',
+                                url: $(f).attr('action'),
+                                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                                success: function (response) {
+                     			myTable.row().draw();
+
+                                },
+                                    error: function(data) {
+
+                                    }
+                            });
+                            event.preventDefault();
+            }   else {
+                event.preventDefault();
+            }
+
+
+        }
 </script>
 @endsection
 @section('style')
 <style>
-   .table-data-feature>.show{
+   a .show{
         background: rgb(90, 119, 248);
         color: rgb(255, 255, 255);
     }
-   .table-data-feature>.edit{
+   a .edit{
         background: rgb(241, 109, 33);
         color: rgb(255, 255, 255);
     }
@@ -204,6 +230,41 @@
     border-radius: 100%;
     margin-right: 5px;
 }
+
+
+.continuous-4 {
+  width: 150px;
+  height: 25px;
+  border-radius: 40px;
+  color: #514b82;
+  border: 2px solid;
+  position: relative;
+  overflow: hidden;
+  background-color: rgb(255, 255, 255)
+}
+
+.continuous-4::before {
+  content: "";
+  position: absolute;
+  margin: 2px;
+  width: 14px;
+  top: 0;
+  bottom: 0;
+  left: -20px;
+  border-radius: inherit;
+  background: currentColor;
+  box-shadow: -10px 0 12px 3px currentColor;
+  clip-path: polygon(0 5%, 100% 0,100% 100%,0 95%,-30px 50%);
+  animation: ct4 1s infinite linear;
+}
+
+@keyframes ct4 {
+  100% {left: calc(100% + 20px)}
+}
+div#bootstrap-data-table-export1_processing{
+    width: 0px;
+}
+
 </style>
 <link rel="stylesheet" href="{{ asset('assets/css/lib/datatable/dataTables.bootstrap.min.css') }}">
 @endsection
