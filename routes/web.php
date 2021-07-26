@@ -7,7 +7,7 @@ use App\Http\Controllers\Personnel;
 use App\Http\Controllers\Datatable\Personneltb;
 use App\Http\Controllers\Datatable\Executivetb;
 use App\Http\Controllers\Datatable\Stafftb;
-
+use App\Http\Middleware\Staff;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,7 +52,12 @@ Route::get('/editpassword/{id}/personnel','Index@formeditpasswordpersonnel')->na
     Route::post('edit/personnel',[Personnel::class,'editpersonnel'])->name("edit_personnel_post");
     Route::post('editpassword/personnel',[Personnel::class,'editpasswordpersonnel'])->name("editpassword_personnel_post");
 
+
+
+
+
 });
+
 
 Route::get('/หน้าแรก',[HomeController::class,'pageindex'])->name("home");
 
