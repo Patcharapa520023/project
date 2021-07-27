@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Datatable;
+namespace App\Http\Controllers\Admin\Datatable;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -63,12 +63,12 @@ class Stafftb extends Controller
                 $address = $record->address;
                 $telnum = $record->telnum;
                 $console = "<div class='table-data-feature'>
-                <a  href='show/$idbase/personnel'>
+                <a  href='show/$idbase/staff'>
                 <button class='item show' data-toggle='tooltip' data-placement='top' title=' data-original-title='More'>
                     <i class='fa fa-search-plus'></i>
                 </button>
                 </a>
-                <a  href='edit/$idbase/personnel'>
+                <a  href='edit/$idbase/staff'>
                 <button class='item edit' data-toggle='tooltip' data-placement='top' title=' data-original-title='Edit'>
                     <i class='fa fa-edit'></i>
                 </button>

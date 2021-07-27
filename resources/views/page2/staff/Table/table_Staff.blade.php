@@ -99,7 +99,7 @@
                     },
                 processing: true,
                 serverSide: true,
-                ajax: { url: "{{route('datapersonnel')}}",
+                ajax: { url: "{{route('datastaff')}}",
                         type: "post",
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     },

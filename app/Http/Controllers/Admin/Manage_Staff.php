@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-class Personnel extends Controller
-{
 
-    public function addpersonnel(Request $request){
+class Manage_Staff extends Controller
+{
+    public function addstaff(Request $request){
         $input =  $request->all();
         $this->validator($input)->validate();
         $user=[
@@ -17,7 +18,7 @@ class Personnel extends Controller
             'password'=>Hash::make($input['password']),
             'rolse'=>$input['rolse'],
         ];
-        $personnel=[
+        $staff=[
             'title'=>$input['title'],
             'name'=>$input['name'],
             'lastname'=>$input['lastname'],
@@ -26,11 +27,11 @@ class Personnel extends Controller
 
 
         ];
-        User::create($user)->personnel()->create($personnel);
+        User::create($user)->staff()->create($staff);
         return redirect()->back()->with('error', 'เพิ่มข้อมูลบุคลากรสถานศึกษา สำเร็จแล้ว');
 
     }
-    public function deletepersonnel(Request $request){
+    public function deletestaff(Request $request){
         User::find($request->all()['id'])->delete();
         return back();
     }
@@ -50,7 +51,7 @@ class Personnel extends Controller
         ]
     );
     }
-    public function editpersonnel(Request $request){
+    public function editstaff(Request $request){
         $input =  $request->all();
         $dbuser =  User::find($input['id']);
 
@@ -59,7 +60,7 @@ class Personnel extends Controller
             'username'=>$input['username'],
             'rolse'=>$input['rolse'],
         ];
-        $personnel=[
+        $staff=[
             'title'=>$input['title'],
             'name'=>$input['name'],
             'lastname'=>$input['lastname'],
@@ -70,12 +71,12 @@ class Personnel extends Controller
         ];
         $edit = User::find($input['id']);
         $edit ->update($user);
-        $edit->personnel()->update($personnel);
+        $edit->staff()->update($staff);
         return redirect()->back()->with('error', 'แก้ไขข้อมูลบุคลากรสถานศึกษา สำเร็จแล้ว');
 
 
     }
-    public function editpasswordpersonnel(Request $request){
+    public function editpasswordstaff(Request $request){
         $input =  $request->all();
         // $this->validator($input)->validate();
         Validator::make($input, [
@@ -91,6 +92,4 @@ class Personnel extends Controller
         $edit ->update($user);
         return redirect()->back()->with('error', 'แก้ไขรหัสผ่าน สำเร็จแล้ว');
     }
-
 }
-
