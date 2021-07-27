@@ -28,7 +28,7 @@ class Manage_Staff extends Controller
 
         ];
         User::create($user)->staff()->create($staff);
-        return redirect()->back()->with('error', 'เพิ่มข้อมูลบุคลากรสถานศึกษา สำเร็จแล้ว');
+        return redirect()->back()->with('error', 'เพิ่มข้อมูลเจ้าหน้าที่กองการศึกษา สำเร็จแล้ว');
 
     }
     public function deletestaff(Request $request){
@@ -72,7 +72,7 @@ class Manage_Staff extends Controller
         $edit = User::find($input['id']);
         $edit ->update($user);
         $edit->staff()->update($staff);
-        return redirect()->back()->with('error', 'แก้ไขข้อมูลบุคลากรสถานศึกษา สำเร็จแล้ว');
+        return redirect()->back()->with('error', 'แก้ไขข้อมูลเจ้าหน้าที่กองการศึกษา สำเร็จแล้ว');
 
 
     }
@@ -90,6 +90,6 @@ class Manage_Staff extends Controller
 
         $edit = User::find($input['id']);
         $edit ->update($user);
-        return redirect()->back()->with('error', 'แก้ไขรหัสผ่าน สำเร็จแล้ว');
+        return redirect()->back()->with('error', 'แก้ไขรหัสผ่านใหม่ สำเร็จแล้ว');
     }
 }

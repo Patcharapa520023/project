@@ -90,7 +90,7 @@ class Manage_Personnel extends Controller
 
         $edit = User::find($input['id']);
         $edit ->update($user);
-        return redirect()->back()->with('error', 'แก้ไขรหัสผ่าน สำเร็จแล้ว');
+        return redirect()->back()->with('error', 'แก้ไขรหัสผ่านใหม่ สำเร็จแล้ว');
     }
 
 }

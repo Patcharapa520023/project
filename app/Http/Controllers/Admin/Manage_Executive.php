@@ -28,7 +28,7 @@ class Manage_Executive extends Controller
 
         ];
         User::create($user)->executive()->create($executive);
-        return redirect()->back()->with('error', 'เพิ่มข้อมูลบุคลากรสถานศึกษา สำเร็จแล้ว');
+        return redirect()->back()->with('error', 'เพิ่มข้อมูลผู้บริหาร สำเร็จแล้ว');
 
     }
     public function deleteexecutive(Request $request){
@@ -72,7 +72,7 @@ class Manage_Executive extends Controller
         $edit = User::find($input['id']);
         $edit ->update($user);
         $edit->executive()->update($executive);
-        return redirect()->back()->with('error', 'แก้ไขข้อมูลบุคลากรสถานศึกษา สำเร็จแล้ว');
+        return redirect()->back()->with('error', 'แก้ไขข้อมูลผู้บริหาร สำเร็จแล้ว');
 
 
     }
@@ -90,7 +90,7 @@ class Manage_Executive extends Controller
 
         $edit = User::find($input['id']);
         $edit ->update($user);
-        return redirect()->back()->with('error', 'แก้ไขรหัสผ่าน สำเร็จแล้ว');
+        return redirect()->back()->with('error', 'แก้ไขรหัสผ่านใหม่ สำเร็จแล้ว');
     }
 
 }
