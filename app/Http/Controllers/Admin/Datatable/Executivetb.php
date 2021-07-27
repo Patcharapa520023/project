@@ -63,12 +63,12 @@ class Executivetb extends Controller
                 $address = $record->address;
                 $telnum = $record->telnum;
                 $console = "<div class='table-data-feature'>
-                <a  href='show/$idbase/personnel'>
+                <a  href='show/$idbase/executive'>
                 <button class='item show' data-toggle='tooltip' data-placement='top' title=' data-original-title='More'>
                     <i class='fa fa-search-plus'></i>
                 </button>
                 </a>
-                <a  href='edit/$idbase/personnel'>
+                <a  href='edit/$idbase/executive'>
                 <button class='item edit' data-toggle='tooltip' data-placement='top' title=' data-original-title='Edit'>
                     <i class='fa fa-edit'></i>
                 </button>

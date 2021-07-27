@@ -77,6 +77,9 @@ class Index extends Controller
         $data=User::with('executive')->find(base64_decode($request->id));
          return view('page2.executive.button.editpasswordexecutive',compact('data'));
      }
+     public function formaddexecutive(Request $request){
+        return view('page2.executive.button.addexecutive');
+    }
     // end formexecutive
 }
 

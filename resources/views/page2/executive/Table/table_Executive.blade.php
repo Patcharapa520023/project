@@ -33,7 +33,7 @@
                         <div class="card">
                             <div class="card-header d-flex p-2 justify-content-between align-items-center pl-4 pr-4">
                                     <strong class="card-title">ตารางข้อมูล</strong>
-                                        <a class="addcus btn btn-outline-success" href="{{ route('add_personnel') }}">
+                                        <a class="addcus btn btn-outline-success" href="{{ route('add_executive') }}">
                                             <i class="fa fa-plus"></i>&nbsp;เพิ่มข้อมูลผู้บริหาร
                                         </a>
                             </div>
@@ -99,7 +99,7 @@
                     },
                 processing: true,
                 serverSide: true,
-                ajax: { url: "{{route('datapersonnel')}}",
+                ajax: { url: "{{route('dataexecutive')}}",
                         type: "post",
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     },

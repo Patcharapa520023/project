@@ -27,7 +27,7 @@
     </div>
 @endsection
 @section('content')
-    <form action="{{ route('add_personnel_post') }}" method="post" enctype="multipart/form-data" class="form-horizontal"
+    <form action="{{ route('add_staff_post') }}" method="post" enctype="multipart/form-data" class="form-horizontal"
         autocomplete="off">
         @csrf
         <div class="card">

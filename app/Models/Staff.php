@@ -9,7 +9,19 @@ class Staff extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $fillable = [
+        'title',
+        'name',
+        'lastname',
+        'address',
+        'telnum',
+        'position',
+
+    ];
     public function user(){
         return $this->belongsTo(User::class);
+    }
+    public function department(){
+        return $this->belongsTo(Department::class);
     }
 }

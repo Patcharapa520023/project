@@ -15,7 +15,7 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li><a href="http://127.0.0.1:8000/admin/personnel#">บุคลากรสถานศึกษา</a></li>
+                            <li><a href="http://127.0.0.1:8000/admin/executive#">บุคลากรสถานศึกษา</a></li>
                             <li><a href="http://127.0.0.1:8000/admin/edit/MQ==/personnel#">แก้ไขข้อมูลบุคลากรสถานศึกษา</a></li>
                             <li><a href="http://127.0.0.1:8000/admin/editpassword/MQ==/personnel"><u>แก้ไขรหัสผ่าน</u></a></li>
                             {{-- <li class="active">Data table</li> --}}
@@ -28,7 +28,7 @@
 </div>
 @endsection
 @section('content')
-<form action="{{route('editpassword_personnel_post')}}" method="post" enctype="multipart/form-data" class="form-horizontal"  autocomplete="off">
+<form action="{{route('editpassword_executive_post')}}" method="post" enctype="multipart/form-data" class="form-horizontal"  autocomplete="off">
     @csrf
     <div class="card">
         <div class="card-header">
@@ -88,7 +88,7 @@
                         <div class="col col-md-3"><label for="lastname-input"
                                 class=" form-control-label">ชื่อ</label></div>
                         <div class="col-12 col-md-9">
-                            <input class="form-control" type="text" value="{{ $data->personnel->title.$data->personnel->name." ".$data->personnel->lastname }}" name="" readonly>
+                            <input class="form-control" type="text" value="{{ $data->executive->title.$data->executive->name." ".$data->executive->lastname }}" name="" readonly>
                                 @error('lastname')
                                 <small class="help-block form-text text-danger">{{ $message }}</small>
                                 @enderror

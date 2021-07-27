@@ -7,7 +7,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>ตารางข้อมูลบุคลากรสถานศึกษา</h1>
+                        <h1>ตารางข้อมูลเจ้าหน้าที่กองการศึกษา</h1>
                     </div>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                         <div class="card">
                             <div class="card-header d-flex p-2 justify-content-between align-items-center pl-4 pr-4">
                                     <strong class="card-title">ตารางข้อมูล</strong>
-                                        <a class="addcus btn btn-outline-success" href="{{ route('add_personnel') }}">
+                                        <a class="addcus btn btn-outline-success" href="{{ route('add_staff') }}">
                                             <i class="fa fa-plus"></i>&nbsp;เพิ่มข้อมูลเจ้าหน้าที่กองการศึกษา
                                         </a>
                             </div>
