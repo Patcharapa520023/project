@@ -15,8 +15,8 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li><a href="http://127.0.0.1:8000/admin/staff#">เจ้าหน้าที่กองการศึกษา</a></li>
-                            <li><a href="http://127.0.0.1:8000/admin/edit/MQ==/staff#"><u>แก้ไขข้อมูลเจ้าหน้าที่กองการศึกษา</u></a></li>
+                            <li><a href="http://127.0.0.1:8000/admin/staff">เจ้าหน้าที่กองการศึกษา</a></li>
+                            <li><a href="#"><u>แก้ไขข้อมูลเจ้าหน้าที่กองการศึกษา</u></a></li>
                             {{-- <li class="active">Data table</li> --}}
                         </ol>
                     </div>

@@ -16,7 +16,7 @@ class Manage_Executive extends Controller
         $user=[
             'username'=>$input['username'],
             'password'=>Hash::make($input['password']),
-            'rolse'=>$input['rolse'],
+            'rolse'=>'executive',
         ];
         $executive=[
             'title'=>$input['title'],
@@ -36,11 +36,10 @@ class Manage_Executive extends Controller
         return back();
     }
 
-    protected function validator(array $data)
+    protected function validator(array $data,$tf=false)
     {
+        $vali = [
 
-        return Validator::make($data, [
-            "username" => ['required', 'string','max:20', 'unique:users'],
             "title" => ['required', 'string', 'max:255'],
             "name" => ['required', 'string', 'max:255'],
             "lastname" => ['required', 'string', 'max:255'],
@@ -48,14 +47,19 @@ class Manage_Executive extends Controller
             "rolse" => ['required', 'string', 'max:255'],
             "address" => ['required', 'string', 'max:255'],
 
-        ]
-    );
+        ];
+        if($tf&&$tf==$data['username']){
+         $vali["username"] = ['required', 'string','max:20'];
+        }else {
+         $vali["username"] = ['required', 'string','max:20', 'unique:users'];
+
+        }
+        return Validator::make($data,$vali);
     }
     public function editexecutive(Request $request){
         $input =  $request->all();
         $dbuser =  User::find($input['id']);
-
-        $this->validator($input)->validate();
+        $this->validator($input,$dbuser->username)->validate();
         $user=[
             'username'=>$input['username'],
             'rolse'=>$input['rolse'],

@@ -16,7 +16,7 @@
                         <div class="page-title">
                             <ol class="breadcrumb text-right">
                                 <li><a href="http://127.0.0.1:8000/admin/executive">ผู้บริหาร</a></li>
-                                <li><a href="http://127.0.0.1:8000/admin/add/personnel"><u>เพิ่มข้อมูลผู้บริหาร</u></a></li>
+                                <li><a href="http://127.0.0.1:8000/admin/add/executive"><u>เพิ่มข้อมูลผู้บริหาร</u></a></li>
                                 {{-- <li class="active">Data table</li> --}}
                             </ol>
                         </div>
@@ -131,11 +131,7 @@
                             <div class="col-12 col-md-9">
                                 <select name="rolse" id="rolse" class="form-control-sm form-control"
                                     value="{{ old('rolse') }}">
-                                    <option value="">เลือกระดับผู้ใช้งาน</option>
                                     <option value="ผู้บริหาร">ผู้บริหาร</option>
-                                    <option value="ผู้ดูแลระบบ">ผู้ดูแลระบบ</option>
-                                    <option value="เจ้าหน้าที่กองการศึกษา">เจ้าหน้าที่กองการศึกษา</option>
-                                    <option value="บุคลากรสถานศึกษา">บุคลากรสถานศึกษา</option>
                                 </select>
                                 @error('rolse')
                                     <small class="help-block form-text text-danger">{{ $message }}</small>

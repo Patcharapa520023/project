@@ -16,7 +16,7 @@
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
                             <li><a href="http://127.0.0.1:8000/admin/executive">ผู้บริหาร</a></li>
-                            <li><a href="http://127.0.0.1:8000/admin/show/MQ==/executive#"><u>ดูข้อมูลผู้บริหาร</u></a></li>
+                            <li><a href="#"><u>ดูข้อมูลผู้บริหาร</u></a></li>
                             {{-- <li class="active">Data table</li> --}}
                         </ol>
                     </div>

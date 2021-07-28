@@ -15,7 +15,7 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li><a href="#">เจ้าหน้าที่กองการศึกษา</a></li>
+                            <li><a href="#">จัดการข้อมูลผู้ใช้</a></li>
                             <li><a href="http://127.0.0.1:8000/admin/staff"><u>เจ้าหน้าที่กองการศึกษา</u></a></li>
                             {{-- <li class="active">Data table</li> --}}
                         </ol>
