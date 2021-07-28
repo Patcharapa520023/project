@@ -15,9 +15,9 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li><a href="http://127.0.0.1:8000/admin/personnel#">บุคลากรสถานศึกษา</a></li>
-                            <li><a href="http://127.0.0.1:8000/admin/edit/MQ==/personnel#">แก้ไขข้อมูลบุคลากรสถานศึกษา</a></li>
-                            <li><a href="http://127.0.0.1:8000/admin/editpassword/MQ==/personnel"><u>แก้ไขรหัสผ่าน</u></a></li>
+                            <li><a href="http://127.0.0.1:8000/admin/.#">บุคลากรสถานศึกษา</a></li>
+                            <li><a href="#">แก้ไขข้อมูลบุคลากรสถานศึกษา</a></li>
+                            <li><a href="#"><u>แก้ไขรหัสผ่าน</u></a></li>
                             {{-- <li class="active">Data table</li> --}}
                         </ol>
                     </div>

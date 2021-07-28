@@ -16,7 +16,7 @@
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
                             <li><a href="http://127.0.0.1:8000/admin/executive">ผู้บริหาร</a></li>
-                            <li><a href="http://127.0.0.1:8000/admin/show/MQ==/personnel#"><u>ดูข้อมูลผู้บริหาร</u></a></li>
+                            <li><a href="#"><u>ดูข้อมูลผู้บริหาร</u></a></li>
                             {{-- <li class="active">Data table</li> --}}
                         </ol>
                     </div>
@@ -27,8 +27,6 @@
 </div>
 @endsection
 @section('content')
-<form action="{{route('add_personnel_post')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
-    @csrf
     <div class="card">
         <div class="card-header">
             <strong>ข้อมูลส่วนตัว</strong>
@@ -71,7 +69,7 @@
                             <div class="col col-md-2"><label for="select" class=" form-control-label">คำนำหน้า</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input class="form-control" type="text" placeholder="{{ $data->personnel->title }}" readonly>
+                                <input class="form-control" type="text" placeholder="{{ $data->executive->title }}" readonly>
                                 @error('title')
                                 <small class="help-block form-text text-danger">{{ $message }}</small>
                                 @enderror
@@ -80,7 +78,7 @@
                         <div class="row form-group">
                             <div class="col col-md-2"><label for="name-input" class=" form-control-label">ชื่อ</label></div>
                             <div class="col-12 col-md-9">
-                                <input class="form-control" type="text" placeholder="{{ $data->personnel->name }}" readonly>
+                                <input class="form-control" type="text" placeholder="{{ $data->executive->name }}" readonly>
                                     @error('name')
                                     <small class="help-block form-text text-danger">{{ $message }}</small>
                                     @enderror
@@ -90,7 +88,7 @@
                             <div class="col col-md-2"><label for="lastname-input"
                                     class=" form-control-label">นามสกุล</label></div>
                             <div class="col-12 col-md-9">
-                                <input class="form-control" type="text" placeholder="{{ $data->personnel->lastname }}" readonly>
+                                <input class="form-control" type="text" placeholder="{{ $data->executive->lastname }}" readonly>
                                     @error('lastname')
                                     <small class="help-block form-text text-danger">{{ $message }}</small>
                                     @enderror
@@ -108,7 +106,7 @@
                         <div class="col col-md-2"><label for="phone-input" class=" form-control-label">โทรศัพท์</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <input class="form-control" type="text" placeholder="{{ $data->personnel->telnum }}" readonly>
+                            <input class="form-control" type="text" placeholder="{{ $data->executive->telnum }}" readonly>
                                 @error('phone')
                                 <small class="help-block form-text text-danger">{{ $message }}</small>
                             @enderror
@@ -128,7 +126,7 @@
                         <div class="col col-md-2"><label for="select" class=" form-control-label">ที่อยู่ปัจจุบัน</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="{{ $data->personnel->address }}" readonly style="height: 95px;"></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="{{ $data->executive->address }}" readonly style="height: 95px;"></textarea>
                             @error('rolse')
                             <small class="help-block form-text text-danger">{{ $message }}</small>
                             @enderror
@@ -144,7 +142,6 @@
         </div>
     </div>
     </div>
-</form>
 @endsection
 
 

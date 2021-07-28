@@ -1,23 +1,24 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-class Personnel extends Controller
-{
 
-    public function addpersonnel(Request $request){
+class Manage_Staff extends Controller
+{
+    public function addstaff(Request $request){
         $input =  $request->all();
         $this->validator($input)->validate();
         $user=[
             'username'=>$input['username'],
             'password'=>Hash::make($input['password']),
-            'rolse'=>$input['rolse'],
+            'rolse'=>'staff',
         ];
-        $personnel=[
+        $staff=[
             'title'=>$input['title'],
             'name'=>$input['name'],
             'lastname'=>$input['lastname'],
@@ -26,20 +27,19 @@ class Personnel extends Controller
 
 
         ];
-        User::create($user)->personnel()->create($personnel);
-        return redirect()->back()->with('error', 'เพิ่มข้อมูลบุคลากรสถานศึกษา สำเร็จแล้ว');
+        User::create($user)->staff()->create($staff);
+        return redirect()->back()->with('error', 'เพิ่มข้อมูลเจ้าหน้าที่กองการศึกษา สำเร็จแล้ว');
 
     }
-    public function deletepersonnel(Request $request){
+    public function deletestaff(Request $request){
         User::find($request->all()['id'])->delete();
         return back();
     }
 
-    protected function validator(array $data)
+    protected function validator(array $data,$tf=false)
     {
+        $vali = [
 
-        return Validator::make($data, [
-            "username" => ['required', 'string','max:20', 'unique:users'],
             "title" => ['required', 'string', 'max:255'],
             "name" => ['required', 'string', 'max:255'],
             "lastname" => ['required', 'string', 'max:255'],
@@ -47,19 +47,24 @@ class Personnel extends Controller
             "rolse" => ['required', 'string', 'max:255'],
             "address" => ['required', 'string', 'max:255'],
 
-        ]
-    );
+        ];
+        if($tf&&$tf==$data['username']){
+         $vali["username"] = ['required', 'string','max:20'];
+        }else {
+         $vali["username"] = ['required', 'string','max:20', 'unique:users'];
+
+        }
+        return Validator::make($data,$vali);
     }
-    public function editpersonnel(Request $request){
+    public function editstaff(Request $request){
         $input =  $request->all();
         $dbuser =  User::find($input['id']);
-
-        $this->validator($input)->validate();
+        $this->validator($input,$dbuser->username)->validate();
         $user=[
             'username'=>$input['username'],
             'rolse'=>$input['rolse'],
         ];
-        $personnel=[
+        $staff=[
             'title'=>$input['title'],
             'name'=>$input['name'],
             'lastname'=>$input['lastname'],
@@ -70,12 +75,12 @@ class Personnel extends Controller
         ];
         $edit = User::find($input['id']);
         $edit ->update($user);
-        $edit->personnel()->update($personnel);
-        return redirect()->back()->with('error', 'แก้ไขข้อมูลบุคลากรสถานศึกษา สำเร็จแล้ว');
+        $edit->staff()->update($staff);
+        return redirect()->back()->with('error', 'แก้ไขข้อมูลเจ้าหน้าที่กองการศึกษา สำเร็จแล้ว');
 
 
     }
-    public function editpasswordpersonnel(Request $request){
+    public function editpasswordstaff(Request $request){
         $input =  $request->all();
         // $this->validator($input)->validate();
         Validator::make($input, [
@@ -89,8 +94,6 @@ class Personnel extends Controller
 
         $edit = User::find($input['id']);
         $edit ->update($user);
-        return redirect()->back()->with('error', 'แก้ไขรหัสผ่าน สำเร็จแล้ว');
+        return redirect()->back()->with('error', 'แก้ไขรหัสผ่านใหม่ สำเร็จแล้ว');
     }
-
 }
-

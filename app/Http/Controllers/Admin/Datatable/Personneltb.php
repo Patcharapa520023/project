@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Datatable;
+namespace App\Http\Controllers\Admin\Datatable;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

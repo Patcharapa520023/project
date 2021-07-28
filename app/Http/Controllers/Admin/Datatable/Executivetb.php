@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Datatable;
+namespace App\Http\Controllers\Admin\Datatable;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Staff;
-class Stafftb extends Controller
+use App\Models\Executive;
+class Executivetb extends Controller
 {
     public function show(){
-        $tables = Staff::with('user')->get()->toArray();
+        $tables = Executive::with('user')->get()->toArray();
         $headtables  = array(
             array("ลำดับ","id"),
             // array("บทบาท","rolse"),
@@ -22,7 +22,7 @@ class Stafftb extends Controller
         // dd($headtables);
 
 
-        return view('page2.staff.table.table_staff',compact('headtables'));
+        return view('page2.executive.table.table_executive',compact('headtables'));
     }
     public function getdata(Request $request){
 
@@ -39,10 +39,10 @@ class Stafftb extends Controller
         $searchValue = $search_arr['value']; // Search value
 
 
-        $totalRecords = Staff::with('user')->select('count(*) as allcount')->count();
-        $totalRecordswithFilter = Staff::with('user')->select('count(*) as allcount')->where('name', 'like', '%' .$searchValue . '%')->count();
+        $totalRecords = Executive::with('user')->select('count(*) as allcount')->count();
+        $totalRecordswithFilter = Executive::with('user')->select('count(*) as allcount')->where('name', 'like', '%' .$searchValue . '%')->count();
 
-          $records =Staff::with('user')->orderBy($columnName,$columnSortOrder)
+          $records =Executive::with('user')->orderBy($columnName,$columnSortOrder)
           ->where('name', 'like', '%'.$searchValue .'%')
           ->select('*')
           ->skip($start)
@@ -50,7 +50,7 @@ class Stafftb extends Controller
           ->get();
         $data_arr = array();
         foreach($records as $key=> $record){
-                $formurl = route('delete_staff_post');
+                $formurl = route('delete_executive_post');
                 $id = $record->user->id;
                 $idbase = base64_encode($record->user->id);
                 $csrf = csrf_field();
@@ -63,12 +63,12 @@ class Stafftb extends Controller
                 $address = $record->address;
                 $telnum = $record->telnum;
                 $console = "<div class='table-data-feature'>
-                <a  href='show/$idbase/personnel'>
+                <a  href='show/$idbase/executive'>
                 <button class='item show' data-toggle='tooltip' data-placement='top' title=' data-original-title='More'>
                     <i class='fa fa-search-plus'></i>
                 </button>
                 </a>
-                <a  href='edit/$idbase/personnel'>
+                <a  href='edit/$idbase/executive'>
                 <button class='item edit' data-toggle='tooltip' data-placement='top' title=' data-original-title='Edit'>
                     <i class='fa fa-edit'></i>
                 </button>
