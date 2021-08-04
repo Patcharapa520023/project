@@ -51,12 +51,11 @@ class Yeartb extends Controller
         $data_arr = array();
         foreach($records as $key=> $record){
                 $formurl = route('delete_year_post');
-                $id = $record->user->id;
-                $idbase = base64_encode($record->user->id);
+                $id = $record->id;
+                $idbase = base64_encode($record->id);
                 $csrf = csrf_field();
                 $atplan = $record->atplan;
-                $start = $record->user->start;
-                $title = $record->title;
+                $start = $record->start;
                 $stop = $record->stop;
                 $console = "<div class='table-data-feature'>
                 <a  href='show/$idbase/year'>
@@ -69,7 +68,7 @@ class Yeartb extends Controller
                     <i class='fa fa-edit'></i>
                 </button>
                 </a>
-                <form method='POST' action='$formurl' onSubmit='dbdelete(this,`$title`)'>
+                <form method='POST' action='$formurl' onSubmit='dbdelete(this,`$id`)'>
                     $csrf
                     <input type='hidden' name='id' value='$id'>
                     <input type='hidden' name='id2' value='4'>
@@ -80,10 +79,10 @@ class Yeartb extends Controller
                 </div>";
 
             $data_arr[] = array(
-                "id" => $key+1+$start,
-                "atplan" => $title.$atplan,
+                "id" => $key+1,
+                "atplan" => $atplan,
                 // "rolse" => $rolse,
-                "start" => $start."".$stop,
+                "start" => $start,
                 // "password" => '$password',
                 // "title" => $title,
                 // "lastname" => $lastname,

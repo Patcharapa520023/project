@@ -16,15 +16,15 @@ class Manage_Year extends Controller
 
 
         $year=[
-            'atplan'=>$input['title'],
+            'atplan'=>$input['atplan'],
             'start'=>$input['start'],
-            'stop'=>$input['stop'],
+            'stop'=>$input['start']+$input['atplan']-1,
 
 
 
-        ];dd($year);
+        ];
         Year::create($year);
-        return redirect()->back()->with('error', 'เพิ่มข้อมูลพัฒนาการศึกษา สำเร็จแล้ว');
+        return redirect()->back()->with('error', 'เพิ่มข้อมูลแผนพัฒนาการศึกษา สำเร็จแล้ว');
 
     }
     public function deleteyear(Request $request){

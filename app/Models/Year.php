@@ -10,11 +10,9 @@ class Year extends Model
     use HasFactory;
     public $timestamps = false;
     protected $fillable = [
-        'title',
         'atplan',
         'start',
         'stop',
-
 
     ];
     public function user(){
