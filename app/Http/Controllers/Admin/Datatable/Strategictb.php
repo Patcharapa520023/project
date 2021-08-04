@@ -4,26 +4,23 @@ namespace App\Http\Controllers\Admin\Datatable;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\Personnel;
-class Personneltb extends Controller
+use App\Models\Year;
+use App\Models\Strategic;
+class Strategictb extends Controller
 {
     public function show(){
-        $tables = Personnel::with('user')->get()->toArray();
+        $tables = Strategic::with('year')->get()->toArray();
         $headtables  = array(
             array("ลำดับ","id"),
             // array("บทบาท","rolse"),
-            array("ชื่อผู้ใช้","username"),
+            array("ชื่อยุทธศาสตร์","name"),
             // array("รหัสผ่าน","password"),
-            array("ชื่อสถานศึกษา","name"),
-            array("ที่อยู่","address"),    
-            array("เบอร์โทรศัพท์","telnum"), 
-            array("ผู้รับผิดชอบ","responsible"),
+            array("ปีงบประมาณ","year"),
         );
         // dd($headtables);
 
 
-        return view('page2.personnel.table.table_personnel',compact('headtables'));
+        return view('page2.strategic.table.table_strategic',compact('headtables'));
     }
     public function getdata(Request $request){
 
@@ -40,10 +37,10 @@ class Personneltb extends Controller
         $searchValue = $search_arr['value']; // Search value
 
 
-        $totalRecords = Personnel::with('user')->select('count(*) as allcount')->count();
-        $totalRecordswithFilter = Personnel::with('user')->select('count(*) as allcount')->where('name', 'like', '%' .$searchValue . '%')->count();
+        $totalRecords = Strategic::with('year')->select('count(*) as allcount')->count();
+        $totalRecordswithFilter = Strategic::with('user')->select('count(*) as allcount')->where('name', 'like', '%' .$searchValue . '%')->count();
 
-          $records =Personnel::with('user')->orderBy($columnName,$columnSortOrder)
+          $records =Strategic::with('year')->orderBy($columnName,$columnSortOrder)
           ->where('name', 'like', '%'.$searchValue .'%')
           ->select('*')
           ->skip($start)
@@ -51,30 +48,25 @@ class Personneltb extends Controller
           ->get();
         $data_arr = array();
         foreach($records as $key=> $record){
-                $formurl = route('delete_personnel_post');
-                $id = $record->user->id;
-                $idbase = base64_encode($record->user->id);
+                $formurl = route('delete_strategic_post');
+                $id = $record->strategic->id;
+                /*$idbase = base64_encode($record->user->id);*/
                 $csrf = csrf_field();
                 $name = $record->name;
-                $rolse = $record->user->rolse;
-                $username = $record->user->username;
-                $password = $record->user->password;
-                $title = $record->title;
-                $responsible = $record->responsible;
-                $address = $record->address;
-                $telnum = $record->telnum;
+                $rolse = $record->year->rolse;
+                $year = $record->year;
                 $console = "<div class='table-data-feature'>
-                <a  href='show/$idbase/personnel'>
+                <a  href='show/$idbase/strategic'>
                 <button class='item show' data-toggle='tooltip' data-placement='top' title=' data-original-title='More'>
                     <i class='fa fa-search-plus'></i>
                 </button>
                 </a>
-                <a  href='edit/$idbase/personnel'>
+                <a  href='edit/$idbase/strategice'>
                 <button class='item edit' data-toggle='tooltip' data-placement='top' title=' data-original-title='Edit'>
                     <i class='fa fa-edit'></i>
                 </button>
                 </a>
-                <form method='POST' action='$formurl' onSubmit='dbdelete(this,`$title$name $responsible`)'>
+                <form method='POST' action='$formurl' onSubmit='dbdelete(this,`$name$year`)'>
                     $csrf
                     <input type='hidden' name='id' value='$id'>
                     <input type='hidden' name='id2' value='4'>
@@ -85,17 +77,11 @@ class Personneltb extends Controller
                 </div>";
 
             $data_arr[] = array(
-                "id" => $key+1+$start,
-                "name" => $title.$name,
+                "id" => $key+1+$strategic,
+                "name" => $name,
                 // "rolse" => $rolse,
-                "username" => $username,
-                // "password" => '$password',
-                // "title" => $title,
-                // "lastname" => $lastname,
-                "address" => $address,
-                "telnum" => $telnum,
+                "year" => $year,
                 "console" => $console,
-                "responsible" =>$responsible,
 
             );
         }

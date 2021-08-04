@@ -5,9 +5,9 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class Year
+class Strategic
 {
-/**
+    /**
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -16,7 +16,7 @@ class Year
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->rolse=='year'){
+        if(auth()->user()->rolse=="strategic"){
             return $next($request);
         }
         abort(404);

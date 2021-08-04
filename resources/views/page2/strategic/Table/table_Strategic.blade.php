@@ -7,7 +7,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>ตารางข้อมูลเจ้าหน้าที่กองการศึกษา</h1>
+                        <h1>ตารางข้อมูลยุทธ์ศาสตร์</h1>
                     </div>
                 </div>
             </div>
@@ -15,8 +15,8 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li><a href="#">จัดการข้อมูลผู้ใช้</a></li>
-                            <li><a href="http://127.0.0.1:8000/admin/fiscal"><u>เจ้าหน้าที่กองการศึกษา</u></a></li>
+                            <li><a href="#">จัดการข้อมูลแผนพัฒนาการศึกษา</a></li>
+                            <li><a href="http://127.0.0.1:8000/admin/strategic"><u>ข้อมูลยุทธ์ศาสตร์</u></a></li>
                             {{-- <li class="active">Data table</li> --}}
                         </ol>
                     </div>
@@ -32,9 +32,9 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header d-flex p-2 justify-content-between align-items-center pl-4 pr-4">
-                                    <strong class="card-title">ตารางข้อมูล</strong>
-                                        <a class="addcus btn btn-outline-success" href="{{ route('add_fiscal') }}">
-                                            <i class="fa fa-plus"></i>&nbsp;เพิ่มข้อมูลเจ้าหน้าที่กองการศึกษา
+                                    <strong class="card-title">ตารางข้อมูลยุทธ์ศาสตร์</strong>
+                                        <a class="addcus btn btn-outline-success" href="{{ route('add_strategic') }}">
+                                            <i class="fa fa-plus"></i>&nbsp;เพิ่มข้อมูลข้อมูลยุทธ์ศาสตร์
                                         </a>
                             </div>
                             <div class="card-body">
@@ -99,7 +99,7 @@
                     },
                 processing: true,
                 serverSide: true,
-                ajax: { url: "{{route('datafiscal')}}",
+                ajax: { url: "{{route('datastrategic')}}",
                         type: "post",
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     },

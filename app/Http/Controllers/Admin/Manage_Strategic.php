@@ -5,33 +5,31 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Models\User;
+use App\Models\Year;
 use Illuminate\Support\Facades\Hash;
 
-class Manage_Personnel extends Controller
+class Manage_Strategic extends Controller
 {
-    public function addpersonnel(Request $request){
+    public function addstrategic(Request $request){
         $input =  $request->all();
         $this->validator($input)->validate();
         $user=[
             'username'=>$input['username'],
             'password'=>Hash::make($input['password']),
-            'rolse'=>'personnel',
+            'rolse'=>'strategic',
         ];
-        $personnel=[
+        $strategic=[
             'title'=>$input['title'],
             'name'=>$input['name'],
-            'address'=>$input['address'],
-            'responsible'=>$input['responsible'],
-            'telnum'=>$input['phone'],
+            'year'=>$input['year'],
 
 
         ];
-        User::create($user)->personnel()->create($personnel);
-        return redirect()->back()->with('error', 'เพิ่มข้อมูลบุคลากรสถานศึกษา สำเร็จแล้ว');
+        User::create($user)->strategic()->create($strategic);
+        return redirect()->back()->with('error', 'เพิ่มข้อมูลยุทธศาสตร์ สำเร็จแล้ว');
 
     }
-    public function deletepersonnel(Request $request){
+    public function deletestrategic(Request $request){
         User::find($request->all()['id'])->delete();
         return back();
     }
@@ -42,10 +40,9 @@ class Manage_Personnel extends Controller
 
             "title" => ['required', 'string', 'max:255'],
             "name" => ['required', 'string', 'max:255'],
-            "phone" =>['required', 'string', 'max:255'],
-            "rolse" => ['required', 'string', 'max:255'],
-            "address" => ['required', 'string', 'max:255'],
-            "responsible" => ['required', 'string', 'max:255'],
+            "year" => ['required', 'string', 'max:255'],
+
+
         ];
         if($tf&&$tf==$data['username']){
          $vali["username"] = ['required', 'string','max:20'];
@@ -55,30 +52,30 @@ class Manage_Personnel extends Controller
         }
         return Validator::make($data,$vali);
     }
-    public function editpersonnel(Request $request){
+    public function editstrategic(Request $request){
         $input =  $request->all();
-        $dbuser =  User::find($input['id']);
+        $dbuser =  Year::find($input['id']);
         $this->validator($input,$dbuser->username)->validate();
         $user=[
             'username'=>$input['username'],
             'rolse'=>$input['rolse'],
         ];
-        $personnel=[
+        $strategic=[
             'title'=>$input['title'],
             'name'=>$input['name'],
-            'address'=>$input['address'],
-            'telnum'=>$input['phone'],
-            'responsible'=>$input['responsible'],
+            'year'=>$input['year'],
+
+
 
         ];
         $edit = User::find($input['id']);
         $edit ->update($user);
-        $edit->personnel()->update($personnel);
-        return redirect()->back()->with('error', 'แก้ไขข้อมูลสถานศึกษา สำเร็จแล้ว');
+        $edit->strategic()->update($strategic);
+        return redirect()->back()->with('error', 'แก้ไขข้อมูลผู้บริหาร สำเร็จแล้ว');
 
 
     }
-    public function editpasswordpersonnel(Request $request){
+    public function editpasswordstrategic(Request $request){
         $input =  $request->all();
         // $this->validator($input)->validate();
         Validator::make($input, [

@@ -25,6 +25,10 @@ class Index extends Controller
         $tables = User::joinyear();
         return view('page2.table.table_year',compact('tables'));
     }
+    public function tablestrategic(){
+        $tables = User::joinyear();
+        return view('page2.table.table_strategic',compact('tables'));
+    }
 
         // formpersonnel
     public function formaddpersonnel(Request $request){
@@ -99,11 +103,22 @@ class Index extends Controller
         //เก็บไว้เทสนะอิอิ    dd($data->toArray());
        return view('page2.year.button.edityear',compact('data'));
     }
-    public function formeditpasswordyear(Request $request){
-       $data=User::with('year')->find(base64_decode($request->id));
-        return view('page2.year.button.editpasswordyear',compact('data'));
+    // end formyear
+
+     // formyear
+     public function formaddstrategic(Request $request){
+        return view('page2.year.button.addstrategic');
     }
-    // end formpersonnel
+    public function formshowstrategic(Request $request){
+       $data=User::with('strategic')->find(base64_decode($request->id));
+        return view('page2.strategic.button.showstrategic',compact('data'));
+    }
+    public function formeditstrategic(Request $request){
+       $data=User::with('strategic')->find(base64_decode($request->id));
+        //เก็บไว้เทสนะอิอิ    dd($data->toArray());
+       return view('page2.strategicr.button.editstrategic',compact('data'));
+    }
+    // end formyear
 }
 
 

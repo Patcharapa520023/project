@@ -57,10 +57,10 @@
                         <a href="{{ route("dashboad") }}"><i class="menu-icon ti ti-user"></i>ปีงบประมาณ</a>
                     </li>
                     <li class="{{(Request::url()==route('dashboad'))?'acกหฟtive':false}}">
-                        <a href="{{ route("dashboad") }}"><i class="menu-icon ti  ti-user"></i>เจ้าหน้าที่กองการศึกษา</a>
+                        <a href="{{ route("dashboad") }}"><i class="menu-icon ti  ti-user"></i>ยุทธศาสตร์</a>
                     </li>
                     <li class="{{(Request::url()==route('table'))?'active':false}}">
-                        <a href="{{ route("table") }}"><i class="menu-icon ti ti-user"></i>สถานศึกษา</a>
+                        <a href="{{ route("table") }}"><i class="menu-icon ti ti-user"></i>กลยุทธ์</a>
                     </li>
                     </li> --}}
 
@@ -76,13 +76,13 @@
                             </ul>
                     </li>
 
-                    <li class="menu-item-has-children dropdown {{(Request::url()==route('table_Year')||Request::url()==route('table_Staff')||Request::url()==route('table_Personnel')||Request::url()==route('add_personnel'))?'active':false}}">
+                    <li class="menu-item-has-children dropdown {{(Request::url()==route('table_Year')||Request::url()==route('table_Strategic')||Request::url()==route('table_Personnel')||Request::url()==route('add_personnel'))?'active':false}}">
 
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>จัดการข้อมูลแผนพัฒนาการศึกษา</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>จัดการแผนพัฒนาการศึกษา</a>
                             <ul class="sub-menu children dropdown-menu">
                                 <li><i class="fa fa-puzzle-piece"></i><a href="{{ route("table_Year") }}" style="left: 0px">ปีงบประมาณ</a></li>
-                                <li><i class="fa fa-id-badge"></i><a href="{{ route("table_Staff") }}">เจ้าหน้าที่กองการศึกษา</a></li>
-                                <li><i class="fa fa-bars"></i><a href="{{ route("table_Personnel") }}">สถานศึกษา</a></li>
+                                <li><i class="fa fa-id-badge"></i><a href="{{ route("table_Strategic") }}">ยุทธศาสตร์</a></li>
+                                <li><i class="fa fa-bars"></i><a href="{{ route("table_Personnel") }}">กลยุทธ์</a></li>
                             </ul>
                     </li>
                 </ul>

@@ -7,7 +7,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>แก้ไขข้อมูลปีงบแผนา</h1>
+                        <h1>แก้ไขข้อมูลปีงบประมาณ</h1>
                     </div>
                 </div>
             </div>
@@ -15,8 +15,8 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li><a href="http://127.0.0.1:8000/admin/year">เปีงบแผน</a></li>
-                            <li><a href="#"><u>แก้ไขข้อมูลปีงบแผน</u></a></li>
+                            <li><a href="http://127.0.0.1:8000/admin/year">ปีงบประมาณ</a></li>
+                            <li><a href="#"><u>แก้ไขข้อมูลปีงบประมาณ</u></a></li>
                             {{-- <li class="active">Data table</li> --}}
                         </ol>
                     </div>
@@ -31,7 +31,7 @@
     @csrf
     <div class="card">
         <div class="card-header">
-            <strong>แก้ไขข้อมูลส่วนตัว</strong>
+            <strong>แก้ไขข้อมูลปีงบประมาณ</strong>
         </div>
         <div class="card-footer">
             <button type="submit" class="btn btn-success btn-sm">
@@ -40,9 +40,7 @@
             <button type="reset" class="btn btn-danger btn-sm">
                 <i class="fa fa-ban"></i> รีเฟรช
             </button>
-            <a href='/admin/editpassword/{{ base64_encode($data->id) }}/year'type="button" class="btn btn-primary btn-sm">
-                <i class="fa fa-unlock-alt"></i> แก้ไขรหัสผ่าน
-            </a>
+            
         </div>
         @if(session('error'))
         <div class="alert alert-success " role="alert">
@@ -81,7 +79,7 @@
                             <div class="col col-md-2"><label for="select" class=" form-control-label">คำนำหน้า</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input class="form-control" type="text" value="{{ $data->year->title }}" name="title" >
+                                <input class="form-control" type="text" value="{{ $data->strategic->title }}" name="title" >
                                 @error('title')
                                 <small class="help-block form-text text-danger">{{ $message }}</small>
                                 @enderror
@@ -90,7 +88,7 @@
                         <div class="row form-group">
                             <div class="col col-md-2"><label for="name-input" class=" form-control-label">ชื่อ</label></div>
                             <div class="col-12 col-md-9">
-                                <input class="form-control" type="text" value="{{ $data->year->name }}" name="name" >
+                                <input class="form-control" type="text" value="{{ $data->strategic->name }}" name="name" >
                                     @error('name')
                                     <small class="help-block form-text text-danger">{{ $message }}</small>
                                     @enderror
@@ -100,7 +98,7 @@
                             <div class="col col-md-2"><label for="lastname-input"
                                     class=" form-control-label">นามสกุล</label></div>
                             <div class="col-12 col-md-9">
-                                <input class="form-control" type="text" value="{{ $data->year->lastname }}" name="lastname" >
+                                <input class="form-control" type="text" value="{{ $data->strategic->lastname }}" name="lastname" >
                                     @error('lastname')
                                     <small class="help-block form-text text-danger">{{ $message }}</small>
                                     @enderror
@@ -118,7 +116,7 @@
                         <div class="col col-md-2"><label for="phone-input" class=" form-control-label">โทรศัพท์</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <input class="form-control" type="text" value="{{ $data->year->telnum }}" name="phone">
+                            <input class="form-control" type="text" value="{{ $data->strategic->telnum }}" name="phone">
                                 @error('phone')
                                 <small class="help-block form-text text-danger">{{ $message }}</small>
                             @enderror
@@ -138,7 +136,7 @@
                         <div class="col col-md-2"><label for="select" class=" form-control-label">ที่อยู่ปัจจุบัน</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"   style="height: 95px;" name="address">{{ $data->year->address }} </textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"   style="height: 95px;" name="address">{{ $data->executive->address }} </textarea>
                             @error('rolse')
                             <small class="help-block form-text text-danger">{{ $message }}</small>
                             @enderror

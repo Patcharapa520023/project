@@ -77,13 +77,7 @@
                             <div class="col col-md-2"><label for="select" class=" form-control-label">คำนำหน้า</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <select value="{{ old('title') }}" name="title" id="select"
-                                    class="form-control-sm form-control">
-                                    <option value="">เลือกคำนำหน้า</option>
-                                    <option value="นาย">นาย</option>
-                                    <option value="นาง">นาง</option>
-                                    <option value="นางสาว">นางสาว</option>
-                                </select>
+                        
                                 @error('title')
                                     <small class="help-block form-text text-danger">{{ $message }}</small>
                                 @enderror

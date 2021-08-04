@@ -7,7 +7,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>แก้ไขข้อมูลเจ้าหน้าที่กองการศึกษา</h1>
+                        <h1>แก้ไขข้อมูลผู้บริหาร</h1>
                     </div>
                 </div>
             </div>
@@ -15,8 +15,8 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li><a href="http://127.0.0.1:8000/admin/staff">เจ้าหน้าที่กองการศึกษา</a></li>
-                            <li><a href="#"><u>แก้ไขข้อมูลเจ้าหน้าที่กองการศึกษา</u></a></li>
+                            <li><a href="http://127.0.0.1:8000/admin/strategic">ผู้บริหาร</a></li>
+                            <li><a href="#"><u>แก้ไขข้อมูลผู้บริหาร</u></a></li>
                             {{-- <li class="active">Data table</li> --}}
                         </ol>
                     </div>
@@ -27,7 +27,7 @@
 </div>
 @endsection
 @section('content')
-<form action="{{route('edit_staff_post')}}" method="post" enctype="multipart/form-data" class="form-horizontal" autocomplete="off">
+<form action="{{route('edit_strategic_post')}}" method="post" enctype="multipart/form-data" class="form-horizontal" autocomplete="off">
     @csrf
     <div class="card">
         <div class="card-header">
@@ -40,7 +40,7 @@
             <button type="reset" class="btn btn-danger btn-sm">
                 <i class="fa fa-ban"></i> รีเฟรช
             </button>
-            <a href='/admin/editpassword/{{ base64_encode($data->id) }}/staff'type="button" class="btn btn-primary btn-sm">
+            <a href='/admin/editpassword/{{ base64_encode($data->id) }}/strategic'type="button" class="btn btn-primary btn-sm">
                 <i class="fa fa-unlock-alt"></i> แก้ไขรหัสผ่าน
             </a>
         </div>
@@ -81,7 +81,7 @@
                             <div class="col col-md-2"><label for="select" class=" form-control-label">คำนำหน้า</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input class="form-control" type="text" value="{{ $data->staff->title }}" name="title" >
+                                <input class="form-control" type="text" value="{{ $data->strategic->title }}" name="title" >
                                 @error('title')
                                 <small class="help-block form-text text-danger">{{ $message }}</small>
                                 @enderror
@@ -90,7 +90,7 @@
                         <div class="row form-group">
                             <div class="col col-md-2"><label for="name-input" class=" form-control-label">ชื่อ</label></div>
                             <div class="col-12 col-md-9">
-                                <input class="form-control" type="text" value="{{ $data->staff->name }}" name="name" >
+                                <input class="form-control" type="text" value="{{ $data->strategic->name }}" name="name" >
                                     @error('name')
                                     <small class="help-block form-text text-danger">{{ $message }}</small>
                                     @enderror
@@ -100,7 +100,7 @@
                             <div class="col col-md-2"><label for="lastname-input"
                                     class=" form-control-label">นามสกุล</label></div>
                             <div class="col-12 col-md-9">
-                                <input class="form-control" type="text" value="{{ $data->staff->lastname }}" name="lastname" >
+                                <input class="form-control" type="text" value="{{ $data->strategic->lastname }}" name="lastname" >
                                     @error('lastname')
                                     <small class="help-block form-text text-danger">{{ $message }}</small>
                                     @enderror
@@ -118,7 +118,7 @@
                         <div class="col col-md-2"><label for="phone-input" class=" form-control-label">โทรศัพท์</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <input class="form-control" type="text" value="{{ $data->staff->telnum }}" name="phone">
+                            <input class="form-control" type="text" value="{{ $data->strategic->telnum }}" name="phone">
                                 @error('phone')
                                 <small class="help-block form-text text-danger">{{ $message }}</small>
                             @enderror
@@ -138,7 +138,7 @@
                         <div class="col col-md-2"><label for="select" class=" form-control-label">ที่อยู่ปัจจุบัน</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"   style="height: 95px;" name="address">{{ $data->staff->address }} </textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"   style="height: 95px;" name="address">{{ $data->executive->address }} </textarea>
                             @error('rolse')
                             <small class="help-block form-text text-danger">{{ $message }}</small>
                             @enderror
