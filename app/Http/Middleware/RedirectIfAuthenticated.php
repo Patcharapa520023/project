@@ -23,7 +23,14 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                if(Auth::user()->rolse=='admin'){
+                    return redirect()->route('dashboad');
+                };
+                echo "มาหน้านี้เพิ่ม  else if ข้างล่าง' app\Http\Middleware\RedirectIfAuthenticated.php";
+                return ;
+                // else if(Auth::user()->rolse=="personnel"){
+                //     return redirect('หน้าทีต้องการ redurect ไป');
+                // }
             }
         }
 
