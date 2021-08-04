@@ -9,7 +9,7 @@ use App\Models\Year;
 class Yeartb extends Controller
 {
     public function show(){
-        $tables =  Year::with('user')->get()->toArray();
+        $tables =  Year::get()->toArray();
         $headtables  = array(
             array("ลำดับ","id"),
             // array("บทบาท","rolse"),
@@ -17,8 +17,7 @@ class Yeartb extends Controller
             // array("รหัสผ่าน","password"),
             array("ปีที่เริ่ม","start"),
             array("ปีที่สิ้นสุด","stop"),
-            array("เบอร์โทรศัพท์","time"),
-        
+
         );
         // dd($headtables);
 
@@ -40,11 +39,11 @@ class Yeartb extends Controller
         $searchValue = $search_arr['value']; // Search value
 
 
-        $totalRecords =  Year::with('user')->select('count(*) as allcount')->count();
-        $totalRecordswithFilter = Year::with('user')->select('count(*) as allcount')->where('name', 'like', '%' .$searchValue . '%')->count();
+        $totalRecords =  Year::select('count(*) as allcount')->count();
+        $totalRecordswithFilter = Year::select('count(*) as allcount')->where('start', 'like', '%' .$searchValue . '%')->count();
 
-            $records = Year::with('user')->orderBy($columnName,$columnSortOrder)
-            ->where('name', 'like', '%'.$searchValue .'%')
+            $records = Year::orderBy($columnName,$columnSortOrder)
+            ->where('start', 'like', '%'.$searchValue .'%')
             ->select('*')
             ->skip($start)
             ->take($rowperpage)
@@ -56,9 +55,7 @@ class Yeartb extends Controller
                 $idbase = base64_encode($record->user->id);
                 $csrf = csrf_field();
                 $atplan = $record->atplan;
-                $rolse = $record->user->rolse;
                 $start = $record->user->start;
-                $password = $record->user->password;
                 $title = $record->title;
                 $stop = $record->stop;
                 $console = "<div class='table-data-feature'>
@@ -72,7 +69,7 @@ class Yeartb extends Controller
                     <i class='fa fa-edit'></i>
                 </button>
                 </a>
-                <form method='POST' action='$formurl' onSubmit='dbdelete(this,`$title$name $lastname`)'>
+                <form method='POST' action='$formurl' onSubmit='dbdelete(this,`$title `)'>
                     $csrf
                     <input type='hidden' name='id' value='$id'>
                     <input type='hidden' name='id2' value='4'>
@@ -91,7 +88,6 @@ class Yeartb extends Controller
                 // "title" => $title,
                 // "lastname" => $lastname,
                 "stop" => $stop,
-                "time" => $time,
                 "console" => $console,
 
             );
