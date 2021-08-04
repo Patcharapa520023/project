@@ -3,20 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Models\User;
-<<<<<<< HEAD
-use App\Http\Controllers\Personnel;
-use App\Http\Controllers\Datatable\Personneltb;
-use App\Http\Controllers\Datatable\Executivetb;
-use App\Http\Controllers\Datatable\Stafftb;
-use App\Http\Middleware\Staff;
-=======
 use App\Http\Controllers\Admin\Manage_Personnel;
 use App\Http\Controllers\Admin\Datatable\Personneltb;
 use App\Http\Controllers\Admin\Datatable\Executivetb;
 use App\Http\Controllers\Admin\Datatable\Stafftb;
 use App\Http\Controllers\Admin\Manage_Staff;
 use App\Http\Controllers\Admin\Manage_Executive;
->>>>>>> origin/master
 
 /*
 |--------------------------------------------------------------------------
@@ -72,16 +64,6 @@ Route::group([
     Route::get('/personnel',[Personneltb::class,"show"])->name("table_Personnel");
     Route::post('/dataper',[Personneltb::class,"getdata"])->name("datapersonnel");
 
-<<<<<<< HEAD
-
-
-
-
-});
-
-
-Route::get('/หน้าแรก',[HomeController::class,'pageindex'])->name("home");
-=======
 
     Route::get('/show/{id}/personnel','Index@formshowpersonnel')->name("show_personnel");
     Route::get('add/personnel','Index@formaddpersonnel')->name("add_personnel");
@@ -93,7 +75,6 @@ Route::get('/หน้าแรก',[HomeController::class,'pageindex'])->name("
     Route::post('editpassword/personnel',[Manage_Personnel::class,'editpasswordpersonnel'])->name("editpassword_personnel_post");
     Route::post('delete/personnel',[Manage_Personnel::class,'deletepersonnel'])->name("delete_personnel_post");
     // end personel
->>>>>>> origin/master
 
 
 
@@ -103,4 +84,7 @@ Route::get('/หน้าแรก',[HomeController::class,'pageindex'])->name("
 
 
 
- Auth::routes();
+
+Route::get('/', 'App\Http\Controllers\Auth\LoginController@showLoginForm')->name('showlogin');
+Route::post('/loign', 'App\Http\Controllers\Auth\LoginController@login')->name('login');
+Route::post('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
