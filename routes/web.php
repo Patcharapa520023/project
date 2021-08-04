@@ -86,9 +86,5 @@ Route::group([
 
 
 Route::get('/', 'App\Http\Controllers\Auth\LoginController@showLoginForm')->name('showlogin');
-<<<<<<< HEAD
 Route::post('/login', 'App\Http\Controllers\Auth\LoginController@login')->name('login');
-=======
-Route::post('/loign', 'App\Http\Controllers\Auth\LoginController@login')->name('login');
->>>>>>> 721ef64 (.)
 Route::post('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
