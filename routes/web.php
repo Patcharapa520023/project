@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -81,7 +80,7 @@ Route::group([
     Route::post('delete/personnel',[Manage_Personnel::class,'deletepersonnel'])->name("delete_personnel_post");
     // end personel
 
-    
+
     // year
     Route::get('/year',[Yeartb::class,"show"])->name("table_Year");
     Route::post('/datayear',[Yeartb::class,"getdata"])->name("datayear");
@@ -136,5 +135,3 @@ Route::group([
 Route::get('/', 'App\Http\Controllers\Auth\LoginController@showLoginForm')->name('showlogin');
 Route::post('/login', 'App\Http\Controllers\Auth\LoginController@login')->name('login');
 Route::post('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
-=======
->>>>>>> 356619b (ลอง)

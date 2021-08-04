@@ -13,22 +13,17 @@ class Manage_Year extends Controller
 {
     public function addyear(Request $request){
         $input =  $request->all();
-        $this->validator($input)->validate();
-        $user=[
-            'username'=>$input['username'],
-            'password'=>Hash::make($input['password']),
-            'rolse'=>'year',
-        ];
+
+
         $year=[
-            'id'=>$input['id'],
-            'atplan'=>$input['atplan'],
+            'atplan'=>$input['title'],
             'start'=>$input['start'],
             'stop'=>$input['stop'],
-            
 
 
-        ];
-        User::create($user)->year()->create($year);
+
+        ];dd($year);
+        Year::create($year);
         return redirect()->back()->with('error', 'เพิ่มข้อมูลพัฒนาการศึกษา สำเร็จแล้ว');
 
     }
@@ -46,7 +41,7 @@ class Manage_Year extends Controller
             "start" => ['required', 'string', 'max:255'],
             "stop" =>['required', 'string', 'max:255'],
             "rolse" => ['required', 'string', 'max:255'],
-        
+
 
         ];
         /*if($tf&&$tf==$data['username']){
