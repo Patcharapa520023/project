@@ -21,6 +21,17 @@ class Index extends Controller
         $tables = User::joinpersonnel();
         return view('page2.table.table_personnel',compact('tables'));
     }
+    public function tablestrategics(){
+        return view('page2.table_Strategics');
+    }
+    public function tabletactics(){
+        return view('page2.table_Tactics');
+    }
+    public function tableyear(){
+        $tables = User::joinyear();
+        return view('page2.table.tableyear',compact('tables'));
+
+    }
 
         // formpersonnel
     public function formaddpersonnel(Request $request){
@@ -60,27 +71,64 @@ class Index extends Controller
      }
     // end formstaff
 
-        // formexecutive
-     public function formshowexecutive(Request $request){
-       $data=User::with('executive')->find(base64_decode($request->id));
-        return view('page2.executive.button.showexecutive',compact('data'));
+        // formeyear
+     public function formshowyear(Request $request){
+       $data=User::with('year')->find(base64_decode($request->id));
+        return view('page2.year.button.showyear',compact('data'));
     }
-    public function formexecutive(Request $request){
-        return view('page2.executive.button.addexecutive');
+    public function formyear(Request $request){
+        return view('page2.year.button.addyear');
     }
-    public function formeditexecutive(Request $request){
-        $data=User::with('executive')->find(base64_decode($request->id));
+    public function formeditexyear(Request $request){
+        $data=User::with('year')->find(base64_decode($request->id));
          //เก็บไว้เทสนะอิอิ    dd($data->toArray());
-        return view('page2.executive.button.editexecutive',compact('data'));
+        return view('page2.year.button.edityear',compact('data'));
      }
-     public function formeditpasswordexecutive(Request $request){
-        $data=User::with('executive')->find(base64_decode($request->id));
-         return view('page2.executive.button.editpasswordexecutive',compact('data'));
+     public function formeditpasswordyear(Request $request){
+        $data=User::with('year')->find(base64_decode($request->id));
+         return view('page2.year.button.editpasswordyear',compact('data'));
      }
-     public function formaddexecutive(Request $request){
-        return view('page2.executive.button.addexecutive');
+     public function formaddyear(Request $request){
+        return view('page2.year.button.addyear');
     }
-    // end formexecutive
+    // end formyear
+
+     // formstrategics
+     public function formaddstrategics(Request $request){
+        return view('page2.strategics.button.addstrategics');
+    }
+    public function formshowstrategics(Request $request){
+       $data=User::with('strategics')->find(base64_decode($request->id));
+        return view('page2.strategics.button.showstrategics',compact('data'));
+    }
+    public function formeditstrategics(Request $request){
+       $data=User::with('strategics')->find(base64_decode($request->id));
+        //เก็บไว้เทสนะอิอิ    dd($data->toArray());
+       return view('page2.strategics.button.editstrategics',compact('data'));
+    }
+    // end formstrategics
+
+      // formtactics
+      public function formshowtactics(Request $request){
+        $data=User::with('tactics')->find(base64_decode($request->id));
+         return view('page2.tactics.button.showtactics',compact('data'));
+     }
+     public function formtactics(Request $request){
+         return view('page2.tactics.button.addtactics');
+     }
+     public function formedittactics(Request $request){
+         $data=User::with('tactics')->find(base64_decode($request->id));
+          //เก็บไว้เทสนะอิอิ    dd($data->toArray());
+         return view('page2.tactics.button.edittactics',compact('data'));
+      }
+      public function formeditpasswordtactics(Request $request){
+         $data=User::with('tactics')->find(base64_decode($request->id));
+          return view('page2.tactics.button.editpasswordtactics',compact('data'));
+      }
+      public function formaddtactics(Request $request){
+         return view('page2.tactics.button.addtactics');
+     }
+     // end formtactics
 }
 
 

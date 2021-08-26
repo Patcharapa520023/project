@@ -7,7 +7,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>เพิ่มข้อมูลบุคลากรสถานศึกษา</h1>
+                        <h1>เพิ่มข้อมูลปีงบประมาณ</h1>
                     </div>
                 </div>
             </div>
@@ -15,9 +15,9 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li><a href="#">จัดการข้อมูลผู้ใช้</a></li>
-                            <li><a href="#">บุคลากรสถานศึกษา</a></li>
-                            <li><a href="#"><u>เพิ่มข้อมูลบุคลากรสถานศึกษา</u></a></li>
+                            <li><a href="#">อ1</a></li>
+                            <li><a href="#">อ2</a></li>
+                            <li><a href="#"><u>เพิ่มข้อมูลปีงบประมาณ</u></a></li>
                             {{-- <li class="active">Data table</li> --}}
                         </ol>
                     </div>

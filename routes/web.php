@@ -9,6 +9,12 @@ use App\Http\Controllers\Admin\Datatable\Executivetb;
 use App\Http\Controllers\Admin\Datatable\Stafftb;
 use App\Http\Controllers\Admin\Manage_Staff;
 use App\Http\Controllers\Admin\Manage_Executive;
+use App\Http\Controllers\Admin\Manage_Year;
+use App\Http\Controllers\Admin\Datatable\Yeartb;
+use App\Http\Controllers\Admin\Manage_Strategics;
+use App\Http\Controllers\Admin\Datatable\Strategicstb;
+use App\Http\Controllers\Admin\Manage_Tactics;
+use App\Http\Controllers\Admin\Datatable\Tacticstb;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,6 +82,54 @@ Route::group([
     Route::post('delete/personnel',[Manage_Personnel::class,'deletepersonnel'])->name("delete_personnel_post");
     // end personel
 
+     // Year
+    Route::get('/year',[Yeartb::class,"show"])->name("table_Year");
+    Route::post('/dataper',[Yeartb::class,"getdata"])->name("datayear"); 
+
+    Route::get('/show/{id}/year','Index@formshowyear')->name("show_year");
+    Route::get('add/year','Index@formaddyear')->name("add_year");
+    Route::get('/edit/{id}/year','Index@formedityear')->name("edit_year");
+    Route::get('/editpassword/{id}/year','Index@formeditpasswordyear')->name("editpassword_year");
+
+    Route::post('add/year',[Manage_Year::class,'addyear'])->name("add_yearl_post");
+    Route::post('edit/year',[Manage_Year::class,'edityear'])->name("edit_year_post");
+    Route::post('editpassword/year',[Manage_Year::class,'editpasswordyear'])->name("editpassword_year_post");
+    Route::post('delete/year',[Manage_Year::class,'deleteyear'])->name("delete_year_post");
+     // end Year
+
+ // Strategics
+    Route::get('/strategics',[Strategicstb::class,"show"])->name("table_Strategics");
+    Route::post('/dataper',[Strategicstb::class,"getdata"])->name("datastrategics");
+
+
+    Route::get('/show/{id}/strategics','Index@formshowstrategics')->name("show_strategics");
+    Route::get('add/strategicsl','Index@formaddstrategics')->name("add_strategics");
+    Route::get('/edit/{id}/strategics','Index@formeditstrategics')->name("edit_strategics");
+    Route::get('/editpassword/{id}/strategics','Index@formeditpasswordstrategics')->name("editpassword_strategics");
+
+    Route::post('add/strategics',[Manage_Strategics::class,'addstrategics'])->name("add_strategics_post");
+    Route::post('edit/strategics',[Manage_Strategics::class,'editstrategics'])->name("edit_strategics_post");
+    Route::post('editpassword/strategics',[Manage_Strategics::class,'editpasswordstrategics'])->name("editpassword_strategics_post");
+    Route::post('delete/strategics',[Manage_Strategics::class,'deletestrategics'])->name("delete_strategics_post");
+    // end Strategics
+    
+ // Tactics
+    Route::get('/tactics',[Tacticstb::class,"show"])->name("table_Tactics");
+    Route::post('/dataper',[Tacticstb::class,"getdata"])->name("datatactics"); 
+
+    Route::get('/show/{id}/tactics','Index@formshowtactics')->name("show_tactics");
+    Route::get('add/tactics','Index@formaddtactics')->name("add_tactics");
+    Route::get('/edit/{id}tactics','Index@formedittactics')->name("edit_tactics");
+    Route::get('/editpassword/{id}/tactics','Index@formeditpasswordtactics')->name("editpassword_tactics");
+
+    Route::post('add/tactics',[Manage_Tactics::class,'addtacticsl'])->name("add_tactics_post");
+    Route::post('edit/tactics',[Manage_Tactics::class,'edittactics'])->name("edit_tactics_post");
+    Route::post('editpassword/tactics',[Manage_Tactics::class,'editpasswordtactics'])->name("editpassword_tactics_post");
+    Route::post('delete/tacticsl',[Manage_Tactics::class,'deletetactics'])->name("delete_tactics_post");
+     // end Tactics
+    
+    
+    
 
 
 

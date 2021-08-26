@@ -41,10 +41,10 @@
                         <a href="{{ route("dashboad") }}"><i class="menu-icon fa fa-laptop"></i>เดชบอด</a>
                     </li>
                     {{-- <li class="menu-title">จัดการข้อมูลผู้ใช้</li>
-                    <li class="{{(Request::url()==route('dashboad'))?'acกหฟtive':false}}">
+                    <li class="{{(Request::url()==route('dashboad'))?'active':false}}">
                         <a href="{{ route("dashboad") }}"><i class="menu-icon ti ti-user"></i>ผู้บริหาร</a>
                     </li>
-                    <li class="{{(Request::url()==route('dashboad'))?'acกหฟtive':false}}">
+                    <li class="{{(Request::url()==route('dashboad'))?'active':false}}">
                         <a href="{{ route("dashboad") }}"><i class="menu-icon ti  ti-user"></i>เจ้าหน้าที่กองการศึกษา</a>
                     </li>
                     <li class="{{(Request::url()==route('table'))?'active':false}}">
@@ -52,7 +52,18 @@
                     </li>
                     </li> --}}
 
-                    <li class="menu-title">จัดการข้อมูลพืนฐาน</li><!-- /.menu-title -->
+                    {{-- <li class="menu-title">จัดปีงบประมาณ</li>
+                    <li class="{{(Request::url()==route('dashboad'))?'active':false}}">
+                        <a href="{{ route("table") }}"><i class="menu-icon ti  ti-user"></i>ปีงบประมาณ</a>
+                    <li class="{{(Request::url()==route('table'))?'active':false}}">
+                        <a href="{{ route("table") }}"><i class="menu-icon ti ti-user"></i>ยุทธศาสตร์</a>
+                    </li>
+                    <li class="{{(Request::url()==route('dashboad'))?'active':false}}">
+                        <a href="{{ route("table") }}"><i class="menu-icon ti  ti-user"></i>กลยุทธ์</a>
+                    
+                    </li> --}}
+
+                    <li class="menu-title">จัดการข้อมูลพื้นฐาน</li><!-- /.menu-title -->
 
                     <li class="menu-item-has-children dropdown {{(Request::url()==route('table_Executive')||Request::url()==route('table_Staff')||Request::url()==route('table_Personnel')||Request::url()==route('add_personnel'))?'active':false}}">
 
@@ -63,6 +74,27 @@
                                 <li><i class="fa fa-bars"></i><a href="{{ route("table_Personnel") }}">บุคลากรสถานศึกษา</a></li>
                             </ul>
                     </li>
+                    <li class="menu-title">จัดการข้อมูลปีงบประมาณ</li><!-- /.menu-title -->
+
+                    <li class="menu-item-has-children dropdown {{(Request::url()==route('table_Strategics')||Request::url()==route('table_Tactics')||Request::url()==route('table_Year'))?'active':false}}">
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>จัดการปีงบประมาณ</a>
+                            <ul class="sub-menu children dropdown-menu">
+                                <li><i class="fa fa-bars"></i><a href="{{ route("table_Year") }}">ปีงบประมาณ</a></li>
+                                <li><i class="fa fa-puzzle-piece"></i><a href="{{ route("table_Strategics") }}" style="left: 0px">ยุทธศาสตร์</a></li>
+                                <li><i class="fa fa-id-badge"></i><a href="{{ route("table_Tactics") }}">กลยุทธ์</a></li>
+
+                            </ul>
+                    </li>
+                    <li class="menu-title">จัดการข้อมูลแผนการจัดโครงการ</li><!-- /.menu-title -->
+
+                <li class="menu-item-has-children dropdown {{(Request::url()==route('table_Executive')||Request::url()==route('table_Staff')||Request::url()==route('table_Personnel')||Request::url()==route('add_personnel'))?'active':false}}">
+
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>แผนการจัดโครงการ</a>
+                    <ul class="sub-menu children dropdown-menu">
+                    <li><i class="fa fa-puzzle-piece"></i><a href="{{ route("table_Executive") }}" style="left: 0px">แผนเสนอ</a></li>
+                    </ul>
+                </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
