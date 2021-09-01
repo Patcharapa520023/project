@@ -7,7 +7,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>แก้ไขข้อมูลบุคลากรสถานศึกษา</h1>
+                        <h1>แก้ไขข้อมูลสถานศึกษา</h1>
                     </div>
                 </div>
             </div>
@@ -15,8 +15,8 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li><a href="http://127.0.0.1:8000/admin/personnel#">บุคลากรสถานศึกษา</a></li>
-                            <li><a href="#"><u>แก้ไขข้อมูลบุคลากรสถานศึกษา</u></a></li>
+                            <li><a href="http://127.0.0.1:8000/admin/personnel#">สถานศึกษา</a></li>
+                            <li><a href="#"><u>แก้ไขข้อมูลสถานศึกษา</u></a></li>
                             {{-- <li class="active">Data table</li> --}}
                         </ol>
                     </div>

@@ -7,7 +7,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>แก้ไขข้อมูลสถานศึกษา</h1>
+                        <h1>แก้ไขข้อมูลเจ้าหน้าที่กองการศึกษา</h1>
                     </div>
                 </div>
             </div>
@@ -15,8 +15,8 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li><a href="http://127.0.0.1:8000/admin/.#">สถานศึกษา</a></li>
-                            <li><a href="#">แก้ไขข้อมูลกรสถานศึกษา</a></li>
+                            <li><a href="http://127.0.0.1:8000/admin/year">ปีงบแผน</a></li>
+                            <li><a href="#">แก้ไขข้อมูลปีงบแผน</a></li>
                             <li><a href="#"><u>แก้ไขรหัสผ่าน</u></a></li>
                             {{-- <li class="active">Data table</li> --}}
                         </ol>
@@ -28,7 +28,7 @@
 </div>
 @endsection
 @section('content')
-<form action="{{route('editpassword_personnel_post')}}" method="post" enctype="multipart/form-data" class="form-horizontal"  autocomplete="off">
+<form action="{{route('editpassword_year_post')}}" method="post" enctype="multipart/form-data" class="form-horizontal"  autocomplete="off">
     @csrf
     <div class="card">
         <div class="card-header">
@@ -88,7 +88,7 @@
                         <div class="col col-md-3"><label for="lastname-input"
                                 class=" form-control-label">ชื่อ</label></div>
                         <div class="col-12 col-md-9">
-                            <input class="form-control" type="text" value="{{ $data->personnel->title.$data->personnel->name." ".$data->personnel->lastname }}" name="" readonly>
+                            <input class="form-control" type="text" value="{{ $data->year->title.$data->year->name." ".$data->year->lastname }}" name="" readonly>
                                 @error('lastname')
                                 <small class="help-block form-text text-danger">{{ $message }}</small>
                                 @enderror

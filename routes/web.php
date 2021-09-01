@@ -7,8 +7,10 @@ use App\Http\Controllers\Admin\Manage_Personnel;
 use App\Http\Controllers\Admin\Datatable\Personneltb;
 use App\Http\Controllers\Admin\Datatable\Executivetb;
 use App\Http\Controllers\Admin\Datatable\Stafftb;
+use App\Http\Controllers\Admin\Datatable\Yeartb;
 use App\Http\Controllers\Admin\Manage_Staff;
 use App\Http\Controllers\Admin\Manage_Executive;
+use App\Http\Controllers\Admin\Manage_Year;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +77,22 @@ Route::group([
     Route::post('editpassword/personnel',[Manage_Personnel::class,'editpasswordpersonnel'])->name("editpassword_personnel_post");
     Route::post('delete/personnel',[Manage_Personnel::class,'deletepersonnel'])->name("delete_personnel_post");
     // end personel
+
+    
+    // year
+    Route::get('/year',[Yeartb::class,"show"])->name("table_Year");
+    Route::post('/datayear',[Yeartb::class,"getdata"])->name("datayear");
+
+    Route::get('/show/{id}/year','Index@formshowyear')->name("show_year");
+    Route::get('add/year','Index@formaddyear')->name("add_year");
+    Route::get('/edit/{id}/year','Index@formedityear')->name("edit_year");
+    Route::get('/editpassword/{id}/year','Index@formeditpasswordyear')->name("editpassword_year");
+
+    Route::post('delete/year',[Manage_Year::class,'deleteyear'])->name("delete_year_post");
+    Route::post('add/year',[Manage_Year::class,'addyear'])->name("add_year_post");
+    Route::post('edit/year',[Manage_Year::class,'edityear'])->name("edit_year_post");
+    Route::post('editpassword/year',[Manage_Year::class,'editpasswordyear'])->name("editpassword_year_post");
+    // end year
 
 
 
