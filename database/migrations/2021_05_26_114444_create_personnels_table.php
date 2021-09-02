@@ -18,9 +18,9 @@ class CreatePersonnelsTable extends Migration
             $table->unsignedBigInteger('user_id')->unique();
             $table->string("title");
             $table->string("name");
-            $table->string("lastname");
             $table->string("address");
             $table->string("telnum");
+            $table->string("responsible");
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
@@ -35,6 +35,5 @@ class CreatePersonnelsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('personnel');
-        Schema::dropIfExists('executives');
     }
 }

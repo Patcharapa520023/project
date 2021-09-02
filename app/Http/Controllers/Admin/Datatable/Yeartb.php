@@ -17,7 +17,7 @@ class Yeartb extends Controller
             // array("รหัสผ่าน","password"),
             array("ปีที่เริ่ม","start"),
             array("ปีที่สิ้นสุด","stop"),
-            array("เบอร์โทรศัพท์","time"),
+
         
         );
         // dd($headtables);
@@ -72,7 +72,7 @@ class Yeartb extends Controller
                     <i class='fa fa-edit'></i>
                 </button>
                 </a>
-                <form method='POST' action='$formurl' onSubmit='dbdelete(this,`$title$name $lastname`)'>
+                <form method='POST' action='$formurl' onSubmit='dbdelete(this,`$title$atyear $start$stop`)'>
                     $csrf
                     <input type='hidden' name='id' value='$id'>
                     <input type='hidden' name='id2' value='4'>
@@ -84,15 +84,15 @@ class Yeartb extends Controller
 
             $data_arr[] = array(
                 "id" => $key+1+$start,
+                "title" => $title,
                 "atplan" => $title.$atplan,
                 // "rolse" => $rolse,
                 "start" => $start."".$stop,
                 // "password" => '$password',
-                // "title" => $title,
+            
                 // "lastname" => $lastname,
                 "stop" => $stop,
-                "time" => $time,
-                "console" => $console,
+            
 
             );
         }

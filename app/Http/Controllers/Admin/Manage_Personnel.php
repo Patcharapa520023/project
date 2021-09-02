@@ -21,8 +21,8 @@ class Manage_Personnel extends Controller
         $personnel=[
             'title'=>$input['title'],
             'name'=>$input['name'],
-            'lastname'=>$input['lastname'],
             'address'=>$input['address'],
+            'responsible'=>$input['responsible'],
             'telnum'=>$input['phone'],
 
 
@@ -42,11 +42,10 @@ class Manage_Personnel extends Controller
 
             "title" => ['required', 'string', 'max:255'],
             "name" => ['required', 'string', 'max:255'],
-            "lastname" => ['required', 'string', 'max:255'],
             "phone" =>['required', 'string', 'max:255'],
             "rolse" => ['required', 'string', 'max:255'],
             "address" => ['required', 'string', 'max:255'],
-
+            "responsible" => ['required', 'string', 'max:255'],
         ];
         if($tf&&$tf==$data['username']){
          $vali["username"] = ['required', 'string','max:20'];
@@ -67,16 +66,15 @@ class Manage_Personnel extends Controller
         $personnel=[
             'title'=>$input['title'],
             'name'=>$input['name'],
-            'lastname'=>$input['lastname'],
             'address'=>$input['address'],
             'telnum'=>$input['phone'],
-
+            'responsible'=>$input['responsible'],
 
         ];
         $edit = User::find($input['id']);
         $edit ->update($user);
         $edit->personnel()->update($personnel);
-        return redirect()->back()->with('error', 'แก้ไขข้อมูลบุคลากรสถานศึกษา สำเร็จแล้ว');
+        return redirect()->back()->with('error', 'แก้ไขข้อมูลสถานศึกษา สำเร็จแล้ว');
 
 
     }

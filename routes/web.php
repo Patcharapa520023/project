@@ -64,7 +64,7 @@ Route::group([
 
     // personnel
     Route::get('/personnel',[Personneltb::class,"show"])->name("table_Personnel");
-    Route::post('/dataper',[Personneltb::class,"getdata"])->name("datapersonnel");
+    Route::post('/datapersonnel',[Personneltb::class,"getdata"])->name("datapersonnel");
 
 
     Route::get('/show/{id}/personnel','Index@formshowpersonnel')->name("show_personnel");
@@ -86,12 +86,11 @@ Route::group([
     Route::get('/show/{id}/year','Index@formshowyear')->name("show_year");
     Route::get('add/year','Index@formaddyear')->name("add_year");
     Route::get('/edit/{id}/year','Index@formedityear')->name("edit_year");
-    Route::get('/editpassword/{id}/year','Index@formeditpasswordyear')->name("editpassword_year");
+
 
     Route::post('delete/year',[Manage_Year::class,'deleteyear'])->name("delete_year_post");
     Route::post('add/year',[Manage_Year::class,'addyear'])->name("add_year_post");
     Route::post('edit/year',[Manage_Year::class,'edityear'])->name("edit_year_post");
-    Route::post('editpassword/year',[Manage_Year::class,'editpasswordyear'])->name("editpassword_year_post");
     // end year
 
 

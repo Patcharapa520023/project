@@ -51,18 +51,15 @@ class Createuser extends Seeder
                 ];
             }
             $personnel=[
-                'title'=>'นางสาว',
-                'name'=>'เอมอร'	,
-                'lastname'=>'แจ่ม'	,
-                'address'=>'45ซ.ยินดีเจริญจ.ขอนแก่น'	,
+                'title'=>'โรงเรียน',
+                'name'=>'เทศบาล1 บ้านสิงหนคร'	,
+                'address'=>'45ซ.เทศบาลสิงหนคร.เขาแดง'	,
                 'telnum'=>'0891234881',
-
+                'responsible'=>'แจ่ม เอมอน',
 
             ];
-            if($user['rolse'] == 'executive'){
-                User::create($user)->executive()->create($personnel);
-            }else if($user['rolse'] == 'staff'){
-                User::create($user)->staff()->create($personnel);
+            if($user['rolse'] == 'personnel'){
+                User::create($user)->personnel()->create($personnel);
             }
             else{
                 User::create($user)->personnel()->create($personnel);

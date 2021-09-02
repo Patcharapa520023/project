@@ -34,12 +34,12 @@
                             <div class="card-header d-flex p-2 justify-content-between align-items-center pl-4 pr-4">
                                     <strong class="card-title">ตารางข้อมูล</strong>
                                         <a class="addcus btn btn-outline-success" href="{{ route('add_year') }}">
-                                            <i class="fa fa-plus"></i>&nbsp;เพิ่มข้อมูลเจ้าหน้าที่กองการศึกษา
+                                            <i class="fa fa-plus"></i>&nbsp;เพิ่มข้อมูลแผนพัฒนนาการศึกษา
                                         </a>
                             </div>
                             <div class="card-body">
 
-                                <table id="bootstrap-data-table-export1" class="table ">
+                                <table id="bootstrap-data-table-export1" class="table">
                                     <thead>
                                         <tr>
                                             @foreach ($headtables as $headtable )

@@ -15,9 +15,10 @@ class Personneltb extends Controller
             // array("บทบาท","rolse"),
             array("ชื่อผู้ใช้","username"),
             // array("รหัสผ่าน","password"),
-            array("ชื่อ สกุล","name"),
-            array("ที่อยู่","address"),
-            array("เบอร์โทรศัพท์","telnum"),
+            array("ชื่อสถานศึกษา","name"),
+            array("ที่อยู่","address"),    
+            array("เบอร์โทรศัพท์","telnum"), 
+            array("ผู้รับผิดชอบ","responsible"),
         );
         // dd($headtables);
 
@@ -59,7 +60,7 @@ class Personneltb extends Controller
                 $username = $record->user->username;
                 $password = $record->user->password;
                 $title = $record->title;
-                $lastname = $record->lastname;
+                $responsible = $record->responsible;
                 $address = $record->address;
                 $telnum = $record->telnum;
                 $console = "<div class='table-data-feature'>
@@ -73,7 +74,7 @@ class Personneltb extends Controller
                     <i class='fa fa-edit'></i>
                 </button>
                 </a>
-                <form method='POST' action='$formurl' onSubmit='dbdelete(this,`$title$name $lastname`)'>
+                <form method='POST' action='$formurl' onSubmit='dbdelete(this,`$title$name $responsible`)'>
                     $csrf
                     <input type='hidden' name='id' value='$id'>
                     <input type='hidden' name='id2' value='4'>
@@ -85,7 +86,7 @@ class Personneltb extends Controller
 
             $data_arr[] = array(
                 "id" => $key+1+$start,
-                "name" => $title.$name." ".$lastname,
+                "name" => $title.$name,
                 // "rolse" => $rolse,
                 "username" => $username,
                 // "password" => '$password',
@@ -94,6 +95,7 @@ class Personneltb extends Controller
                 "address" => $address,
                 "telnum" => $telnum,
                 "console" => $console,
+                "responsible" =>$responsible,
 
             );
         }

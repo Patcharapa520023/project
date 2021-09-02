@@ -7,7 +7,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>ดูข้อมูลปีงบ</h1>
+                        <h1>ดูข้อมูลข้อมูลแผนพัฒนาการศึกษา</h1>
                     </div>
                 </div>
             </div>
@@ -15,8 +15,8 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li><a href="http://127.0.0.1:8000/admin/year">ปีแผนงบ</a></li>
-                            <li><a href="#"><u>ดูข้อมูลปีงบ</u></a></li>
+                            <li><a href="http://127.0.0.1:8000/admin/year">ข้อมูลแผนพัฒนาการศึกษา</a></li>
+                            <li><a href="#"><u>ดูข้อมูลข้อมูลแผนพัฒนาการศึกษา</u></a></li>
                             {{-- <li class="active">Data table</li> --}}
                         </ol>
                     </div>
@@ -30,7 +30,7 @@
 
     <div class="card">
         <div class="card-header">
-            <strong>ข้อมูลส่วนตัว</strong>
+            <strong>ข้อมูลข้อมูลแผนพัฒนาการศึกษา</strong>
         </div>
 
         @if(session('error'))
@@ -47,11 +47,11 @@
                 <div class="card-body card-block">
                     <div class="row form-group"></div>
                         <div class="row form-group">
-                            <div class="col col-md-2"><label for="username-input" class=" form-control-label">ชื่อผู้ใช้</label>
+                            <div class="col col-md-2"><label for="username-input" class=" form-control-label">แผนพัฒนาการศึกษา(ปี)</label>
                             </div>
                             <div class="col-12 col-md-9">
                                 <input class="form-control" type="text" placeholder="{{ $data->username }}" readonly>
-                                    @error('username')
+                                    @error('atplan')
                                     <small class="help-block form-text text-danger">{{ $message }}</small>
                                     @enderror
                             </div>

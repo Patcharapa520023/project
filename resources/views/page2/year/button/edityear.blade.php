@@ -15,7 +15,7 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li><a href="http://127.0.0.1:8000/admin/year">เปีงบแผน</a></li>
+                            <li><a href="http://127.0.0.1:8000/admin/year">ข้อมูลแผนพัฒนาการศึกษา</a></li>
                             <li><a href="#"><u>แก้ไขข้อมูลปีงบแผน</u></a></li>
                             {{-- <li class="active">Data table</li> --}}
                         </ol>
@@ -31,7 +31,7 @@
     @csrf
     <div class="card">
         <div class="card-header">
-            <strong>แก้ไขข้อมูลส่วนตัว</strong>
+            <strong>แก้ไขข้อมูลข้อมูลแผนพัฒนาการศึกษา</strong>
         </div>
         <div class="card-footer">
             <button type="submit" class="btn btn-success btn-sm">

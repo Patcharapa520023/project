@@ -99,10 +99,6 @@ class Index extends Controller
         //เก็บไว้เทสนะอิอิ    dd($data->toArray());
        return view('page2.year.button.edityear',compact('data'));
     }
-    public function formeditpasswordyear(Request $request){
-       $data=User::with('year')->find(base64_decode($request->id));
-        return view('page2.year.button.editpasswordyear',compact('data'));
-    }
     // end formpersonnel
 }
 

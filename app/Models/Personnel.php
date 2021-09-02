@@ -12,8 +12,8 @@ class Personnel extends Model
     protected $fillable = [
         'title',
         'name',
-        'lastname',
         'address',
+        'responsible',
         'telnum',
         'position',
 
