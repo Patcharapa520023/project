@@ -7,7 +7,7 @@
                 <div class="col-sm-4">
                     <div class="page-header float-left">
                         <div class="page-title">
-                            <h1>เพิ่มข้อมูลงบประมาณ</h1>
+                            <h1>เพิ่มข้อมูลยุทธ์ศาสตร์</h1>
                         </div>
                     </div>
                 </div>
@@ -15,8 +15,8 @@
                     <div class="page-header float-right">
                         <div class="page-title">
                             <ol class="breadcrumb text-right">
-                                <li><a href="http://127.0.0.1:8000/admin/year">งบประมาณ</a></li>
-                                <li><a href="http://127.0.0.1:8000/admin/add/year"><u>เพิ่มข้อมูลงบประมาณ</u></a></li>
+                                <li><a href="http://127.0.0.1:8000/admin/strategic">ยุทธ์ศาสตร์</a></li>
+                                <li><a href="http://127.0.0.1:8000/admin/add/strategic"><u>เพิ่มข้อมูลยุทธ์ศาสตร์</u></a></li>
                                 {{-- <li class="active">Data table</li> --}}
                             </ol>
                         </div>
@@ -27,12 +27,12 @@
     </div>
 @endsection
 @section('content')
-    <form action="{{ route('add_year_post') }}" method="post" enctype="multipart/form-data" class="form-horizontal"
+    <form action="{{ route('add_strategic_post') }}" method="post" enctype="multipart/form-data" class="form-horizontal"
         autocomplete="off">
         @csrf
         <div class="card">
             <div class="card-header">
-                <strong>ข้อมูลงบประมาณ</strong>
+                <strong>ข้อมูลยุทธ์ศาสตร์</strong>
             </div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-success btn-sm">
@@ -58,7 +58,7 @@
                                 <select value="{{ old('title') }}" name="title" id="select"
                                     class="form-control-sm form-control">
                                     <option value="">เลือกปีงบประมาณ</option>
-                                    <option value="ปี">2556</option>
+                                    <option value="ปี">2556/option>
                                     <option value="ปี">2561</option>
                                     <option value="ปี">2565</option>
                                 </select>
@@ -68,7 +68,7 @@
                             </div>
                         </div>
                         <div class="row form-group row res_c">
-                            <div class="col col-md-2"><label for="name-input" class=" form-control-label">งบประมาณ</label></div>
+                            <div class="col col-md-2"><label for="name-input" class=" form-control-label">ชื่อยุทธศาสตร์</label></div>
                             <div class="col-12 col-md-9"><input type="text" id="name-input" name="name"
                                     value="{{ old('name') }}" placeholder="กรอกชื่อ" class="form-control">
                                 @error('name')
@@ -81,7 +81,7 @@
                                     <option class=" form-control-label">ชื่อยุทศาสตร์</label></div></option>
                             <div class="col-12 col-md-9"><input type="text" id="name-input" name="lastname"
                                     value="{{ old('name') }}" placeholder="กรอกชื่อยุทธศาสตร์" class="form-control">
-                                @error('lastname')
+                                @error('name')
                                     <small class="help-block form-text text-danger">{{ $message }}</small>
                                 @enderror
                             </div>

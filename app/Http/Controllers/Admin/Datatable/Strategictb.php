@@ -4,30 +4,23 @@ namespace App\Http\Controllers\Admin\Datatable;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
 use App\Models\Year;
-
-
-
-class Yeartb extends Controller
+use App\Models\Strategic;
+class Strategictb extends Controller
 {
     public function show(){
-        $tables =  Year::with('year')->get()->toArray();
+        $tables = Strategic::with('year')->get()->toArray();
         $headtables  = array(
-            array("ลำดับ","title"),
+            array("ลำดับ","id"),
             // array("บทบาท","rolse"),
-            array("แผนพัฒนาการศึกษา(ปี)","atplan"),
+            array("ชื่อยุทธศาสตร์","name"),
             // array("รหัสผ่าน","password"),
-            array("ปีที่เริ่ม","start"),
-            array("ปีที่เริ่ม","stop"),
-        
-
-        
+            array("ปีงบประมาณ","year"),
         );
         // dd($headtables);
 
 
-        return view('page2.year.table.table_year',compact('headtables'));
+        return view('page2.strategic.table.table_strategic',compact('headtables'));
     }
     public function getdata(Request $request){
 
@@ -44,39 +37,36 @@ class Yeartb extends Controller
         $searchValue = $search_arr['value']; // Search value
 
 
-        $totalRecords =  Year::with('year')->select('count(*) as allcount')->count();
-        $totalRecordswithFilter = Year::with('year')->select('count(*) as allcount')->where('name', 'like', '%' .$searchValue . '%')->count();
+        $totalRecords = Strategic::with('year')->select('count(*) as allcount')->count();
+        $totalRecordswithFilter = Strategic::with('user')->select('count(*) as allcount')->where('name', 'like', '%' .$searchValue . '%')->count();
 
-            $records = Year::with('user')->orderBy($columnName,$columnSortOrder)
-            ->where('name', 'like', '%'.$searchValue .'%')
-            ->select('*')
-            ->skip($start)
-            ->take($rowperpage)
-        ->get();
+          $records =Strategic::with('year')->orderBy($columnName,$columnSortOrder)
+          ->where('name', 'like', '%'.$searchValue .'%')
+          ->select('*')
+          ->skip($start)
+          ->take($rowperpage)
+          ->get();
         $data_arr = array();
         foreach($records as $key=> $record){
-                $formurl = route('delete_year_post');
-                $id = $record->year->id;
-                $idbase = base64_encode($record->user->id);
+                $formurl = route('delete_strategic_post');
+                $id = $record->strategic->id;
+                /*$idbase = base64_encode($record->user->id);*/
                 $csrf = csrf_field();
-                $atplan = $record->atplan;
+                $name = $record->name;
                 $rolse = $record->year->rolse;
-                $start = $record->year->start;
-                $password = $record->year->password;
-                $id = $record->id;
-                $stop = $record->stop;
+                $year = $record->year;
                 $console = "<div class='table-data-feature'>
-                <a  href='show/$idbase/year'>
+                <a  href='show/$idbase/strategic'>
                 <button class='item show' data-toggle='tooltip' data-placement='top' title=' data-original-title='More'>
                     <i class='fa fa-search-plus'></i>
                 </button>
                 </a>
-                <a  href='edit/$idbase/year'>
+                <a  href='edit/$idbase/strategice'>
                 <button class='item edit' data-toggle='tooltip' data-placement='top' title=' data-original-title='Edit'>
                     <i class='fa fa-edit'></i>
                 </button>
                 </a>
-                <form method='POST' action='$formurl' onSubmit='dbdelete(this,`$title$atplan`)'>
+                <form method='POST' action='$formurl' onSubmit='dbdelete(this,`$name$year`)'>
                     $csrf
                     <input type='hidden' name='id' value='$id'>
                     <input type='hidden' name='id2' value='4'>
@@ -87,28 +77,24 @@ class Yeartb extends Controller
                 </div>";
 
             $data_arr[] = array(
-                "title" => $key+1+$start,
-                "atplan" => $atplan,
+                "id" => $key+1+$strategic,
+                "name" => $name,
                 // "rolse" => $rolse,
-                "start" => $start."".$stop,
-                // "password" => '$password',
-            
-                // "lastname" => $lastname,
-                "stop" => $stop,
-            
+                "year" => $year,
+                "console" => $console,
 
             );
         }
         $response = array(
-            "draw" => intval($draw),
-            "iTotalRecords" => $totalRecords,
-            "iTotalDisplayRecords" => $totalRecordswithFilter,
-            "aaData" => $data_arr
+           "draw" => intval($draw),
+           "iTotalRecords" => $totalRecords,
+           "iTotalDisplayRecords" => $totalRecordswithFilter,
+           "aaData" => $data_arr
         );
 
         echo json_encode($response);
         exit;
-    }
+      }
 
 
 }

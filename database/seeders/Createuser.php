@@ -64,9 +64,6 @@ class Createuser extends Seeder
             else{
                 User::create($user)->personnel()->create($personnel);
             }
-
         }
-
-
     }
 }

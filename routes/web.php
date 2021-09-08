@@ -8,9 +8,11 @@ use App\Http\Controllers\Admin\Datatable\Personneltb;
 use App\Http\Controllers\Admin\Datatable\Executivetb;
 use App\Http\Controllers\Admin\Datatable\Stafftb;
 use App\Http\Controllers\Admin\Datatable\Yeartb;
+use App\Http\Controllers\Admin\Datatable\Strategictb;
 use App\Http\Controllers\Admin\Manage_Staff;
 use App\Http\Controllers\Admin\Manage_Executive;
 use App\Http\Controllers\Admin\Manage_Year;
+use App\Http\Controllers\Admin\Manage_Strategic;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,6 +95,34 @@ Route::group([
     Route::post('edit/year',[Manage_Year::class,'edityear'])->name("edit_year_post");
     // end year
 
+   // strategic
+    Route::get('/strategic',[Strategictb::class,"show"])->name("table_Strategic");
+    Route::post('/datastrategic',[Strategictb::class,"getdata"])->name("datastrategic");
+
+    Route::get('/show/{id}/strategic','Index@formshowstrategic')->name("show_strategic");
+    Route::get('add/strategic','Index@formaddstrategic')->name("add_strategic");
+    Route::get('/edit/{id}/strategic','Index@formeditstrategic')->name("edit_strategic");
+
+
+    Route::post('delete/strategic',[Manage_Strategic::class,'deletestrategic'])->name("delete_strategic_post");
+    Route::post('add/strategic',[Manage_Strategic::class,'addstrategic'])->name("add_strategic_post");
+    Route::post('edit/strategic',[Manage_Strategic::class,'editstrategic'])->name("edit_strategic_post");
+    // end strategic
+
+    /*// strategic
+    Route::get('/strategic',[Strategictb::class,"show"])->name("table_Year");
+    Route::post('/datastrategic',[Strategictb::class,"getdata"])->name("datastrategic");
+
+    Route::get('/show/{id}/strategic','Index@formshowstrategic')->name("show_strategic");
+    Route::get('add/strategic','Index@formaddstrategic')->name("add_strategic");
+    Route::get('/edit/{id}/ystrategic','Index@formeditstrategic')->name("edit_strategic");
+
+
+    Route::post('delete/strategic',[Manage_Strategic::class,'deletestrategic'])->name("delete_strategic_post");
+    Route::post('add/strategic',[Manage_Strategic::class,'addstrategic'])->name("add_strategic_post");
+    Route::post('edit/strategic',[Manage_Strategic::class,'editstrategic'])->name("edit_strategic_post");
+    // end strategic
+*/
 
 
 

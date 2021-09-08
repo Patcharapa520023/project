@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use App\Models\Year;
 use Illuminate\Support\Facades\Hash;
 
 class Manage_Year extends Controller
@@ -19,8 +20,8 @@ class Manage_Year extends Controller
             'rolse'=>'year',
         ];
         $year=[
-            'title'=>$input['title'],
-            'atyear'=>$input['atyear'],
+            'id'=>$input['id'],
+            'atplan'=>$input['atplan'],
             'start'=>$input['start'],
             'stop'=>$input['stop'],
             
@@ -40,20 +41,20 @@ class Manage_Year extends Controller
     {
         $vali = [
 
-            "title" => ['required', 'string', 'max:255'],
-            "atyear" => ['required', 'string', 'max:255'],
+            "id" => ['required', 'string', 'max:255'],
+            "atplan" => ['required', 'string', 'max:255'],
             "start" => ['required', 'string', 'max:255'],
             "stop" =>['required', 'string', 'max:255'],
             "rolse" => ['required', 'string', 'max:255'],
         
 
         ];
-        if($tf&&$tf==$data['username']){
+        /*if($tf&&$tf==$data['username']){
         $vali["username"] = ['required', 'string','max:20'];
         }else {
         $vali["username"] = ['required', 'string','max:20', 'unique:users'];
 
-        }
+        }*/
         return Validator::make($data,$vali);
     }
     public function edityear(Request $request){
@@ -65,7 +66,7 @@ class Manage_Year extends Controller
             'rolse'=>$input['rolse'],
         ];
         $year=[
-            'title'=>$input['title'],
+            'id'=>$input['id'],
             'atplan'=>$input['atpan'],
             'start'=>$input['start'],
             'stop'=>$input['stop'],

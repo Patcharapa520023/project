@@ -7,7 +7,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>แก้ไขข้อมูลปีงบประมาณ</h1>
+                        <h1>แก้ไขข้อมูลผู้บริหาร</h1>
                     </div>
                 </div>
             </div>
@@ -15,8 +15,8 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li><a href="http://127.0.0.1:8000/admin/year">ปีงบประมาณ</a></li>
-                            <li><a href="#"><u>แก้ไขข้อมูลปีงบประมาณ</u></a></li>
+                            <li><a href="http://127.0.0.1:8000/admin/strategic">ผู้บริหาร</a></li>
+                            <li><a href="#"><u>แก้ไขข้อมูลผู้บริหาร</u></a></li>
                             {{-- <li class="active">Data table</li> --}}
                         </ol>
                     </div>
@@ -27,11 +27,11 @@
 </div>
 @endsection
 @section('content')
-<form action="{{route('edit_year_post')}}" method="post" enctype="multipart/form-data" class="form-horizontal" autocomplete="off">
+<form action="{{route('edit_strategic_post')}}" method="post" enctype="multipart/form-data" class="form-horizontal" autocomplete="off">
     @csrf
     <div class="card">
         <div class="card-header">
-            <strong>แก้ไขข้อมูลปีงบประมาณ</strong>
+            <strong>แก้ไขข้อมูลส่วนตัว</strong>
         </div>
         <div class="card-footer">
             <button type="submit" class="btn btn-success btn-sm">
@@ -40,7 +40,9 @@
             <button type="reset" class="btn btn-danger btn-sm">
                 <i class="fa fa-ban"></i> รีเฟรช
             </button>
-            
+            <a href='/admin/editpassword/{{ base64_encode($data->id) }}/strategic'type="button" class="btn btn-primary btn-sm">
+                <i class="fa fa-unlock-alt"></i> แก้ไขรหัสผ่าน
+            </a>
         </div>
         @if(session('error'))
         <div class="alert alert-success " role="alert">

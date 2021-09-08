@@ -67,6 +67,7 @@ class Kernel extends HttpKernel
         'staff' => \App\Http\Middleware\Staff::class,
         'personnel' => \App\Http\Middleware\Personnel::class,
         'year' => \App\Http\Middleware\Year::class,
+        'strategic' => \App\Http\Middleware\Strategic::class,
         
 
     ];
