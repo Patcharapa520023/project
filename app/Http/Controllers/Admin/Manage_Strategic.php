@@ -19,7 +19,7 @@ class Manage_Strategic extends Controller
             'rolse'=>'strategic',
         ];
         $strategic=[
-            'title'=>$input['title'],
+            'id'=>$input['id'],
             'name'=>$input['name'],
             'year'=>$input['year'],
 
@@ -38,7 +38,7 @@ class Manage_Strategic extends Controller
     {
         $vali = [
 
-            "title" => ['required', 'string', 'max:255'],
+            "id" => ['required', 'string', 'max:255'],
             "name" => ['required', 'string', 'max:255'],
             "year" => ['required', 'string', 'max:255'],
 
@@ -61,7 +61,7 @@ class Manage_Strategic extends Controller
             'rolse'=>$input['rolse'],
         ];
         $strategic=[
-            'title'=>$input['title'],
+            'id'=>$input['id'],
             'name'=>$input['name'],
             'year'=>$input['year'],
 

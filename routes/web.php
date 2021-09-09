@@ -109,7 +109,7 @@ Route::group([
     Route::post('edit/strategic',[Manage_Strategic::class,'editstrategic'])->name("edit_strategic_post");
     // end strategic
 
-    /*// strategic
+    // Tactic
     Route::get('/strategic',[Strategictb::class,"show"])->name("table_Year");
     Route::post('/datastrategic',[Strategictb::class,"getdata"])->name("datastrategic");
 
@@ -121,8 +121,8 @@ Route::group([
     Route::post('delete/strategic',[Manage_Strategic::class,'deletestrategic'])->name("delete_strategic_post");
     Route::post('add/strategic',[Manage_Strategic::class,'addstrategic'])->name("add_strategic_post");
     Route::post('edit/strategic',[Manage_Strategic::class,'editstrategic'])->name("edit_strategic_post");
-    // end strategic
-*/
+    // end Tactic
+
 
 
 

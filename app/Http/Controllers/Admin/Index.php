@@ -107,7 +107,7 @@ class Index extends Controller
 
      // formyear
      public function formaddstrategic(Request $request){
-        return view('page2.year.button.addstrategic');
+        return view('page2.strategic.button.addstrategic');
     }
     public function formshowstrategic(Request $request){
        $data=User::with('strategic')->find(base64_decode($request->id));
