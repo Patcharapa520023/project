@@ -137,7 +137,7 @@
                                         </label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" compleate='${intyear.toString().length}' id="name-input" name="lastname" value="" placeholder="" class="form-control compleate-bf">
+                                        <input type="text" compleate='${intyear.toString().length}' id="name-input" name="start" value="" placeholder="" class="form-control compleate-bf">
                                         <div class="mt-2"><span class='lenght_key'>0</span>/${intyear.toString().length} (พ.ศ.)</div>
                                     </div>
                                 </div>

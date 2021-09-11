@@ -1,23 +1,17 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
-use App\Http\Controllers\Controller;
+use App\Models\Strategic;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-use App\Models\Year;
-use Illuminate\Support\Facades\Hash;
 
 class Manage_Strategic extends Controller
 {
     public function addstrategic(Request $request){
         $input =  $request->all();
         $this->validator($input)->validate();
-        $user=[
-            'username'=>$input['username'],
-            'password'=>Hash::make($input['password']),
-            'rolse'=>'strategic',
-        ];
+
         $strategic=[
             'title'=>$input['title'],
             'name'=>$input['name'],
@@ -25,12 +19,13 @@ class Manage_Strategic extends Controller
 
 
         ];
-        User::create($user)->strategic()->create($strategic);
+
+        Strategic::create($strategic);
         return redirect()->back()->with('error', 'เพิ่มข้อมูลยุทธศาสตร์ สำเร็จแล้ว');
 
     }
     public function deletestrategic(Request $request){
-        User::find($request->all()['id'])->delete();
+        Strategic::find($request->all()['id'])->delete();
         return back();
     }
 
@@ -54,12 +49,9 @@ class Manage_Strategic extends Controller
     }
     public function editstrategic(Request $request){
         $input =  $request->all();
-        $dbuser =  Year::find($input['id']);
+        $dbuser =  Strategic::find($input['id']);
         $this->validator($input,$dbuser->username)->validate();
-        $user=[
-            'username'=>$input['username'],
-            'rolse'=>$input['rolse'],
-        ];
+
         $strategic=[
             'title'=>$input['title'],
             'name'=>$input['name'],
@@ -68,28 +60,13 @@ class Manage_Strategic extends Controller
 
 
         ];
-        $edit = User::find($input['id']);
-        $edit ->update($user);
+        $edit = Strategic::find($input['id']);
+        $edit ->update($strategic);
         $edit->strategic()->update($strategic);
         return redirect()->back()->with('error', 'แก้ไขข้อมูลผู้บริหาร สำเร็จแล้ว');
 
 
     }
-    public function editpasswordstrategic(Request $request){
-        $input =  $request->all();
-        // $this->validator($input)->validate();
-        Validator::make($input, [
 
-            'password' => 'required|confirmed|min:6',
-        ])->validate();
-        $user=[
-            'password'=>Hash::make($input['password']),
-        ];
-
-
-        $edit = User::find($input['id']);
-        $edit ->update($user);
-        return redirect()->back()->with('error', 'แก้ไขรหัสผ่านใหม่ สำเร็จแล้ว');
-    }
 
 }

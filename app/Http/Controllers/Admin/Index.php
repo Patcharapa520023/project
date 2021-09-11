@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Year;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class Index extends Controller
 {
@@ -105,9 +106,10 @@ class Index extends Controller
     }
     // end formyear
 
-     // formyear
+     // formstrategic
      public function formaddstrategic(Request $request){
-        return view('page2.year.button.addstrategic');
+        $listyear =  Year::orderBy('start','DESC')->get();
+        return view('page2.strategic.button.addstrategic',compact('listyear'));
     }
     public function formshowstrategic(Request $request){
        $data=User::with('strategic')->find(base64_decode($request->id));
@@ -116,9 +118,9 @@ class Index extends Controller
     public function formeditstrategic(Request $request){
        $data=User::with('strategic')->find(base64_decode($request->id));
         //เก็บไว้เทสนะอิอิ    dd($data->toArray());
-       return view('page2.strategicr.button.editstrategic',compact('data'));
+       return view('page2.strategic.button.editstrategic',compact('data'));
     }
-    // end formyear
+    // end formstrategic
 }
 
 

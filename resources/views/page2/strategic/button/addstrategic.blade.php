@@ -48,23 +48,38 @@
                 </div>
             @endif
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-9">
                     <div class="card-body card-block">
-        
+
                         <div class="row form-group ">
-                            <div class="col col-md-2"><label for="select" class=" form-control-label">ปีงบประมาณ</label>
+                            <div class="col col-md-3"><label for="select" class=" form-control-label">ปีงบประมาณ</label>
                             </div>
-                            <div class="col-12 col-md-10">
-                                <select value="{{ old('title') }}" name="title" id="select"
-                                    class="form-control-sm form-control">
+                            <div class="row d-flex col-12">
+                                <div class="col-5 col-md-5">
+                                    <select value="{{ old('title') }}" name="title" id="select"
+                                    class=" form-control">
                                     <option value="">เลือกปีงบประมาณ</option>
-                                    <option value="ปี">2556/option>
-                                    <option value="ปี">2561</option>
-                                    <option value="ปี">2565</option>
-                                </select>
-                                @error('title')
-                                    <small class="help-block form-text text-danger">{{ $message }}</small>
-                                @enderror
+                                    @foreach ($listyear as $year)
+                                        <option value="ปี">{{ $year->start.'-'.$year->stop.' ('.$year->atplan.' ปี)' }}</option>
+                                        @endforeach
+
+                                    </select>
+                                    @error('title')
+                                        <small class="help-block form-text text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                                <div class="col-2">ถึง</div>
+                                <div class="col-5 col-md-5">
+                                    <select value="{{ old('title') }}" name="title" id="select"
+                                        class=" form-control">
+                                        <option value="">เลือกปีงบประมาณ</option>
+                                        <option value="ปี">2556</option>
+
+                                    </select>
+                                    @error('title')
+                                        <small class="help-block form-text text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
                         <div class="row form-group row res_c">
@@ -94,7 +109,7 @@
                         <div class="row form-group">
                         </div>
 
-                            
+
 
 
                     </div>
