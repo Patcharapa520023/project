@@ -51,11 +51,10 @@
                 <div class="col-lg-9">
                     <div class="card-body card-block">
 
-                        <div class="row form-group ">
-                            <div class="col col-md-3"><label for="select" class=" form-control-label">ปีงบประมาณ</label>
+                        <div class="row form-group row res_c ">
+                            <div class="col col-md-2"><label for="select" class=" form-control-label">ปีงบประมาณ</label>
                             </div>
-                            <div class="row d-flex col-12">
-                                <div class="col-5 col-md-5">
+                                <div class="col-12 col-md-5">
                                     <select value="{{ old('title') }}" name="title" id="select"
                                     class=" form-control">
                                     <option value="">เลือกปีงบประมาณ</option>
@@ -68,38 +67,26 @@
                                         <small class="help-block form-text text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-                                <div class="col-2">ถึง</div>
-                                <div class="col-5 col-md-5">
-                                    <select value="{{ old('title') }}" name="title" id="select"
-                                        class=" form-control">
-                                        <option value="">เลือกปีงบประมาณ</option>
-                                        <option value="ปี">2556</option>
 
-                                    </select>
-                                    @error('title')
-                                        <small class="help-block form-text text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                            </div>
                         </div>
                         <div class="row form-group row res_c">
                             <div class="col col-md-2"><label for="name-input" class=" form-control-label">ชื่อยุทธศาสตร์</label></div>
-                            <div class="col-12 col-md-9"><input type="text" id="name-input" name="name"
-                                    value="{{ old('name') }}" placeholder="กรอกชื่อ" class="form-control">
-                                @error('name')
-                                    <small class="help-block form-text text-danger">{{ $message }}</small>
-                                @enderror
+                            <div class="d-flex col-12 col-md-8">
+                                <div class=""><input type="text" id="name-input" name="name_add"
+                                        value="{{ old('name') }}" placeholder="กรอกชื่อยุทธศาสตร์" class="form-control">
+                                    @error('name')
+                                        <small class="help-block form-text text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                                <button type="button" class="ml-3  btn  btn-sm" id="add_namestrategic">+</button>
+
                             </div>
                         </div>
-                        <div class="row form-group res_cc">
-                            <div class="col col-md-2"><label for="name-input[]"
-                                    <option class=" form-control-label">ชื่อยุทศาสตร์</label></div></option>
-                            <div class="col-12 col-md-9"><input type="text" id="name-input" name="lastname"
-                                    value="{{ old('name') }}" placeholder="กรอกชื่อยุทธศาสตร์" class="form-control">
-                                @error('name')
-                                    <small class="help-block form-text text-danger">{{ $message }}</small>
-                                @enderror
+                            <div class="list_add_namestrategic d-flex">
+
+
                             </div>
+
                         </div>
 
                     </div>
@@ -126,8 +113,76 @@
 
 
 @section('script')
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+        Array.prototype.remove = function(index) {
+            return this.filter(function(element, ine) {
+            return ine != index;
+        })
+    }
+        let arrayname = [];
+        $('#add_namestrategic').click(function(e){
+            let vul =$('input[name="name_add"]').val();
+            if(vul){
+                arrayname.push(vul)
+                $('.list_add_namestrategic').html('')
+                arrayname.forEach(creatdive);
+                $('input[name="name_add"]').val('')
+            }
+        })
+        function creatdive(name,index){
+            $('.list_add_namestrategic ').append(
+              `<div class="d-flex sub_strategic">
+                <span>${name}</span>
+                <div class="list_delete_namestrategic" idkey="${index}">ลบ</div>
+            </div>`)
+        }
+        $('.list_add_namestrategic').on('click', '.list_delete_namestrategic', function(e) {
+            $('.list_add_namestrategic').html('')
+            arrayname = arrayname.remove($(this).attr('idkey'));
+            arrayname.forEach(creatdive);
+        });
 
+
+    </script>
 @endsection
 @section('style')
+    <style>
+        .sub_strategic .list_delete_namestrategic{
+            padding: 0 4px;
+            margin: 0 2px 0 14px;
+            background: red;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            color: #ffffff;
+        }
+        .sub_strategic{
+            border: 1px solid;
+            margin-right: 10px;
+            height: fit-content;
+            padding: 4px 8px;
+        }
+        .list_add_namestrategic{
+            display: flex;
+            flex-wrap: wrap;
+            border: 1px solid #d8cdcd;
+            min-height: 165px;
+            padding: 15px;
+        }
+        #add_namestrategic{        background: #00b551;
 
+    border-radius: 8px;
+    box-shadow: 10px 1px 0px #fffff;
+    color: #fff;
+    box-shadow: -1px 3px 2px 1px #18312b21;
+    line-height: 0px;
+    height: 28px;
+    place-self: center;
+}#add_namestrategic:active{
+    background: #054924;
+    box-shadow: -1px 3px 2px 1px #18312b21;
+
+}
+    </style>
 @endsection

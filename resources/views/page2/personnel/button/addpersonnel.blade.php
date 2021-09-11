@@ -73,37 +73,22 @@
                                 @enderror
                             </div>
                         </div>
+
                         <div class="row form-group">
-                            <div class="col col-md-2"><label for="select" class=" form-control-label">คำนำหน้า</label>
-                            </div>
-                            <div class="col-12 col-md-9">
-                                <select value="{{ old('title') }}" name="title" id="select"
-                                    class="form-control-sm form-control">
-                                    <option value="">เลือกคำนำหน้า</option>
-                                    <option value="นาย">นาย</option>
-                                    <option value="นาง">นาง</option>
-                                    <option value="นางสาว">นางสาว</option>
-                                </select>
-                                @error('title')
-                                    <small class="help-block form-text text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col col-md-2"><label for="name-input" class=" form-control-label">ชื่อ</label></div>
+                            <div class="col col-md-2"><label for="name-input" class=" form-control-label">ชื่อสถานศึกษา</label></div>
                             <div class="col-12 col-md-9"><input type="text" id="name-input" name="name"
-                                    value="{{ old('name') }}" placeholder="กรอกชื่อ" class="form-control">
+                                    value="{{ old('name') }}" placeholder="กรอกชื่อสถานศึกษา" class="form-control">
                                 @error('name')
                                     <small class="help-block form-text text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                         </div>
                         <div class="row form-group">
-                            <div class="col col-md-2"><label for="lastname-input"
-                                    class=" form-control-label">นามสกุล</label></div>
-                            <div class="col-12 col-md-9"><input type="text" id="lastname-input" name="lastname"
-                                    value="{{ old('lastname') }}" placeholder="กรอกนามสกุล" class="form-control">
-                                @error('lastname')
+                            <div class="col col-md-2"><label for="responsible-input"
+                                    class=" form-control-label">ผู้รับผิดชอบ</label></div>
+                            <div class="col-12 col-md-9"><input type="text" id="responsible-input" name="responsible"
+                                    value="{{ old('responsible') }}" placeholder="กรอกชื่อผู้รับผิดชอบ" class="form-control">
+                                @error('responsible')
                                     <small class="help-block form-text text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
@@ -126,18 +111,7 @@
                             </div>
                         </div>
                         <div class="row form-group">
-                            <div class="col col-md-2"><label for="select" class=" form-control-label">ระดับผู้ใช้</label>
-                            </div>
-                            <div class="col-12 col-md-9">
-                                <select name="rolse" id="rolse" class="form-control-sm form-control"
-                                    value="{{ old('rolse') }}">
 
-                                    <option value="บุคลากรสถานศึกษา">บุคลากรสถานศึกษา</option>
-                                </select>
-                                @error('rolse')
-                                    <small class="help-block form-text text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
                         </div>
                         <div class="row form-group">
                         </div>

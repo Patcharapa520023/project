@@ -12,17 +12,17 @@ class Manage_Personnel extends Controller
 {
     public function addpersonnel(Request $request){
         $input =  $request->all();
-        $this->validator($input)->validate();
+        // $this->validator($input)->validate();
         $user=[
             'username'=>$input['username'],
             'password'=>Hash::make($input['password']),
             'rolse'=>'personnel',
         ];
         $personnel=[
-            'title'=>$input['title'],
+            'title'=>'โรงเรียน',
             'name'=>$input['name'],
-            'address'=>$input['address'],
             'responsible'=>$input['responsible'],
+            'address'=>$input['address'],
             'telnum'=>$input['phone'],
 
 
@@ -40,10 +40,8 @@ class Manage_Personnel extends Controller
     {
         $vali = [
 
-            "title" => ['required', 'string', 'max:255'],
             "name" => ['required', 'string', 'max:255'],
             "phone" =>['required', 'string', 'max:255'],
-            "rolse" => ['required', 'string', 'max:255'],
             "address" => ['required', 'string', 'max:255'],
             "responsible" => ['required', 'string', 'max:255'],
         ];
