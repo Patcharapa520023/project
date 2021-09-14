@@ -18,7 +18,6 @@ class CreateYearsTable extends Migration
             $table->string('atplan');
             $table->string('start');
             $table->string('stop');
-
         });
     }
 

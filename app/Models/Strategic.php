@@ -10,16 +10,11 @@ class Strategic extends Model
     use HasFactory;
     public $timestamps = false;
     protected $fillable = [
-        'title',
+        'year_id',
         'name',
-        'year',
-
-
     ];
     public function year(){
         return $this->belongsTo(Year::class);
     }
-    public function strategic(){
-        return $this->belongsTo(Strategic::class);
-    }
+
 }

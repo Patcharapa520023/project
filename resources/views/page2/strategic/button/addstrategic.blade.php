@@ -27,7 +27,7 @@
     </div>
 @endsection
 @section('content')
-    <form action="{{ route('add_strategic_post') }}" method="post" enctype="multipart/form-data" class="form-horizontal"
+    <form id="add_strategic_post" action="{{ route('add_strategic_post') }}" method="post" enctype="multipart/form-data" class="form-horizontal"
         autocomplete="off">
         @csrf
         <div class="card">
@@ -55,11 +55,11 @@
                             <div class="col col-md-2"><label for="select" class=" form-control-label">ปีงบประมาณ</label>
                             </div>
                                 <div class="col-12 col-md-5">
-                                    <select value="{{ old('title') }}" name="title" id="select"
+                                    <select value="{{ old('title') }}" name="year" id="select"
                                     class=" form-control">
                                     <option value="">เลือกปีงบประมาณ</option>
                                     @foreach ($listyear as $year)
-                                        <option value="ปี">{{ $year->start.'-'.$year->stop.' ('.$year->atplan.' ปี)' }}</option>
+                                        <option value="{{ $year->id }}">{{ $year->start.'-'.$year->stop.' ('.$year->atplan.' ปี)' }}</option>
                                         @endforeach
 
                                     </select>
@@ -69,6 +69,7 @@
                                 </div>
 
                         </div>
+                        <input type="hidden"  name="name_add_m" value="">
                         <div class="row form-group row res_c">
                             <div class="col col-md-2"><label for="name-input" class=" form-control-label">ชื่อยุทธศาสตร์</label></div>
                             <div class="d-flex col-12 col-md-8">
@@ -120,7 +121,12 @@
             return ine != index;
         })
     }
+
         let arrayname = [];
+        $('#add_strategic_post').submit(function(e) {
+            $('input[name="name_add_m"]').val(JSON.stringify(arrayname))
+        return true;
+        });
         $('#add_namestrategic').click(function(e){
             let vul =$('input[name="name_add"]').val();
             if(vul){
@@ -134,7 +140,9 @@
             $('.list_add_namestrategic ').append(
               `<div class="d-flex sub_strategic">
                 <span>${name}</span>
-                <div class="list_delete_namestrategic" idkey="${index}">ลบ</div>
+                <div class="list_delete_namestrategic" idkey="${index}">
+                    <svg width="14px" aria-hidden="true" focusable="false" data-prefix="far" data-icon="trash-alt" class="svg-inline--fa fa-trash-alt fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M268 416h24a12 12 0 0 0 12-12V188a12 12 0 0 0-12-12h-24a12 12 0 0 0-12 12v216a12 12 0 0 0 12 12zM432 80h-82.41l-34-56.7A48 48 0 0 0 274.41 0H173.59a48 48 0 0 0-41.16 23.3L98.41 80H16A16 16 0 0 0 0 96v16a16 16 0 0 0 16 16h16v336a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128h16a16 16 0 0 0 16-16V96a16 16 0 0 0-16-16zM171.84 50.91A6 6 0 0 1 177 48h94a6 6 0 0 1 5.15 2.91L293.61 80H154.39zM368 464H80V128h288zm-212-48h24a12 12 0 0 0 12-12V188a12 12 0 0 0-12-12h-24a12 12 0 0 0-12 12v216a12 12 0 0 0 12 12z"></path></svg>
+                </div>
             </div>`)
         }
         $('.list_add_namestrategic').on('click', '.list_delete_namestrategic', function(e) {
@@ -148,22 +156,33 @@
 @endsection
 @section('style')
     <style>
+        .list_delete_namestrategic svg path{
+            fill: #ff6a78
+        }
         .sub_strategic .list_delete_namestrategic{
+            max-height: 28px;
             padding: 0 4px;
             margin: 0 2px 0 14px;
-            background: red;
+            background:#ffeded;
             border-radius: 4px;
             font-size: 14px;
             cursor: pointer;
             color: #ffffff;
         }
         .sub_strategic{
-            border: 1px solid;
+
+            border: 1px solid #28a745;
             margin-right: 10px;
             height: fit-content;
             padding: 4px 8px;
         }
+        .sub_strategic span{
+            font-size: 12px;
+            line-break: anywhere;
+        }
         .list_add_namestrategic{
+            max-width: 800.250px;
+            grid-gap: 10px;
             display: flex;
             flex-wrap: wrap;
             border: 1px solid #d8cdcd;

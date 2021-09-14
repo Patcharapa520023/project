@@ -16,7 +16,8 @@ class CreateStrategicsTable extends Migration
         Schema::create('strategics', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('year');
+            $table->unsignedBigInteger('year_id');
+            $table->foreign('year_id')->references('id')->on('years')->onDelete('cascade');
         });
     }
 

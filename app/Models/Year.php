@@ -15,10 +15,8 @@ class Year extends Model
         'stop',
 
     ];
-    public function user(){
-        return $this->belongsTo(User::class);
-    }
-    public function year(){
-        return $this->belongsTo(Year::class);
+
+    public function strategic(){
+        return $this->hasMany(Strategic::class);
     }
 }

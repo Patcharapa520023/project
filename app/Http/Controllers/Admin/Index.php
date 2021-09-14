@@ -95,10 +95,7 @@ class Index extends Controller
      public function formaddyear(Request $request){
         return view('page2.year.button.addyear');
     }
-    public function formshowyear(Request $request){
-       $data=User::with('year')->find(base64_decode($request->id));
-        return view('page2.year.button.showyear',compact('data'));
-    }
+
     public function formedityear(Request $request){
        $data=User::with('year')->find(base64_decode($request->id));
         //เก็บไว้เทสนะอิอิ    dd($data->toArray());

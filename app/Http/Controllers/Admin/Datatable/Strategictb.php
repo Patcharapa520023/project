@@ -38,7 +38,7 @@ class Strategictb extends Controller
 
 
         $totalRecords = Strategic::with('year')->select('count(*) as allcount')->count();
-        $totalRecordswithFilter = Strategic::with('user')->select('count(*) as allcount')->where('name', 'like', '%' .$searchValue . '%')->count();
+        $totalRecordswithFilter = Strategic::with('year')->select('count(*) as allcount')->where('name', 'like', '%' .$searchValue . '%')->count();
 
           $records =Strategic::with('year')->orderBy($columnName,$columnSortOrder)
           ->where('name', 'like', '%'.$searchValue .'%')
@@ -49,19 +49,18 @@ class Strategictb extends Controller
         $data_arr = array();
         foreach($records as $key=> $record){
                 $formurl = route('delete_strategic_post');
-                $id = $record->strategic->id;
-                /*$idbase = base64_encode($record->user->id);*/
+                $id = $record->id;
                 $csrf = csrf_field();
                 $name = $record->name;
                 $rolse = $record->year->rolse;
                 $year = $record->year;
                 $console = "<div class='table-data-feature'>
-                <a  href='show/$idbase/strategic'>
+                <a  href='show/$id/strategic'>
                 <button class='item show' data-toggle='tooltip' data-placement='top' title=' data-original-title='More'>
                     <i class='fa fa-search-plus'></i>
                 </button>
                 </a>
-                <a  href='edit/$idbase/strategice'>
+                <a  href='edit/$id/strategice'>
                 <button class='item edit' data-toggle='tooltip' data-placement='top' title=' data-original-title='Edit'>
                     <i class='fa fa-edit'></i>
                 </button>
@@ -77,12 +76,11 @@ class Strategictb extends Controller
                 </div>";
 
             $data_arr[] = array(
-                "id" => $key+1+$strategic,
+                "id" => $key+1,
                 "name" => $name,
                 // "rolse" => $rolse,
-                "year" => $year,
+                "year" => $year->start.'-'.$year->stop.' ('.$year->atplan.' ปี)',
                 "console" => $console,
-
             );
         }
         $response = array(

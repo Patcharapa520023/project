@@ -58,11 +58,7 @@ class Yeartb extends Controller
                 $start = $record->start;
                 $stop = $record->stop;
                 $console = "<div class='table-data-feature'>
-                <a  href='show/$idbase/year'>
-                <button class='item show' data-toggle='tooltip' data-placement='top' title=' data-original-title='More'>
-                    <i class='fa fa-search-plus'></i>
-                </button>
-                </a>
+
                 <a  href='edit/$idbase/year'>
                 <button class='item edit' data-toggle='tooltip' data-placement='top' title=' data-original-title='Edit'>
                     <i class='fa fa-edit'></i>

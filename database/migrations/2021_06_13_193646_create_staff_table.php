@@ -22,7 +22,6 @@ class CreateStaffTable extends Migration
             $table->string("address");
             $table->string("telnum");
 
-
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }

@@ -57,10 +57,10 @@
                             <div class="col col-md-5"><label for="a_and_d_year" class=" form-control-label">แผนพัฒนาการศึกษา</label></div>
                             <div class="col-12 col-md-7">
                                 <div class="row">
-                                    <button id="delete_year" class="btn_ad col-3" type="button">ลบ</button>
+                                    <button id="delete_year" class="btn_ad col-3" type="button">-</button>
                                     <input type="text" class="col-4" id="a_and_d_year" name="atplan"
                                     value="{{ old('name')|5 }}" placeholder="กรอกปี" class="form-control" >
-                                    <button id="add_year" class="btn_ad col-3" type="button" >เพิ่ม</button>
+                                    <button id="add_year" class="btn_ad col-3" type="button" >+</button>
                                     <div class="col-2">ปี </div>
                                 </div>
                                 @error('name')
