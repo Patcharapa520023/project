@@ -85,7 +85,7 @@ Route::group([
     Route::get('/year',[Yeartb::class,"show"])->name("table_Year");
     Route::post('/datayear',[Yeartb::class,"getdata"])->name("datayear");
 
-    Route::get('/show/{id}/year','Index@formshowyear')->name("show_year");
+    // Route::get('/show/{id}/year','Index@formshowyear')->name("show_year");
     Route::get('add/year','Index@formaddyear')->name("add_year");
     Route::get('/edit/{id}/year','Index@formedityear')->name("edit_year");
 
@@ -99,7 +99,6 @@ Route::group([
     Route::get('/strategic',[Strategictb::class,"show"])->name("table_Strategic");
     Route::post('/datastrategic',[Strategictb::class,"getdata"])->name("datastrategic");
 
-    Route::get('/show/{id}/strategic','Index@formshowstrategic')->name("show_strategic");
     Route::get('add/strategic','Index@formaddstrategic')->name("add_strategic");
     Route::get('/edit/{id}/strategic','Index@formeditstrategic')->name("edit_strategic");
 

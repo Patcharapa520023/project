@@ -57,6 +57,7 @@ class Yeartb extends Controller
                 $atplan = $record->atplan;
                 $start = $record->start;
                 $stop = $record->stop;
+                $stop = $record->stop;
                 $console = "<div class='table-data-feature'>
 
                 <a  href='edit/$idbase/year'>
@@ -64,7 +65,7 @@ class Yeartb extends Controller
                     <i class='fa fa-edit'></i>
                 </button>
                 </a>
-                <form method='POST' action='$formurl' onSubmit='dbdelete(this,`$id`)'>
+                <form method='POST' action='$formurl' onSubmit='dbdelete(this,`ปี $start-$stop`)'>
                     $csrf
                     <input type='hidden' name='id' value='$id'>
                     <input type='hidden' name='id2' value='4'>

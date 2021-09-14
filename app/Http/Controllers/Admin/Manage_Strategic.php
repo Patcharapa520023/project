@@ -52,22 +52,13 @@ class Manage_Strategic extends Controller
     }
     public function editstrategic(Request $request){
         $input =  $request->all();
-        $dbuser =  Strategic::find($input['id']);
-        $this->validator($input,$dbuser->username)->validate();
-
         $strategic=[
-            'title'=>$input['title'],
-            'name'=>$input['name'],
-            'year'=>$input['year'],
-
-
-
+            'name'=>$input['name_add'],
+            'year_id'=>$input['year'],
         ];
         $edit = Strategic::find($input['id']);
         $edit ->update($strategic);
-        $edit->strategic()->update($strategic);
-        return redirect()->back()->with('error', 'แก้ไขข้อมูลผู้บริหาร สำเร็จแล้ว');
-
+        return redirect()->back()->with('error', 'แก้ไขข้อมูลยุทธ์ศาสตร์ สำเร็จแล้ว');
 
     }
 

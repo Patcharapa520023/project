@@ -67,68 +67,49 @@
                                 @enderror
                                 </div>
                         </div> --}}
-                        <div class="row form-group">
-                            <div class="col col-md-2"><label for="select" class=" form-control-label">คำนำหน้า</label>
-                            </div>
-                            <div class="col-12 col-md-9">
-                                <input class="form-control" type="text" placeholder="{{ $data->personnel->title }}" readonly>
-                                @error('title')
-                                <small class="help-block form-text text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
+
                         <div class="row form-group">
                             <div class="col col-md-2"><label for="name-input" class=" form-control-label">ชื่อ</label></div>
                             <div class="col-12 col-md-9">
-                                <input class="form-control" type="text" placeholder="{{ $data->personnel->name }}" readonly>
+                                <input class="form-control" type="text" placeholder="{{$data->personnel->title.$data->personnel->name }}" readonly>
                                     @error('name')
                                     <small class="help-block form-text text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                         </div>
+
+
                         <div class="row form-group">
-                            <div class="col col-md-2"><label for="lastname-input"
-                                    class=" form-control-label">นามสกุล</label></div>
+                            <div class="col col-md-2"><label for="responsible-input" class=" form-control-label">ผู้รับผิดชอบ</label></div>
                             <div class="col-12 col-md-9">
-                                <input class="form-control" type="text" placeholder="{{ $data->personnel->lastname }}" readonly>
-                                    @error('lastname')
+                                <input class="form-control" type="text" id="responsible-input" name="responsible" placeholder="{{$data->personnel->responsible }}" readonly >
+                                @error('responsible')
                                     <small class="help-block form-text text-danger">{{ $message }}</small>
-                                    @enderror
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-2"><label for="phone-input" class=" form-control-label">โทรศัพท์</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input class="form-control" type="text" placeholder="{{ $data->personnel->telnum }}" readonly>
+                                    @error('phone')
+                                    <small class="help-block form-text text-danger">{{ $message }}</small>
+                                @enderror
                                 </div>
                         </div>
-
-
                 </div>
+
             </div>
             <div class="col-lg-6">
                 <div class="card-body card-block">
                     <div class="row form-group">
                     </div>
                     <div class="row form-group">
-                        <div class="col col-md-2"><label for="phone-input" class=" form-control-label">โทรศัพท์</label>
-                        </div>
-                        <div class="col-12 col-md-9">
-                            <input class="form-control" type="text" placeholder="{{ $data->personnel->telnum }}" readonly>
-                                @error('phone')
-                                <small class="help-block form-text text-danger">{{ $message }}</small>
-                            @enderror
-                            </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col col-md-2"><label for="select" class=" form-control-label">ระดับผู้ใช้</label>
-                        </div>
-                        <div class="col-12 col-md-9">
-                            <input class="form-control" type="text" placeholder="{{ $data->rolse }}" readonly>
-                            @error('rolse')
-                            <small class="help-block form-text text-danger">{{ $message }}</small>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="row form-group">
                         <div class="col col-md-2"><label for="select" class=" form-control-label">ที่อยู่ปัจจุบัน</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="{{ $data->personnel->address }}" readonly style="height: 95px;"></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="{{ $data->personnel->address }}" readonly style="height: 200px;"></textarea>
                             @error('rolse')
                             <small class="help-block form-text text-danger">{{ $message }}</small>
                             @enderror

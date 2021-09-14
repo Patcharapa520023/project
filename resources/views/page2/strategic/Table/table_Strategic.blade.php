@@ -46,7 +46,7 @@
                                             <th>{{ $headtable[0] }}</th>
                                             @endforeach
 
-                                            <th class="console">เพิ่ม ลบ แก้ไขข้อมูล</th>
+                                            <th class="console"> ลบ แก้ไขข้อมูล</th>
                                         </tr>
                                     </thead>
 

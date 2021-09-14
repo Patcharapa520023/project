@@ -55,17 +55,13 @@ class Strategictb extends Controller
                 $rolse = $record->year->rolse;
                 $year = $record->year;
                 $console = "<div class='table-data-feature'>
-                <a  href='show/$id/strategic'>
-                <button class='item show' data-toggle='tooltip' data-placement='top' title=' data-original-title='More'>
-                    <i class='fa fa-search-plus'></i>
-                </button>
-                </a>
-                <a  href='edit/$id/strategice'>
+
+                <a  href='edit/$id/strategic'>
                 <button class='item edit' data-toggle='tooltip' data-placement='top' title=' data-original-title='Edit'>
                     <i class='fa fa-edit'></i>
                 </button>
                 </a>
-                <form method='POST' action='$formurl' onSubmit='dbdelete(this,`$name$year`)'>
+                <form method='POST' action='$formurl' onSubmit='dbdelete(this,`ยุทธศาสตร์ $name`)'>
                     $csrf
                     <input type='hidden' name='id' value='$id'>
                     <input type='hidden' name='id2' value='4'>

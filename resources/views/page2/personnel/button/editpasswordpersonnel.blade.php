@@ -86,7 +86,7 @@
                     </div>
                     <div class="row form-group">
                         <div class="col col-md-3"><label for="lastname-input"
-                                class=" form-control-label">ชื่อ</label></div>
+                                class=" form-control-label">ชื่อสถานศึกษา</label></div>
                         <div class="col-12 col-md-9">
                             <input class="form-control" type="text" value="{{ $data->personnel->title.$data->personnel->name." ".$data->personnel->lastname }}" name="" readonly>
                                 @error('lastname')

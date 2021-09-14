@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use App\Models\Year;
+use App\Models\Strategic;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -97,7 +98,7 @@ class Index extends Controller
     }
 
     public function formedityear(Request $request){
-       $data=User::with('year')->find(base64_decode($request->id));
+       $data=Year::find(base64_decode($request->id));
         //เก็บไว้เทสนะอิอิ    dd($data->toArray());
        return view('page2.year.button.edityear',compact('data'));
     }
@@ -108,14 +109,14 @@ class Index extends Controller
         $listyear =  Year::orderBy('start','DESC')->get();
         return view('page2.strategic.button.addstrategic',compact('listyear'));
     }
-    public function formshowstrategic(Request $request){
-       $data=User::with('strategic')->find(base64_decode($request->id));
-        return view('page2.strategic.button.showstrategic',compact('data'));
-    }
     public function formeditstrategic(Request $request){
-       $data=User::with('strategic')->find(base64_decode($request->id));
+       $data= Strategic::find($request->id);
+
+    //    dd($data->toArray());
         //เก็บไว้เทสนะอิอิ    dd($data->toArray());
-       return view('page2.strategic.button.editstrategic',compact('data'));
+        $listyear =  Year::orderBy('start','DESC')->get();
+        $mateyear =  $listyear->firstWhere('id',$data['year_id']);
+       return view('page2.strategic.button.editstrategic',compact('listyear','data','mateyear'));
     }
     // end formstrategic
 }

@@ -28,7 +28,7 @@ class Manage_Year extends Controller
 
     }
     public function deleteyear(Request $request){
-        User::find($request->all()['id'])->delete();
+        Year::find($request->all()['id'])->delete();
         return back();
     }
 
@@ -54,23 +54,16 @@ class Manage_Year extends Controller
     }
     public function edityear(Request $request){
         $input =  $request->all();
-        $dbuser =  User::find($input['id']);
-        $this->validator($input,$dbuser->username)->validate();
-        $user=[
-            'username'=>$input['username'],
-            'rolse'=>$input['rolse'],
-        ];
+        $dbuser =  Year::find($input['id']);
         $year=[
-            'id'=>$input['id'],
-            'atplan'=>$input['atpan'],
+            'atplan'=>$input['atplan'],
             'start'=>$input['start'],
-            'stop'=>$input['stop'],
+            'stop'=>$input['start']+$input['atplan']-1,
 
 
         ];
-        $edit = User::find($input['id']);
-        $edit ->update($user);
-        $edit->year()->update($year);
+        $edit = Year::find($input['id']);
+        $edit->update($year);
         return redirect()->back()->with('error', 'แก้ไขข้อมูลแผนพัฒนาการศึกษา สำเร็จแล้ว');
     }
 }
