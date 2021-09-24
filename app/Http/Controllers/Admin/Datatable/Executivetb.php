@@ -11,20 +11,18 @@ class Executivetb extends Controller
     public function show(){
         $tables = Executive::with('user')->get()->toArray();
         $headtables  = array(
-            array("ลำดับ","id"),
+            array("ลำดับ","id","users.id"),
             // array("บทบาท","rolse"),
-            array("ชื่อผู้ใช้","username"),
+            array("ชื่อผู้ใช้","username","users.username"),
             // array("รหัสผ่าน","password"),
-            array("ชื่อ สกุล","name"),
-            array("ที่อยู่","address"),
-            array("เบอร์โทรศัพท์","telnum"),
+            array("ชื่อ สกุล","name","executives.name"),
+            array("ที่อยู่","address","executives.address"),
+            array("เบอร์โทรศัพท์","telnum","executives.telnum"),
         );
         // dd($headtables);
-
-
         return view('page2.executive.table.table_executive',compact('headtables'));
     }
-    public function getdata(Request $request){
+    public function getdataE(Request $request){
 
         $draw = $request->get('draw');
         $start = $request->get("start");
@@ -106,6 +104,16 @@ class Executivetb extends Controller
 
         echo json_encode($response);
         exit;
+      }
+    public function getdata(Request $request){
+        $eloq = User::rightJoin('executives','executives.user_id','=','users.id');
+        return datatables()
+        ->eloquent($eloq)
+        ->addColumn('console', function ($user) {
+            $name = $user->name.$user->title.$user->lastname;
+            return $this->columcontro($user->user_id,$name,'executive');
+        })
+        ->toJson();
       }
 
 

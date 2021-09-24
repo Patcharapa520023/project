@@ -1,18 +1,21 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Models\User;
-use App\Http\Controllers\Admin\Manage_Personnel;
-use App\Http\Controllers\Admin\Datatable\Personneltb;
-use App\Http\Controllers\Admin\Datatable\Executivetb;
-use App\Http\Controllers\Admin\Datatable\Stafftb;
-use App\Http\Controllers\Admin\Datatable\Yeartb;
-use App\Http\Controllers\Admin\Datatable\Strategictb;
-use App\Http\Controllers\Admin\Manage_Staff;
-use App\Http\Controllers\Admin\Manage_Executive;
 use App\Http\Controllers\Admin\Manage_Year;
+use App\Http\Controllers\Admin\Manage_Offer;
+use App\Http\Controllers\Admin\Manage_Staff;
+use App\Http\Controllers\Admin\Datatable\Yeartb;
+use App\Http\Controllers\Admin\Manage_Executive;
+use App\Http\Controllers\Admin\Manage_Personnel;
 use App\Http\Controllers\Admin\Manage_Strategic;
+use App\Http\Controllers\Admin\Datatable\Offertb;
+use App\Http\Controllers\Admin\Datatable\Stafftb;
+use App\Http\Controllers\Admin\Datatable\Executivetb;
+use App\Http\Controllers\Admin\Datatable\Personneltb;
+use App\Http\Controllers\Admin\Datatable\Strategictb;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -122,7 +125,17 @@ Route::group([
     Route::post('edit/strategic',[Manage_Strategic::class,'editstrategic'])->name("edit_strategic_post");
     // end strategic
 */
+    // offer
+    Route::get('/offer',[Offertb::class,"show"])->name("table_Offer");
+    Route::post('/dataoffer',[Offertb::class,"getdata"])->name("dataoffer");
+    Route::get('add/offer','Index@formaddoffer')->name("add_offer");
+    Route::get('/edit/{id}/offer','Index@formeditoffer')->name("edit_offer");
 
+
+    Route::post('delete/offer',[Manage_Offer::class,'deleteoffer'])->name("delete_offer_post");
+    Route::post('add/offer',[Manage_Offer::class,'addoffer'])->name("add_offer_post");
+    Route::post('edit/offer',[Manage_Offer::class,'editoffer'])->name("edit_offer_post");
+    // end offer
 
 
 });

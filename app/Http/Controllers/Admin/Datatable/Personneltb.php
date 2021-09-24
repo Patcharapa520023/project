@@ -11,14 +11,14 @@ class Personneltb extends Controller
     public function show(){
         $tables = Personnel::with('user')->get()->toArray();
         $headtables  = array(
-            array("ลำดับ","id"),
+            array("ลำดับ","id","users.id"),
             // array("บทบาท","rolse"),
-            array("ชื่อผู้ใช้","username"),
+            array("ชื่อผู้ใช้","username","users.username"),
             // array("รหัสผ่าน","password"),
-            array("ชื่อสถานศึกษา","name"),
-            array("ที่อยู่","address"),    
-            array("เบอร์โทรศัพท์","telnum"), 
-            array("ผู้รับผิดชอบ","responsible"),
+            array("ชื่อสถานศึกษา","name","personnels.name"),
+            array("ที่อยู่","address","personnels.address"),    
+            array("เบอร์โทรศัพท์","telnum","personnels.telnum"), 
+            array("ผู้รับผิดชอบ","responsible","personnels.responsible"),
         );
         // dd($headtables);
 
@@ -26,6 +26,16 @@ class Personneltb extends Controller
         return view('page2.personnel.table.table_personnel',compact('headtables'));
     }
     public function getdata(Request $request){
+        $eloq = User::rightJoin('personnels','personnels.user_id','=','users.id');
+        return datatables()
+        ->eloquent($eloq)
+        ->addColumn('console', function ($user) {
+            $name = $user->name.$user->title.$user->lastname;
+            return $this->columcontro($user->user_id,$name,'personnel');
+        })
+        ->toJson();
+      }
+    public function getdatad(Request $request){
 
         $draw = $request->get('draw');
         $start = $request->get("start");

@@ -11,13 +11,13 @@ class Stafftb extends Controller
     public function show(){
         $tables = Staff::with('user')->get()->toArray();
         $headtables  = array(
-            array("ลำดับ","id"),
+            array("ลำดับ","id","users.id"),
             // array("บทบาท","rolse"),
-            array("ชื่อผู้ใช้","username"),
+            array("ชื่อผู้ใช้","username","users.username"),
             // array("รหัสผ่าน","password"),
-            array("ชื่อ สกุล","name"),
-            array("ที่อยู่","address"),
-            array("เบอร์โทรศัพท์","telnum"),
+            array("ชื่อ สกุล","name","staff.name"),
+            array("ที่อยู่","address","staff.address"),
+            array("เบอร์โทรศัพท์","telnum","staff.telnum"),
         );
         // dd($headtables);
 
@@ -25,6 +25,16 @@ class Stafftb extends Controller
         return view('page2.staff.table.table_staff',compact('headtables'));
     }
     public function getdata(Request $request){
+        $eloq = User::rightJoin('staff','staff.user_id','=','users.id');
+        return datatables()
+        ->eloquent($eloq)
+        ->addColumn('console', function ($user) {
+            $name = $user->name.$user->title.$user->lastname;
+            return $this->columcontro($user->user_id,$name,'staff');
+        })
+        ->toJson();
+      }
+    public function getdatap(Request $request){
 
         $draw = $request->get('draw');
         $start = $request->get("start");

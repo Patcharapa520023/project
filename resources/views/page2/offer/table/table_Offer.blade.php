@@ -7,7 +7,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>ตารางข้อมูลสถานศึกษา</h1>
+                        <h1>ตารางข้อมูลเสนอโครงการ</h1>
                     </div>
                 </div>
             </div>
@@ -15,8 +15,8 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li><a href="#">จัดการข้อมูลผู้ใช้</a></li>
-                            <li><a href="http://127.0.0.1:8000/admin/personnel#"><u>สถานศึกษา</u></a></li>
+                            <li><a href="#">จัดการข้อมูลโครงการ</a></li>
+                            <li><a href="http://127.0.0.1:8000/admin/offer"><u>เสนอโครงการ</u></a></li>
                             {{-- <li class="active">Data table</li> --}}
                         </ol>
                     </div>
@@ -33,8 +33,8 @@
                         <div class="card">
                             <div class="card-header d-flex p-2 justify-content-between align-items-center pl-4 pr-4">
                                     <strong class="card-title">ตารางข้อมูล</strong>
-                                        <a class="addcus btn btn-outline-success" href="{{ route('add_personnel') }}">
-                                            <i class="fa fa-plus"></i>&nbsp;เพิ่มข้อมูลสถานศึกษา
+                                        <a class="addcus btn btn-outline-success" href="{{ route('add_offer') }}">
+                                            <i class="fa fa-plus"></i>&nbsp;เพิ่มข้อมูลเสนอโครงการ
                                         </a>
                             </div>
                             <div class="card-body">
@@ -99,7 +99,7 @@
                     },
                 processing: true,
                 serverSide: true,
-                ajax: { url: "{{route('datapersonnel')}}",
+                ajax: { url: "{{route('dataexecutive')}}",
                         type: "post",
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     },

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use App\Models\Year;
+use App\Models\Offer;
 use App\Models\Strategic;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -119,6 +120,21 @@ class Index extends Controller
        return view('page2.strategic.button.editstrategic',compact('listyear','data','mateyear'));
     }
     // end formstrategic
+
+    // formoffer
+    public function formshowoffer(Request $request){
+        $data=Offer::with('offer')->find(base64_decode($request->id));
+         return view('page2.offer.button.button.showoffer',compact('data'));
+     }
+     public function formeditoffer(Request $request){
+         $data=Offer::with('offer')->find(base64_decode($request->id));
+          //เก็บไว้เทสนะอิอิ    dd($data->toArray());
+         return view('page2.offer.button.button.editoffer',compact('data'));
+      }
+      public function formaddoffer(Request $request){
+         return view('page2.offer.button.button.addoffer');
+     }
+     // end formoffer
 }
 
 

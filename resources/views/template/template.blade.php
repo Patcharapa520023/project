@@ -85,6 +85,18 @@
                                 <li><i class="fa fa-bars"></i><a href="{{ route("table_Personnel") }}">กลยุทธ์</a></li>
                             </ul>
                     </li>
+
+                    <li class="menu-item-has-children dropdown {{(Request::url()==route('table_Offer'))?'active':false}}">
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>จัดการข้อมูลโครงการ</a>
+                            <ul class="sub-menu children dropdown-menu">
+                                <li><i class="fa fa-puzzle-piece"></i><a href="{{ route("table_Executive") }}" style="left: 0px">ข้อมูลโครงการ</a></li>
+                                <li><i class="fa fa-id-badge"></i><a href="{{ route("table_Offer") }}">เสนอโครงการ</a></li>
+                                <li><i class="fa fa-bars"></i><a href="{{ route("table_Personnel") }}">พิจารณาอนุมัติโครงการ</a></li>
+                                <li><i class="fa fa-bars"></i><a href="{{ route("table_Personnel") }}">ติดตามโครงการ</a></li>
+                                <li><i class="fa fa-bars"></i><a href="{{ route("table_Personnel") }}">สรุปโครงการ</a></li>
+                            </ul>
+                    </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>

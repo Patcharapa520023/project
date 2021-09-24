@@ -110,6 +110,7 @@
                         @foreach ($headtables as $headtable)
                             {
                                 data:  "{{$headtable[1]}}",
+                                name:  "{{$headtable[2]}}",
                             },
                         @endforeach
                         {
