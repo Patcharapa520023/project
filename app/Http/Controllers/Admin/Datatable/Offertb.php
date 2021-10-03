@@ -12,7 +12,7 @@ class Offertb extends Controller
         $headtables  = array(
             array("ลำดับ","id","id"),
             // array("บทบาท","rolse"),
-            array("ชื่อยุทธศาสตร์","name","id"),
+            array("ชื่อโครงการ","name","id"),
             // array("รหัสผ่าน","password"),
             array("ปีงบประมาณ","year","id"),
         );

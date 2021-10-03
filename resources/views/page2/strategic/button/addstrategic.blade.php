@@ -83,10 +83,10 @@
 
                             </div>
                         </div>
-                            <div class="list_add_namestrategic d-flex">
+                        <div class="list_add_namestrategic d-flex">
 
 
-                            </div>
+                        </div>
 
                         </div>
 
@@ -114,13 +114,8 @@
 
 
 @section('script')
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script>
-        Array.prototype.remove = function(index) {
-            return this.filter(function(element, ine) {
-            return ine != index;
-        })
-    }
+
 
         let arrayname = [];
         $('#add_strategic_post').submit(function(e) {
