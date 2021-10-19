@@ -7,7 +7,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>ตารางข้อมูลยุทธ์ศาสตร์</h1>
+                        <h1>ตารางข้อมูลกลยุทธ์</h1>
                     </div>
                 </div>
             </div>
@@ -16,7 +16,7 @@
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
                             <li><a href="#">จัดการข้อมูลแผนพัฒนาการศึกษา</a></li>
-                            <li><a href="http://127.0.0.1:8000/admin/strategic"><u>ข้อมูลยุทธ์ศาสตร์</u></a></li>
+                            <li><a href="http://127.0.0.1:8000/admin/strategic"><u>ข้อมูลกลยุทธ์</u></a></li>
                             {{-- <li class="active">Data table</li> --}}
                         </ol>
                     </div>
@@ -32,9 +32,9 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header d-flex p-2 justify-content-between align-items-center pl-4 pr-4">
-                                    <strong class="card-title">ตารางข้อมูลยุทธ์ศาสตร์</strong>
-                                        <a class="addcus btn btn-outline-success" href="{{ route('add_strategic') }}">
-                                            <i class="fa fa-plus"></i>&nbsp;เพิ่มข้อมูลยุทธ์ศาสตร์
+                                    <strong class="card-title">ตารางข้อมูลกลยุทธ์</strong>
+                                        <a class="addcus btn btn-outline-success" href="{{ route('add_tactics') }}">
+                                            <i class="fa fa-plus"></i>&nbsp;เพิ่มข้อมูลกลยุทธ์
                                         </a>
                             </div>
                             <div class="card-body">
@@ -99,7 +99,7 @@
                     },
                 processing: true,
                 serverSide: true,
-                ajax: { url: "{{route('datastrategic')}}",
+                ajax: { url: "{{route('datatactics')}}",
                         type: "post",
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     },

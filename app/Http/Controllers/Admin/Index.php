@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use App\Models\Year;
 use App\Models\Offer;
+use App\Models\Tactics;
 use App\Models\Strategic;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -135,6 +136,21 @@ class Index extends Controller
          return view('page2.offer.button.button.addoffer');
      }
      // end formoffer
+
+     // formtactics
+     public function formaddtactics(Request $request){
+        $listyear =  Year::orderBy('start','DESC')->get();
+        return view('page2.tactics.button.addtactics',compact('listyear'));
+    }
+    public function formedittactics(Request $request){
+       $data= Tactics::where('tactics.id',$request->id)->first();
+    //    dd($data->toArray());
+       //เก็บไว้เทสนะอิอิ    dd($data->toArray());
+       $listyear =  Year::orderBy('start','DESC')->get();
+       $liststrategic =  Strategic::where('year_id',$data['year_id'])->orderBy('name','DESC')->get();
+       return view('page2.tactics.button.edittactics',compact('listyear','data','liststrategic'));
+    }
+    // end formtactics
 }
 
 

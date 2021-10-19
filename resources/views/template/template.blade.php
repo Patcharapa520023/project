@@ -83,13 +83,13 @@
                             </ul>
                     </li>
 
-                    <li class="menu-item-has-children dropdown {{(Request::url()==route('table_Year')||Request::url()==route('table_Strategic')||Request::url()==route('table_Personnel')||Request::url()==route('add_personnel'))?'active':false}}">
+                    <li class="menu-item-has-children dropdown {{(Request::url()==route('table_Year')||Request::url()==route('table_Tactics')||Request::url()==route('table_Strategic')||Request::url()==route('table_Personnel')||Request::url()==route('add_personnel'))?'active':false}}">
 
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>จัดการแผนพัฒนาการศึกษา</a>
                             <ul class="sub-menu children dropdown-menu">
                                 <li><i class="fa fa-puzzle-piece"></i><a href="{{ route("table_Year") }}" style="left: 0px">ปีงบประมาณ</a></li>
                                 <li><i class="fa fa-id-badge"></i><a href="{{ route("table_Strategic") }}">ยุทธศาสตร์</a></li>
-                                <li><i class="fa fa-bars"></i><a href="{{ route("table_Personnel") }}">กลยุทธ์</a></li>
+                                <li><i class="fa fa-bars"></i><a href="{{ route("table_Tactics") }}">กลยุทธ์</a></li>
                             </ul>
                     </li>
 
@@ -97,8 +97,7 @@
 
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>จัดการข้อมูลโครงการ</a>
                             <ul class="sub-menu children dropdown-menu">
-                                <li><i class="fa fa-puzzle-piece"></i><a href="{{ route("table_Executive") }}" style="left: 0px">ข้อมูลโครงการ</a></li>
-                                <li><i class="fa fa-id-badge"></i><a href="{{ route("table_Offer") }}">เสนอโครงการ</a></li>
+                                <li><i class="fa fa-id-badge"></i><a href="{{ route("table_Offer") }}">ข้อมูลโครงการ</a></li>
                                 <li><i class="fa fa-bars"></i><a href="{{ route("table_Personnel") }}">พิจารณาอนุมัติโครงการ</a></li>
                                 <li><i class="fa fa-bars"></i><a href="{{ route("table_Personnel") }}">ติดตามโครงการ</a></li>
                                 <li><i class="fa fa-bars"></i><a href="{{ route("table_Personnel") }}">สรุปโครงการ</a></li>

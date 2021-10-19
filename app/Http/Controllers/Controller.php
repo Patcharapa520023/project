@@ -11,7 +11,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     public function columcontro($id,$deletename,$tablename,$show=true){
-        $idbase = base64_encode($id);
+        $idbase =$id;
         $csrf = csrf_field();
         return "<div class='table-data-feature'>".(($show)?"<a  href='show/$idbase/$tablename'>
         <button class='item show' data-toggle='tooltip' data-placement='top' title=' data-original-title='More'>
@@ -32,6 +32,6 @@ class Controller extends BaseController
             </form>
             </div>";
 
-    } 
-    
+    }
+
 }

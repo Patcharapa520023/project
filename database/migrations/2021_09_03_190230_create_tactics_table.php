@@ -15,10 +15,12 @@ class CreateTacticsTable extends Migration
     {
         Schema::create('tactics', function (Blueprint $table) {
             $table->id();
-            $table->string('atplan');
-            $table->string('start');
+            $table->unsignedBigInteger('year_id');
+            $table->unsignedBigInteger('strategic_id');
             $table->string('name');
-            $table->string('year');
+            $table->foreign('year_id')->references('id')->on('years');
+            $table->foreign('strategic_id')->references('id')->on('strategics');
+
         });
     }
 

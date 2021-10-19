@@ -10,12 +10,13 @@ use App\Http\Controllers\Admin\Datatable\Yeartb;
 use App\Http\Controllers\Admin\Manage_Executive;
 use App\Http\Controllers\Admin\Manage_Personnel;
 use App\Http\Controllers\Admin\Manage_Strategic;
+use App\Http\Controllers\Admin\Manage_Tactics;
 use App\Http\Controllers\Admin\Datatable\Offertb;
 use App\Http\Controllers\Admin\Datatable\Stafftb;
 use App\Http\Controllers\Admin\Datatable\Executivetb;
 use App\Http\Controllers\Admin\Datatable\Personneltb;
 use App\Http\Controllers\Admin\Datatable\Strategictb;
-
+use App\Http\Controllers\Admin\Datatable\Tacticstb;
 
 /*
 |--------------------------------------------------------------------------
@@ -111,20 +112,22 @@ Route::group([
     Route::post('edit/strategic',[Manage_Strategic::class,'editstrategic'])->name("edit_strategic_post");
     // end strategic
 
-    /*// strategic
-    Route::get('/strategic',[Strategictb::class,"show"])->name("table_Year");
-    Route::post('/datastrategic',[Strategictb::class,"getdata"])->name("datastrategic");
+    // tactics
+    Route::get('/tactics',[Tacticstb::class,"show"])->name("table_Tactics");
+    Route::post('/datatactics',[Tacticstb::class,"getdata"])->name("datatactics");
 
-    Route::get('/show/{id}/strategic','Index@formshowstrategic')->name("show_strategic");
-    Route::get('add/strategic','Index@formaddstrategic')->name("add_strategic");
-    Route::get('/edit/{id}/ystrategic','Index@formeditstrategic')->name("edit_strategic");
+    Route::get('add/tactics','Index@formaddtactics')->name("add_tactics");
+    Route::get('/edit/{id}/tactics','Index@formedittactics')->name("edit_tactics");
 
 
-    Route::post('delete/strategic',[Manage_Strategic::class,'deletestrategic'])->name("delete_strategic_post");
-    Route::post('add/strategic',[Manage_Strategic::class,'addstrategic'])->name("add_strategic_post");
-    Route::post('edit/strategic',[Manage_Strategic::class,'editstrategic'])->name("edit_strategic_post");
-    // end strategic
-*/
+    Route::post('delete/tactics',[Manage_Tactics::class,'deletetactics'])->name("delete_tactics_post");
+    Route::post('add/tactics',[Manage_Tactics::class,'addtactics'])->name("add_tactics_post");
+    Route::post('edit/tactics',[Manage_Tactics::class,'edittactics'])->name("edit_tactics_post");
+    Route::post('/optionName_year',[Manage_Tactics::class,"optionName_year"])->name("optionName_year");
+
+    // end tactics
+
+
     // offer
     Route::get('/offer',[Offertb::class,"show"])->name("table_Offer");
     Route::post('/dataoffer',[Offertb::class,"getdata"])->name("dataoffer");

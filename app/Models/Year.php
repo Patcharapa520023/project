@@ -19,4 +19,8 @@ class Year extends Model
     public function strategic(){
         return $this->hasMany(Strategic::class);
     }
+
+    public function tactic(){
+        return $this->hasMany(Tactics::class);
+    }
 }

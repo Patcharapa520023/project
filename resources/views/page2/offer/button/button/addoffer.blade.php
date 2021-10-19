@@ -130,7 +130,7 @@
                               </div>
                               <div class="form-group ">
                                 <label class=""for="location">7. สถานที่ดำเนินการ</label>
-                                <input class="form-control" id="location" name="location" rows="3" placeholder="กรอกสถานที่ดำเนินการ" value="{{old('location')}}">
+                                <input class="form-control" id="location" name= "location" rows="3" placeholder="กรอกสถานที่ดำเนินการ" value="{{old('location')}}">
                               </div>
                               <div class="form-group ">
                                 <label class=""for="time ">8. ระยะเวลาดำเนินงาน</label>
