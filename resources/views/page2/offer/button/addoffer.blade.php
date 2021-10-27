@@ -52,11 +52,34 @@
                     <div class="card-body card-block">
 
                         <form>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                            </div>
+                            <div class="form-group  col-md-5">
+                                <div class="row form-group">
+                                    <label  class=" col-sm-3 col-form-label">ปีงบประมาณ</label>
+                                    <select value="{{ old('title') }}" name="year" id="select"class=" form-control">
+                                    <option value="">เลือกปีงบประมาณ</option>
+                                    @foreach ($listyear as $year)
+                                        <option value="{{ $year->id }}">{{ $year->start.'-'.$year->stop.' ('.$year->atplan.' ปี)' }}</option>
+                                        @endforeach
+
+                                    </select>
+                                    @error('year')
+                                        <small class="help-block form-text text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                                <div class="row form-group">
+                                </div>
+                                <div class="row form-group">
+                                </div>
+                            </div>
+                        </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                   <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="gridCheck">
-                                    <label class="form-check-label" for="gridCheck">สอดคล้องกับแผนพัฒนาการศึกษา</label>
+                                    <label class="form-check-label" for="gridCheck">สอดคล้องกับแผนพัฒนาการท้องถิ่น</label>
                                   </div>
                                 </div>
 
@@ -82,6 +105,7 @@
 
                                 </div>
                             </div>
+
 
 
 
@@ -125,8 +149,8 @@
                                     <div class="list_add mt-1 pl-4"> </div>
                              </div>
                               <div class="form-group ">
-                                <label class=""for="responsible">6. ผู้รับผิดชอบโครงการ</label>
-                                <input class="form-control" id="responsible" name="responsible" rows="3" placeholder="กรอกผู้รับผิดชอบโครงการ" value="{{old('responsible')}}">
+                                <label class=""for="responsible">6. ผู้ประสานงานโครงการ</label>
+                                <input class="form-control" id="responsible" name="responsible" rows="3" placeholder="กรอกผู้ประสานงานโครงการ" value="{{old('responsible')}}">
                               </div>
                               <div class="form-group ">
                                 <label class=""for="location">7. สถานที่ดำเนินการ</label>

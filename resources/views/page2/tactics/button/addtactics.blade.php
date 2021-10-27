@@ -82,6 +82,25 @@
                                     @enderror
                             </div>
                         </div>
+                        <div class="row form-group row res_c ">
+                            <div class="col col-md-2"><label for="select" class=" form-control-label">ประเภทกลยุทธ์</label>
+                            </div>
+                                <div class="col-12 col-md-5">
+                                    <select value="{{ old('title') }}" name="category" id="select"
+                                    class=" form-control">
+                                    <option value="">เลือกประเภทกลยุทธ์</option>
+                                    <option value="1">กลยุทธ์ท้องถิ่น</option>
+                                    <option value="2">กลยุทธ์กองการศึกษา</option>
+                                    <option value="3">กลยุทธ์สถานศึกษา</option>
+
+
+                                    </select>
+                                    @error('category')
+                                        <small class="help-block form-text text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+
+                        </div>
                         <input type="hidden"  name="name_add_m" value="">
                         <div class="row form-group row res_c">
                             <div class="col col-md-2"><label for="name-input" class=" form-control-label">ชื่อกลยุทธ์</label></div>

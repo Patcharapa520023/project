@@ -1222,14 +1222,24 @@ header .form-inline {
   float: left;
   padding: 1.875em;
   width: 100%; }
-
+.tcard{
+    cursor: pointer;
+    border: 0.5px solid #f3f2f7 !important;
+    border-radius: 10px !important;
+}
+.tcard:not(.active){
+    background: #f3f3f3 !important;
+}
+.tcard:not(.active):hover{
+    background: #f6fff0 !important;
+}
 .card {
   margin-bottom: 1.875em;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 0;
   border: 0px solid transparent;
-  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 0 20px rgba(0, 0, 0, 0.08); }
+  -webkit-box-shadow: -4px 7px 2px 0px rgb(20 5 102 / 5%);
+          box-shadow: -4px 7px 2px 0px rgb(20 5 102 / 5%); }
   .card .box-title {
     font-weight: 600;
     font-size: 1em;
@@ -2062,10 +2072,10 @@ header .form-inline {
     font-size: 50px;
     line-height: 50px;
     position: absolute;
-    left: 30px;
-    top: 20px; }
+    left: 20px;
+    top: 10px; }
   .stat-widget-five .stat-content {
-    margin-left: 100px; }
+    margin-left: 75px; }
   .stat-widget-five .stat-text {
     color: #455a64;
     font-size: 20px; }
@@ -2553,4 +2563,63 @@ footer.site-footer {
     left: inherit !important;
     right: 20px !important; }
 
+    .pop-onhover.bg-gradient3 span, .pop-onhover.bg-gradient3:before {
+        background: #7e9dd6;
+        /* border: 1px solid #343a40 */
+
+    }
+    .fancy-button.pop-onhover:before {
+        opacity: 0;
+        bottom: 10px;
+    }
+    .fancy-button:before {
+        content: "";
+        display: inline-block;
+        height: 40px;
+        position: absolute;
+        bottom: -1px;
+        left: 10px;
+        right: 10px;
+        z-index: -1;
+        border-radius: 2em;
+        filter: blur(14px) brightness(0.9);
+        transform-style: preserve-3d;
+        transition: all 0.3s ease-out;
+    }
+    .fancy-button.bg-gradient3 {
+        text-shadow: 0 0 1px #546082;
+    }
+    .fancy-button {
+        display: inline-block;
+        margin-bottom: 20px;
+        font-family: "Heebo", Helvetica, Arial, sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        line-height: 24px;
+        color: #ffffff;
+        position: relative;
+    }
+    .fancy-button.pop-onhover span {
+        border-radius: 4px;
+    }
+    .fancy-button span {
+        display: inline-block;
+        padding: 7px 20px;
+        border-radius: 50em;
+        position: relative;
+        z-index: 2;
+        will-change: transform, filter;
+        transform-style: preserve-3d;
+        transition: all 0.3s ease-out;
+    }
+
+    .cardf{
+        float: left;
+        padding: 0.5em;
+        position: relative;
+        width: 100%;
+
+    }
 /*# sourceMappingURL=style.css.map */

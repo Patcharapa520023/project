@@ -14,6 +14,8 @@ class Tactics extends Model
         'year_id',
         'strategic_id',
         'name',
+        'category',
+
     ];
     public function year(){
         return $this->hasOne(Year::class);

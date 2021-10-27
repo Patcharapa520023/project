@@ -5,17 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Strategic extends Model
+class Target extends Model
 {
     use HasFactory;
     public $timestamps = false;
     protected $fillable = [
-        'year_id',
-        'name',
-        'category',
+        'id',
+        'offer_id',
+        'quantity',
+        'quality',
     ];
-    public function year(){
-        return $this->belongsTo(Year::class);
-    }
-
 }

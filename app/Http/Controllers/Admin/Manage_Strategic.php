@@ -16,11 +16,14 @@ class Manage_Strategic extends Controller
         Validator::make($request->all(), [
             'year' => 'required',
             'name_add_m' => 'required',
+            'category' => 'required|in:1,2,3',
+
         ])->validate();
         $strategic = collect($input['name_add_m'])->map(function($item) use($input){
             return  [
                 "name"=>$item,
-                "year_id"=>$input['year']
+                "year_id"=>$input['year'],
+                "category"=>$input['category']
             ];
         });
         Strategic::insert($strategic->toArray());

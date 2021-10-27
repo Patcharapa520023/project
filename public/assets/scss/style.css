@@ -1205,8 +1205,8 @@ header .form-inline {
   border-radius: 5px;
   padding: 0;
   border: 0px solid transparent;
-  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 0 20px rgba(0, 0, 0, 0.08); }
+  -webkit-box-shadow:  -2px 8px 1px rgb(0 0 0 / 8%);
+          box-shadow:  -2px 8px 1px rgb(0 0 0 / 8%); }
   .card .box-title {
     font-weight: 600;
     font-size: 1em;
@@ -2510,3 +2510,20 @@ footer.site-footer {
     left: inherit !important;
     right: 20px !important; }
 /*# sourceMappingURL=style.css.map */
+.fancy-button {
+    display: inline-block;
+    margin: 20px;
+    font-family: "Heebo", Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    line-height: 24px;
+    color: #ffffff;
+    position: relative;
+}
+.pop-onhover.bg-gradient3 span, .pop-onhover.bg-gradient3:before {
+    background: #0fa3a8;
+    background: linear-gradient(
+180deg, #B9AEF0 0%, #ADA1EB 80%, #ADA1EB 100%);
+}

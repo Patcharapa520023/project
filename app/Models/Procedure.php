@@ -5,17 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Strategic extends Model
+class Procedure extends Model
 {
     use HasFactory;
     public $timestamps = false;
     protected $fillable = [
-        'year_id',
+        'id',
+        'offer_id',
         'name',
-        'category',
     ];
-    public function year(){
-        return $this->belongsTo(Year::class);
-    }
-
 }

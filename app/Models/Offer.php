@@ -10,13 +10,14 @@ class Offer extends Model
     use HasFactory;
     public $timestamps = false;
     protected $fillable = [
-        'year_id',
+        'id',
         'name',
+        'rational',
+        'responsible',
+        'location',
+        'budget',
     ];
     public function year(){
         return $this->belongsTo(Year::class);
-    }
-    public function strategic(){
-        return $this->hasMany(Strategic::class);
     }
 }

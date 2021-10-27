@@ -21,6 +21,7 @@ class Manage_Tactics extends Controller
             'year' => 'required',
             'name_yut' => 'required',
             'name_add_m' => 'required',
+            'category' => 'required|in:1,2,3',
         ])->validate();
 
 
@@ -29,6 +30,7 @@ class Manage_Tactics extends Controller
                 "name"=>$item,
                 "year_id"=>$input['year'],
                 'strategic_id'=>$input['name_yut'],
+                "category"=>$input['category']
             ];
         });
         Tactics::insert($tactics->toArray());
@@ -65,12 +67,14 @@ class Manage_Tactics extends Controller
             'year' => 'required',
             'name_yut' => 'required',
             'name_add' => 'required',
+            'category' => 'required|in:1,2,3',
             ])->validate();
             $input =  $request->all();
         $tactics=[
             "name"=>$input['name_add'],
             "year_id"=>$input['year'],
             'strategic_id'=>$input['name_yut'],
+            "category"=>$input['category']
         ];
 
         $edit = Tactics::find($input['id']);

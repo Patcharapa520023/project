@@ -85,9 +85,9 @@
 
                     <li class="menu-item-has-children dropdown {{(Request::url()==route('table_Year')||Request::url()==route('table_Tactics')||Request::url()==route('table_Strategic')||Request::url()==route('table_Personnel')||Request::url()==route('add_personnel'))?'active':false}}">
 
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>จัดการแผนพัฒนาการศึกษา</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>จัดการยุทธศาสตร์และกลยุทธ์</a>
                             <ul class="sub-menu children dropdown-menu">
-                                <li><i class="fa fa-puzzle-piece"></i><a href="{{ route("table_Year") }}" style="left: 0px">ปีงบประมาณ</a></li>
+                                <li><i class="fa fa-puzzle-piece"></i><a href="{{ route("table_Year") }}" style="left: 0px">แผนพัฒนาท้องถิ่นและกองการศึกษา</a></li>
                                 <li><i class="fa fa-id-badge"></i><a href="{{ route("table_Strategic") }}">ยุทธศาสตร์</a></li>
                                 <li><i class="fa fa-bars"></i><a href="{{ route("table_Tactics") }}">กลยุทธ์</a></li>
                             </ul>
@@ -99,8 +99,8 @@
                             <ul class="sub-menu children dropdown-menu">
                                 <li><i class="fa fa-id-badge"></i><a href="{{ route("table_Offer") }}">ข้อมูลโครงการ</a></li>
                                 <li><i class="fa fa-bars"></i><a href="{{ route("table_Personnel") }}">พิจารณาอนุมัติโครงการ</a></li>
-                                <li><i class="fa fa-bars"></i><a href="{{ route("table_Personnel") }}">ติดตามโครงการ</a></li>
-                                <li><i class="fa fa-bars"></i><a href="{{ route("table_Personnel") }}">สรุปโครงการ</a></li>
+                                <li><i class="fa fa-bars"></i><a href="{{ route("table_Personnel") }}">บันทึกผลโครงการ</a></li>
+                                <li><i class="fa fa-bars"></i><a href="{{ route("table_Personnel") }}">รายงานแผนดำเนินงานประจำปีงบประมาณ</a></li>
                             </ul>
                     </li>
                 </ul>

@@ -63,7 +63,26 @@
                                         @endforeach
 
                                     </select>
-                                    @error('title')
+                                    @error('year')
+                                        <small class="help-block form-text text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+
+                        </div>
+                        <div class="row form-group row res_c ">
+                            <div class="col col-md-2"><label for="select" class=" form-control-label">ประเภทยุทธศาสตร์</label>
+                            </div>
+                                <div class="col-12 col-md-5">
+                                    <select value="{{ old('title') }}" name="category" id="select"
+                                    class=" form-control">
+                                    <option value="">เลือกประเภทยุทธศาสตร์</option>
+                                    <option value="1">ยุทธศาสตร์ท้องถิ่น</option>
+                                    <option value="2">ยุทธศาสตร์กองการศึกษา</option>
+                                    <option value="3">ยุทธศาสตร์สถานศึกษา</option>
+
+
+                                    </select>
+                                    @error('category')
                                         <small class="help-block form-text text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -75,7 +94,7 @@
                             <div class="d-flex col-12 col-md-8">
                                 <div class=""><input type="text" id="name-input" name="name_add"
                                         value="{{ old('name') }}" placeholder="กรอกชื่อยุทธศาสตร์" class="form-control">
-                                    @error('name')
+                                    @error('name_add_m')
                                         <small class="help-block form-text text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>

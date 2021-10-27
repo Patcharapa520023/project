@@ -22,7 +22,25 @@ class Strategictb extends Controller
 
         return view('page2.strategic.table.table_strategic',compact('headtables'));
     }
+
     public function getdata(Request $request){
+        $eloq = Strategic::leftJoin('years','years.id','=','strategics.year_id')
+        ->where('strategics.category',($request->type)?$request->type:1)
+        ->select('strategics.*','years.stop','years.start','years.atplan')
+        ;
+        // dd($eloq->get()->toArray());
+        return datatables()
+        ->eloquent($eloq)
+        ->addColumn('console', function ($data) {
+            $name = $data->name;
+            return $this->columcontro($data->id,$name,'tactics',false);
+        })
+        ->addColumn('year', function ($data) {
+            return   $data->start.'-'.$data->stop.' ('.$data->atplan.' ปี)';
+        })
+        ->toJson();
+      }
+    public function getdatas(Request $request){
 
         $draw = $request->get('draw');
         $start = $request->get("start");

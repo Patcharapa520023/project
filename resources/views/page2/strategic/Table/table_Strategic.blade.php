@@ -38,7 +38,58 @@
                                         </a>
                             </div>
                             <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-6">
+                                        <div type="1" class="card tcard active">
+                                            <div class="cardf">
+                                                <div class="stat-widget-five">
+                                                    <div class="stat-icon dib flat-color-1">
+                                                        <i class="pe-7s-leaf"></i>
+                                                    </div>
+                                                    <div class="stat-content">
+                                                        <div class="text-left dib">
+                                                            <div class="stat-heading">ยุทธศาสตร์ท้องถิ่น</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
+                                    <div class="col-lg-3 col-md-6">
+                                        <div type="2" class="card tcard ">
+                                            <div class="cardf">
+                                                <div class="stat-widget-five">
+                                                    <div class="stat-icon dib flat-color-2">
+                                                        <i class="pe-7s-portfolio"></i>
+                                                    </div>
+                                                    <div class="stat-content">
+                                                        <div class="text-left dib">
+                                                            <div class="stat-heading">ยุทธศาสตร์กองการศึกษา</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-6">
+                                        <div type="3" class="card tcard">
+                                            <div class="cardf">
+                                                <div class="stat-widget-five">
+                                                    <div class="stat-icon dib flat-color-3">
+                                                        <i class="pe-7s-culture"></i>
+                                                    </div>
+                                                    <div class="stat-content">
+                                                        <div class="text-left dib">
+                                                            <div class="stat-heading">ยุทธศาสตร์สถานศึกษา</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <table id="bootstrap-data-table-export1" class="table ">
                                     <thead>
                                         <tr>
@@ -123,27 +174,19 @@
                 ]
                 });
             });
-//         $('#bootstrap-data-table-export1').DataTable({
-// "language": {
-//     "sProcessing": "Traitement en cours ...",
-//     "sLengthMenu": "แสดง  _MENU_ รายการ",
-//     "sZeroRecords": "Aucun résultat trouvé",
-//     "sEmptyTable": "Aucune donnée disponible",
-//     "sInfo": "แสดง _START_ ถึง _END_ จาก _TOTAL_ รายการ",
-//     "sInfoEmpty": "Aucune ligne affichée",
-//     "sInfoFiltered": "(Filtrer un maximum de_MAX_)",
-//     "sInfoPostFix": "",
-//     "sSearch": "ค้นหา:",
-//     "sUrl": "",
-//     "sInfoThousands": ",",
-//     "sLoadingRecords": "Chargement...",
-//     "oPaginate": {
-//         "sFirst": "Premier", "sLast": "Dernier", "sNext": "ถัดไป", "sPrevious": "ก่อนหน้า"
-//     },
-//     "oAria": {
-//         "sSortAscending": ": Trier par ordre croissant", "sSortDescending": ": Trier par ordre décroissant"
-//     }
-// }});
+            $('.tcard').click(function(){
+                const $this = $(this);
+                $('.tcard').each(function( index,item ) {
+
+                    if($( this ).attr('type')== $this.attr('type')){
+                        $( this ).addClass('active')
+                    }else{
+                        $( this ).removeClass('active')
+                    }
+                });
+                myTable.settings()[0].ajax.data = {type:$this.attr('type')}
+                myTable.draw()
+            })
         });
         function dbdelete(f,name){
             console.log(f)
@@ -267,4 +310,5 @@ div#bootstrap-data-table-export1_processing{
 
 </style>
 <link rel="stylesheet" href="{{ asset('assets/css/lib/datatable/dataTables.bootstrap.min.css') }}">
+
 @endsection

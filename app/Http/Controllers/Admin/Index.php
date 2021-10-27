@@ -123,18 +123,21 @@ class Index extends Controller
     // end formstrategic
 
     // formoffer
-    public function formshowoffer(Request $request){
-        $data=Offer::with('offer')->find(base64_decode($request->id));
-         return view('page2.offer.button.button.showoffer',compact('data'));
-     }
-     public function formeditoffer(Request $request){
-         $data=Offer::with('offer')->find(base64_decode($request->id));
-          //เก็บไว้เทสนะอิอิ    dd($data->toArray());
-         return view('page2.offer.button.button.editoffer',compact('data'));
-      }
-      public function formaddoffer(Request $request){
-         return view('page2.offer.button.button.addoffer');
-     }
+
+     public function formaddoffer(Request $request){
+        $listyear =  Year::orderBy('start','DESC')->get();
+        return view('page2.offer.button.addoffer',compact('listyear'));
+    }
+    public function formeditoffer(Request $request){
+       $data= Offer::find($request->id);
+
+    //    dd($data->toArray());
+        //เก็บไว้เทสนะอิอิ    dd($data->toArray());
+        $listyear =  Year::orderBy('start','DESC')->get();
+        $mateyear =  $listyear->firstWhere('id',$data['year_id']);
+       return view('page2.offer.button.editoffer',compact('listyear','data','mateyear'));
+    }
+
      // end formoffer
 
      // formtactics

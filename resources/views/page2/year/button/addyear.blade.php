@@ -8,7 +8,7 @@
                 <div class="col-sm-4">
                     <div class="page-header float-left">
                         <div class="page-title">
-                            <h1>เพิ่มข้อมูลงบประมาณ</h1>
+                            <h1>เพิ่มแผนพัฒนาท้องถิ่นและกองการศึกษา</h1>
                         </div>
                     </div>
                 </div>
@@ -16,8 +16,8 @@
                     <div class="page-header float-right">
                         <div class="page-title">
                             <ol class="breadcrumb text-right">
-                                <li><a href="http://127.0.0.1:8000/admin/year">งบประมาณ</a></li>
-                                <li><a href="http://127.0.0.1:8000/admin/add/year"><u>เพิ่มข้อมูลงบประมาณ</u></a></li>
+                                <li><a href="http://127.0.0.1:8000/admin/year">แผนพัฒนาท้องถิ่นและกองการศึกษา</a></li>
+                                <li><a href="http://127.0.0.1:8000/admin/add/year"><u>เพิ่มแผนพัฒนาท้องถิ่นและกองการศึกษา</u></a></li>
                                 {{-- <li class="active">Data table</li> --}}
                             </ol>
                         </div>
@@ -33,7 +33,7 @@
         @csrf
         <div class="card">
             <div class="card-header">
-                <strong>ข้อมูลงบประมาณ</strong>
+                <strong>แผนพัฒนาท้องถิ่นและกองการศึกษา</strong>
             </div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-success btn-sm">
@@ -54,7 +54,7 @@
 
 
                         <div class="row form-group row res_c">
-                            <div class="col col-md-5"><label for="a_and_d_year" class=" form-control-label">แผนพัฒนาการศึกษา</label></div>
+                            <div class="col col-md-5"><label for="a_and_d_year" class=" form-control-label">แผนพัฒนาท้องถิ่นและกองการศึกษา</label></div>
                             <div class="col-12 col-md-7">
                                 <div class="row">
                                     <button id="delete_year" class="btn_ad col-3" type="button">-</button>
