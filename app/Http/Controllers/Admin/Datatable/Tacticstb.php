@@ -23,8 +23,8 @@ class Tacticstb extends Controller
     }
     public function getdata(Request $request){
         $eloq = Tactics::leftJoin('years','years.id','=','tactics.year_id')
-        ->where('tactics.category',($request->type)?$request->type:1)
         ->leftJoin('strategics','strategics.id','=','tactics.strategic_id')
+        ->where('strategics.category',($request->type)?$request->type:1)
         ->select('strategics.name as st_name','years.stop','years.start','years.atplan','tactics.name','tactics.id')
         ;
         return datatables()
