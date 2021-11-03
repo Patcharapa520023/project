@@ -6,6 +6,7 @@ use App\Models\Tactics;
 use App\Models\Strategic;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class Manage_Tactics extends Controller
@@ -21,7 +22,6 @@ class Manage_Tactics extends Controller
             'year' => 'required',
             'name_yut' => 'required',
             'name_add_m' => 'required',
-            'category' => 'required|in:1,2,3',
         ])->validate();
 
 
@@ -30,7 +30,6 @@ class Manage_Tactics extends Controller
                 "name"=>$item,
                 "year_id"=>$input['year'],
                 'strategic_id'=>$input['name_yut'],
-                "category"=>$input['category']
             ];
         });
         Tactics::insert($tactics->toArray());
@@ -82,10 +81,27 @@ class Manage_Tactics extends Controller
         return redirect()->back()->with('error', 'แก้ไขข้อมูลกลยุทธ์ สำเร็จแล้ว');
 
     }
-     public function optionName_year(Request $request)
+     public function optionName_years(Request $request)
     {
         return  ($id  = $request->id)
         ?response()->json(Strategic::orderBy('name','DESC')->where('year_id',$id)->select('name','id')->get(),200)
+        :response()->json([],400)
+        ;
+
+    }
+     public function optionName_year(Request $request)
+    {
+        $rolsed = Auth::user()->rolse;
+        return  ($id  = $request->id)
+        ?
+        response()->json(Strategic::orderBy('name','DESC')
+        ->where('year_id',$id)
+        ->where('category', ($rolsed=="staff")?1:(($rolsed=="staffd")?2:''))
+        ->select('name','id')
+        ->with('tactic')
+        ->get()
+        ,200)
+
         :response()->json([],400)
         ;
 

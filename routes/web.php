@@ -32,8 +32,7 @@ use App\Http\Controllers\Admin\Datatable\Tacticstb;
 Route::group([
     'namespace' => 'App\Http\Controllers\Admin',
     // 'as' => 'admin',
-    'prefix' => 'admin',
-    'middleware' => ['auth', 'admin']
+    'middleware' => ['auth']
 ],function(){
     Route::get('/web','Index@dashbord')->name('dashboad');
 
@@ -123,6 +122,7 @@ Route::group([
     Route::post('delete/tactics',[Manage_Tactics::class,'deletetactics'])->name("delete_tactics_post");
     Route::post('add/tactics',[Manage_Tactics::class,'addtactics'])->name("add_tactics_post");
     Route::post('edit/tactics',[Manage_Tactics::class,'edittactics'])->name("edit_tactics_post");
+    Route::post('/optionName_years',[Manage_Tactics::class,"optionName_years"])->name("optionName_years");
     Route::post('/optionName_year',[Manage_Tactics::class,"optionName_year"])->name("optionName_year");
 
     // end tactics

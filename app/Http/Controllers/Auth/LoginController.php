@@ -61,14 +61,11 @@ class LoginController extends Controller
         if ($response = $this->authenticated($request, $this->guard()->user())) {
             return $response;
         }
-        if(auth()->user()->rolse=="admin"){
+
             return $request->wantsJson()
                         ? new JsonResponse([], 204)
                         : redirect()->route('dashboad');
-        }
-        return $request->wantsJson()
-                    ? new JsonResponse([], 204)
-                    : redirect()->route('home');
+
     }
     public function logout(Request $request)
     {

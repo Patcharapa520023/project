@@ -21,6 +21,6 @@ class Tactics extends Model
         return $this->hasOne(Year::class);
     }
     public function strategic(){
-        return $this->hasOne(Strategic::class);
+        return $this->hasMany(Strategic::class);
     }
 }

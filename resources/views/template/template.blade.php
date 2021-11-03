@@ -201,17 +201,19 @@
                         </a>
 
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
 
-                            <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
+                            <a class="nav-link" href="#"><i class="fa fa- user"></i>{{ auth()->user()->username }}</a>
 
-                            <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
+                            {{-- <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a> --}}
+
+                            <a class="nav-link" href="#"><i class="fa fa -cog"></i>ระดับ : @auth{{($rosle = auth()->user()->rolse)?($rosle=="executive"?'ผู้บริหาร':($rosle=="staff"?'กองการศึกษา':($rosle=="personnel"?'สถานศึกษา':''))):'' }}@endauth</a>
+                            {{-- <a class="nav-link" href="#"><i class="fa fa -cog"></i> </a> --}}
 
 
                             <a class="nav-link" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                       <i class="fa fa-power -off"></i>Logout
+                                       <i class="fa fa-power -off"></i>ออกจากระบบ
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

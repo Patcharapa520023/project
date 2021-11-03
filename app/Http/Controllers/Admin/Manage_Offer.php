@@ -13,7 +13,6 @@ class Manage_Offer extends Controller
 {
     public function addoffer(Request $request){
         return redirect()->back()->withInput();
-        dd($request->toArray());
         $request->merge([
             'name_add_m' => !is_null($request->name_add_m) ? json_decode($request->name_add_m) : null
         ]);

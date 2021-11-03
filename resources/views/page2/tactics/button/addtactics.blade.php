@@ -82,25 +82,6 @@
                                     @enderror
                             </div>
                         </div>
-                        <div class="row form-group row res_c ">
-                            <div class="col col-md-2"><label for="select" class=" form-control-label">ประเภทกลยุทธ์</label>
-                            </div>
-                                <div class="col-12 col-md-5">
-                                    <select value="{{ old('title') }}" name="category" id="select"
-                                    class=" form-control">
-                                    <option value="">เลือกประเภทกลยุทธ์</option>
-                                    <option value="1">กลยุทธ์ท้องถิ่น</option>
-                                    <option value="2">กลยุทธ์กองการศึกษา</option>
-                                    <option value="3">กลยุทธ์สถานศึกษา</option>
-
-
-                                    </select>
-                                    @error('category')
-                                        <small class="help-block form-text text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-
-                        </div>
                         <input type="hidden"  name="name_add_m" value="">
                         <div class="row form-group row res_c">
                             <div class="col col-md-2"><label for="name-input" class=" form-control-label">ชื่อกลยุทธ์</label></div>
@@ -155,14 +136,13 @@ $('#year_select').change(function() {
         ops.html('')
         ops.attr('readonly',true)
         ops.append(`<option value="">เลือกปีงบประมาณ</option>`)
-
         return;
     }
     $.ajax({
         data:{id:year_id},
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
         type: "POST",
-        url: "{{ route('optionName_year') }}",
+        url: "{{ route('optionName_years') }}",
         success: function(result) {
             if(result.length){
                 ops.removeAttr('readonly')
