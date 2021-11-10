@@ -7,7 +7,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>ตารางข้อมูลเสนอโครงการ</h1>
+                        <h1>ตารางการบันทึกผลโครงการ</h1>
                     </div>
                 </div>
             </div>
@@ -15,9 +15,6 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li><a href="#">จัดการข้อมูลโครงการ</a></li>
-                            <li><a href="http://127.0.0.1:8000/admin/offer"><u>เสนอโครงการ</u></a></li>
-                            {{-- <li class="active">Data table</li> --}}
                         </ol>
                     </div>
                 </div>
@@ -32,10 +29,8 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header d-flex p-2 justify-content-between align-items-center pl-4 pr-4">
-                                    <strong class="card-title">ตารางข้อมูล</strong>
-                                        <a class="addcus btn btn-outline-success" href="{{ route('add_offer') }}">
-                                            <i class="fa fa-plus"></i>&nbsp;เพิ่มข้อมูลเสนอโครงการ
-                                        </a>
+                                    <strong class="card-title">บันทึกผลโครงการ</strong>
+
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -44,12 +39,12 @@
 
                                             <div class="cardf">
                                                 <div class="stat-widget-five">
-                                                    <div class="stat-icon dib flat-color-3">
-                                                        <i class="pe-7s-albums"></i>
+                                                    <div class="stat-icon dib flat-color-4">
+                                                        <i class="pe-7s-note"></i>
                                                     </div>
                                                     <div class="stat-content">
                                                         <div class="text-left dib">
-                                                            <div class="stat-heading">โครงการทั้งหมด</div>
+                                                            <div class="stat-heading">ยังไม่บันทึกผล</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -60,12 +55,12 @@
                                         <div type="1" class="card tcard ">
                                             <div class="cardf">
                                                 <div class="stat-widget-five">
-                                                    <div class="stat-icon dib flat-color-4">
-                                                        <i class="pe-7s-note2"></i>
+                                                    <div class="stat-icon dib flat-color-1">
+                                                        <i class="pe-7s-check"></i>
                                                     </div>
                                                     <div class="stat-content">
                                                         <div class="text-left dib">
-                                                            <div class="stat-heading">โครงการที่เสนอ</div>
+                                                            <div class="stat-heading">บันทึกผลแล้ว</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -73,14 +68,18 @@
                                         </div>
                                     </div>
 
+
+
+                                </div>
+
+
                                 <table id="bootstrap-data-table-export1" class="table ">
                                     <thead>
                                         <tr>
                                             @foreach ($headtables as $headtable )
                                             <th>{{ $headtable[0] }}</th>
                                             @endforeach
-
-                                            <th class="console">เพิ่ม ลบ แก้ไขข้อมูล</th>
+                                            <th class="console">การบันทึกผล</th>
                                         </tr>
                                     </thead>
 
@@ -133,7 +132,7 @@
                     },
                 processing: true,
                 serverSide: true,
-                ajax: { url: "{{route('dataoffer')}}",
+                ajax: { url: "{{route('datasaveresult')}}",
                         type: "post",
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     },
@@ -144,7 +143,6 @@
                         @foreach ($headtables as $headtable)
                             {
                                 data:  "{{$headtable[1]}}",
-                                name:  "{{$headtable[2]}}",
                             },
                         @endforeach
                         {
@@ -157,29 +155,63 @@
 
                 ]
                 });
+  $("#approveAll").on("click", function () {
+    $('input[value="approve"]').prop("checked", true);
+  });
+  $("#denyAll").on("click", function () {
+    $('input[value="reject"]').prop("checked", true);
+  });
+   $('input[type="radio"]').on("click", updateCount);
+   $('#bootstrap-data-table-export1').on('click','input[type="radio"]', updateCount );
+
+   function updateCount(e){
+    var inp=$(this); //cache the selector
+    if (inp.is(".theone")) { //see if it has the selected class
+        inp.prop("checked",false).removeClass("theone");
+        console.log(inp.attr('id'))
+        console.log(inp.attr('id')=="denyAll"||inp.attr('id')=="approveAll")
+        if(inp.attr('id')=="denyAll"||inp.attr('id')=="approveAll"){
+            $('input[type="radio"]').prop("checked", false);
+        }
+        var total = $('table input[value="approve"]').length;
+            var countApprove = $('table input[value="approve"]:checked').length;
+            var countDeny = $('table input[value="reject"]:checked').length;
+            $('#changesCount').text((countApprove + countDeny) + ' changes ');
+
+            if(total === countApprove){
+                $('#approveAll').prop("checked", true);
+                return true;
+            }
+            if(total === countDeny){
+                $('#denyAll').prop("checked", true);
+                return true;
+            }
+            $('#denyAll,#approveAll').prop("checked", false);
+            return true;
+
+        return;
+    }
+    $("input:radio[name='"+inp.prop("name")+"'].theone").removeClass("theone");
+    inp.addClass("theone");
+            var total = $('table input[value="approve"]').length;
+            var countApprove = $('table input[value="approve"]:checked').length;
+            var countDeny = $('table input[value="reject"]:checked').length;
+            $('#changesCount').text((countApprove + countDeny) + ' รายการ ');
+
+            if(total === countApprove){
+                $('#approveAll').prop("checked", true);
+                return true;
+            }
+            if(total === countDeny){
+                $('#denyAll').prop("checked", true);
+                return true;
+            }
+            $('#denyAll,#approveAll').prop("checked", false);
+            return true;
+
+        }
             });
-//         $('#bootstrap-data-table-export1').DataTable({
-// "language": {
-//     "sProcessing": "Traitement en cours ...",
-//     "sLengthMenu": "แสดง  _MENU_ รายการ",
-//     "sZeroRecords": "Aucun résultat trouvé",
-//     "sEmptyTable": "Aucune donnée disponible",
-//     "sInfo": "แสดง _START_ ถึง _END_ จาก _TOTAL_ รายการ",
-//     "sInfoEmpty": "Aucune ligne affichée",
-//     "sInfoFiltered": "(Filtrer un maximum de_MAX_)",
-//     "sInfoPostFix": "",
-//     "sSearch": "ค้นหา:",
-//     "sUrl": "",
-//     "sInfoThousands": ",",
-//     "sLoadingRecords": "Chargement...",
-//     "oPaginate": {
-//         "sFirst": "Premier", "sLast": "Dernier", "sNext": "ถัดไป", "sPrevious": "ก่อนหน้า"
-//     },
-//     "oAria": {
-//         "sSortAscending": ": Trier par ordre croissant", "sSortDescending": ": Trier par ordre décroissant"
-//     }
-// }});
-           $('.tcard').click(function(){
+            $('.tcard').click(function(){
                 const $this = $(this);
                 $('.tcard').each(function( index,item ) {
                     if($( this ).attr('type')== $this.attr('type')){
@@ -191,7 +223,6 @@
                 myTable.settings()[0].ajax.data = {type:$this.attr('type')}
                 myTable.draw()
             })
-
         });
         function dbdelete(f,name){
             console.log(f)
@@ -222,10 +253,107 @@
 
 
         }
+
 </script>
 @endsection
 @section('style')
 <style>
+ body {
+  padding: 0;
+  margin: 0;
+}
+
+.wrapper{
+  margin: 20px 10px;
+}
+
+table {
+  width: 100%;
+}
+
+.radio-toolbar {
+    display: flex;
+  margin: 10px;
+}
+
+.radio-toolbar input[type="radio"] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+
+.radio-toolbar label {
+  display: inline-block;
+  background-color: #ddd;
+  padding: 4px 12px;
+  font-family: sans-serif, Arial;
+  font-size: 14px;
+  border: 2px solid #444;
+}
+.radio-toolbar label:first-of-type {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding-right: 20px;
+}
+.radio-toolbar label:nth-of-type(2) {
+  position: relative;
+  left: -6px;
+}
+.radio-toolbar label:last-of-type {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: relative;
+  left: -12px;
+}
+td:first-child i {
+  visibility: hidden;
+}
+td:first-child:hover i {
+  visibility: visible;
+}
+
+td:first-child a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+i.fas {
+  margin-right: 3px;
+}
+
+.radio-toolbar label:hover {
+  background-color: #dfd;
+}
+
+.radio-toolbar input[type="radio"]:checked + label {
+  background-color: #31cb81;
+  border-color: #44bb44;
+
+}
+.radio-toolbar input[type="radio"].delete:checked + label {
+  background-color: #f56c79 !important;
+  border-color: #f56c79 !important;
+  color: #fff;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+button{
+  padding: 6px 20px;
+  border-radius: 5px;
+  transition: all 100ms ease-in-out;
+}
+button:hover{
+  background-color: #dfd;
+  font-size: 1rem;
+  font-weight: bold;
+}
+#changesCount{
+  font-size: .7rem;
+  color: #474646;
+}
    a .show{
         background: rgb(90, 119, 248);
         color: rgb(255, 255, 255);
@@ -315,4 +443,5 @@ div#bootstrap-data-table-export1_processing{
 
 </style>
 <link rel="stylesheet" href="{{ asset('assets/css/lib/datatable/dataTables.bootstrap.min.css') }}">
+
 @endsection

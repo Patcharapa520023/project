@@ -59,7 +59,7 @@
                                 <div class="form-row form-group">
                                     <label  class=" col-sm-3 col-form-label">ปีงบประมาณ</label>
                                     <div class="col-sm-9 ">
-                                        <select value="{{ old('title') }}" name="year"  id="year_select" class=" form-control ">
+                                        <select value="{{ old('title') }}" name="year_id"  id="year_select" class=" form-control ">
                                         <option value="">เลือกปีงบประมาณ</option>
                                         @foreach ($listyear as $year)
                                             <option start="{{ $year->start }}" end="{{ $year->stop }}" value="{{ $year->id }}">{{ $year->start.'-'.$year->stop.' ('.$year->atplan.' ปี)' }}</option>
@@ -75,7 +75,7 @@
                                 <div class="row form-group">
                                     <label for="strategic" class=" col-sm-3 col-form-label">ปีดำเนินการ</label>
                                     <div class="col-sm-9 ">
-                                        <select type="text"  class="form-control" readonly  name="y_damn">
+                                        <select type="text"  class="form-control" readonly  name="year">
                                           <option selected>เลือก...</option>
                                           <option>...</option>
                                         </select>
@@ -102,7 +102,7 @@
                                     <div class="row form-group">
                                         <label for="strategic" class=" col-sm-3 col-form-label">ยุทธศาสตร์</label>
                                         <div class="col-sm-9 ">
-                                          <select type="text"  class="form-control"  readonly id="yut">
+                                          <select type="text"  class="form-control"  readonly id="strategic_t_id" name="strategic_t_id">
                                             <option selected>เลือก...</option>
                                             <option>...</option>
                                           </select>
@@ -111,7 +111,7 @@
                                     <div class="row form-group">
                                         <label for="tactics" class=" col-sm-3 col-form-label">กลยุทธ์</label>
                                         <div class="col-sm-9 ">
-                                          <select type="text"  class="form-control" readonly name="glyut">
+                                          <select type="text"  class="form-control" readonly name="tactic_t_id">
                                             <option selected>เลือก...</option>
                                             <option>...</option>
                                           </select>
@@ -126,7 +126,7 @@
                             <div class="form-group col-md-6">
                               <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="gridCheck">
-                                <label  for="gridCheck">สอดคล้องกับแผนพัฒนาการกองการ</label>
+                                <label  for="gridCheck">สอดคล้องกับแผนพัฒนาการกองการศึกษา</label>
                               </div>
                             </div>
                             <div class="form-group  col-md-6">
@@ -191,8 +191,8 @@
                             </div>
                             <div class="form-group ">
 
-                                <label class=""for="raticnal">2. หลักการและเหตุผล</label>
-                                <textarea class="form-control" id="raticnal" name="raticnal" rows="3" placeholder="กรอกหลักการและเหตุผล">{{old('raticnal')}}</textarea>
+                                <label class=""for="rational">2. หลักการและเหตุผล</label>
+                                <textarea class="form-control" id="rational" name="rational" rows="3" placeholder="กรอกหลักการและเหตุผล">{{old('rational')}}</textarea>
                               </div>
                             <div class="form-group " >
                                 <label class=""for="objective">3. วัตถุประสงค์</label>
@@ -229,11 +229,11 @@
                                 <label class=""for="responsible">6. ผู้ประสานงานโครงการ</label>
                                 @if (auth()->user()->rolse=="staff")
                                     @php $staff = auth()->user()->staff; @endphp
-                                    <input class="form-control" id="responsible" name="responsible" rows="3" placeholder="กรอกผู้ประสานงานโครงการ" readonly value="{{ 'กองการศึกษา เทศบาลเมืองสิงหนคร'. ' ผู้รับผิดชอบโครงการ '.$staff->name }}">
+                                    <input class="form-control" id="responsible" name="responsible" rows="3" placeholder="กรอกผู้ประสานงานโครงการ" readonly value="{{ 'กองการศึกษา เทศบาลเมืองสิงหนคร'}}">
 
                                 @elseif (auth()->user()->rolse=="personnel")
                                     @php $personnel = auth()->user()->personnel; @endphp
-                                    <input class="form-control" id="responsible" name="responsible" rows="3" placeholder="กรอกผู้ประสานงานโครงการ" readonly value="{{ $personnel->title.$personnel->name. ' ผู้รับผิดชอบโครงการ '.$personnel->responsible }}">
+                                    <input class="form-control" id="responsible" name="responsible" rows="3" placeholder="กรอกผู้ประสานงานโครงการ" readonly value="{{ $personnel->title.$personnel->name }}">
                                 @endif
 
                               </div>
@@ -526,7 +526,7 @@
     });
     let formyut = [];
 function getyut(year_id){
-    let ops = $('#yut');
+    let ops = $('#strategic_t_id');
     if(ops.find('option').length)ops.html('')
     if(!year_id) {
         ops.attr('readonly',true)
@@ -552,10 +552,10 @@ function getyut(year_id){
         }
     });
 };
-$('#yut').change(function(e){
+$('#strategic_t_id').change(function(e){
     const op = $(this).find(':selected');
     const index = op.attr('id');
-    const sl = $('select[name="glyut"]')
+    const sl = $('select[name="tactic_t_id"]')
     sl.html('')
 
    if(formyut.length>0&&formyut[index]&&formyut[index].tactic){
@@ -574,12 +574,12 @@ $('#yut').change(function(e){
     sl.attr('readonly',true)
    }
 })
-$('select[name="year"] ').change(function(e){
+$('select[name="year_id"] ').change(function(e){
     const id = $(this).find(':selected')
     let year_id =  $( this ).val();
     let start = id.attr('start')
     const end = id.attr('end')
-    const seloet =$("select[name='y_damn']");
+    const seloet =$("select[name='year']");
     if($(this).val()){
     let html = '';
     while (start <= end) {

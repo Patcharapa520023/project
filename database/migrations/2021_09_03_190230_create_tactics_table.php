@@ -18,7 +18,6 @@ class CreateTacticsTable extends Migration
             $table->unsignedBigInteger('year_id');
             $table->unsignedBigInteger('strategic_id');
             $table->string('name');
-            $table->integer('category');
             $table->foreign('year_id')->references('id')->on('years');
             $table->foreign('strategic_id')->references('id')->on('strategics');
 

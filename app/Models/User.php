@@ -56,4 +56,7 @@ class User extends Authenticatable
         ->get()
         ->toArray();
     }
+    public function offer(){
+        return $this->hasOne(Offer::class);
+    }
 }

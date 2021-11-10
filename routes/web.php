@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Datatable\Approve_offertb;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -15,8 +16,11 @@ use App\Http\Controllers\Admin\Datatable\Offertb;
 use App\Http\Controllers\Admin\Datatable\Stafftb;
 use App\Http\Controllers\Admin\Datatable\Executivetb;
 use App\Http\Controllers\Admin\Datatable\Personneltb;
+use App\Http\Controllers\Admin\Datatable\Saveresulttb;
 use App\Http\Controllers\Admin\Datatable\Strategictb;
 use App\Http\Controllers\Admin\Datatable\Tacticstb;
+use App\Http\Controllers\Admin\Manage_Approveoffer;
+use App\Http\Controllers\Admin\Manage_Saveresult;
 
 /*
 |--------------------------------------------------------------------------
@@ -134,11 +138,31 @@ Route::group([
     Route::get('add/offer','Index@formaddoffer')->name("add_offer");
     Route::get('/edit/{id}/offer','Index@formeditoffer')->name("edit_offer");
 
+    Route::get('/show/{id}/offer','Index@formshowoffer')->name("show_offer");
 
     Route::post('delete/offer',[Manage_Offer::class,'deleteoffer'])->name("delete_offer_post");
     Route::post('add/offer',[Manage_Offer::class,'addoffer'])->name("add_offer_post");
     Route::post('edit/offer',[Manage_Offer::class,'editoffer'])->name("edit_offer_post");
     // end offer
+
+    // approve_offer
+    Route::get('/approveoffer',[Approve_offertb::class,"show"])->name("table_approve");
+    Route::get('/show/{id}/approveoffer','Index@formshowapproveoffer')->name("show_approveoffer");
+
+    Route::post('/dataapprove_offer',[Approve_offertb::class,"getdata"])->name("dataapproveoffer");
+
+    Route::post('approve/offer',[Manage_Offer::class,'approves'])->name("approve_offer_post");
+    // end approve_offer
+
+    // saveresult
+    Route::get('/saveresult',[Saveresulttb::class,"show"])->name("table_saveresult");
+    Route::post('/datasaveresult',[Saveresulttb::class,"getdata"])->name("datasaveresult");
+    Route::get('/edit/{id}/saveresult','Index@formeditsaveresult')->name("edit_saveresult");
+
+
+    Route::post('add/saveresult',[Manage_Saveresult::class,'addsaveresult'])->name("add_saveresult_post");
+    Route::post('edit/saveresult',[Manage_Saveresult::class,'editsaveresult'])->name("edit_saveresult_post");
+    // end saveresult
 
 
 });

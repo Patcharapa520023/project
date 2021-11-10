@@ -52,7 +52,7 @@ class Yeartb extends Controller
         foreach($records as $key=> $record){
                 $formurl = route('delete_year_post');
                 $id = $record->id;
-                $idbase = base64_encode($record->id);
+                $idbase = $record->id;
                 $csrf = csrf_field();
                 $atplan = $record->atplan;
                 $start = $record->start;

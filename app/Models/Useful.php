@@ -14,4 +14,7 @@ class Useful extends Model
         'offer_id',
         'name',
     ];
+    public function offer(){
+        return $this->belongsTo(Offer::class);
+    }
 }

@@ -6,7 +6,7 @@ use App\Models\Offer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class Offertb extends Controller
+class Saveresulttb extends Controller
 {
     public function show(){
         $headtables  = array(
@@ -19,23 +19,20 @@ class Offertb extends Controller
         // dd($headtables);
 
 
-        return view('page2.offer.table.table_Offer',compact('headtables'));
+        return view('page2.saveresultoffer.table.table_saveresult',compact('headtables'));
     }
     public function getdata(Request $request){
-        if($request->type==1){
-            $id = auth()->user()->id;
-            $eloq = Offer::select('*')->where('user_id',$id);
-        }
-        else{
-            $eloq = Offer::select('*');
-        }
+        $type = $request->type;
+        $id = auth()->user()->id;
+        if($type==1)  $eloq = Offer::select('*')->where('approve','=',1)->where('user_id',$id);
+        else  $eloq = Offer::select('*')->where('approve','=',1)->where('user_id',$id);
         return datatables()
         ->eloquent($eloq)
         ->addColumn('console', function ($data) {
             $name = $data->name;
-            return $this->columcontro($data->id,$name,'offer',true);
+            return $this->saveresult($data->id,$name,'offer');
+
         })
         ->toJson();
     }
-
 }

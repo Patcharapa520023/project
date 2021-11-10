@@ -40,7 +40,7 @@
             <button type="reset" class="btn btn-danger btn-sm">
                 <i class="fa fa-ban"></i> รีเฟรช
             </button>
-            <a href='/admin/editpassword/{{ base64_encode($data->id) }}/executive'type="button" class="btn btn-primary btn-sm">
+            <a href='{{   route('editpassword_executive', ['id' => $data->id])  }}'type="button" class="btn btn-primary btn-sm">
                 <i class="fa fa-unlock-alt"></i> แก้ไขรหัสผ่าน
             </a>
         </div>

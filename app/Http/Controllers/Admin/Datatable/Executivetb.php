@@ -50,7 +50,7 @@ class Executivetb extends Controller
         foreach($records as $key=> $record){
                 $formurl = route('delete_executive_post');
                 $id = $record->user->id;
-                $idbase = base64_encode($record->user->id);
+                $idbase = $record->user->id;
                 $csrf = csrf_field();
                 $name = $record->name;
                 $rolse = $record->user->rolse;

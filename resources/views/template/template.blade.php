@@ -46,6 +46,8 @@
                     <li class="menu-title">รายงาน</li>
                     <li class="{{(Request::url()==route('dashboad'))?'active':false}}">
                         <a href="{{ route("dashboad") }}"><i class="menu-icon fa fa-laptop"></i>เดชบอด</a>
+                        <a href="{{ route("table_Personnel") }}"><i class="menu-icon fa fa-laptop"></i>รายงานแผนดำเนินงาน</a>
+
                     </li>
                     {{-- <li class="menu-title">จัดการข้อมูลผู้ใช้</li>
                     <li class="{{(Request::url()==route('dashboad'))?'acกหฟtive':false}}">
@@ -92,17 +94,17 @@
                                 <li><i class="fa fa-bars"></i><a href="{{ route("table_Tactics") }}">กลยุทธ์</a></li>
                             </ul>
                     </li>
-
-                    <li class="menu-item-has-children dropdown {{(Request::url()==route('table_Offer'))?'active':false}}">
-
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>จัดการข้อมูลโครงการ</a>
-                            <ul class="sub-menu children dropdown-menu">
-                                <li><i class="fa fa-id-badge"></i><a href="{{ route("table_Offer") }}">ข้อมูลโครงการ</a></li>
-                                <li><i class="fa fa-bars"></i><a href="{{ route("table_Personnel") }}">พิจารณาอนุมัติโครงการ</a></li>
-                                <li><i class="fa fa-bars"></i><a href="{{ route("table_Personnel") }}">บันทึกผลโครงการ</a></li>
-                                <li><i class="fa fa-bars"></i><a href="{{ route("table_Personnel") }}">รายงานแผนดำเนินงานประจำปีงบประมาณ</a></li>
-                            </ul>
+                    <li class="menu-title">จัดการข้อมูลโครงการ</li>
+                    <li class="{{(Request::url()==route('table_Offer'))?'active':false}}">
+                        <a href="{{ route("table_Offer") }}"><i class="menu-icon fa fa-id-badge"></i>ข้อมูลโครงการ</a>
                     </li>
+                    <li class="{{(Request::url()==route('table_approve'))?'active':false}}">
+                        <a href="{{ route("table_approve") }}"><i class="menu-icon fa fa-id-badge"></i>พิจารณาอนุมัติโครงการ</a>
+                    </li>
+                    <li class="{{(Request::url()==route('table_saveresult'))?'active':false}}">
+                        <a href="{{ route("table_saveresult") }}"><i class="menu-icon fa fa-id-badge"></i>บันทึกผลโครงการ</a>
+                    </li>
+
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -122,7 +124,7 @@
             <div class="top-right">
                 <div class="header-menu">
                     <div class="header-left">
-                        <button class="search-trigger"><i class="fa fa-search"></i></button>
+                        {{-- <button class="search-trigger"><i class="fa fa-search"></i></button> --}}
                         <div class="form-inline">
                             <form class="search-form">
                                 <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
@@ -131,10 +133,10 @@
                         </div>
 
                         <div class="dropdown for-notification">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{-- <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-bell"></i>
                                 <span class="count bg-danger">3</span>
-                            </button>
+                            </button> --}}
                             <div class="dropdown-menu" aria-labelledby="notification">
                                 <p class="red">You have 3 Notification</p>
                                 <a class="dropdown-item media" href="#">
@@ -153,10 +155,10 @@
                         </div>
 
                         <div class="dropdown for-message">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="message" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{-- <button class="btn btn-secondary dropdown-toggle" type="button" id="message" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-envelope"></i>
                                 <span class="count bg-primary">4</span>
-                            </button>
+                            </button> --}}
                             <div class="dropdown-menu" aria-labelledby="message">
                                 <p class="red">You have 4 Mails</p>
                                 <a class="dropdown-item media" href="#">
@@ -238,10 +240,10 @@
             <div class="footer-inner bg-white">
                 <div class="row">
                     <div class="col-sm-6">
-                        Copyright &copy; 2018 Ela Admin
+
                     </div>
                     <div class="col-sm-6 text-right">
-                        Designed by <a href="https://colorlib.com">Colorlib</a>
+                        แผนพัฒนาการศึกษาเทศบาลเมืองสิงหนคร จังหวัดสงขลา
                     </div>
                 </div>
             </div>

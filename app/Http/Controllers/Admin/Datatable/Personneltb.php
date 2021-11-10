@@ -16,8 +16,8 @@ class Personneltb extends Controller
             array("ชื่อผู้ใช้","username","users.username"),
             // array("รหัสผ่าน","password"),
             array("ชื่อสถานศึกษา","name","personnels.name"),
-            array("ที่อยู่","address","personnels.address"),    
-            array("เบอร์โทรศัพท์","telnum","personnels.telnum"), 
+            array("ที่อยู่","address","personnels.address"),
+            array("เบอร์โทรศัพท์","telnum","personnels.telnum"),
             array("ผู้รับผิดชอบ","responsible","personnels.responsible"),
         );
         // dd($headtables);
@@ -63,7 +63,7 @@ class Personneltb extends Controller
         foreach($records as $key=> $record){
                 $formurl = route('delete_personnel_post');
                 $id = $record->user->id;
-                $idbase = base64_encode($record->user->id);
+                $idbase = $record->user->id;
                 $csrf = csrf_field();
                 $name = $record->name;
                 $rolse = $record->user->rolse;

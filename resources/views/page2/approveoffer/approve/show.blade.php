@@ -29,31 +29,30 @@
     </div>
 @endsection
 @section('content')
-    <form action="{{ route('edit_saveresult_post') }}" method="post" enctype="multipart/form-data" class="form-horizontal" id="form_post"
-        autocomplete="off">
+
         <input type="hidden" name="id" value="{{ $data['id'] }}">
         @csrf
         <div class="card">
             <div class="card-header">
+
                 <strong>ข้อมูลเสนอโครงการ</strong>
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-success btn-sm">
+                {{-- <button type="submit" class="btn btn-success btn-sm">
                     <i class="fa fa-dot-circle-o"></i> ยืนยันข้อมูล
                 </button>
                 <button type="reset" class="btn btn-danger btn-sm">
                     <i class="fa fa-ban"></i> รีเฟรช
-                </button>
+                </button> --}}
             </div>
-            @if (session('error'))
-                <div class="alert alert-success " role="alert">
-                    <p> {{ session('error') }} </p>
-                </div>
-            @endif
+                @if (session('error'))
+                    <div class="alert alert-success " role="alert">
+                        <p> {{ session('error') }} </p>
+                    </div>
+                @endif
             <div class="row">
                 <div class="col-lg">
                     <div class="card-body card-block">
-                        <form>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                             </div>
@@ -335,7 +334,30 @@
                                     <div class="list_add mt-1 pl-4"> </div>
                                 </div>
 
-                        </form>
+                                <div class="from row">
+                                  <form action="{{ route('approve_offer_post') }}" method="post" enctype="multipart/form-data" >
+                                    @csrf
+                                    <div class="form-group col-md-5">
+                                        <input type="hidden" name="id" value="{{ $data['id'] }}">
+                                        <input type="hidden" name="state" value="1">
+                                        <button type="submit" class="addcus btn btn-success" >
+                                            <i class="pe-7s-check"></i>&nbsp;อนุมัติ
+                                        </button>
+                                    </div>
+                                </form>
+                                <form action="{{ route('approve_offer_post') }}" method="post" enctype="multipart/form-data" >
+                                <div class="form-group col-md-5">
+                                    @csrf
+                                    <input type="hidden" name="state" value="2">
+                                    <input type="hidden" name="id" value="{{ $data['id'] }}">
+                                        <button  type="submit" class="addcus btn  btn-danger " href="#">
+                                             <i class="fa fa-ban"></i>&nbsp;ไม่อนุมัติ
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+
+
 
 
 

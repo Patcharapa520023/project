@@ -39,54 +39,54 @@ class Index extends Controller
         return view('page2.personnel.button.addpersonnel');
     }
     public function formshowpersonnel(Request $request){
-       $data=User::with('personnel')->find(base64_decode($request->id));
+       $data=User::with('personnel')->find($request->id);
         return view('page2.personnel.button.showpersonnel',compact('data'));
     }
     public function formeditpersonnel(Request $request){
-       $data=User::with('personnel')->find(base64_decode($request->id));
+       $data=User::with('personnel')->find($request->id);
         //เก็บไว้เทสนะอิอิ    dd($data->toArray());
        return view('page2.personnel.button.editpersonnel',compact('data'));
     }
     public function formeditpasswordpersonnel(Request $request){
-       $data=User::with('personnel')->find(base64_decode($request->id));
+       $data=User::with('personnel')->find($request->id);
         return view('page2.personnel.button.editpasswordpersonnel',compact('data'));
     }
     // end formpersonnel
 
         // formstaff
     public function formshowstaff(Request $request){
-       $data=User::with('staff')->find(base64_decode($request->id));
+       $data=User::with('staff')->find($request->id);
         return view('page2.staff.button.showstaff',compact('data'));
     }
     public function formaddstaff(Request $request){
         return view('page2.staff.button.addstaff');
     }
     public function formeditstaff(Request $request){
-        $data=User::with('staff')->find(base64_decode($request->id));
+        $data=User::with('staff')->find($request->id);
          //เก็บไว้เทสนะอิอิ    dd($data->toArray());
         return view('page2.staff.button.editstaff',compact('data'));
      }
      public function formeditpasswordstaff(Request $request){
-        $data=User::with('staff')->find(base64_decode($request->id));
+        $data=User::with('staff')->find($request->id);
          return view('page2.staff.button.editpasswordstaff',compact('data'));
      }
     // end formstaff
 
         // formexecutive
      public function formshowexecutive(Request $request){
-       $data=User::with('executive')->find(base64_decode($request->id));
+       $data=User::with('executive')->find($request->id);
         return view('page2.executive.button.showexecutive',compact('data'));
     }
     public function formexecutive(Request $request){
         return view('page2.executive.button.addexecutive');
     }
     public function formeditexecutive(Request $request){
-        $data=User::with('executive')->find(base64_decode($request->id));
+        $data=User::with('executive')->find($request->id);
          //เก็บไว้เทสนะอิอิ    dd($data->toArray());
         return view('page2.executive.button.editexecutive',compact('data'));
      }
      public function formeditpasswordexecutive(Request $request){
-        $data=User::with('executive')->find(base64_decode($request->id));
+        $data=User::with('executive')->find($request->id);
          return view('page2.executive.button.editpasswordexecutive',compact('data'));
      }
      public function formaddexecutive(Request $request){
@@ -100,7 +100,7 @@ class Index extends Controller
     }
 
     public function formedityear(Request $request){
-       $data=Year::find(base64_decode($request->id));
+       $data=Year::find($request->id);
         //เก็บไว้เทสนะอิอิ    dd($data->toArray());
        return view('page2.year.button.edityear',compact('data'));
     }
@@ -123,19 +123,153 @@ class Index extends Controller
     // end formstrategic
 
     // formoffer
+    public function formshowoffer(Request $request){
+        $data= Offer::where('id',$request->id)->select('*','year as d_year')->get()->load('objective','procedure','time','useful','user','detail_budget','year.strategic.tactic')->first()->toArray();
+       if(count($data['objective'])>0){
+        $data['objective']  =collect($data['objective'])->map(function($item){
+                return $item['name'];
+            })->toArray();
+
+      }
+
+      if(count($data['procedure'])>0){
+        $data['procedure']  =collect($data['procedure'])->map(function($item){
+                return $item['name'];
+            })->toArray();
+
+      }
+      if(count($data['useful'])>0){
+        $data['useful']  =collect($data['useful'])->map(function($item){
+                return $item['name'];
+            })->toArray();
+
+      }
+      if(count($data['time'])>0){
+        $data['time']  =collect($data['time'])->map(function($item){
+                return [
+                    "name" => $item['activity'],
+                    "start" => $item['start'],
+                    "end" => $item['stop']
+                ];
+            })->toArray();
+
+      }
+      if(count($data['detail_budget'])>0){
+        $data['detail_budget']  =collect($data['detail_budget'])->map(function($item){
+                return [
+                    "detail" => $item['detail'],
+                    "price" => $item['amount'],
+                ];
+            })->toArray();
+
+      }
+        $listyear =  Year::orderBy('start','DESC')->get();
+       return view('page2.offer.button.showoffer',compact('listyear','data'));
+    }
 
      public function formaddoffer(Request $request){
         $listyear =  Year::orderBy('start','DESC')->get();
         return view('page2.offer.button.addoffer',compact('listyear'));
     }
     public function formeditoffer(Request $request){
-       $data= Offer::find($request->id);
+       $data= Offer::where('id',$request->id)->select('*','year as d_year')->get()->load('objective','procedure','time','useful','user','detail_budget','year.strategic.tactic')->first()->toArray();
+       if(count($data['objective'])>0){
+        $data['objective']  =collect($data['objective'])->map(function($item){
+                return $item['name'];
+            })->toArray();
 
-    //    dd($data->toArray());
+      }
+
+      if(count($data['procedure'])>0){
+        $data['procedure']  =collect($data['procedure'])->map(function($item){
+                return $item['name'];
+            })->toArray();
+
+      }
+      if(count($data['useful'])>0){
+        $data['useful']  =collect($data['useful'])->map(function($item){
+                return $item['name'];
+            })->toArray();
+
+      }
+      if(count($data['time'])>0){
+        $data['time']  =collect($data['time'])->map(function($item){
+                return [
+                    "name" => $item['activity'],
+                    "start" => $item['start'],
+                    "end" => $item['stop']
+                ];
+            })->toArray();
+
+      }
+      if(count($data['detail_budget'])>0){
+        $data['detail_budget']  =collect($data['detail_budget'])->map(function($item){
+                return [
+                    "detail" => $item['detail'],
+                    "price" => $item['amount'],
+                ];
+            })->toArray();
+
+      }
+        // Strategic::orderBy('name','DESC')
+        // ->where('year_id',$id)
+        // ->where('category', ($rolsed=="staff")?1:(($rolsed=="staffd")?2:''))
+        // ->select('name','id')
+        // ->with('tactic')
+        // ->get();
         //เก็บไว้เทสนะอิอิ    dd($data->toArray());
         $listyear =  Year::orderBy('start','DESC')->get();
-        $mateyear =  $listyear->firstWhere('id',$data['year_id']);
-       return view('page2.offer.button.editoffer',compact('listyear','data','mateyear'));
+       return view('page2.offer.button.editoffer',compact('listyear','data'));
+    }
+    public function formeditsaveresult(Request $request){
+       $data= Offer::where('id',$request->id)->select('*','year as d_year')->get()->load('objective','procedure','time','useful','user','detail_budget','year.strategic.tactic')->first()->toArray();
+       if(count($data['objective'])>0){
+        $data['objective']  =collect($data['objective'])->map(function($item){
+                return $item['name'];
+            })->toArray();
+
+      }
+
+      if(count($data['procedure'])>0){
+        $data['procedure']  =collect($data['procedure'])->map(function($item){
+                return $item['name'];
+            })->toArray();
+
+      }
+      if(count($data['useful'])>0){
+        $data['useful']  =collect($data['useful'])->map(function($item){
+                return $item['name'];
+            })->toArray();
+
+      }
+      if(count($data['time'])>0){
+        $data['time']  =collect($data['time'])->map(function($item){
+                return [
+                    "name" => $item['activity'],
+                    "start" => $item['start'],
+                    "end" => $item['stop']
+                ];
+            })->toArray();
+
+      }
+      if(count($data['detail_budget'])>0){
+        $data['detail_budget']  =collect($data['detail_budget'])->map(function($item){
+                return [
+                    "detail" => $item['detail'],
+                    "price" => $item['amount'],
+                ];
+            })->toArray();
+
+      }
+        // Strategic::orderBy('name','DESC')
+        // ->where('year_id',$id)
+        // ->where('category', ($rolsed=="staff")?1:(($rolsed=="staffd")?2:''))
+        // ->select('name','id')
+        // ->with('tactic')
+        // ->get();
+        //เก็บไว้เทสนะอิอิ    dd($data->toArray());
+        $listyear =  Year::orderBy('start','DESC')->get();
+       return view('page2.saveresultoffer.saveresult.addsaveresult',compact('listyear','data'));
     }
 
      // end formoffer
@@ -154,6 +288,50 @@ class Index extends Controller
        return view('page2.tactics.button.edittactics',compact('listyear','data','liststrategic'));
     }
     // end formtactics
+
+    public function formshowapproveoffer(Request $request){
+        $data= Offer::where('id',$request->id)->select('*','year as d_year')->get()->load('objective','procedure','time','useful','user','detail_budget','year.strategic.tactic')->first()->toArray();
+       if(count($data['objective'])>0){
+        $data['objective']  =collect($data['objective'])->map(function($item){
+                return $item['name'];
+            })->toArray();
+
+      }
+
+      if(count($data['procedure'])>0){
+        $data['procedure']  =collect($data['procedure'])->map(function($item){
+                return $item['name'];
+            })->toArray();
+
+      }
+      if(count($data['useful'])>0){
+        $data['useful']  =collect($data['useful'])->map(function($item){
+                return $item['name'];
+            })->toArray();
+
+      }
+      if(count($data['time'])>0){
+        $data['time']  =collect($data['time'])->map(function($item){
+                return [
+                    "name" => $item['activity'],
+                    "start" => $item['start'],
+                    "end" => $item['stop']
+                ];
+            })->toArray();
+
+      }
+      if(count($data['detail_budget'])>0){
+        $data['detail_budget']  =collect($data['detail_budget'])->map(function($item){
+                return [
+                    "detail" => $item['detail'],
+                    "price" => $item['amount'],
+                ];
+            })->toArray();
+
+      }
+        $listyear =  Year::orderBy('start','DESC')->get();
+       return view('page2.approveoffer.approve.show',compact('listyear','data'));
+
 }
 
-
+}

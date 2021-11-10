@@ -33,5 +33,32 @@ class Controller extends BaseController
             </div>";
 
     }
+    public function saveresult($id,$deletename,$tablename,$show=true){
+        $idbase =$id;
+        $route = route('edit_saveresult', ['id' => $id]);
+        return "<div class='table-data-feature'>
+                <a  href='$route'>
+                <div type='button' class='btn btn-outline-success btn-sm'>
+                เพิ่มข้อมูลบันทึกผล
+                </div>
+                </a>
+            </div>";
+
+    }
+    public function approve($id,$deletename,$tablename){
+        $idbase =$id;
+        $csrf = csrf_field();
+        return "<div class='table-data-feature'>
+            <div class='radio-toolbar'>
+
+                <input type='radio' id='approve$id' name='dec$id' value='approve' value_id='$id' >
+                <label for='approve$id'><i class='pe-7s-check' value_id='$id'></i> อนุมัติ</label >
+
+                <input type='radio' id='deny$id' name='dec$id' value='reject' class='delete ' value_id='$id'>
+                <label for='deny$id'><i class='pe-7s-close-circle' value_id='$id'></i>ไม่อนุมัติ</label>
+            </div>
+            </div>";
+
+    }
 
 }

@@ -16,4 +16,7 @@ class Time extends Model
         'start',
         'stop',
     ];
+    public function offer(){
+        return $this->belongsTo(Offer::class);
+    }
 }
