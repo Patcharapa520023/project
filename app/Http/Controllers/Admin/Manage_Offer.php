@@ -13,6 +13,9 @@ use Illuminate\Http\Request;
 use App\Models\Detail_budget;
 use App\Http\Requests\Offerform;
 use App\Http\Controllers\Controller;
+use App\Models\Conclusion;
+use App\Models\Feedback;
+use App\Models\Problem;
 use Illuminate\Support\Facades\Validator;
 
 class Manage_Offer extends Controller
@@ -99,6 +102,19 @@ class Manage_Offer extends Controller
                $offer->detail_budget()->createMany($request->detail_budget);
            }
         return redirect()->back()->with('error', 'แก้ไขข้อมูลเสนอโครงการ สำเร็จแล้ว');
+
+    }
+    public function editsaveresult(Offerform $request)
+    {
+        $offer =  Offer::find($request->id);
+        $offer->status_offer = ($request->status_offer==1)?1:0;
+        $offer->conclusion()->createMany($request->conclusion);
+        $offer->problem()->createMany($request->problem);
+        $offer->feedback()->createMany($request->feedback);
+        $offer->status_result = 1;
+        $offer->save();
+        return redirect()->route('table_saveresult')->with('state',1);
+
 
     }
 

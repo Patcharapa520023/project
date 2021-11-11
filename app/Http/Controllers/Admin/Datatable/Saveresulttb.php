@@ -24,15 +24,22 @@ class Saveresulttb extends Controller
     public function getdata(Request $request){
         $type = $request->type;
         $id = auth()->user()->id;
-        if($type==1)  $eloq = Offer::select('*')->where('approve','=',1)->where('user_id',$id);
-        else  $eloq = Offer::select('*')->where('approve','=',1)->where('user_id',$id);
+        $approve_all = Offer::select('*')->where('approve','=',1)->where('status_result',1)->count();
+        $await_all = Offer::select('*')->where('approve','=',1)->where('status_result',0)->count();
+        if($type==1)  $eloq = Offer::select('*')->where('approve','=',1)->where('status_result',$request->type);
+        else  $eloq = Offer::select('*')->where('approve','=',1)->where('status_result',0);
         return datatables()
         ->eloquent($eloq)
-        ->addColumn('console', function ($data) {
+        ->with([
+                'approve_all'=>$approve_all,
+                'await_all'=>$await_all,
+        ] )
+        ->addColumn('console', function ($data) use($type){
             $name = $data->name;
-            return $this->saveresult($data->id,$name,'offer');
+            return $this->saveresult($data->id,$type );
 
         })
         ->toJson();
     }
 }
+

@@ -22,8 +22,8 @@ class Offertb extends Controller
         return view('page2.offer.table.table_Offer',compact('headtables'));
     }
     public function getdata(Request $request){
+        $id = auth()->user()->id;
         if($request->type==1){
-            $id = auth()->user()->id;
             $eloq = Offer::select('*')->where('user_id',$id);
         }
         else{
@@ -31,6 +31,10 @@ class Offertb extends Controller
         }
         return datatables()
         ->eloquent($eloq)
+        ->with([
+            'offer_all'=>Offer::select('*')->count(),
+            'offer_my'=>Offer::select('*')->where('user_id',$id)->count(),
+        ])
         ->addColumn('console', function ($data) {
             $name = $data->name;
             return $this->columcontro($data->id,$name,'offer',true);

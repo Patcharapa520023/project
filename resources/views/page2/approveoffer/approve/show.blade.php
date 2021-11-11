@@ -285,7 +285,6 @@
                                     </div>
                                     <div class=" col-md-2">
 
-                                            <a id="clear" class="btn btn-default">Reset</a>
 
                                     </div>
                                 </div>

@@ -160,8 +160,8 @@ Route::group([
     Route::get('/edit/{id}/saveresult','Index@formeditsaveresult')->name("edit_saveresult");
 
 
-    Route::post('add/saveresult',[Manage_Saveresult::class,'addsaveresult'])->name("add_saveresult_post");
-    Route::post('edit/saveresult',[Manage_Saveresult::class,'editsaveresult'])->name("edit_saveresult_post");
+    Route::post('add/saveresult',[Manage_Offer::class,'addsaveresult'])->name("add_saveresult_post");
+    Route::post('edit/saveresult',[Manage_Offer::class,'editsaveresult'])->name("edit_saveresult_post");
     // end saveresult
 
 

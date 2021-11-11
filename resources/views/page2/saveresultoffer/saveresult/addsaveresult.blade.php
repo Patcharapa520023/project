@@ -62,7 +62,7 @@
                                 <div class="form-row form-group">
                                     <label  class=" col-sm-3 col-form-label">ปีงบประมาณ</label>
                                     <div class="col-sm-9 ">
-                                        <select value="{{ old('title') }}" name="year_id"  id="year_select" class=" form-control ">
+                                        <select value="{{ old('title') }}" name="year_id"  id="year_select" class=" form-control " readonly>
                                         <option value="">เลือกปีงบประมาณ</option>
                                             @foreach ($listyear as $year)
                                             <option    @if ($year->id==$data['year_id'])
@@ -80,11 +80,11 @@
                                 <div class="row form-group">
                                     <label for="strategic" class=" col-sm-3 col-form-label">ปีดำเนินการ</label>
                                     <div class="col-sm-9 ">
-                                        <select type="text"  class="form-control"   name="year">
+                                        <select type="text"  class="form-control"   name="year" readonly>
 
                                           <option>...</option>
                                           @while ($yeardum->start <= $yeardum->stop)
-                                            <option @if ($yeardum->start==$data['d_year']) selected  @endif value="{{ $yeardum->start }}">{{ $yeardum->start++ }}</option>
+                                            <option @if ($yeardum->start==$data['d_year']) selected  @endif  value="{{ $yeardum->start }}">{{ $yeardum->start++ }} </option>
                                           @endwhile
                                         </select>
                                       </div>
@@ -110,7 +110,7 @@
                                     <div class="row form-group">
                                         <label for="strategic" class=" col-sm-3 col-form-label">ยุทธศาสตร์</label>
                                         <div class="col-sm-9 ">
-                                          <select type="text"  class="form-control"   id="strategic_t_id" name="strategic_t_id">
+                                          <select type="text"  class="form-control"   id="strategic_t_id" name="strategic_t_id" readonly>
                                             <option selected>เลือกยุทธศาสตร์</option>
                                             @foreach ($data['year']['strategic'] as $strategic)
                                             <option
@@ -127,7 +127,7 @@
                                     <div class="row form-group">
                                         <label for="tactics" class=" col-sm-3 col-form-label">กลยุทธ์</label>
                                         <div class="col-sm-9 ">
-                                          <select type="text"  class="form-control"  name="tactic_t_id">
+                                          <select type="text"  class="form-control"  name="tactic_t_id" readonly>
                                             <option selected>เลือก...</option>
                                             @foreach ($tactic_actibe as $tactic)
                                                 <option @if ($tactic['id']==$data['tactic_t_id']) selected value="{{ $tactic['id'] }}" @endif>{{ $tactic['name'] }}</option>
@@ -151,7 +151,7 @@
                                 <div class="row form-group">
                                     <label for="strategic" class=" col-sm-3 col-form-label">ยุทธศาสตร์</label>
                                     <div class="col-sm-9 ">
-                                      <select type="text"  class="form-control" id="strategic" >
+                                      <select type="text"  class="form-control" id="strategic" readonly >
                                         <option selected>เลือก...</option>
                                         <option>...</option>
                                       </select>
@@ -160,7 +160,7 @@
                                 <div class="row form-group">
                                     <label for="tactics" class=" col-sm-3 col-form-label">กลยุทธ์</label>
                                     <div class="col-sm-9 ">
-                                      <select type="text"  class="form-control" id="tactics" >
+                                      <select type="text"  class="form-control" id="tactics" readonly >
                                         <option selected>เลือก...</option>
                                         <option>...</option>
                                       </select>
@@ -181,7 +181,7 @@
                                 <div class="row form-group">
                                     <label for="strategic" class=" col-sm-3 col-form-label">ยุทธศาสตร์</label>
                                     <div class="col-sm-9 ">
-                                      <select type="text"  class="form-control" id="yut" >
+                                      <select type="text"  class="form-control" id="yut" readonly >
                                         <option selected>เลือก...</option>
                                         <option>...</option>
                                       </select>
@@ -190,7 +190,7 @@
                                 <div class="row form-group">
                                     <label for="tactics" class=" col-sm-3 col-form-label">กลยุทธ์</label>
                                     <div class="col-sm-9 ">
-                                      <select type="text"  class="form-control" id="tactics" >
+                                      <select type="text"  class="form-control" id="tactics" readonly>
                                         <option selected>เลือก...</option>
                                         <option>...</option>
                                       </select>
@@ -204,145 +204,23 @@
 
 
                             <div class="form-row form-group ">
-                              <label class="col-md-2 "for="name">1. ชื่อโครงการ</label>
-                              <input type="text" class="form-control col-md-5" id="name" name="name" placeholder="กรอกชื่อโครงการ" value=" {{$data['name']?$data['name']:old('name')}}">
-                            </div>
-                            <div class="form-group ">
-
-                                <label class=""for="rational">2. หลักการและเหตุผล</label>
-                                <textarea class="form-control" id="rational" name="rational" rows="3" placeholder="กรอกหลักการและเหตุผล">{{$data['rational']?$data['rational']:old('rational')}}</textarea>
-                              </div>
-                            <div class="form-group " >
-                                <label class=""for="objective">3. วัตถุประสงค์</label>
-                                <div class="d-flex mb-2 mt-1 pl-4">
-                                    <input type="text" id="objective"  name="objective" placeholder="กรอกวัตถุประสงค์" class="form-control">
-                                    <button type="button" class="ml-3  btn  btn-sm btn_addlist" id="">+</button>
-                                 </div>
-                                <div class="list_add mt-1 pl-4"> </div>
+                              <label class="col-md-2 "for="name">ชื่อโครงการ</label>
+                              <input   type="text" class="form-control col-md-5" id="name" name="name" placeholder="กรอกชื่อโครงการ" value=" {{$data['name']?$data['name']:old('name')}} " readonly>
                             </div>
 
-                              <div class="form-group ">
-                                  <label>4. เป้าหมาย/ผลลัพธ์</label>
-                                  <div class="mt-1 pl-4">
-                                      <div class="mb-2">
-                                          <label class=" "for="target_quantity">4.1 เป้าหมายเชิงปริมาณ</label>
-                                          <input type="text" class="form-control " id="target_quantity" name="target_quantity" placeholder="กรอกเป้าหมายเชิงปริมาณ"value="{{$data['target_quantity']?$data['target_quantity']:old('target_quantity')}}">
-                                      </div>
-                                      <div class="mb-2 ">
-                                          <label class=" "for="target_quality">4.2 เป้าหมายเชิงคุณภาพ</label>
-                                          <input type="text" class="form-control " id="target_quality" name="target_quality" placeholder="กรอกเป้าหมายเชิงคุณภาพ" value="{{$data['target_quality']?$data['target_quality']:old('target_quality')}}">
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="form-group" >
-                                <label class=""for="procedure">5. วิธีการดำเนินการ<br/>&nbsp;&nbsp;&nbsp;&nbsp;มีขั้นตอน/โครงการในการดำเนินงานต่างๆดังนี้</label>
-                                    <div class="d-flex mb-2 mt-1 pl-2">
-                                        <input type="text"  id="procedure"  name="procedure" placeholder="กรอกขั้นตอนการดำเนินงาน" class="form-control">
-                                        <button type="button" class="ml-3  btn  btn-sm btn_addlist" id="">+</button>
-                                    </div>
-                                    <div class="list_add mt-1 pl-4"> </div>
-                             </div>
-
-                              <div class="form-group ">
-                                <label class=""for="responsible">6. ผู้ประสานงานโครงการ</label>
-                                @if (auth()->user()->rolse=="staff")
-                                    @php $staff = auth()->user()->staff; @endphp
-                                    <input class="form-control" id="responsible" name="responsible" rows="3" placeholder="กรอกผู้ประสานงานโครงการ" readonly value="{{ 'กองการศึกษา เทศบาลเมืองสิงหนคร'}}">
-
-                                @elseif (auth()->user()->rolse=="personnel")
-                                    @php $personnel = auth()->user()->personnel; @endphp
-                                    <input class="form-control" id="responsible" name="responsible" rows="3" placeholder="กรอกผู้ประสานงานโครงการ" readonly value="{{ $personnel->title.$personnel->name }}">
-                                @endif
-
-                              </div>
-                              <div class="form-group ">
-                                <label class=""for="location">7. สถานที่ดำเนินการ</label>
-                                <input class="form-control" id="location" name= "location" rows="3" placeholder="กรอกสถานที่ดำเนินการ" value="{{$data['location']?$data['location']:old('location')}}">
-                              </div>
-                              <div class="form-group ">
-                                <label class=""for="time ">8. ระยะเวลาดำเนินงาน</label>
-                                <div class="form-row mb-2">
-                                    <span class=" col-md-6 "> &nbsp;&nbsp;ชื่อกิจกรรม </span>
-                                    <span class=" col-md-2 ">เริ่มต้น</span>
-                                      <span class="  col-md-2 ">สิ้นสุด</span>
-                                    <div class=" col-md-2">
-                                        <button type="button" class="ml-3  btn  btn-sm btn_addlist" id="op_period">+</button>
-                                    </div>
-                                </div>
-                                <div class="form-row mb-2 ">
-                                    <div class="col-md-6  d-flex">
-                                   <input type="text" placeholder="กรอกกิจกรรม" name="activity" class="form-control " id="activity" value="{{old('activity')}}" />
-
-                                    </div>
-                                    <div class="col-md-2 ">
-
-                                          <input type="text" placeholder="Date" name="daterange" class="form-control date-picker" id="date-picker"/>
-
-                                    </div>
-                                      <div class=" col-md-2 ">
-
-                                          <input type="text" placeholder="Date" name="ndaterange" class="form-control date-picker-2" id="date date-picker-2" />
-
-                                    </div>
-                                    <div class=" col-md-2">
-
-                                            <a id="clear" class="btn btn-default">Reset</a>
-
-                                    </div>
-                                </div>
-                                <div class="list_add">
-                                </div>
-
+                            <div class="form-check">
+                                <input  checked class="form-check-input" type="radio" id="cause_detaild" name="status_offer" value="1">
+                                <label  for="cause_detaild">เบิกจ่ายได้ตามงบ</label>
                             </div>
-                            <div class="form-group" >
-                                <label class=""for="addbudget">9. งบประมาณดำเนินการ</label>
-                                <input class="form-control mb-2" id="budget" name="budget" rows="3" placeholder="กรอกงบประมาณดำเนินการ" value="{{$data['budget']?$data['budget']:old('budget')}}">
-                                    <div class="form-check">
-                                      <input @if(old('budget_detail')|| count($data['detail_budget'])>0) checked @endif class="form-check-input" type="checkbox" id="budget_detail" name="budget_detail">
-                                      <label  for="budget_detail">ต้องการเพิ่มรายละเอียดการใช้งบ</label>
-                                  </div>
-                                <div class="budg">
-                                    <div class="row mb-2 ">
-                                        <span class=" col-md-8 "> &nbsp;&nbsp;รายละเอียดการใช้งบประมาณ </span>
-                                        <span class=" col-md-2 ">จำนวนเงิน</span>
-                                    </div>
-                                    <div>
-                                        <div class="form-row mb-2 pl-4">
-                                            <div class="col-md-8  d-flex">
-                                                  <input type="text" placeholder="กรอกกิจกรรม" name="detail" class="form-control " id="detail" value="" />
-                                            </div>
-                                            <div class="col-md-2 ">
-                                                  <input type="text" placeholder="จำนวนเงิน" name="baht" class="form-control" id="detail_baht"/>
-                                            </div>
-                                            <div class=" col-md-2">
-                                                <button type="button" class="ml-3  btn  btn-sm btn_addlist" id="op_period">+</button>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="list_add">
-                                    </div>
-                                </div>
-
+                            <div class="form-check">
+                                <input  class="form-check-input" type="radio" id="cause_detailm" name="status_offer"   value="0">
+                                <label  for="cause_detailm">ไม่สามารถเบิกจ่ายได้ตามงบ</label>
                             </div>
 
-                                  <div class="form-group " >
-                                    <label class=""for="useful">10. ผลที่คาดว่าจะได้รับ</label>
-                                    <div class="d-flex mb-2 mt-1 pl-4">
-                                        <input type="text" id="useful"  value="" placeholder="กรอกผลที่คาดว่าจะได้รับ" class="form-control">
-                                        <button type="button" class="ml-3  btn  btn-sm btn_addlist" id="">+</button>
-                                     </div>
-                                    <div class="list_add mt-1 pl-4"> </div>
-                                </div>
-                                <div class="form-group ">
-                                    <label class=""for="cause">สาเหตุที่ไม่สามารถเบิกจ่ายงบประมาณได้ตามแผนการ</label>
-                                    <input class="form-control" id="cause" name= "cause" rows="3" placeholder="กรอกสาเหตุ" >
-                                    {{-- value="{{$data['cause']?$data['cause']:old('cause')}}" --}}
-                                  </div>
                                   <div class="form-group " >
                                     <label class=""for="conclusion">สรุปโครงการดำเนินงาน</label>
                                     <div class="d-flex mb-2 mt-1 pl-4">
-                                        <input type="text" id="conclusion"  value="" placeholder="กรอกข้อสรุปโครงการ" class="form-control">
+                                        <input type="text" id="conclusion"  value="" placeholder="กรอกข้อสรุปโครงการ" class="form-control" >
                                         <button type="button" class="ml-3  btn  btn-sm btn_addlist" id="">+</button>
                                      </div>
                                     <div class="list_add mt-1 pl-4"> </div>
@@ -504,7 +382,7 @@
          const $this = this;
          let el = $(`<div class="d-flex sub_strategic justify-content-between mb-2">
                 <label class="mr-1">${item.no}.${index+1} </label>
-                <input type="text"  value="${name}" class="form-control">
+                <input type="text"  value="${name}" class="form-control"readonly>
                 <div class="list_delete_namestrategic">
                     <svg width="14px" aria-hidden="true" focusable="false" data-prefix="far" data-icon="trash-alt" class="svg-inline--fa fa-trash-alt fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M268 416h24a12 12 0 0 0 12-12V188a12 12 0 0 0-12-12h-24a12 12 0 0 0-12 12v216a12 12 0 0 0 12 12zM432 80h-82.41l-34-56.7A48 48 0 0 0 274.41 0H173.59a48 48 0 0 0-41.16 23.3L98.41 80H16A16 16 0 0 0 0 96v16a16 16 0 0 0 16 16h16v336a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128h16a16 16 0 0 0 16-16V96a16 16 0 0 0-16-16zM171.84 50.91A6 6 0 0 1 177 48h94a6 6 0 0 1 5.15 2.91L293.61 80H154.39zM368 464H80V128h288zm-212-48h24a12 12 0 0 0 12-12V188a12 12 0 0 0-12-12h-24a12 12 0 0 0-12 12v216a12 12 0 0 0 12 12z"></path></svg>
                 </div>
@@ -525,10 +403,10 @@
          let el =$(`<div class="form-row mb-2 pl-4">
                                         <div class="col-md-8  d-flex">
                                             <div class=" h-p" >${item.no}.${index+1}  &nbsp;</div>
-                                              <input type="text" placeholder="กรอกกิจกรรม"  class="form-control "  value="${name.detail}" />
+                                              <input type="text" placeholder="กรอกกิจกรรม"  class="form-control "  value="${name.detail}" readonly/>
                                         </div>
                                         <div class="col-md-2 ">
-                                              <input type="text" placeholder="จำนวนเงิน" class="form-control" value="${name.price}"/>
+                                              <input type="text" placeholder="จำนวนเงิน" class="form-control" value="${name.price}"readonly/>
                                         </div>
                                         <div class=" col-md-2 sub_strategic">
                                             <div class="list_delete_namestrategic" style="height: 50px;width: 24px;">
@@ -554,13 +432,13 @@
                     <div class="form-row mb-2 sub_strategic ">
                         <div class="col-md-6  d-flex">
                             <div class="pl-4 h-p">${item.no}.${index+1}  &nbsp;</div>
-                                <input type="text" value="${name.name}" placeholder="กรอกกิจกรรม" name="activity" class="form-control " id="activity" value="">
+                                <input type="text" value="${name.name}" placeholder="กรอกกิจกรรม" name="activity" class="form-control " id="activity" value="" readonly>
                         </div>
                         <div class="col-md-2 ">
-                                <input type="text" value="${name.start}" placeholder="Date" name="daterange_${index+1}" class="form-control date-picker_${index+1}" id="date-picker_${index+1}">
+                                <input type="text" value="${name.start}" placeholder="Date" name="daterange_${index+1}" class="form-control date-picker_${index+1}" id="date-picker_${index+1}"readonly>
                         </div>
                             <div class=" col-md-2 ">
-                                <input type="text" value="${name.end}" placeholder="Date" name="ndaterange_${index+1}" class="form-control date-picker-2_${index+1}" id="date date-picker-2_${index+1}">
+                                <input type="text" value="${name.end}" placeholder="Date" name="ndaterange_${index+1}" class="form-control date-picker-2_${index+1}" id="date date-picker-2_${index+1}"readonly>
                         </div>
                         <div class="list_delete_namestrategic">
                             <svg width="14px" aria-hidden="true" focusable="false" data-prefix="far" data-icon="trash-alt" class="svg-inline--fa fa-trash-alt fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M268 416h24a12 12 0 0 0 12-12V188a12 12 0 0 0-12-12h-24a12 12 0 0 0-12 12v216a12 12 0 0 0 12 12zM432 80h-82.41l-34-56.7A48 48 0 0 0 274.41 0H173.59a48 48 0 0 0-41.16 23.3L98.41 80H16A16 16 0 0 0 0 96v16a16 16 0 0 0 16 16h16v336a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128h16a16 16 0 0 0 16-16V96a16 16 0 0 0-16-16zM171.84 50.91A6 6 0 0 1 177 48h94a6 6 0 0 1 5.15 2.91L293.61 80H154.39zM368 464H80V128h288zm-212-48h24a12 12 0 0 0 12-12V188a12 12 0 0 0-12-12h-24a12 12 0 0 0-12 12v216a12 12 0 0 0 12 12z"></path></svg>
@@ -660,67 +538,24 @@ $('select[name="year_id"] ').change(function(e){
 
   $('#form_post').create_input_multiple([
             {
-                id:"objective",
-                no:3,
-                data:      @if($data['objective'])
-                               @json($data['objective'],JSON_UNESCAPED_UNICODE)
-                            @else
-                                {!!  old('objective')?old('objective'):'[]'    !!}
-                            @endif
-                ,
-                type:'add'
-            },
-            {
-                id:"procedure",
-                no:5,
-                data:
-                            @if($data['procedure'])
-                               @json($data['procedure'],JSON_UNESCAPED_UNICODE)
-                            @else
-                                {!!  old('procedure')?old('procedure'):'[]'    !!}
-                            @endif
-                            ,
-                type:'add'
-
-            },
-            {
-                id:"useful",
-                no:10,
-                data:
-                            @if($data['useful'])
-                               @json($data['useful'],JSON_UNESCAPED_UNICODE)
-                            @else
-                                {!!  old('useful')?old('useful'):'[]'    !!}
-                            @endif
+                id:"conclusion",
+                no:'1',
+                data:[]
                             ,
                 type:'add'
             },
             {
-                id:"op_period",
-                no:8,
-                data:
-                            @if($data['time'])
-                               @json($data['time'],JSON_UNESCAPED_UNICODE)
-                            @else
-                                {!!  old('op_period')?old('op_period'):'[]'    !!}
-                            @endif
-                ,
-                type:'time'
+                id:"problem",
+                no:'2',
+                data:[]  ,
+                type:'add'
             },
-
             {
-                id:"detail",
-                no:9,
-                data:
-                @if($data['detail_budget'])
-                               @json($data['detail_budget'],JSON_UNESCAPED_UNICODE)
-                            @else
-                                {!!  old('detail')?old('detail'):'[]'    !!}
-                            @endif
-                ,
-                type:'budget',
-                checkbox_show:'budget_detail'
-            }
+                id:"feedback",
+                no:'3',
+                data:[] ,
+                type:'add'
+            },
 
        ,
     ])

@@ -40,8 +40,11 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-3 col-md-6">
-                                        <div type="2" class="card tcard  active">
-
+                                            <div type="2" class="card tcard
+                                            @if (!session('state')||session('state')==2)
+                                            active
+                                             @endif
+                                            ">
                                             <div class="cardf">
                                                 <div class="stat-widget-five">
                                                     <div class="stat-icon dib flat-color-3">
@@ -51,13 +54,19 @@
                                                         <div class="text-left dib">
                                                             <div class="stat-heading">โครงการทั้งหมด</div>
                                                         </div>
+                                                        <p class="alete_appove" id_alet="2"></p>
+
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-6">
-                                        <div type="1" class="card tcard ">
+                                        <div type="1" class="card tcard
+                                        @if (session('state')==1)
+                                        active
+                                         @endif
+                                        ">
                                             <div class="cardf">
                                                 <div class="stat-widget-five">
                                                     <div class="stat-icon dib flat-color-4">
@@ -67,6 +76,8 @@
                                                         <div class="text-left dib">
                                                             <div class="stat-heading">โครงการที่เสนอ</div>
                                                         </div>
+                                                        <p class="alete_appove" id_alet="1"></p>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -136,6 +147,16 @@
                 ajax: { url: "{{route('dataoffer')}}",
                         type: "post",
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                        @if (session('state'))
+                            data:{type:'{{ session('state') }}'},
+                        @else
+                            data:{type:'0'},
+                        @endif
+                        complete:function(data){
+                            const datares =  data.responseJSON;
+                            $('.alete_appove[id_alet="2"]').text(datares.offer_all + ' รายการ')
+                            $('.alete_appove[id_alet="1"]').text(datares.offer_my + ' รายการ')
+                        }
                     },
 
                 // order: [[1, 'asc']],

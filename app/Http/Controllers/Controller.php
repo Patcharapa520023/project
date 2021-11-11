@@ -33,16 +33,24 @@ class Controller extends BaseController
             </div>";
 
     }
-    public function saveresult($id,$deletename,$tablename,$show=true){
+    public function saveresult($id,$type ){
         $idbase =$id;
         $route = route('edit_saveresult', ['id' => $id]);
-        return "<div class='table-data-feature'>
-                <a  href='$route'>
-                <div type='button' class='btn btn-outline-success btn-sm'>
-                เพิ่มข้อมูลบันทึกผล
-                </div>
-                </a>
-            </div>";
+        if($type ==0){
+            return "<div class='table-data-feature'>
+                    <a  href='$route'>
+                    <div type='button' class='btn btn-outline-success btn-sm'>
+                    เพิ่มข้อมูลบันทึกผล
+                    </div>
+                    </a>
+                </div>";
+
+            }else{
+            return "<div class='table-data-feature text-success '>
+                   บันทึกผลเเล้ว
+                </div>";
+
+        }
 
     }
     public function approve($id,$deletename,$tablename){

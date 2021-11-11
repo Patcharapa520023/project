@@ -17,7 +17,14 @@ class Offerform extends FormRequest
   *
   * @var array
   */
+  protected $onlysaveresult = [
+    'conclusion',
+    'problem',
+    'feedback',
+    'cause',
+    'id',
 
+  ];
  protected $onlycreate = [
     "name",
     "year",
@@ -74,6 +81,9 @@ class Offerform extends FormRequest
     elseif(request()->routeIs("add{$this->nameroute}")){
          return $this->rules_create();
      }
+    elseif(request()->routeIs('edit_saveresult_post')){
+         return $this->rules_addgit();
+     }
      elseif(request()->routeIs("edit{$this->nameroute}")){
          return $this->rules_update();
      }
@@ -86,8 +96,14 @@ class Offerform extends FormRequest
         $this->merge([ 'detail'=>json_decode($this->request->get('detail'), true)]);
         $this->merge([ 'useful'=>json_decode($this->request->get('useful'), true)]);
         $this->merge([ 'op_period'=>json_decode($this->request->get('op_period'), true)]);
+        $this->merge([ 'conclusion'=>json_decode($this->request->get('conclusion'), true)]);
+        $this->merge([ 'problem'=>json_decode($this->request->get('problem'), true)]);
+        $this->merge([ 'feedback'=>json_decode($this->request->get('feedback'), true)]);
         return parent::getValidatorInstance();
     }
+ protected function rules_addgit(){
+    return [];
+ }
  protected function rules_create(){
      return [
         "name"=>"required",
@@ -115,8 +131,8 @@ class Offerform extends FormRequest
 
  }
  protected function failedValidation(Validator $validator){
-     dd($this->request,$validator->errors());
-    throw new HttpResponseException(response()->json(["errors"=>$validator->errors()], 422));
+
+    // throw new HttpResponseException(response()->json(["errors"=>$validator->errors()], 422));
 }
  protected function rules_update(){
      return [
@@ -225,12 +241,39 @@ class Offerform extends FormRequest
 
 
  }
+ protected function passedValidation_onlysaveresult(){
+    $requests = collect($this->request)->toArray();
+    $request = [];
+     $request['id'] = $requests['id'];
+     $request['status_offer'] = $requests['status_offer'];
+     if($objective = $requests['conclusion']){
+        $request['conclusion'] = collect($objective)->map(function($item){
+            return  ["name"=>$item];
+        })->toArray();
+     }
+     if($objective = $requests['problem']){
+        $request['problem'] = collect($objective)->map(function($item){
+            return  ["name"=>$item];
+        })->toArray();
+     }
+     if($objective = $requests['feedback']){
+        $request['feedback'] = collect($objective)->map(function($item){
+            return  ["name"=>$item];
+        })->toArray();
+     }
+    return  $this->request->replace($request);
+
+
+ }
  public function passedValidation()
  {
     if(request()->routeIs("delete{$this->nameroute}")){
-     }
+    }
     elseif(request()->routeIs("add{$this->nameroute}")){
         return $this->passedValidation_add("add");
+    }
+    elseif(request()->routeIs('edit_saveresult_post')){
+        return $this->passedValidation_onlysaveresult();
     }
     elseif(request()->routeIs("edit{$this->nameroute}")){
         return $this->passedValidation_add("edit");

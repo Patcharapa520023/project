@@ -133,7 +133,7 @@
                                 <div class="row form-group">
                                     <label for="strategic" class=" col-sm-3 col-form-label">ยุทธศาสตร์</label>
                                     <div class="col-sm-9 ">
-                                      <select type="text"  class="form-control" id="strategic" >
+                                        <select type="text"  class="form-control"  readonly id="strategic_g_id" name="strategic_g_id">
                                         <option selected>เลือก...</option>
                                         <option>...</option>
                                       </select>
@@ -142,7 +142,7 @@
                                 <div class="row form-group">
                                     <label for="tactics" class=" col-sm-3 col-form-label">กลยุทธ์</label>
                                     <div class="col-sm-9 ">
-                                      <select type="text"  class="form-control" id="tactics" >
+                                        <select type="text"  class="form-control" readonly name="tactic_g_id">
                                         <option selected>เลือก...</option>
                                         <option>...</option>
                                       </select>
@@ -155,7 +155,8 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                               <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="gridCheck">
+
+                            .    <input class="form-check-input" type="checkbox" id="gridCheck">
                                 <label  for="gridCheck">สอดคล้องกับแผนพัฒนาการสถานศึกษา</label>
                               </div>
                             </div>
@@ -163,7 +164,7 @@
                                 <div class="row form-group">
                                     <label for="strategic" class=" col-sm-3 col-form-label">ยุทธศาสตร์</label>
                                     <div class="col-sm-9 ">
-                                      <select type="text"  class="form-control" id="yut" >
+                                        <select type="text"  class="form-control"  readonly id="strategic_s_id" name="strategic_s_id">
                                         <option selected>เลือก...</option>
                                         <option>...</option>
                                       </select>
@@ -172,7 +173,7 @@
                                 <div class="row form-group">
                                     <label for="tactics" class=" col-sm-3 col-form-label">กลยุทธ์</label>
                                     <div class="col-sm-9 ">
-                                      <select type="text"  class="form-control" id="tactics" >
+                                        <select type="text"  class="form-control" readonly name="tactic_s._id">
                                         <option selected>เลือก...</option>
                                         <option>...</option>
                                       </select>
@@ -268,7 +269,6 @@
                                     </div>
                                     <div class=" col-md-2">
 
-                                            <a id="clear" class="btn btn-default">Reset</a>
 
                                     </div>
                                 </div>

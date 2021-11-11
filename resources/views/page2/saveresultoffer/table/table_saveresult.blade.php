@@ -35,7 +35,11 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-3 col-md-6">
-                                        <div type="2" class="card tcard  active">
+                                        <div type="0" class="card tcard
+                                        @if (!session('state')||session('state')==0)
+                                        active
+                                         @endif
+                                        ">
 
                                             <div class="cardf">
                                                 <div class="stat-widget-five">
@@ -46,13 +50,19 @@
                                                         <div class="text-left dib">
                                                             <div class="stat-heading">ยังไม่บันทึกผล</div>
                                                         </div>
+                                                        <p class="alete_appove" id_alet="0"></p>
+
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-6">
-                                        <div type="1" class="card tcard ">
+                                        <div type="1" class="card tcard
+                                        @if (session('state')==1)
+                                        active
+                                         @endif
+                                        ">
                                             <div class="cardf">
                                                 <div class="stat-widget-five">
                                                     <div class="stat-icon dib flat-color-1">
@@ -62,6 +72,8 @@
                                                         <div class="text-left dib">
                                                             <div class="stat-heading">บันทึกผลแล้ว</div>
                                                         </div>
+                                                        <p class="alete_appove" id_alet="1"></p>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -133,8 +145,19 @@
                 processing: true,
                 serverSide: true,
                 ajax: { url: "{{route('datasaveresult')}}",
+                        @if (session('state'))
+                            data:{type:'{{ session('state') }}'},
+                        @else
+                            data:{type:'0'},
+                        @endif
                         type: "post",
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                        complete:function(data){
+                            const datares =  data.responseJSON;
+                            $('.alete_appove[id_alet="1"]').text(datares.approve_all + ' รายการ')
+                            $('.alete_appove[id_alet="0"]').text(datares.await_all + ' รายการ')
+                        }
+
                     },
 
                 // order: [[1, 'asc']],
@@ -236,6 +259,7 @@
                                 cache: false,
                                 data: formData,
                                 enctype: 'multipart/form-data',
+
                                 url: $(f).attr('action'),
                                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                                 success: function (response) {

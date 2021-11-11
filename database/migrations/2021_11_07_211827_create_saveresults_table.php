@@ -13,33 +13,26 @@ class CreateSaveresultsTable extends Migration
      */
     public function up()
     {
-        Schema::create('saveresults', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('offer_id');
-            $table->string('cause');
-
-            $table->foreign('offer_id')->references('id')->on('offers');
-        });
         Schema::create('conclusions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
 
-            $table->unsignedBigInteger('saveresult_id');
+            $table->unsignedBigInteger('offer_id');
 
-            $table->foreign('saveresult_id')->references('id')->on('saveresults');
+            $table->foreign('offer_id')->references('id')->on('offers')->onDelete('cascade');
         });
         Schema::create('problems', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('saveresult_id');
+            $table->unsignedBigInteger('offer_id');
 
-            $table->foreign('saveresult_id')->references('id')->on('saveresults');
+            $table->foreign('offer_id')->references('id')->on('offers')->onDelete('cascade');
         });
         Schema::create('feedback', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('saveresult_id');
-            $table->foreign('saveresult_id')->references('id')->on('saveresults');
+            $table->unsignedBigInteger('offer_id');
+            $table->foreign('offer_id')->references('id')->on('offers')->onDelete('cascade');
         });
     }
 
@@ -50,9 +43,9 @@ class CreateSaveresultsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('causes');
         Schema::dropIfExists('conclusions');
         Schema::dropIfExists('problems');
         Schema::dropIfExists('feedback');
-        Schema::dropIfExists('saveresults');
     }
 }

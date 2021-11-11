@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Offer extends Model
 {
     use HasFactory;
-    public $timestamps = false;
     protected $fillable = [
         "name",
         "rational",
@@ -47,5 +46,14 @@ class Offer extends Model
     }
     public function user(){
         return $this->belongsTo(User::class);
+    }
+    public function conclusion(){
+        return $this->hasMany(Conclusion::class);
+    }
+    public function problem(){
+        return $this->hasMany(Problem::class);
+    }
+    public function feedback(){
+        return $this->hasMany(Feedback::class);
     }
 }

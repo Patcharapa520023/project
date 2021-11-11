@@ -26,6 +26,9 @@ class CreateOfferTable extends Migration
             $table->string('target_quantity');
             $table->string('target_quality');
             $table->unsignedBigInteger('year_id');
+            $table->boolean('status_result')->default(0);
+            $table->boolean('status_offer')->default(0);
+            $table->timestamps();
 
             $table->unsignedBigInteger('strategic_t_id')->nullable();
             $table->unsignedBigInteger('strategic_g_id')->nullable();
@@ -79,6 +82,7 @@ class CreateOfferTable extends Migration
             $table->string('name');
             $table->foreign('offer_id')->references('id')->on('offers')->onDelete('cascade');
         });
+
 
     }
 

@@ -45,8 +45,8 @@
                 <ul class="nav navbar-nav">
                     <li class="menu-title">รายงาน</li>
                     <li class="{{(Request::url()==route('dashboad'))?'active':false}}">
-                        <a href="{{ route("dashboad") }}"><i class="menu-icon fa fa-laptop"></i>เดชบอด</a>
-                        <a href="{{ route("table_Personnel") }}"><i class="menu-icon fa fa-laptop"></i>รายงานแผนดำเนินงาน</a>
+                        <a href="{{ route("dashboad") }}"><i class="menu-icon fa fa-laptop"></i>รายงานผลโครงการ</a>
+
 
                     </li>
                     {{-- <li class="menu-title">จัดการข้อมูลผู้ใช้</li>
