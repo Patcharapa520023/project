@@ -76,19 +76,27 @@
 
 
                     <li class="menu-title">จัดการข้อมูลโครงการ</li>
+                    @if (auth()->user()->rolse=="staff"||auth()->user()->rolse=="personnel"||auth()->user()->rolse=="admin")
                     <li class="{{(Request::url()==route('table_Offer'))?'active':false}}">
                         <a href="{{ route("table_Offer") }}"><i class="menu-icon fa fa-id-badge"></i>ข้อมูลโครงการ</a>
                     </li>
+                    @endif
+                    @if (auth()->user()->rolse=="executive"||auth()->user()->rolse=="admin")
                     <li class="{{(Request::url()==route('table_approve'))?'active':false}}">
                         <a href="{{ route("table_approve") }}"><i class="menu-icon fa fa-id-badge"></i>พิจารณาอนุมัติโครงการ</a>
                     </li>
+                    @endif
+                    @if (auth()->user()->rolse=="staff"||auth()->user()->rolse=="personnel"||auth()->user()->rolse=="admin")
                     <li class="{{(Request::url()==route('table_saveresult'))?'active':false}}">
                         <a href="{{ route("table_saveresult") }}"><i class="menu-icon fa fa-id-badge"></i>รายงานผลโครงการ</a>
                     </li>
+                    @endif
+                    @if (auth()->user()->rolse=="staff"||auth()->user()->rolse=="admin"||auth()->user()->rolse=="personnel")
                     <li class="menu-title">จัดการข้อมูลพื้นฐาน</li><!-- /.menu-title -->
+                    @endif
 
                     <li class="menu-item-has-children dropdown {{(Request::url()==route('table_Executive')||Request::url()==route('table_Staff')||Request::url()==route('table_Personnel')||Request::url()==route('add_personnel'))?'active':false}}">
-
+                    @if (auth()->user()->rolse=="admin")
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>จัดการข้อมูลผู้ใช้</a>
                             <ul class="sub-menu children dropdown-menu">
                                 <li><i class="fa fa-puzzle-piece"></i><a href="{{ route("table_Executive") }}" style="left: 0px">ผู้บริหาร</a></li>
@@ -96,7 +104,8 @@
                                 <li><i class="fa fa-bars"></i><a href="{{ route("table_Personnel") }}">สถานศึกษา</a></li>
                             </ul>
                     </li>
-
+                    @endif
+                    @if (auth()->user()->rolse=="staff"||auth()->user()->rolse=="admin"||auth()->user()->rolse=="personnel")
                     <li class="menu-item-has-children dropdown {{(Request::url()==route('table_Year')||Request::url()==route('table_Tactics')||Request::url()==route('table_Strategic')||Request::url()==route('table_Personnel')||Request::url()==route('add_personnel'))?'active':false}}">
 
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>กำหนดยุทธศาสตร์และกลยุทธ์</a>
@@ -106,6 +115,7 @@
                                 <li><i class="fa fa-bars"></i><a href="{{ route("table_Tactics") }}">กลยุทธ์</a></li>
                             </ul>
                     </li>
+                    @endif
 
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -210,7 +220,7 @@
 
                             {{-- <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a> --}}
 
-                            <a class="nav-link" href="#"><i class="fa fa -cog"></i>ระดับ : @auth{{($rosle = auth()->user()->rolse)?($rosle=="executive"?'ผู้บริหาร':($rosle=="staff"?'กองการศึกษา':($rosle=="personnel"?'สถานศึกษา':''))):'' }}@endauth</a>
+                            <a class="nav-link" href="#"><i class="fa fa -cog"></i>ระดับ : @auth{{($rosle = auth()->user()->rolse)?($rosle=="executive"?'ผู้บริหาร':($rosle=="staff"?'กองการศึกษา':($rosle=="personnel"?'สถานศึกษา':($rosle=="admin"?'แอดมิน':'')))):'' }}@endauth</a>
                             {{-- <a class="nav-link" href="#"><i class="fa fa -cog"></i> </a> --}}
 
 

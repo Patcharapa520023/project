@@ -64,7 +64,7 @@ class LoginController extends Controller
 
             return $request->wantsJson()
                         ? new JsonResponse([], 204)
-                        : redirect()->route('dashboad');
+                        : redirect()->route('table_report');
 
     }
     public function logout(Request $request)
