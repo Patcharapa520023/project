@@ -8,7 +8,7 @@
                 <div class="col-sm-4">
                     <div class="page-header float-left">
                         <div class="page-title">
-                            <h1>เพิ่มข้อมูลเสนอโครงการ</h1>
+                            <h1></h1>
 
                         </div>
                     </div>
@@ -17,8 +17,8 @@
                     <div class="page-header float-right">
                         <div class="page-title">
                             <ol class="breadcrumb text-right">
-                                <li><a href="http://127.0.0.1:8000/admin/offer">เสนอโครงการ</a></li>
-                                <li><a href="http://127.0.0.1:8000/admin/add/offer"><u>เพิ่มข้อมูลเสนอโครงการ</u></a></li>
+                                <li><a href="http://127.0.0.1:8000/saveresult">รายงานผลโครงการ</a></li>
+                                <li><a href="#"><u>บันทึกผลโครงการ</u></a></li>
                                 {{-- <li class="active">Data table</li> --}}
                             </ol>
                         </div>
@@ -35,7 +35,7 @@
         @csrf
         <div class="card">
             <div class="card-header">
-                <strong>ข้อมูลเสนอโครงการ</strong>
+                <strong>บันทึกผลโครงการ</strong>
             </div>
             <div class="card-footer">
                 <button type="submit" class="btn ebtn-success btn-sm">
@@ -206,6 +206,17 @@
                             <div class="form-row form-group ">
                               <label class="col-md-2 "for="name">ชื่อโครงการ</label>
                               <input   type="text" class="form-control col-md-5" id="name" name="name" placeholder="กรอกชื่อโครงการ" value=" {{$data['name']?$data['name']:old('name')}} " readonly>
+                            </div>
+                            <div class="form-row form-group ">
+                              <label class="col-md-2 "for="name">ชื่อผู้รับผิดชอบโครงการ</label>
+                              @if (auth()->user()->rolse=="staff")
+                                    @php $staff = auth()->user()->staff; @endphp
+                                    <input class="form-control" id="responsible" name="responsible" rows="3" placeholder="กรอกผู้ประสานงานโครงการ" readonly value="{{ $staff->title.$staff->name." ".$staff->lastname}}">
+
+                                @elseif (auth()->user()->rolse=="personnel")
+                                    @php $personnel = auth()->user()->personnel; @endphp
+                                    <input class="form-control" id="responsible" name="responsible" rows="3" placeholder="กรอกผู้ประสานงานโครงการ" readonly value="{{ $personnel->title.$personnel->name }}">
+                                @endif
                             </div>
 
                             <div class="form-check">

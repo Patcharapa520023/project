@@ -13,7 +13,7 @@ class Yeartb extends Controller
         $headtables  = array(
             array("ลำดับ","id"),
             // array("บทบาท","rolse"),
-            array("แผนพัฒนาการศึกษา(ปี)","atplan"),
+            array("จำนวนปี","atplan"),
             // array("รหัสผ่าน","password"),
             array("ปีที่เริ่ม","start"),
             array("ปีที่สิ้นสุด","stop"),

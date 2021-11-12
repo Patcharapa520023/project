@@ -7,7 +7,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>ตารางข้อมูลยุทธ์ศาสตร์</h1>
+
                     </div>
                 </div>
             </div>
@@ -15,8 +15,7 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li><a href="#">จัดการข้อมูลแผนพัฒนาการศึกษา</a></li>
-                            <li><a href="http://127.0.0.1:8000/admin/strategic"><u>ข้อมูลยุทธ์ศาสตร์</u></a></li>
+
                             {{-- <li class="active">Data table</li> --}}
                         </ol>
                     </div>
@@ -32,61 +31,68 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header d-flex p-2 justify-content-between align-items-center pl-4 pr-4">
-                                    <strong class="card-title">ตารางข้อมูลยุทธ์ศาสตร์</strong>
-                                        <a class="addcus btn btn-outline-success" href="{{ route('add_strategic') }}">
-                                            <i class="fa fa-plus"></i>&nbsp;เพิ่มยุทธ์ศาสตร์
-                                        </a>
+                                    <strong class="card-title">แดชบอร์ด</strong>
+
                             </div>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-3 col-md-6">
-                                        <div type="1" class="card tcard active">
-                                            <div class="cardf">
-                                                <div class="stat-widget-five">
-                                                    <div class="stat-icon dib flat-color-1">
-                                                        <i class="pe-7s-leaf"></i>
-                                                    </div>
-                                                    <div class="stat-content">
-                                                        <div class="text-left dib">
-                                                            <div class="stat-heading">ยุทธศาสตร์ท้องถิ่น</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-6">
-                                        <div type="2" class="card tcard ">
-                                            <div class="cardf">
-                                                <div class="stat-widget-five">
-                                                    <div class="stat-icon dib flat-color-2">
-                                                        <i class="pe-7s-portfolio"></i>
-                                                    </div>
-                                                    <div class="stat-content">
-                                                        <div class="text-left dib">
-                                                            <div class="stat-heading">ยุทธศาสตร์กองการศึกษา</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-6">
-                                        <div type="3" class="card tcard">
-                                            <div class="cardf">
+                                        <div class="card">
+                                            <div class="card-body">
                                                 <div class="stat-widget-five">
                                                     <div class="stat-icon dib flat-color-3">
-                                                        <i class="pe-7s-culture"></i>
+                                                        <i class="pe-7s-albums"></i>
                                                     </div>
                                                     <div class="stat-content">
                                                         <div class="text-left dib">
-                                                            <div class="stat-heading">ยุทธศาสตร์สถานศึกษา</div>
+                                                            <div class="stat-heading">โครงการทั้งหมด</div>
+                                                            <div class="stat-text">ปี<span class="count">2564</span></div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="stat-widget-five">
+                                                    <div class="stat-icon dib flat-color-1">
+                                                        <i class="pe-7s-check"></i>
+                                                    </div>
+                                                    <div class="stat-content">
+                                                        <div class="text-left dib">
+                                                            <div class="stat-heading">เบิกจ่ายได้ตามงบ</div>
+                                                            <div class="stat-text"><span class="count">5</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="stat-widget-five">
+                                                    <div class="stat-icon dib flat-color-6">
+                                                        <i class="pe-7s-close-circle"></i>
+                                                    </div>
+                                                    <div class="stat-content">
+                                                        <div class="text-left dib">
+                                                            <div class="stat-heading">ไม่สามารถเบิกได้</div>
+                                                            <div class="stat-text"><span class="count">10</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="card">
+
                                         </div>
                                     </div>
                                 </div>
@@ -150,7 +156,7 @@
                     },
                 processing: true,
                 serverSide: true,
-                ajax: { url: "{{route('datastrategic')}}",
+                ajax: { url: "{{route('datareportoffer')}}",
                         type: "post",
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     },
@@ -226,7 +232,7 @@
         color: rgb(255, 255, 255);
     }
    a .edit{
-        background: rgb(241, 109, 33);
+        background: rgb(62,179,72);
         color: rgb(255, 255, 255);
     }
    form>.delete{

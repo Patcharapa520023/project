@@ -8,7 +8,7 @@
                 <div class="col-sm-4">
                     <div class="page-header float-left">
                         <div class="page-title">
-                            <h1>ดูข้อมูลเสนอโครงการ</h1>
+                            <h1>ดูข้อมูลโครงการ</h1>
 
                         </div>
                     </div>
@@ -17,8 +17,8 @@
                     <div class="page-header float-right">
                         <div class="page-title">
                             <ol class="breadcrumb text-right">
-                                <li><a href="http://127.0.0.1:8000/admin/offer">ข้อมูลเสนอโครงการ</a></li>
-                                <li><a href="http://127.0.0.1:8000/admin/add/offer"><u>ดูข้อมูลเสนอโครงการ</u></a></li>
+                                <li><a href="http://127.0.0.1:8000/approveoffer">ข้อมูลโครงการ</a></li>
+                                <li><a href="#"><u>ดูข้อมูลโครงการ</u></a></li>
                                 {{-- <li class="active">Data table</li> --}}
                             </ol>
                         </div>
@@ -35,7 +35,7 @@
         <div class="card">
             <div class="card-header">
 
-                <strong>ข้อมูลเสนอโครงการ</strong>
+                <strong>ข้อมูลโครงการ</strong>
             </div>
             <div class="card-footer">
                 {{-- <button type="submit" class="btn btn-success btn-sm">

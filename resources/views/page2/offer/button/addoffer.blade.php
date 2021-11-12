@@ -7,7 +7,7 @@
                 <div class="col-sm-4">
                     <div class="page-header float-left">
                         <div class="page-title">
-                            <h1>เพิ่มข้อมูลเสนอโครงการ</h1>
+                            <h1>เพิ่มข้อมูลโครงการ</h1>
                         </div>
                     </div>
                 </div>
@@ -15,8 +15,8 @@
                     <div class="page-header float-right">
                         <div class="page-title">
                             <ol class="breadcrumb text-right">
-                                <li><a href="http://127.0.0.1:8000/admin/offer">เสนอโครงการ</a></li>
-                                <li><a href="http://127.0.0.1:8000/admin/add/offer"><u>เพิ่มข้อมูลเสนอโครงการ</u></a></li>
+                                <li><a href="http://127.0.0.1:8000/offer">ข้อมูลโครงการ</a></li>
+                                <li><a href="http://127.0.0.1:8000/add/offer"><u>เพิ่มข้อมูลโครงการ</u></a></li>
                                 {{-- <li class="active">Data table</li> --}}
                             </ol>
                         </div>
@@ -32,11 +32,11 @@
         @csrf
         <div class="card">
             <div class="card-header">
-                <strong>ข้อมูลเสนอโครงการ</strong>
+                <strong>ข้อมูลโครงการ</strong>
             </div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-success btn-sm">
-                    <i class="fa fa-dot-circle-o"></i> ยืนยันข้อมูล
+                    <i class="fa fa-dot-circle-o"></i> เสนอโครงการ
                 </button>
                 <button type="reset" class="btn btn-danger btn-sm">
                     <i class="fa fa-ban"></i> รีเฟรช
@@ -278,14 +278,14 @@
                             </div>
                             <div class="form-group" >
                                 <label class=""for="addbudget">9. งบประมาณดำเนินการ</label>
-                                <input class="form-control mb-2" id="budget" name="budget" rows="3" placeholder="กรอกงบประมาณดำเนินการ" value="{{old('budget')}}">
+                                <input class="form-control mb-2" id="budget" name="budget" rows="3" placeholder="คำอธิบายงบประมาณ" value="{{old('budget')}}">
                                     <div class="form-check">
                                       <input @if(old('budget_detail')) checked @endif class="form-check-input" type="checkbox" id="budget_detail" name="budget_detail">
-                                      <label  for="budget_detail">ต้องการเพิ่มรายละเอียดการใช้งบ</label>
+                                      <label  for="budget_detail">รายการแจกแจงการใช้งบประมาณ</label>
                                   </div>
                                 <div class="budg">
                                     <div class="row mb-2 ">
-                                        <span class=" col-md-8 "> &nbsp;&nbsp;รายละเอียดการใช้งบประมาณ </span>
+                                        <span class=" col-md-8 "> &nbsp;&nbsp;รายการ </span>
                                         <span class=" col-md-2 ">จำนวนเงิน</span>
                                     </div>
                                     <div>

@@ -7,7 +7,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>ตารางข้อมูลเสนอโครงการ</h1>
+                        <h1></h1>
                     </div>
                 </div>
             </div>
@@ -16,7 +16,7 @@
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
                             <li><a href="#">จัดการข้อมูลโครงการ</a></li>
-                            <li><a href="http://127.0.0.1:8000/admin/offer"><u>เสนอโครงการ</u></a></li>
+                            <li><a href="http://127.0.0.1:8000/offer"><u>ข้อมูลโครงการ</u></a></li>
                             {{-- <li class="active">Data table</li> --}}
                         </ol>
                     </div>
@@ -32,7 +32,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header d-flex p-2 justify-content-between align-items-center pl-4 pr-4">
-                                    <strong class="card-title">ตารางข้อมูล</strong>
+                                    <strong class="card-title">ข้อมูลโครงการ</strong>
                                         <a class="addcus btn btn-outline-success" href="{{ route('add_offer') }}">
                                             <i class="fa fa-plus"></i>&nbsp;เพิ่มข้อมูลเสนอโครงการ
                                         </a>
@@ -74,7 +74,7 @@
                                                     </div>
                                                     <div class="stat-content">
                                                         <div class="text-left dib">
-                                                            <div class="stat-heading">โครงการที่เสนอ</div>
+                                                            <div class="stat-heading">โครงการที่รับผิดชอบ</div>
                                                         </div>
                                                         <p class="alete_appove" id_alet="1"></p>
 

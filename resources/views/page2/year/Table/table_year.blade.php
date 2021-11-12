@@ -34,7 +34,7 @@
                             <div class="card-header d-flex p-2 justify-content-between align-items-center pl-4 pr-4">
                                     <strong class="card-title">ตารางแผนพัฒนาท้องถิ่นและกองการศึกษา</strong>
                                         <a class="addcus btn btn-outline-success" href="{{ route('add_year') }}">
-                                            <i class="fa fa-plus"></i>&nbsp;เพิ่มแผนพัฒนาท้องถิ่นและกองการศึกษา
+                                            <i class="fa fa-plus"></i>&nbsp;กำหนดปีแผนพัฒนาท้องถิ่นและแผนการศึกษา
                                         </a>
                             </div>
                             <div class="card-body">

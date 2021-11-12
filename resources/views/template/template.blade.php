@@ -44,8 +44,8 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="menu-title">รายงาน</li>
-                    <li class="{{(Request::url()==route('dashboad'))?'active':false}}">
-                        <a href="{{ route("dashboad") }}"><i class="menu-icon fa fa-laptop"></i>รายงานผลโครงการ</a>
+                    <li class="{{(Request::url()==route('table_report'))?'active':false}}">
+                        <a href="{{ route("table_report") }}"><i class="menu-icon fa fa-laptop"></i>แดชบอร์ด</a>
 
 
                     </li>
@@ -73,6 +73,18 @@
                     </li>
                     </li> --}}
 
+
+
+                    <li class="menu-title">จัดการข้อมูลโครงการ</li>
+                    <li class="{{(Request::url()==route('table_Offer'))?'active':false}}">
+                        <a href="{{ route("table_Offer") }}"><i class="menu-icon fa fa-id-badge"></i>ข้อมูลโครงการ</a>
+                    </li>
+                    <li class="{{(Request::url()==route('table_approve'))?'active':false}}">
+                        <a href="{{ route("table_approve") }}"><i class="menu-icon fa fa-id-badge"></i>พิจารณาอนุมัติโครงการ</a>
+                    </li>
+                    <li class="{{(Request::url()==route('table_saveresult'))?'active':false}}">
+                        <a href="{{ route("table_saveresult") }}"><i class="menu-icon fa fa-id-badge"></i>รายงานผลโครงการ</a>
+                    </li>
                     <li class="menu-title">จัดการข้อมูลพื้นฐาน</li><!-- /.menu-title -->
 
                     <li class="menu-item-has-children dropdown {{(Request::url()==route('table_Executive')||Request::url()==route('table_Staff')||Request::url()==route('table_Personnel')||Request::url()==route('add_personnel'))?'active':false}}">
@@ -87,22 +99,12 @@
 
                     <li class="menu-item-has-children dropdown {{(Request::url()==route('table_Year')||Request::url()==route('table_Tactics')||Request::url()==route('table_Strategic')||Request::url()==route('table_Personnel')||Request::url()==route('add_personnel'))?'active':false}}">
 
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>จัดการยุทธศาสตร์และกลยุทธ์</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>กำหนดยุทธศาสตร์และกลยุทธ์</a>
                             <ul class="sub-menu children dropdown-menu">
-                                <li><i class="fa fa-puzzle-piece"></i><a href="{{ route("table_Year") }}" style="left: 0px">แผนพัฒนาท้องถิ่นและกองการศึกษา</a></li>
+                                <li><i class="fa fa-puzzle-piece"></i><a href="{{ route("table_Year") }}" style="left: 0px">กำหนดปีแผนพัฒนาท้องถิ่นและการศึกษา</a></li>
                                 <li><i class="fa fa-id-badge"></i><a href="{{ route("table_Strategic") }}">ยุทธศาสตร์</a></li>
                                 <li><i class="fa fa-bars"></i><a href="{{ route("table_Tactics") }}">กลยุทธ์</a></li>
                             </ul>
-                    </li>
-                    <li class="menu-title">จัดการข้อมูลโครงการ</li>
-                    <li class="{{(Request::url()==route('table_Offer'))?'active':false}}">
-                        <a href="{{ route("table_Offer") }}"><i class="menu-icon fa fa-id-badge"></i>ข้อมูลโครงการ</a>
-                    </li>
-                    <li class="{{(Request::url()==route('table_approve'))?'active':false}}">
-                        <a href="{{ route("table_approve") }}"><i class="menu-icon fa fa-id-badge"></i>พิจารณาอนุมัติโครงการ</a>
-                    </li>
-                    <li class="{{(Request::url()==route('table_saveresult'))?'active':false}}">
-                        <a href="{{ route("table_saveresult") }}"><i class="menu-icon fa fa-id-badge"></i>บันทึกผลโครงการ</a>
                     </li>
 
                 </ul>
@@ -116,7 +118,7 @@
         <header id="header" class="header">
             <div class="top-left">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="./"><img src="{{asset('images/logo.png')}}" alt="Logo"></a>
+                    <a class="navbar-brand" href="./"><img src="{{asset('images/logonew.png')}}" alt="Logo"></a>
                     <a class="navbar-brand hidden" href="./"><img src="{{asset('images/logo2.png')}}" alt="Logo"></a>
                     <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
                 </div>

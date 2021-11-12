@@ -34,7 +34,7 @@
                             <div class="card-header d-flex p-2 justify-content-between align-items-center pl-4 pr-4">
                                     <strong class="card-title">ตารางข้อมูลกลยุทธ์</strong>
                                         <a class="addcus btn btn-outline-success" href="{{ route('add_tactics') }}">
-                                            <i class="fa fa-plus"></i>&nbsp;เพิ่มข้อมูลกลยุทธ์
+                                            <i class="fa fa-plus"></i>&nbsp;เพิ่มกลยุทธ์
                                         </a>
                             </div>
                             <div class="card-body">

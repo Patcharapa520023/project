@@ -7,7 +7,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>ตารางการบันทึกผลโครงการ</h1>
+                        <h1></h1>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header d-flex p-2 justify-content-between align-items-center pl-4 pr-4">
-                                    <strong class="card-title">บันทึกผลโครงการ</strong>
+                                    <strong class="card-title">รายงานผลโครงการ</strong>
 
                             </div>
                             <div class="card-body">

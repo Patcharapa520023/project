@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\Datatable\Offertb;
 use App\Http\Controllers\Admin\Datatable\Stafftb;
 use App\Http\Controllers\Admin\Datatable\Executivetb;
 use App\Http\Controllers\Admin\Datatable\Personneltb;
+use App\Http\Controllers\Admin\Datatable\Reporttb;
 use App\Http\Controllers\Admin\Datatable\Saveresulttb;
 use App\Http\Controllers\Admin\Datatable\Strategictb;
 use App\Http\Controllers\Admin\Datatable\Tacticstb;
@@ -164,8 +165,18 @@ Route::group([
     Route::post('edit/saveresult',[Manage_Offer::class,'editsaveresult'])->name("edit_saveresult_post");
     // end saveresult
 
+     // report
+     Route::get('/reportoffer',[Reporttb::class,"show"])->name("table_report");
+     Route::get('/show/{id}/reportoffer','Index@formshowreportoffer')->name("show_report");
+
+     Route::post('/datareport_offer',[Reporttb::class,"getdata"])->name("datareportoffer");
+
+     Route::post('report/offer',[Manage_Offer::class,'report'])->name("report_offer_post");
+     // end report
 
 });
+
+
 
 
 

@@ -33,6 +33,22 @@ class Controller extends BaseController
             </div>";
 
     }
+    public function columcontroo($id,$deletename,$tablename,$show=true){
+        $idbase =$id;
+        $csrf = csrf_field();
+        return "<div class='table-data-feature'>".(($show)?"<a  href='show/$idbase/$tablename'>
+        <button class='item show' data-toggle='tooltip' data-placement='top' title=' data-original-title='More'>
+            <i class='fa fa-search-plus'></i>
+        </button>
+        </a>" :""). "<a  href='edit/$idbase/$tablename'>
+            <button class='item edit' data-toggle='tooltip' data-placement='top' title=' data-original-title='Edit'>
+                <i class='fa fa-file-excel-o'></i>
+            </button>
+            </a>
+
+            </div>";
+
+    }
     public function saveresult($id,$type ){
         $idbase =$id;
         $route = route('edit_saveresult', ['id' => $id]);
