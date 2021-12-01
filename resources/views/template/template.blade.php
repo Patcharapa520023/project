@@ -45,7 +45,7 @@
                 <ul class="nav navbar-nav">
                     <li class="menu-title">รายงาน</li>
                     <li class="{{(Request::url()==route('table_report'))?'active':false}}">
-                        <a href="{{ route("table_report") }}"><i class="menu-icon fa fa-laptop"></i>แดชบอร์ด</a>
+                        <a href="{{ route("table_report") }}"><i class="menu-icon fa fa-laptop"></i>ออกรายงาน</a>
 
 
                     </li>

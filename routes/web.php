@@ -1,27 +1,28 @@
 <?php
 
-use App\Http\Controllers\Admin\Datatable\Approve_offertb;
 use App\Models\User;
+use App\Http\Controllers\Export_report;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\Manage_Year;
 use App\Http\Controllers\Admin\Manage_Offer;
 use App\Http\Controllers\Admin\Manage_Staff;
+use App\Http\Controllers\Admin\Manage_Tactics;
 use App\Http\Controllers\Admin\Datatable\Yeartb;
 use App\Http\Controllers\Admin\Manage_Executive;
 use App\Http\Controllers\Admin\Manage_Personnel;
 use App\Http\Controllers\Admin\Manage_Strategic;
-use App\Http\Controllers\Admin\Manage_Tactics;
 use App\Http\Controllers\Admin\Datatable\Offertb;
 use App\Http\Controllers\Admin\Datatable\Stafftb;
-use App\Http\Controllers\Admin\Datatable\Executivetb;
-use App\Http\Controllers\Admin\Datatable\Personneltb;
+use App\Http\Controllers\Admin\Manage_Saveresult;
 use App\Http\Controllers\Admin\Datatable\Reporttb;
-use App\Http\Controllers\Admin\Datatable\Saveresulttb;
-use App\Http\Controllers\Admin\Datatable\Strategictb;
 use App\Http\Controllers\Admin\Datatable\Tacticstb;
 use App\Http\Controllers\Admin\Manage_Approveoffer;
-use App\Http\Controllers\Admin\Manage_Saveresult;
+use App\Http\Controllers\Admin\Datatable\Executivetb;
+use App\Http\Controllers\Admin\Datatable\Personneltb;
+use App\Http\Controllers\Admin\Datatable\Strategictb;
+use App\Http\Controllers\Admin\Datatable\Saveresulttb;
+use App\Http\Controllers\Admin\Datatable\Approve_offertb;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,8 +41,10 @@ Route::group([
     'middleware' => ['auth']
 ],function(){
     Route::get('/web','Index@dashbord')->name('dashboad');
-
     // staff
+    Route::post('/dowload/xlsx',[Export_report::class,"export"]);
+
+
     Route::get('/staff',[Stafftb::class,"show"])->name("table_Staff");
     Route::post('/datastaff',[Stafftb::class,"getdata"])->name("datastaff");
 

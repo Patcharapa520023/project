@@ -13,6 +13,8 @@ class Reporttb extends Controller
             array("ลำดับ","id","id"),
             // array("บทบาท","rolse"),
             array("ชื่อโครงการ","name","id"),
+            array("ยุทธศาสตร์","strategic_t_id","id"),
+            array("กลยุทย์","tactic_t_id","id"),
             // array("รหัสผ่าน","password"),
             array("ปีงบประมาณ","year","id"),
         );

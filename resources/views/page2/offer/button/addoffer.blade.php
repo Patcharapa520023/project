@@ -88,7 +88,7 @@
                                 </div>
                             </div>
                         </div>
-                        @if (auth()->user()->rolse=="staff")
+                        @if (auth()->user()->rolse=="staff"||auth()->user()->rolse=="admin")
 
 
                             <div class="form-row">

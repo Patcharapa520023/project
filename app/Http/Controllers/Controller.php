@@ -40,11 +40,15 @@ class Controller extends BaseController
         <button class='item show' data-toggle='tooltip' data-placement='top' title=' data-original-title='More'>
             <i class='fa fa-search-plus'></i>
         </button>
-        </a>" :""). "<a  href='edit/$idbase/$tablename'>
-            <button class='item edit' data-toggle='tooltip' data-placement='top' title=' data-original-title='Edit'>
-                <i class='fa fa-file-excel-o'></i>
+        </a>" :"").
+         "
+            <form method='POST' action='/dowload/xlsx' >
+                 $csrf
+                 <input type='hidden' name='id' value='$id'>
+            <button class='item edit bg-success' data-toggle='tooltip ' data-placement='top' title=' data-original-title='Edit'>
+                <i class='fa fa-file-excel-o '></i>
             </button>
-            </a>
+            </form>
 
             </div>";
 

@@ -31,7 +31,43 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header d-flex p-2 justify-content-between align-items-center pl-4 pr-4">
-                                    <strong class="card-title">แดชบอร์ด</strong>
+                                    <strong class="card-title">ออกรายงาน</strong>
+
+                                    {{-- <div class="dropdown">
+                                        <button onclick="myFunction()" class="dropbtn">ยุทธศาตร์</button>
+                                        <div id="myDropdown" class="dropdown-content">
+                                          <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                                          <a href="#about">About</a>
+                                          <a href="#base">Base</a>
+                                          <a href="#blog">Blog</a>
+                                          <a href="#contact">Contact</a>
+                                          <a href="#custom">Custom</a>
+                                          <a href="#support">Support</a>
+                                          <a href="#tools">Tools</a>
+                                        </div>
+                                      </div>
+                                    <div class="dropdown">
+                                        <button onclick="myFunction()" class="dropbtn">กลุยุทธ์</button>
+                                        <div id="myDropdown" class="dropdown-content">
+                                          <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                                          <a href="#about">About</a>
+                                          <a href="#base">Base</a>
+                                          <a href="#blog">Blog</a>
+                                          <a href="#contact">Contact</a>
+                                          <a href="#custom">Custom</a>
+                                          <a href="#support">Support</a>
+                                          <a href="#tools">Tools</a>
+                                        </div>
+                                      </div> --}}
+
+<select class="ui search dropdown">
+    <option value="">ปีงบประมาณ</option>
+    <option value="AL">2564</option>
+    <option value="AK">2567</option>
+    <option value="AZ">2568</option>
+    <option value="AR">2569</option>
+    <option value="CA">2570</option>
+  </select>
 
                             </div>
                             <div class="card-body">
@@ -64,7 +100,7 @@
                                                     <div class="stat-content">
                                                         <div class="text-left dib">
                                                             <div class="stat-heading">เบิกจ่ายได้ตามงบ</div>
-                                                            <div class="stat-text"><span class="count">5</span></div>
+                                                            <div class="stat-text"><span class="count">4</span></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -82,7 +118,7 @@
                                                     <div class="stat-content">
                                                         <div class="text-left dib">
                                                             <div class="stat-heading">ไม่สามารถเบิกได้</div>
-                                                            <div class="stat-text"><span class="count">10</span></div>
+                                                            <div class="stat-text"><span class="count">1</span></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -103,7 +139,7 @@
                                             <th>{{ $headtable[0] }}</th>
                                             @endforeach
 
-                                            <th class="console"> ลบ แก้ไขข้อมูล</th>
+                                            <th class="console">ออกรายงาน</th>
                                         </tr>
                                     </thead>
 
@@ -223,6 +259,25 @@
 
 
         }
+        function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function filterFunction() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
 </script>
 @endsection
 @section('style')
@@ -313,6 +368,62 @@
 div#bootstrap-data-table-export1_processing{
     width: 0px;
 }
+
+.dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #3e8e41;
+}
+
+#myInput {
+  box-sizing: border-box;
+  background-image: url('searchicon.png');
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+#myInput:focus {outline: 3px solid #ddd;}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+</style>
+</head>
+<body>
 
 </style>
 <link rel="stylesheet" href="{{ asset('assets/css/lib/datatable/dataTables.bootstrap.min.css') }}">
